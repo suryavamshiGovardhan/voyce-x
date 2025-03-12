@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import LanguageSelector from "./LanguageSelector";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
@@ -22,14 +25,18 @@ export default function Navbar() {
             Home
           </Link>
           <Link to="/newsletters" className="text-sm font-medium transition-colors hover:text-primary">
-            Newsletters
+            {t('newsletters')}
           </Link>
           <Link to="/thoughts" className="text-sm font-medium transition-colors hover:text-primary">
-            Clear Thoughts
+            {t('thoughts')}
           </Link>
+          <LanguageSelector />
+          <Button asChild variant="outline" size="sm">
+            <Link to="/login">{t('login')}</Link>
+          </Button>
           <Button asChild variant="default" size="sm">
             <a href="https://mental-health-management-mhm.b12sites.com/" target="_blank" rel="noopener noreferrer">
-              Visit Website
+              {t('visitWebsite')}
             </a>
           </Button>
         </nav>
@@ -64,18 +71,26 @@ export default function Navbar() {
               className="text-base font-medium transition-colors hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
-              Newsletters
+              {t('newsletters')}
             </Link>
             <Link 
               to="/thoughts" 
               className="text-base font-medium transition-colors hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
-              Clear Thoughts
+              {t('thoughts')}
+            </Link>
+            <LanguageSelector />
+            <Link 
+              to="/login" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t('login')}
             </Link>
             <Button asChild variant="default" size="sm" className="mt-4">
               <a href="https://mental-health-management-mhm.b12sites.com/" target="_blank" rel="noopener noreferrer">
-                Visit Website
+                {t('visitWebsite')}
               </a>
             </Button>
           </div>

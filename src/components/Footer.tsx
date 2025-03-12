@@ -1,18 +1,32 @@
 
-import React from "react";
-import { Instagram, Mail, Book } from "lucide-react";
+import React, { useState } from "react";
+import { Instagram, Mail, Book, Copyright } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
+  const [termsOpen, setTermsOpen] = useState(false);
   
   return (
     <footer className="py-8 px-4 border-t bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground">
-            © {currentYear} VOYCE Mental Health Services. All rights reserved.
-          </p>
+          <div className="flex items-center">
+            <Copyright className="h-4 w-4 mr-1" />
+            <p className="text-muted-foreground">
+              {currentYear} VOYCE Mental Health Services. {t('allRightsReserved')}
+            </p>
+          </div>
           
           <div className="flex items-center space-x-4">
             <Button asChild variant="ghost" size="icon" className="rounded-full hover:bg-primary/10">
@@ -48,16 +62,60 @@ export default function Footer() {
             </Button>
           </div>
           
-          <p className="text-sm">
-            <a 
-              href="https://mental-health-management-mhm.b12sites.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              Visit our main website
-            </a>
-          </p>
+          <div className="flex items-center space-x-4">
+            <p className="text-sm">
+              <a 
+                href="https://mental-health-management-mhm.b12sites.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                {t('visitWebsite')}
+              </a>
+            </p>
+            
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="link" size="sm" className="text-sm">
+                  {t('termsAndConditions')}
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-h-[80vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle>{t('termsAndConditions')}</DialogTitle>
+                  <DialogDescription>
+                    {t('lastUpdated')}: {new Date().toLocaleDateString()}
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 text-sm text-left">
+                  <h3 className="font-medium text-base">{t('termsOfUse')}</h3>
+                  <p>
+                    {t('termsIntro')}
+                  </p>
+                  
+                  <h3 className="font-medium text-base">{t('contentLiability')}</h3>
+                  <p>
+                    {t('contentLiabilityDesc')}
+                  </p>
+                  
+                  <h3 className="font-medium text-base">{t('privacy')}</h3>
+                  <p>
+                    {t('privacyDesc')}
+                  </p>
+                  
+                  <h3 className="font-medium text-base">{t('userContent')}</h3>
+                  <p>
+                    {t('userContentDesc')}
+                  </p>
+                  
+                  <h3 className="font-medium text-base">{t('disclaimer')}</h3>
+                  <p>
+                    {t('disclaimerDesc')}
+                  </p>
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
       </div>
     </footer>

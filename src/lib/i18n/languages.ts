@@ -1,4 +1,3 @@
-
 export const languages = [
   { code: 'en', name: 'English' },
   { code: 'te', name: 'Telugu' },
@@ -47,7 +46,20 @@ export const translations = {
       shareMindPlaceholder: 'Share what\'s on your mind...',
       thoughtShared: 'Thought Shared',
       thoughtSharedDesc: 'Your thought has been shared with the community!',
-      signInWithGoogle: 'Sign in with Google'
+      signInWithGoogle: 'Sign in with Google',
+      allRightsReserved: 'All rights reserved.',
+      termsAndConditions: 'Terms & Conditions',
+      lastUpdated: 'Last Updated',
+      termsOfUse: 'Terms of Use',
+      termsIntro: 'By accessing and using VOYCE Mental Health Services, you agree to these Terms and Conditions. Our services are intended for informational purposes only and are not a substitute for professional medical advice or treatment.',
+      contentLiability: 'Content Liability',
+      contentLiabilityDesc: 'We take no responsibility for user-generated content. We reserve the right to remove any content that violates our guidelines.',
+      privacy: 'Privacy',
+      privacyDesc: 'We respect your privacy and are committed to protecting it. We collect minimal information necessary to provide our services.',
+      userContent: 'User Content',
+      userContentDesc: 'By sharing content on our platform, you grant us a non-exclusive license to use, reproduce, and display your content in connection with our services.',
+      disclaimer: 'Disclaimer',
+      disclaimerDesc: 'The information provided is for general information purposes only. It is not intended to be a substitute for professional advice. Always seek the advice of qualified professionals regarding any questions you may have.'
     }
   },
   te: {
@@ -88,7 +100,20 @@ export const translations = {
       shareMindPlaceholder: 'మీ మనసులో ఉన్నది పంచుకోండి...',
       thoughtShared: 'ఆలోచన పంచుకున్నారు',
       thoughtSharedDesc: 'మీ ఆలోచన సమాజంతో పంచుకోబడింది!',
-      signInWithGoogle: 'Google తో సైన్ ఇన్ చేయండి'
+      signInWithGoogle: 'Google తో సైన్ ఇన్ చేయండి',
+      allRightsReserved: 'అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.',
+      termsAndConditions: 'నిబంధనలు & షరతులు',
+      lastUpdated: 'చివరిగా నవీకరించబడింది',
+      termsOfUse: 'వాడుక నిబంధనలు',
+      termsIntro: 'VOYCE మానసిక ఆరోగ్య సేవలను యాక్సెస్ చేయడం మరియు ఉపయోగించడం ద్వారా, మీరు ఈ నిబంధనలు మరియు షరతులకు అంగీకరిస్తున్నారు. మా సేవలు కేవలం సమాచార ప్రయోజనాల కోసం ఉద్దేశించబడ్డాయి మరియు వృత్తిపరమైన వైద్య సలహా లేదా చికిత్సకు ప్రత్యామ్నాయం కాదు.',
+      contentLiability: 'కంటెంట్ బాధ్యత',
+      contentLiabilityDesc: 'మేము వినియోగదారు-సృష్టించిన కంటెంట్ కోసం ఎటువంటి బాధ్యత వహించము. మా మార్గదర్శకాలను ఉల్లంఘించే ఏదైనా కంటెంట్‌ను తొలగించే హక్కును మేము కలిగి ఉన్నాము.',
+      privacy: 'గోప్యత',
+      privacyDesc: 'మేము మీ గోప్యతను గౌరవిస్తాము మరియు దానిని రక్షించడానికి కట్టుబడి ఉన్నాము. మా సేవలను అందించడానికి అవసరమైన కనీస సమాచారాన్ని మేము సేకరిస్తాము.',
+      userContent: 'వినియోగదారు కంటెంట్',
+      userContentDesc: 'మా ప్లాట్‌ఫారమ్‌లో కంటెంట్‌ను పంచుకోవడం ద్వారా, మా సేవలకు సంబంధించి మీ కంటెంట్‌ను ఉపయోగించడానికి, పునరుత్పత్తి చేయడానికి మరియు ప్రదర్శించడానికి మీరు మాకు నాన్-ఎక్స్‌క్లూసివ్ లైసెన్స్‌ను అనుమతిస్తారు.',
+      disclaimer: 'డిస్‌క్లెయిమర్',
+      disclaimerDesc: 'అందించబడిన సమాచారం సాధారణ సమాచార ప్రయోజనాల కోసం మాత్రమే. ఇది వృత్తిపరమైన సలహాకు ప్రత్యామ్నాయంగా ఉద్దేశించబడలేదు. మీకు ఏవైనా ప్రశ్నలు ఉంటే, ఎల్లప్పుడూ అర్హత గల నిపుణుల సలహాను పొందండి.'
     }
   },
   hi: {
@@ -129,7 +154,20 @@ export const translations = {
       shareMindPlaceholder: 'अपने मन की बात साझा करें...',
       thoughtShared: 'विचार साझा किया गया',
       thoughtSharedDesc: 'आपका विचार समुदाय के साथ साझा किया गया है!',
-      signInWithGoogle: 'Google से साइन इन करें'
+      signInWithGoogle: 'Google से साइन इन करें',
+      allRightsReserved: 'सर्वाधिकार सुरक्षित.',
+      termsAndConditions: 'नियम और शर्तें',
+      lastUpdated: 'आखरी अपडेट',
+      termsOfUse: 'उपयोग की शर्तें',
+      termsIntro: 'VOYCE मानसिक स्वास्थ्य सेवाओं तक पहुंचकर और उनका उपयोग करके, आप इन नियमों और शर्तों से सहमत होते हैं। हमारी सेवाएं केवल सूचनात्मक उद्देश्यों के लिए हैं और पेशेवर चिकित्सा सलाह या उपचार का विकल्प नहीं हैं।',
+      contentLiability: 'सामग्री उत्तरदायित्व',
+      contentLiabilityDesc: 'हम उपयोगकर्ता द्वारा उत्पन्न सामग्री के लिए कोई जिम्मेदारी नहीं लेते हैं। हम किसी भी सामग्री को हटाने का अधिकार रखते हैं जो हमारे दिशानिर्देशों का उल्लंघन करती है।',
+      privacy: 'गोपनीयता',
+      privacyDesc: 'हम आपकी गोपनीयता का सम्मान करते हैं और इसकी रक्षा के लिए प्रतिबद्ध हैं। हम अपनी सेवाएं प्रदान करने के लिए आवश्यक न्यूनतम जानकारी एकत्र करते हैं।',
+      userContent: 'उपयोगकर्ता सामग्री',
+      userContentDesc: 'हमारे प्लेटफॉर्म पर सामग्री साझा करके, आप हमें अपनी सेवाओं के संबंध में आपकी सामग्री का उपयोग, पुनरुत्पादन और प्रदर्शन करने के लिए एक गैर-विशिष्ट लाइसेंस प्रदान करते हैं।',
+      disclaimer: 'अस्वीकरण',
+      disclaimerDesc: 'प्रदान की गई जानकारी केवल सामान्य जानकारी उद्देश्यों के लिए है। यह पेशेवर सलाह का विकल्प नहीं है। आपके पास किसी भी प्रश्न के बारे में हमेशा योग्य पेशेवरों की सलाह लें।'
     }
   },
   mr: {
@@ -170,7 +208,20 @@ export const translations = {
       shareMindPlaceholder: 'तुमच्या मनातील विचार शेअर करा...',
       thoughtShared: 'विचार शेअर केला',
       thoughtSharedDesc: 'तुमचा विचार समुदायासोबत शेअर केला गेला आहे!',
-      signInWithGoogle: 'Google सह साइन इन करा'
+      signInWithGoogle: 'Google सह साइन इन करा',
+      allRightsReserved: 'सर्व हक्क राखीव.',
+      termsAndConditions: 'अटी आणि शर्ती',
+      lastUpdated: 'शेवटचे अपडेट',
+      termsOfUse: 'वापरण्याच्या अटी',
+      termsIntro: 'VOYCE मानसिक आरोग्य सेवांमध्ये प्रवेश करून आणि वापरून, आपण या अटी आणि शर्तींना सहमती देता. आमच्या सेवा केवळ माहितीपूर्ण उद्देशांसाठी आहेत आणि व्यावसायिक वैद्यकीय सल्ला किंवा उपचारांचा पर्याय नाहीत.',
+      contentLiability: 'सामग्री जबाबदारी',
+      contentLiabilityDesc: 'आम्ही वापरकर्त्याने तयार केलेल्या सामग्रीसाठी कोणतीही जबाबदारी घेत नाही. आमच्या मार्गदर्शक तत्त्वांचे उल्लंघन करणारी कोणतीही सामग्री काढून टाकण्याचा अधिकार आम्ही राखून ठेवतो.',
+      privacy: 'गोपनीयता',
+      privacyDesc: 'आम्ही आपल्या गोपनीयतेचा आदर करतो आणि त्याचे संरक्षण करण्यास वचनबद्ध आहोत. आम्ही आमच्या सेवा प्रदान करण्यासाठी आवश्यक कमीत कमी माहिती गोळा करतो.',
+      userContent: 'वापरकर्ता सामग्री',
+      userContentDesc: 'आमच्या प्लॅटफॉर्मवर सामग्री शेअर करून, आपण आम्हाला आमच्या सेवांच्या संबंधात आपली सामग्री वापरण्यासाठी, पुनरुत्पादित करण्यासाठी आणि प्रदर्शित करण्यासाठी गैर-विशिष्ट परवाना देता.',
+      disclaimer: 'अस्वीकरण',
+      disclaimerDesc: 'दिलेली माहिती केवळ सामान्य माहितीसाठी आहे. ती व्यावसायिक सल्ल्याचा पर्याय नाही. तुम्हाला असलेल्या कोणत्याही प्रश्नांबाबत नेहमीच पात्र व्यावसायिकांचा सल्ला घ्या.'
     }
   },
   ta: {
@@ -211,7 +262,20 @@ export const translations = {
       shareMindPlaceholder: 'உங்கள் மனதில் உள்ளதை பகிரவும்...',
       thoughtShared: 'எண்ணம் பகிரப்பட்டது',
       thoughtSharedDesc: 'உங்கள் எண்ணம் சமூகத்துடன் பகிரப்பட்டது!',
-      signInWithGoogle: 'Google மூலம் உள்நுழைக'
+      signInWithGoogle: 'Google மூலம் உள்நுழைக',
+      allRightsReserved: 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.',
+      termsAndConditions: 'விதிமுறைகள் & நிபந்தனைகள்',
+      lastUpdated: 'கடைசியாக புதுப்பிக்கப்பட்டது',
+      termsOfUse: 'பயன்பாட்டு விதிமுறைகள்',
+      termsIntro: 'VOYCE மன நல சேவைகளை அணுகி பயன்படுத்துவதன் மூலம், இந்த விதிமுறைகள் மற்றும் நிபந்தனைகளுக்கு நீங்கள் ஒப்புக்கொள்கிறீர்கள். எங்கள் சேவைகள் தகவல் நோக்கங்களுக்காக மட்டுமே என்பதுடன் தொழில்முறை மருத்துவ ஆலோசனை அல்லது சிகிச்சைக்கு மாற்றாக இல்லை.',
+      contentLiability: 'உள்ளடக்க பொறுப்பு',
+      contentLiabilityDesc: 'பயனர் உருவாக்கிய உள்ளடக்கத்திற்கு நாங்கள் எந்த பொறுப்பும் எடுக்க மாட்டோம். எங்கள் வழிகாட்டுதல்களை மீறும் எந்த உள்ளடக்கத்தையும் நீக்குவதற்கான உரிமையை நாங்கள் கொண்டுள்ளோம்.',
+      privacy: 'தனியுரிமை',
+      privacyDesc: 'நாங்கள் உங்கள் தனியுரிமையை மதிக்கிறோம் மற்றும் அதைப் பாதுகாக்க உறுதிபூண்டுள்ளோம். எங்கள் சேவைகளை வழங்குவதற்கு அவசியமான குறைந்தபட்ச தகவல்களை நாங்கள் சேகரிக்கிறோம்.',
+      userContent: 'பயனர் உள்ளடக்கம்',
+      userContentDesc: 'எங்கள் தளத்தில் உள்ளடக்கத்தைப் பகிர்வதன் மூலம், எங்கள் சேவைகளுடன் தொடர்புடைய உங்கள் உள்ளடக்கத்தைப் பயன்படுத்த, மறுஉற்பத்தி செய்ய மற்றும் காட்ட நீங்கள் எங்களுக்கு ஒரு தனிப்பட்ட-அல்லாத உரிமத்தை வழங்குகிறீர்கள்.',
+      disclaimer: 'மறுப்பு அறிவிப்பு',
+      disclaimerDesc: 'வழங்கப்பட்ட தகவல் பொது தகவல் நோக்கங்களுக்காக மட்டுமே. இது தொழில்முறை ஆலோசனைக்கு மாற்றாக கருதப்படவில்லை. உங்களிடம் ஏதேனும் கேள்விகள் இருந்தால், எப்போதும் தகுதிவாய்ந்த நிபுணர்களின் ஆலோசனையைப் பெறவும்.'
     }
   },
   fr: {
@@ -252,11 +316,23 @@ export const translations = {
       shareMindPlaceholder: 'Partagez ce qui vous passe par la tête...',
       thoughtShared: 'Pensée partagée',
       thoughtSharedDesc: 'Votre pensée a été partagée avec la communauté !',
-      signInWithGoogle: 'Se connecter avec Google'
+      signInWithGoogle: 'Se connecter avec Google',
+      allRightsReserved: 'Tous droits réservés.',
+      termsAndConditions: 'Termes et Conditions',
+      lastUpdated: 'Dernière mise à jour',
+      termsOfUse: "Conditions d'utilisation",
+      termsIntro: "En accédant et en utilisant les services de santé mentale VOYCE, vous acceptez ces termes et conditions. Nos services sont destinés à des fins d'information uniquement et ne remplacent pas les conseils ou traitements médicaux professionnels.",
+      contentLiability: 'Responsabilité du contenu',
+      contentLiabilityDesc: 'Nous n\'assumons aucune responsabilité pour le contenu généré par les utilisateurs. Nous nous réservons le droit de supprimer tout contenu qui viole nos directives.',
+      privacy: 'Confidentialité',
+      privacyDesc: 'Nous respectons votre vie privée et nous nous engageons à la protéger. Nous recueillons les informations minimales nécessaires pour fournir nos services.',
+      userContent: 'Contenu utilisateur',
+      userContentDesc: 'En partageant du contenu sur notre plateforme, vous nous accordez une licence non exclusive pour utiliser, reproduire et afficher votre contenu en relation avec nos services.',
+      disclaimer: 'Avis de non-responsabilité',
+      disclaimerDesc: "Les informations fournies sont uniquement à des fins d'information générale. Elles ne sont pas destinées à remplacer des conseils professionnels. Consultez toujours l'avis de professionnels qualifiés concernant toute question que vous pourriez avoir."
     }
   }
 };
 
 export type Language = keyof typeof translations;
 export type TranslationKey = keyof typeof translations.en.common;
-

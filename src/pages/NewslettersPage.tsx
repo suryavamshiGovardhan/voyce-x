@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Newsletters from "@/components/Newsletters";
+import Footer from "@/components/Footer";
 
 export default function NewslettersPage() {
   return (
@@ -20,13 +21,7 @@ export default function NewslettersPage() {
         <Newsletters />
       </main>
       
-      <footer className="py-8 px-4 border-t bg-background">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-muted-foreground">
-            © {new Date().getFullYear()} VOYCE Mental Health Services. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -1,8 +1,8 @@
-
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Newsletters from "@/components/Newsletters";
 import ClearThoughts from "@/components/ClearThoughts";
+import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Brain, Heart, MessageSquare } from "lucide-react";
@@ -106,23 +106,7 @@ export default function Index() {
         </section>
       </main>
       
-      <footer className="py-8 px-4 border-t bg-background">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-muted-foreground">
-            © {new Date().getFullYear()} VOYCE Mental Health Services. All rights reserved.
-          </p>
-          <p className="text-sm mt-2">
-            <a 
-              href="https://mental-health-management-mhm.b12sites.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              Visit our main website
-            </a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

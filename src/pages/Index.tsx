@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Newsletters from "@/components/Newsletters";
@@ -6,8 +7,11 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Brain, Heart, MessageSquare } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function Index() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -17,7 +21,7 @@ export default function Index() {
         {/* Services section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-primary mb-12">Our Services</h2>
+            <h2 className="text-3xl font-bold text-center text-primary mb-12">{t('ourServices')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="bg-white/50 backdrop-blur-sm hover:shadow-md transition-all duration-300">
                 <CardContent className="pt-6">
@@ -25,13 +29,11 @@ export default function Index() {
                     <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                       <Brain className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="text-xl font-medium mb-2">Mental Health Support</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Professional guidance and support for managing anxiety, depression, and other mental health conditions.
-                    </p>
+                    <h3 className="text-xl font-medium mb-2">{t('mentalHealthSupport')}</h3>
+                    <p className="text-muted-foreground mb-4">{t('description')}</p>
                     <Button asChild variant="outline" className="mt-2">
                       <a href="https://mental-health-management-mhm.b12sites.com/" target="_blank" rel="noopener noreferrer">
-                        Learn More
+                        {t('learnMore')}
                       </a>
                     </Button>
                   </div>
@@ -44,13 +46,11 @@ export default function Index() {
                     <div className="h-12 w-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
                       <Heart className="h-6 w-6 text-secondary" />
                     </div>
-                    <h3 className="text-xl font-medium mb-2">Community Resources</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Access to newsletters, articles, and resources to help you on your mental wellness journey.
-                    </p>
+                    <h3 className="text-xl font-medium mb-2">{t('communityResources')}</h3>
+                    <p className="text-muted-foreground mb-4">{t('description')}</p>
                     <Button asChild className="mt-2">
                       <a href="/newsletters">
-                        View Newsletters
+                        {t('newsletters')}
                       </a>
                     </Button>
                   </div>
@@ -63,13 +63,11 @@ export default function Index() {
                     <div className="h-12 w-12 rounded-full bg-accent/30 flex items-center justify-center mb-4">
                       <MessageSquare className="h-6 w-6 text-accent-foreground" />
                     </div>
-                    <h3 className="text-xl font-medium mb-2">Express Yourself</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Share your thoughts and experiences in a safe, supportive environment with our Clear Thoughts platform.
-                    </p>
+                    <h3 className="text-xl font-medium mb-2">{t('expressYourself')}</h3>
+                    <p className="text-muted-foreground mb-4">{t('description')}</p>
                     <Button asChild variant="outline" className="mt-2">
                       <a href="/thoughts">
-                        Share Thoughts
+                        {t('thoughts')}
                       </a>
                     </Button>
                   </div>
@@ -83,9 +81,9 @@ export default function Index() {
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-bold text-primary">Featured Resources</h2>
+              <h2 className="text-3xl font-bold text-primary">{t('featuredResources')}</h2>
               <Button asChild variant="outline">
-                <a href="/newsletters">View All</a>
+                <a href="/newsletters">{t('viewAll')}</a>
               </Button>
             </div>
             <Newsletters />
@@ -96,9 +94,9 @@ export default function Index() {
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-7xl mx-auto">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-bold text-primary">Community Thoughts</h2>
+              <h2 className="text-3xl font-bold text-primary">{t('communityThoughts')}</h2>
               <Button asChild variant="outline">
-                <a href="/thoughts">View All</a>
+                <a href="/thoughts">{t('viewAll')}</a>
               </Button>
             </div>
             <ClearThoughts />

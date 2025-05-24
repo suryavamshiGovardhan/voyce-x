@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import LanguageSelector from "./LanguageSelector";
@@ -30,14 +30,21 @@ export default function Navbar() {
           <Link to="/thoughts" className="text-sm font-medium transition-colors hover:text-primary">
             {t('thoughts')}
           </Link>
+          <Link to="/dashboard" className="text-sm font-medium transition-colors hover:text-primary">
+            Dashboard
+          </Link>
           <LanguageSelector />
+          <Button asChild variant="ghost" size="sm">
+            <Link to="/profile">
+              <User className="h-4 w-4 mr-2" />
+              Profile
+            </Link>
+          </Button>
           <Button asChild variant="outline" size="sm">
             <Link to="/login">{t('login')}</Link>
           </Button>
           <Button asChild variant="default" size="sm">
-            <a href="https://mental-health-management-mhm.b12sites.com/" target="_blank" rel="noopener noreferrer">
-              {t('visitWebsite')}
-            </a>
+            <Link to="/signup">Sign Up</Link>
           </Button>
         </nav>
 
@@ -80,6 +87,20 @@ export default function Navbar() {
             >
               {t('thoughts')}
             </Link>
+            <Link 
+              to="/dashboard" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Dashboard
+            </Link>
+            <Link 
+              to="/profile" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Profile
+            </Link>
             <LanguageSelector />
             <Link 
               to="/login" 
@@ -89,9 +110,9 @@ export default function Navbar() {
               {t('login')}
             </Link>
             <Button asChild variant="default" size="sm" className="mt-4">
-              <a href="https://mental-health-management-mhm.b12sites.com/" target="_blank" rel="noopener noreferrer">
-                {t('visitWebsite')}
-              </a>
+              <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                Sign Up
+              </Link>
             </Button>
           </div>
         </div>

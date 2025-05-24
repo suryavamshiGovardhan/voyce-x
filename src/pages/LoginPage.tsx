@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { Link } from "react-router-dom";
+import { Brain, Phone, Mail } from "lucide-react";
 
 export default function LoginPage() {
   const { t } = useLanguage();
@@ -14,16 +16,21 @@ export default function LoginPage() {
       <Navbar />
       <main className="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
-          <div>
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight">
-              {t('login')}
+          <div className="text-center">
+            <Brain className="mx-auto h-12 w-12 text-primary mb-4" />
+            <h2 className="text-3xl font-bold tracking-tight">
+              Welcome back to VOYCE
             </h2>
+            <p className="mt-2 text-muted-foreground">
+              Continue your mental wellness journey
+            </p>
           </div>
+          
           <form className="mt-8 space-y-6">
             <div className="space-y-4">
               <div>
-                <Label htmlFor="email">{t('email')}</Label>
-                <Input id="email" type="email" required />
+                <Label htmlFor="loginId">Mobile Number or Email</Label>
+                <Input id="loginId" type="text" required placeholder="Enter mobile or email" />
               </div>
               <div>
                 <Label htmlFor="password">{t('password')}</Label>
@@ -31,16 +38,59 @@ export default function LoginPage() {
               </div>
             </div>
 
+            <div className="flex items-center justify-between">
+              <Link to="/forgot-password" className="text-sm text-primary hover:underline">
+                Forgot your password?
+              </Link>
+            </div>
+
             <div className="space-y-4">
               <Button type="submit" className="w-full">
                 {t('login')}
               </Button>
+              
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                </div>
+              </div>
+              
               <Button variant="outline" type="button" className="w-full flex items-center justify-center gap-2">
                 <img src="https://www.google.com/favicon.ico" alt="Google" className="w-4 h-4" />
                 Sign in with Google
               </Button>
+              
+              <Button variant="outline" type="button" className="w-full flex items-center justify-center gap-2">
+                <Phone className="w-4 h-4" />
+                Sign in with OTP
+              </Button>
+            </div>
+
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground">
+                Don't have an account?{" "}
+                <Link to="/signup" className="text-primary hover:underline font-medium">
+                  Sign up for free
+                </Link>
+              </p>
             </div>
           </form>
+
+          <div className="mt-8 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="flex items-center mb-2">
+              <Phone className="h-5 w-5 text-red-600 mr-2" />
+              <h3 className="font-semibold text-red-800">Need Immediate Help?</h3>
+            </div>
+            <p className="text-sm text-red-700 mb-2">
+              If you're experiencing a mental health crisis, please reach out for immediate support:
+            </p>
+            <Button asChild variant="destructive" size="sm" className="w-full">
+              <a href="tel:14416">Call Tele MANAS: 14416</a>
+            </Button>
+          </div>
         </div>
       </main>
       <Footer />

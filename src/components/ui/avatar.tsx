@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 
@@ -45,4 +46,19 @@ const AvatarFallback = React.forwardRef<
 ))
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
 
-export { Avatar, AvatarImage, AvatarFallback }
+// Custom component for initials
+const AvatarInitials = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement>
+>(({ className, children, ...props }, ref) => (
+  <span
+    ref={ref}
+    className={cn("text-sm font-medium", className)}
+    {...props}
+  >
+    {children}
+  </span>
+))
+AvatarInitials.displayName = "AvatarInitials"
+
+export { Avatar, AvatarImage, AvatarFallback, AvatarInitials }

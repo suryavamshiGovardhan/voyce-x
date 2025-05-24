@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 250 245 240;
+    --background: 248 252 255;
     --foreground: 45 45 45;
 
     --card: 255 255 255;
@@ -14,54 +14,54 @@
     --popover: 255 255 255;
     --popover-foreground: 45 45 45;
 
-    --primary: 79 70 229;
-    --primary-foreground: 250 245 240;
+    --primary: 14 165 233;
+    --primary-foreground: 255 255 255;
 
-    --secondary: 16 185 129;
-    --secondary-foreground: 255 255 255;
+    --secondary: 255 229 180;
+    --secondary-foreground: 45 45 45;
 
-    --muted: 245 240 235;
+    --muted: 240 248 255;
     --muted-foreground: 107 114 128;
 
-    --accent: 251 191 36;
+    --accent: 255 218 185;
     --accent-foreground: 45 45 45;
 
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
 
-    --border: 229 224 219;
-    --input: 229 224 219;
-    --ring: 79 70 229;
+    --border: 224 242 254;
+    --input: 224 242 254;
+    --ring: 14 165 233;
 
     --radius: 0.75rem;
 
     --sidebar-background: 248 250 252;
     --sidebar-foreground: 51 65 85;
-    --sidebar-primary: 79 70 229;
+    --sidebar-primary: 14 165 233;
     --sidebar-primary-foreground: 255 255 255;
     --sidebar-accent: 241 245 249;
     --sidebar-accent-foreground: 51 65 85;
     --sidebar-border: 226 232 240;
-    --sidebar-ring: 79 70 229;
+    --sidebar-ring: 14 165 233;
   }
 
   .dark {
-    --background: 30 30 30;
+    --background: 15 23 42;
     --foreground: 248 250 252;
 
-    --card: 40 40 40;
+    --card: 30 41 59;
     --card-foreground: 248 250 252;
 
-    --popover: 40 40 40;
+    --popover: 30 41 59;
     --popover-foreground: 248 250 252;
 
-    --primary: 99 102 241;
+    --primary: 56 189 248;
     --primary-foreground: 248 250 252;
 
-    --secondary: 34 197 94;
+    --secondary: 251 191 36;
     --secondary-foreground: 248 250 252;
 
-    --muted: 55 55 55;
+    --muted: 51 65 85;
     --muted-foreground: 156 163 175;
 
     --accent: 245 158 11;
@@ -70,33 +70,149 @@
     --destructive: 220 38 38;
     --destructive-foreground: 248 250 252;
 
-    --border: 55 55 55;
-    --input: 55 55 55;
-    --ring: 99 102 241;
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 56 189 248;
     
-    --sidebar-background: 30 30 30;
+    --sidebar-background: 15 23 42;
     --sidebar-foreground: 203 213 225;
-    --sidebar-primary: 99 102 241;
+    --sidebar-primary: 56 189 248;
     --sidebar-primary-foreground: 248 250 252;
-    --sidebar-accent: 45 45 45;
+    --sidebar-accent: 30 41 59;
     --sidebar-accent-foreground: 203 213 225;
-    --sidebar-border: 55 55 55;
-    --sidebar-ring: 99 102 241;
+    --sidebar-border: 51 65 85;
+    --sidebar-ring: 56 189 248;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%2314165233" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.07 2.07 0 0 1-2.44-2.44 2.07 2.07 0 0 1-2.44-2.44 2.07 2.07 0 0 1-2.44-2.44A2.5 2.5 0 0 1 2 12.5V9a2.5 2.5 0 0 1 2.5-2.5z"/></svg>'), auto;
   }
 
   body {
-    @apply bg-background text-foreground font-light;
+    @apply bg-gradient-to-br from-sky-50 via-blue-50 to-orange-50 text-foreground font-light;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-attachment: fixed;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-light tracking-wide;
+  }
+
+  /* Haptic feedback button */
+  .haptic-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  
+  .haptic-btn:hover {
+    transform: translateY(-2px) rotateX(10deg);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+  }
+  
+  .haptic-btn:active {
+    transform: translateY(0) rotateX(0deg) scale(0.98);
+  }
+}
+
+/* 3D Animation Classes */
+.slide-3d-enter {
+  animation: slide3DEnter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-3d-exit {
+  animation: slide3DExit 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.float-3d {
+  animation: float3D 6s ease-in-out infinite;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+}
+
+.zen-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.zen-ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 218, 185, 0.6) 0%, transparent 70%);
+  transition: all 0.6s ease-out;
+  transform: translate(-50%, -50%);
+}
+
+.zen-ripple:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Japanese Pattern Background */
+.japanese-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 218, 185, 0.1) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(14, 165, 233, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 218, 185, 0.05) 25%, transparent 25%);
+  background-size: 60px 60px, 80px 80px, 20px 20px, 20px 20px;
+  background-position: 0 0, 30px 30px, 0 0, 10px 10px;
+  animation: patternShift 20s linear infinite;
+}
+
+@keyframes slide3DEnter {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) rotateY(-30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+}
+
+@keyframes slide3DExit {
+  0% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100px) rotateY(30deg);
+  }
+}
+
+@keyframes float3D {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(2deg);
+  }
+}
+
+@keyframes patternShift {
+  0% {
+    background-position: 0 0, 30px 30px, 0 0, 10px 10px;
+  }
+  100% {
+    background-position: 60px 60px, 90px 90px, 20px 20px, 30px 30px;
   }
 }
 
@@ -115,18 +231,67 @@
   }
 }
 
+/* Healing sound indicator */
+.sound-ripple {
+  position: relative;
+}
+
+.sound-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 2px solid rgba(14, 165, 233, 0.6);
+  border-radius: 50%;
+  animation: soundWave 1.5s ease-out;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@keyframes soundWave {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
 /* Japanese-inspired subtle animations */
 .zen-transition {
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .subtle-glow {
-  box-shadow: 0 0 20px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 30px rgba(14, 165, 233, 0.2);
 }
 
-/* Subtle texture overlay */
-.texture-overlay {
-  background-image: 
-    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0);
-  background-size: 20px 20px;
+/* Sakura petal animation */
+.sakura-float {
+  position: absolute;
+  animation: sakuraFall 15s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes sakuraFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
 }

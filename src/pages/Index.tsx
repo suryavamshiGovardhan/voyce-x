@@ -8,6 +8,7 @@ import LibraryPreview from "@/components/LibraryPreview";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Brain, Eye, Heart, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 import JapaneseIcon from "@/components/JapaneseIcon";
 import { hapticFeedback } from "@/utils/hapticFeedback";
 import { useEffect, useRef } from "react";
@@ -63,7 +64,7 @@ export default function Index() {
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-4xl font-light text-white tracking-wide float-3d">The Path - Stages of Awakening</h2>
               <Button asChild variant="outline" className="border-sky-300 hover:bg-sky-50/10 text-white haptic-btn">
-                <a href="/path">View Full Journey</a>
+                <Link to="/path">View Full Journey</Link>
               </Button>
             </div>
             <div className="card-3d">
@@ -78,7 +79,7 @@ export default function Index() {
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-4xl font-light text-white tracking-wide float-3d">Immersion Tools</h2>
               <Button asChild variant="outline" className="border-orange-300 hover:bg-orange-50/10 text-white haptic-btn">
-                <a href="/tools">Explore Tools</a>
+                <Link to="/tools">Explore Tools</Link>
               </Button>
             </div>
             <div className="card-3d">
@@ -93,7 +94,7 @@ export default function Index() {
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-4xl font-light text-white tracking-wide float-3d">The Archive - Wisdom Library</h2>
               <Button asChild variant="outline" className="border-sky-300 hover:bg-sky-50/10 text-white haptic-btn">
-                <a href="/library">Enter Library</a>
+                <Link to="/library">Enter Library</Link>
               </Button>
             </div>
             <div className="card-3d">

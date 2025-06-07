@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Brain, Eye, Infinity } from "lucide-react";
+import { ArrowRight, Brain, Eye, Infinity, Heart, Zap } from "lucide-react";
 import JapaneseIcon from "./JapaneseIcon";
 
 export default function Hero() {
@@ -18,6 +18,12 @@ export default function Hero() {
       </div>
       <div className="absolute bottom-32 left-32 opacity-20">
         <JapaneseIcon type="lotus" className="text-sky-400 w-10 h-10" />
+      </div>
+      <div className="absolute top-1/2 left-10 opacity-15">
+        <Heart className="h-12 w-12 text-orange-300 float-3d" />
+      </div>
+      <div className="absolute bottom-1/4 right-10 opacity-20">
+        <Zap className="h-14 w-14 text-sky-300 float-3d" />
       </div>
       
       <div className="relative max-w-7xl mx-auto">
@@ -42,12 +48,26 @@ export default function Hero() {
             <JapaneseIcon type="mountain" className="text-orange-400" />
           </div>
           
-          <p className="mt-8 max-w-4xl mx-auto text-xl sm:text-2xl text-slate-300 leading-relaxed font-light">
-            Transform trauma into wisdom. Dissolve the illusion of separation. 
-            Architect your mind from nursery-level awareness to PhD-depth neuroscience.
-          </p>
+          <div className="space-y-6 mb-12">
+            <p className="max-w-4xl mx-auto text-xl sm:text-2xl text-slate-300 leading-relaxed font-light">
+              Transform trauma into wisdom. Dissolve the illusion of separation. 
+              Architect your mind from nursery-level awareness to PhD-depth neuroscience.
+            </p>
+            
+            <div className="max-w-3xl mx-auto space-y-4">
+              <p className="text-lg text-orange-200 italic leading-relaxed">
+                "You are not who you think you are. You are not even who others think you are. 
+                You are the awareness that observes the thinker."
+              </p>
+              
+              <p className="text-base text-slate-400 leading-relaxed">
+                This is not therapy. This is not self-help. This is the systematic dismantling of everything 
+                you believe yourself to be, and the discovery of what remains when the story ends.
+              </p>
+            </div>
+          </div>
           
-          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12">
             <Button asChild size="lg" className="bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 text-white px-12 py-4 rounded-full text-lg haptic-btn animate-pulse-gentle shadow-2xl border border-sky-300/30">
               <Link to="/path">
                 Begin The Journey
@@ -59,19 +79,37 @@ export default function Hero() {
             </Button>
           </div>
           
-          <div className="mt-16 flex items-center justify-center space-x-8 text-sm text-slate-400">
-            <div className="flex items-center space-x-2">
-              <JapaneseIcon type="torii" className="text-sky-400 w-5 h-5" />
-              <span>Trauma-Informed</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
+            <div className="bg-black/20 backdrop-blur-sm border border-sky-300/30 rounded-lg p-6">
+              <JapaneseIcon type="torii" className="text-sky-400 w-8 h-8 mx-auto mb-3" />
+              <h3 className="text-white font-medium mb-2">Trauma-Informed</h3>
+              <p className="text-slate-400 text-sm">
+                Your wounds are not punishments—they are invitations to depth and wisdom.
+              </p>
             </div>
-            <div className="flex items-center space-x-2">
-              <JapaneseIcon type="zen" className="text-orange-400 w-5 h-5" />
-              <span>Neuroscience-Based</span>
+            
+            <div className="bg-black/20 backdrop-blur-sm border border-orange-300/30 rounded-lg p-6">
+              <JapaneseIcon type="zen" className="text-orange-400 w-8 h-8 mx-auto mb-3" />
+              <h3 className="text-white font-medium mb-2">Neuroscience-Based</h3>
+              <p className="text-slate-400 text-sm">
+                Ancient wisdom meets cutting-edge brain science in the laboratory of consciousness.
+              </p>
             </div>
-            <div className="flex items-center space-x-2">
-              <JapaneseIcon type="lotus" className="text-sky-400 w-5 h-5" />
-              <span>Ego Dissolution</span>
+            
+            <div className="bg-black/20 backdrop-blur-sm border border-sky-300/30 rounded-lg p-6">
+              <JapaneseIcon type="lotus" className="text-sky-400 w-8 h-8 mx-auto mb-3" />
+              <h3 className="text-white font-medium mb-2">Ego Dissolution</h3>
+              <p className="text-slate-400 text-sm">
+                Death before death—the systematic deconstruction of the false self.
+              </p>
             </div>
+          </div>
+          
+          <div className="border-t border-slate-700 pt-8">
+            <p className="text-slate-500 text-sm italic max-w-2xl mx-auto">
+              "This academy exists for those who are tired of being prisoners of their own minds, 
+              who are ready to burn down everything they think they know about themselves and reality."
+            </p>
           </div>
         </div>
       </div>

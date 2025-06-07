@@ -13,7 +13,7 @@ import { hapticFeedback } from "@/utils/hapticFeedback";
 import { useEffect, useRef } from "react";
 
 export default function Index() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Add haptic feedback to interactive elements
@@ -28,61 +28,8 @@ export default function Index() {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-orange-900 japanese-pattern" ref={sectionRef}>
       <Navbar />
       <main className="flex-grow">
-        {/* Hero Section - "Where the Mind Meets the Mirror" */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden slide-3d-enter">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/80 to-orange-900/90"></div>
-          
-          {/* Floating Japanese Icons */}
-          <div className="absolute top-10 left-10 opacity-20">
-            <JapaneseIcon type="zen" className="text-sky-300" />
-          </div>
-          <div className="absolute top-20 right-20 opacity-20">
-            <JapaneseIcon type="lotus" className="text-orange-300" />
-          </div>
-          <div className="absolute bottom-20 left-20 opacity-20">
-            <JapaneseIcon type="crane" className="text-sky-400" />
-          </div>
-          
-          <div className="max-w-6xl mx-auto relative text-center">
-            <Card className="bg-black/40 backdrop-blur-lg border-orange-300/30 shadow-2xl card-3d zen-ripple subtle-glow">
-              <CardContent className="p-12">
-                <div className="flex items-center justify-center mb-8">
-                  <Brain className="h-16 w-16 text-sky-400 mr-4 float-3d" />
-                  <h1 className="text-6xl font-light text-white tracking-wide slide-3d-enter">
-                    Kill The Ego Academy
-                  </h1>
-                  <Eye className="h-16 w-16 text-orange-400 ml-4 float-3d" />
-                </div>
-                
-                <h2 className="text-3xl font-light text-orange-200 mb-8 italic">
-                  "Where the Mind Meets the Mirror"
-                </h2>
-                
-                <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-4xl mx-auto">
-                  A progressive journey from nursery-level self-awareness to PhD-depth neuroscience. 
-                  Transform trauma into wisdom. Dissolve the ego. Architect your mind.
-                </p>
-                
-                <div className="flex items-center justify-center space-x-6 mb-8">
-                  <JapaneseIcon type="torii" className="text-sky-400" />
-                  <Button 
-                    asChild 
-                    className="bg-gradient-to-r from-sky-600 to-orange-600 hover:from-sky-700 hover:to-orange-700 text-white px-12 py-4 rounded-full transition-all duration-500 haptic-btn shadow-2xl text-lg border border-orange-300/50"
-                  >
-                    <a href="/path">Begin The Journey</a>
-                  </Button>
-                  <JapaneseIcon type="cherry" className="text-orange-400" />
-                </div>
-                
-                <div className="flex justify-center space-x-8 text-sm text-slate-400">
-                  <span className="flex items-center"><Heart className="w-4 h-4 mr-2 text-orange-400" />Trauma-Informed</span>
-                  <span className="flex items-center"><Brain className="w-4 h-4 mr-2 text-sky-400" />Neuroscience-Based</span>
-                  <span className="flex items-center"><Zap className="w-4 h-4 mr-2 text-orange-400" />Ego Dissolution</span>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+        {/* Hero Section */}
+        <Hero />
 
         {/* Core Pillars Navigation */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-800 via-slate-700 to-orange-800 slide-3d-enter">

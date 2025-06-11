@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import Index from "./pages/Index";
+import VoycePage from "./pages/VoycePage";
 import PathPage from "./pages/PathPage";
 import ToolsPage from "./pages/ToolsPage";
 import LibraryPage from "./pages/LibraryPage";
@@ -28,6 +29,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/voyce" element={<VoycePage />} />
             <Route path="/path" element={<PathPage />} />
             <Route path="/tools" element={<ToolsPage />} />
             <Route path="/library" element={<LibraryPage />} />

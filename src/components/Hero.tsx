@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Brain, Eye, Infinity, Heart, Zap } from "lucide-react";
+import { ArrowRight, Brain, Eye, Infinity, Heart, Zap, Leaf } from "lucide-react";
 import JapaneseIcon from "./JapaneseIcon";
 
 export default function Hero() {
@@ -76,6 +76,12 @@ export default function Hero() {
             </Button>
             <Button asChild size="lg" variant="outline" className="border-orange-300/50 text-orange-300 hover:bg-orange-600/20 px-12 py-4 rounded-full text-lg haptic-btn">
               <Link to="/library">Explore The Archive</Link>
+            </Button>
+            <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-12 py-4 rounded-full text-lg haptic-btn shadow-2xl border border-green-300/30">
+              <Link to="/voyce">
+                Discover VOYCE
+                <Leaf className="ml-3 h-5 w-5" />
+              </Link>
             </Button>
           </div>
           

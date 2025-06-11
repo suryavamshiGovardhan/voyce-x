@@ -170,18 +170,18 @@
   height: 400px;
 }
 
-/* Ego Dissolution Pattern Background */
+/* VOYCE-specific Japanese Pattern Background */
 .japanese-pattern {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(251, 146, 60, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 50% 10%, rgba(30, 41, 59, 0.8) 0%, transparent 40%),
-    radial-gradient(circle at 10% 90%, rgba(51, 65, 85, 0.6) 0%, transparent 40%),
-    linear-gradient(45deg, rgba(56, 189, 248, 0.03) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(251, 146, 60, 0.03) 25%, transparent 25%);
+    radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(249, 115, 22, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(243, 244, 246, 0.6) 0%, transparent 40%),
+    linear-gradient(45deg, rgba(34, 197, 94, 0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(249, 115, 22, 0.03) 25%, transparent 25%);
   background-size: 120px 120px, 160px 160px, 300px 300px, 250px 250px, 40px 40px, 40px 40px;
   background-position: 0 0, 60px 60px, 0 0, 150px 150px, 0 0, 20px 20px;
-  animation: egoDissolve 30s linear infinite;
+  animation: voyceMeditation 40s linear infinite;
 }
 
 @keyframes slide3DEnter {
@@ -221,7 +221,7 @@
   }
 }
 
-@keyframes egoDissolve {
+@keyframes voyceMeditation {
   0% {
     background-position: 0 0, 60px 60px, 0 0, 150px 150px, 0 0, 20px 20px;
   }
@@ -245,7 +245,7 @@
   }
 }
 
-/* Neural Network Sound Ripple */
+/* VOYCE Healing Sound Ripple */
 .sound-ripple {
   position: relative;
 }
@@ -257,9 +257,9 @@
   left: 50%;
   width: 0;
   height: 0;
-  border: 3px solid rgba(56, 189, 248, 0.8);
+  border: 3px solid rgba(34, 197, 94, 0.8);
   border-radius: 50%;
-  animation: neuralWave 2s ease-out;
+  animation: healingWave 3s ease-out;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
@@ -271,14 +271,14 @@
   left: 50%;
   width: 0;
   height: 0;
-  border: 2px solid rgba(251, 146, 60, 0.6);
+  border: 2px solid rgba(249, 115, 22, 0.6);
   border-radius: 50%;
-  animation: neuralWave 2s ease-out 0.3s;
+  animation: healingWave 3s ease-out 0.5s;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
 
-@keyframes neuralWave {
+@keyframes healingWave {
   0% {
     width: 0;
     height: 0;
@@ -288,32 +288,32 @@
     opacity: 0.7;
   }
   100% {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     opacity: 0;
   }
 }
 
-/* Deep consciousness transitions */
+/* Deep mindfulness transitions */
 .zen-transition {
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .subtle-glow {
   box-shadow: 
-    0 0 40px rgba(56, 189, 248, 0.3),
-    0 0 80px rgba(251, 146, 60, 0.2),
+    0 0 40px rgba(34, 197, 94, 0.3),
+    0 0 80px rgba(249, 115, 22, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Consciousness petal animation */
+/* Cherry blossom consciousness animation */
 .sakura-float {
   position: absolute;
-  animation: consciousnessRise 20s linear infinite;
+  animation: mindfulnessRise 25s linear infinite;
   opacity: 0.4;
 }
 
-@keyframes consciousnessRise {
+@keyframes mindfulnessRise {
   0% {
     transform: translateY(100vh) rotate(0deg) scale(0.8);
     opacity: 0;
@@ -333,7 +333,7 @@
   }
 }
 
-/* Ego death scroll effects */
+/* VOYCE scroll effects */
 .mind-scroll {
   background-attachment: fixed;
   background-position: center;
@@ -341,7 +341,7 @@
   background-size: cover;
 }
 
-/* Neural pathway hover effects */
+/* Healing pathway hover effects */
 .neural-link {
   position: relative;
   overflow: hidden;
@@ -354,10 +354,43 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.3), transparent);
   transition: left 0.8s ease-in-out;
 }
 
 .neural-link:hover::before {
   left: 100%;
+}
+
+/* VOYCE gentle pulse animation */
+.animate-pulse-gentle {
+  animation: pulseGentle 4s ease-in-out infinite;
+}
+
+@keyframes pulseGentle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Washi paper texture effect */
+.washi-texture {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1) 0px,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 20px
+    );
 }

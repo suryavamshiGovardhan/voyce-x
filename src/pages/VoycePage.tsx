@@ -1,39 +1,24 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Brain, Heart, Leaf, Waves, Mountain, Music, Mail, Instagram, Youtube, Share2, Clock, Users, BookOpen, Activity, Lightbulb, Target, TrendingUp, Shield, Globe, Microscope, Calculator } from "lucide-react";
-import JapaneseIcon from "@/components/JapaneseIcon";
 import { hapticFeedback } from "@/utils/hapticFeedback";
-import MusicPlayer from "@/components/MusicPlayer";
+import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
+import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
+import NewsletterSection from "@/components/sections/NewsletterSection";
+import CallToActionSection from "@/components/sections/CallToActionSection";
 
 export default function VoycePage() {
-  const [email, setEmail] = useState("");
-  const heroRef = useRef<HTMLDivElement>(null);
-  const sectionsRef = useRef<HTMLDivElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Auto theme based on time
   useEffect(() => {
-    // Parallax effect
-    const handleScroll = () => {
-      const scrolled = window.pageYOffset;
-      const parallax = heroRef.current;
-      if (parallax) {
-        const speed = scrolled * 0.5;
-        parallax.style.transform = `translateY(${speed}px)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const hour = new Date().getHours();
+    const shouldBeDark = hour < 6 || hour > 20;
+    setIsDarkMode(shouldBeDark);
   }, []);
-
-  const handleSubscribe = () => {
-    if (email) {
-      window.open('https://mailchi.mp/7027ec706d26/on-a-purpose', '_blank');
-      hapticFeedback.onClick();
-    }
-  };
 
   const comprehensiveStressGuide = [
     {
@@ -45,7 +30,7 @@ export default function VoycePage() {
     {
       title: "Hans Selye: The Father of Stress Research",
       icon: Microscope,
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80",
+      image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=80",
       content: "In 1936, Hans Selye, an Austrian-Canadian endocrinologist, coined the term 'stress' in its modern scientific context. His groundbreaking research revealed the General Adaptation Syndrome (GAS) - a three-stage response to stress: Alarm, Resistance, and Exhaustion. Selye's experiments with laboratory rats showed how chronic stress leads to physical deterioration, establishing the biological foundation of stress research. He distinguished between 'eustress' (positive stress) and 'distress' (negative stress), revolutionizing our understanding of stress as not inherently harmful but dependent on our response to it."
     },
     {
@@ -106,7 +91,7 @@ export default function VoycePage() {
       title: "Future Frontiers: Stress Research and Innovation",
       icon: TrendingUp,
       image: "https://images.unsplash.com/photo-1559757175-6db7c2c2e1aa?w=800&q=80",
-      content: "The future of stress research lies in personalized medicine, epigenetics, and AI-driven interventions. Scientists are developing stress vaccines, genetic tests for stress susceptibility, and real-time biomarker monitoring. Virtual reality therapy, biofeedback devices, and personalized meditation programs represent the cutting edge. VOYCE positions itself at this intersection of ancient wisdom and modern technology, preparing for a future where stress management is as personalized as our fingerprints."
+      content: "The future of stress research lies in personalized medicine, epigenetics, and AI-driven interventions. Scientists are developing stress vaccines, genetic tests for stress susceptibility, and real-time biomarker monitoring. Virtual reality therapy, biofeedback devices, and personalized meditation programs represent the cutting edge. VOYCE-X positions itself at this intersection of ancient wisdom and modern technology, preparing for a future where stress management is as personalized as our fingerprints."
     }
   ];
 
@@ -129,146 +114,19 @@ export default function VoycePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-orange-50 japanese-pattern">
-      {/* Music Player Component */}
-      <MusicPlayer />
+    <div className={`min-h-screen transition-colors duration-1000 ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900' 
+        : 'bg-gradient-to-br from-green-50 via-white to-orange-50'
+    } japanese-pattern`}>
+      {/* Enhanced Music Player */}
+      <EnhancedMusicPlayer />
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden" ref={heroRef}>
-        <div className="absolute inset-0 bg-gradient-to-br from-green-100/50 via-white/80 to-orange-100/50" />
-        
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute opacity-30 sakura-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${i * 2}s`,
-                animationDuration: `${15 + Math.random() * 10}s`
-              }}
-            >
-              <JapaneseIcon type="cherry" className="text-green-400 w-4 h-4" animate={false} />
-            </div>
-          ))}
-        </div>
-
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <div className="mb-8">
-            <JapaneseIcon type="lotus" className="text-green-500 w-20 h-20 mx-auto mb-6 float-3d" />
-          </div>
-          
-          <h1 className="text-6xl md:text-8xl font-light text-slate-800 mb-6 slide-3d-enter">
-            <span className="text-green-600">V</span>
-            <span className="text-orange-500">O</span>
-            <span className="text-green-600">Y</span>
-            <span className="text-orange-500">C</span>
-            <span className="text-green-600">E</span>
-          </h1>
-          
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <JapaneseIcon type="wave" className="text-green-400" />
-            <p className="text-2xl md:text-3xl text-slate-600 italic font-light">
-              A whisper to the soul, a voice to the mind
-            </p>
-            <JapaneseIcon type="bamboo" className="text-orange-400" />
-          </div>
-          
-          <p className="text-xl text-slate-700 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Mental Clarity, Emotional Freedom – Healing starts with hearing your own voice
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-12 py-4 rounded-2xl text-lg haptic-btn shadow-lg"
-              onClick={() => {
-                document.getElementById('about-section')?.scrollIntoView({ behavior: 'smooth' });
-                hapticFeedback.onClick();
-              }}
-            >
-              Explore VOYCE
-              <Leaf className="ml-2 h-5 w-5" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-orange-400 text-orange-600 hover:bg-orange-50 px-12 py-4 rounded-2xl text-lg haptic-btn"
-              onClick={() => {
-                document.getElementById('newsletter-section')?.scrollIntoView({ behavior: 'smooth' });
-                hapticFeedback.onClick();
-              }}
-            >
-              Join Newsletter
-              <Mail className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* About VOYCE */}
-      <section id="about-section" className="py-20 px-4 sm:px-6 lg:px-8" ref={sectionsRef}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <JapaneseIcon type="zen" className="text-green-500 w-12 h-12 mx-auto mb-6" />
-            <h2 className="text-4xl font-light text-slate-800 mb-8">The VOYCE Story</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-medium text-slate-700">Rural India's Silent Crisis</h3>
-              <p className="text-slate-600 leading-relaxed">
-                In the villages and small towns of India, young minds carry burdens too heavy for their hearts. 
-                Educational pressure, economic uncertainty, family expectations, and limited mental health resources 
-                create a perfect storm of emotional distress.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                Founded by S. Suryavamshi, VOYCE emerges from personal experience and deep understanding of 
-                rural narratives, brain science, and emotional healing.
-              </p>
-            </div>
-            
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=600&q=80" 
-                alt="Rural landscape representing youth challenges"
-                className="rounded-2xl shadow-lg w-full h-64 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
-            </div>
-          </div>
-
-          <Card className="bg-white/60 backdrop-blur-sm border-green-200 shadow-lg rounded-2xl mb-16">
-            <CardContent className="p-8">
-              <h4 className="text-xl font-medium text-green-700 mb-6 text-center">Core Pillars of VOYCE</h4>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Waves className="h-8 w-8 text-green-600" />
-                  </div>
-                  <h5 className="font-medium text-slate-700 mb-2">Voice</h5>
-                  <p className="text-sm text-slate-600">Expression without judgment, authentic self-communication</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Heart className="h-8 w-8 text-orange-600" />
-                  </div>
-                  <h5 className="font-medium text-slate-700 mb-2">Vulnerability</h5>
-                  <p className="text-sm text-slate-600">Strength found in openness and emotional honesty</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Shield className="h-8 w-8 text-green-600" />
-                  </div>
-                  <h5 className="font-medium text-slate-700 mb-2">Validation</h5>
-                  <p className="text-sm text-slate-600">Acceptance and recognition of your authentic truth</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* Comprehensive Stress Guide */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-50 to-orange-50">
@@ -278,7 +136,7 @@ export default function VoycePage() {
             <h2 className="text-4xl font-light text-slate-800 mb-8">Stress — The Complete Guide</h2>
             <div className="max-w-3xl mx-auto p-6 bg-orange-100/50 rounded-2xl border border-orange-200 mb-12">
               <p className="text-lg italic text-orange-800 leading-relaxed">
-                🧠 "You cannot heal what you cannot understand. Stress is a language, VOYCE is the translator."
+                🧠 "You cannot heal what you cannot understand. Stress is a language, VOYCE-X is the translator."
               </p>
             </div>
           </div>
@@ -306,6 +164,7 @@ export default function VoycePage() {
                         src={section.image} 
                         alt={section.title}
                         className="rounded-xl shadow-md w-full h-48 object-cover"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
                     </div>
@@ -326,6 +185,7 @@ export default function VoycePage() {
                       src={video.thumbnail} 
                       alt={video.title}
                       className="w-full h-48 object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                       <Youtube className="h-12 w-12 text-white" />
@@ -380,6 +240,7 @@ export default function VoycePage() {
                     src={item.image} 
                     alt={`Who are you ${item.question}`}
                     className="w-full h-48 object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
@@ -400,7 +261,7 @@ export default function VoycePage() {
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-12 py-4 rounded-2xl text-lg haptic-btn shadow-lg"
             >
               <a href="https://www.instagram.com/suryavamshiiii" target="_blank" rel="noopener noreferrer">
-                Follow VOYCE on Instagram
+                Follow VOYCE-X on Instagram
                 <Instagram className="ml-2 h-5 w-5" />
               </a>
             </Button>
@@ -409,90 +270,24 @@ export default function VoycePage() {
       </section>
 
       {/* Newsletter */}
-      <section id="newsletter-section" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-50 to-orange-50">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/80 backdrop-blur-sm border-green-200 shadow-xl rounded-2xl overflow-hidden">
-            <CardContent className="p-12 text-center">
-              <div className="mb-8">
-                <Mail className="h-16 w-16 text-green-600 mx-auto mb-6 float-3d" />
-                <h2 className="text-3xl font-light text-slate-800 mb-4">✉️ Join the VOYCE Letter</h2>
-                <p className="text-xl text-slate-600">1 Insightful Email Every Week</p>
-                <p className="text-sm text-slate-500 mt-2">Deep insights on mental health, stress management, and emotional intelligence</p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 px-4 py-3 rounded-xl border border-green-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
-                <Button 
-                  onClick={handleSubscribe}
-                  className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-3 rounded-xl haptic-btn"
-                >
-                  Subscribe Now
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <NewsletterSection />
 
       {/* Call to Action */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <JapaneseIcon type="lotus" className="text-green-500 w-16 h-16 mx-auto mb-8 float-3d" />
-          <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-12 leading-relaxed">
-            Before you heal the world,<br />
-            you must hear your own VOYCE
-          </h2>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-16">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-12 py-4 rounded-2xl text-lg haptic-btn shadow-lg"
-            >
-              Start Today
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-orange-400 text-orange-600 hover:bg-orange-50 px-12 py-4 rounded-2xl text-lg haptic-btn"
-            >
-              Contact Us
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-green-400 text-green-600 hover:bg-green-50 px-12 py-4 rounded-2xl text-lg haptic-btn"
-            >
-              Join the Movement
-            </Button>
-          </div>
-          
-          <div className="border-t border-green-200 pt-8">
-            <p className="text-slate-500 italic">
-              Website built for VOYCE – founded by S. Suryavamshi<br />
-              Inspired by rural narratives, brain science, emotional healing, and personal truth
-            </p>
-          </div>
-        </div>
-      </section>
+      <CallToActionSection />
 
-      {/* Music Toggle & Social Share */}
+      {/* Floating Controls */}
       <div className="fixed bottom-6 right-6 flex flex-col gap-4">
         <Button
           size="icon"
           variant="outline"
           className="rounded-full bg-white/80 backdrop-blur-sm border-green-200 shadow-lg hover:bg-green-50"
           onClick={() => {
-            setIsPlaying(!isPlaying);
+            setIsDarkMode(!isDarkMode);
             hapticFeedback.onClick();
           }}
+          aria-label="Toggle theme"
         >
-          <Music className={`h-5 w-5 ${isPlaying ? 'text-green-600' : 'text-slate-600'}`} />
+          <Music className={`h-5 w-5 ${isDarkMode ? 'text-yellow-500' : 'text-slate-600'}`} />
         </Button>
         
         <Button
@@ -500,13 +295,16 @@ export default function VoycePage() {
           variant="outline"
           className="rounded-full bg-white/80 backdrop-blur-sm border-green-200 shadow-lg hover:bg-green-50"
           onClick={() => {
-            navigator.share && navigator.share({
-              title: 'VOYCE - Mental Health Management',
-              text: 'Mental Clarity, Emotional Freedom',
-              url: window.location.href
-            });
+            if (navigator.share) {
+              navigator.share({
+                title: 'VOYCE-X - Mental Health Management',
+                text: 'Mental Clarity, Emotional Freedom',
+                url: window.location.href
+              });
+            }
             hapticFeedback.onClick();
           }}
+          aria-label="Share VOYCE-X"
         >
           <Share2 className="h-5 w-5 text-slate-600" />
         </Button>

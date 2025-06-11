@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,12 +5,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Brain, Heart, Leaf, Waves, Mountain, Music, Mail, Instagram, Youtube, Share2, Clock, Users, BookOpen, Activity, Lightbulb, Target, TrendingUp, Shield, Globe, Microscope, Calculator } from "lucide-react";
 import JapaneseIcon from "@/components/JapaneseIcon";
 import { hapticFeedback } from "@/utils/hapticFeedback";
+import MusicPlayer from "@/components/MusicPlayer";
 
 export default function VoycePage() {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [email, setEmail] = useState("");
   const heroRef = useRef<HTMLDivElement>(null);
   const sectionsRef = useRef<HTMLDivElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     // Parallax effect
@@ -130,6 +130,9 @@ export default function VoycePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-orange-50 japanese-pattern">
+      {/* Music Player Component */}
+      <MusicPlayer />
+
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden" ref={heroRef}>
         <div className="absolute inset-0 bg-gradient-to-br from-green-100/50 via-white/80 to-orange-100/50" />

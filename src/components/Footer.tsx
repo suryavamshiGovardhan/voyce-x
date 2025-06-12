@@ -1,121 +1,116 @@
 
-import React, { useState } from "react";
-import { Instagram, Mail, Book, Copyright } from "lucide-react";
+import { Heart, Mail, Instagram, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-  const { t } = useLanguage();
-  const [termsOpen, setTermsOpen] = useState(false);
-  
   return (
-    <footer className="py-8 px-4 border-t bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center">
-            <Copyright className="h-4 w-4 mr-1" />
-            <p className="text-muted-foreground">
-              {currentYear} VOYCE Mental Health Services. {t('allRightsReserved')}
+    <footer className="border-t border-green-200/20 bg-slate-900/50 backdrop-blur-sm mt-20">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <Brain className="h-8 w-8 text-green-500" />
+              <span className="text-2xl font-bold text-slate-100">VOYCE</span>
+            </div>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Mental Clarity & Emotional Freedom through evidence-based neuroscience and mindful awareness.
             </p>
           </div>
-          
-          <div className="flex items-center space-x-4">
-            <Button asChild variant="ghost" size="icon" className="rounded-full hover:bg-primary/10">
-              <a 
-                href="https://instagram.com/edgegrit" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
+
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-medium text-slate-100">Explore</h3>
+            <div className="space-y-2">
+              <a href="/stress" className="block text-slate-300 hover:text-green-300 transition-colors text-sm">
+                Stress Science
               </a>
-            </Button>
-            
-            <Button asChild variant="ghost" size="icon" className="rounded-full hover:bg-primary/10">
-              <a 
-                href="mailto:resqhield@gmail.com" 
-                rel="noopener noreferrer"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
+              <a href="/trauma" className="block text-slate-300 hover:text-green-300 transition-colors text-sm">
+                Trauma Healing
               </a>
-            </Button>
-            
-            <Button asChild variant="ghost" size="icon" className="rounded-full hover:bg-primary/10">
-              <a 
-                href="https://m.dailyhunt.in/mhmindia" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Dailyhunt"
-              >
-                <Book className="h-5 w-5" />
+              <a href="/adhd" className="block text-slate-300 hover:text-green-300 transition-colors text-sm">
+                ADHD Understanding
               </a>
-            </Button>
+              <a href="/brain" className="block text-slate-300 hover:text-green-300 transition-colors text-sm">
+                Brain Functionality
+              </a>
+            </div>
           </div>
-          
-          <div className="flex items-center space-x-4">
-            <p className="text-sm">
-              <a 
-                href="https://mental-health-management-mhm.b12sites.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                {t('visitWebsite')}
+
+          {/* Connection */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-medium text-slate-100">Connect</h3>
+            <div className="space-y-2">
+              <a href="/mind-heart-gut" className="block text-slate-300 hover:text-green-300 transition-colors text-sm">
+                Mind-Heart-Gut
               </a>
-            </p>
-            
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button variant="link" size="sm" className="text-sm">
-                  {t('termsAndConditions')}
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-h-[80vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle>{t('termsAndConditions')}</DialogTitle>
-                  <DialogDescription>
-                    {t('lastUpdated')}: {new Date().toLocaleDateString()}
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4 text-sm text-left">
-                  <h3 className="font-medium text-base">{t('termsOfUse')}</h3>
-                  <p>
-                    {t('termsIntro')}
-                  </p>
-                  
-                  <h3 className="font-medium text-base">{t('contentLiability')}</h3>
-                  <p>
-                    {t('contentLiabilityDesc')}
-                  </p>
-                  
-                  <h3 className="font-medium text-base">{t('privacy')}</h3>
-                  <p>
-                    {t('privacyDesc')}
-                  </p>
-                  
-                  <h3 className="font-medium text-base">{t('userContent')}</h3>
-                  <p>
-                    {t('userContentDesc')}
-                  </p>
-                  
-                  <h3 className="font-medium text-base">{t('disclaimer')}</h3>
-                  <p>
-                    {t('disclaimerDesc')}
-                  </p>
-                </div>
-              </DialogContent>
-            </Dialog>
+              <a href="/neuroscience" className="block text-slate-300 hover:text-green-300 transition-colors text-sm">
+                Neuroscience Timeline
+              </a>
+              <a href="/newsletters" className="block text-slate-300 hover:text-green-300 transition-colors text-sm">
+                Newsletter
+              </a>
+              <a href="/thoughts" className="block text-slate-300 hover:text-green-300 transition-colors text-sm">
+                Thoughts
+              </a>
+            </div>
           </div>
+
+          {/* Newsletter & Social */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-medium text-slate-100">Stay Connected</h3>
+            <div className="space-y-3">
+              <Button 
+                asChild
+                variant="outline" 
+                size="sm" 
+                className="w-full border-green-300 text-green-300 hover:bg-green-100/10"
+              >
+                <a 
+                  href="https://mailchi.mp/7027ec706d26/on-a-purpose" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span>VOYCE Letter</span>
+                </a>
+              </Button>
+              
+              <Button 
+                asChild
+                variant="outline" 
+                size="sm" 
+                className="w-full border-pink-300 text-pink-300 hover:bg-pink-100/10"
+              >
+                <a 
+                  href="https://www.instagram.com/suryavamshiiii" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2"
+                >
+                  <Instagram className="h-4 w-4" />
+                  <span>Instagram</span>
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-slate-700 mt-8 pt-8 text-center">
+          <div className="flex items-center justify-center space-x-2 mb-4">
+            <Heart className="h-4 w-4 text-red-400" />
+            <span className="text-slate-300 text-sm">
+              VOYCE — Created by S. Suryavamshi
+            </span>
+          </div>
+          <p className="text-slate-400 text-sm italic max-w-2xl mx-auto">
+            "Not just mental health, but clarity. Not just awareness, but a voice."
+          </p>
+          <p className="text-slate-500 text-xs mt-4">
+            © 2024 VOYCE. All rights reserved. Built with love for mental clarity and emotional freedom.
+          </p>
         </div>
       </div>
     </footer>

@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <span className="text-2xl font-bold text-primary">VOYCE</span>
-          <span className="hidden sm:inline-block text-sm text-muted-foreground">Mental Health Services</span>
+          <span className="hidden sm:inline-block text-sm text-muted-foreground">Mental Clarity & Emotional Freedom</span>
         </Link>
 
         {/* Desktop navigation */}
@@ -24,14 +24,29 @@ export default function Navbar() {
           <Link to="/" className="text-sm font-medium transition-colors hover:text-primary">
             Home
           </Link>
+          <Link to="/stress" className="text-sm font-medium transition-colors hover:text-primary">
+            Stress
+          </Link>
+          <Link to="/trauma" className="text-sm font-medium transition-colors hover:text-primary">
+            Trauma
+          </Link>
+          <Link to="/adhd" className="text-sm font-medium transition-colors hover:text-primary">
+            ADHD
+          </Link>
+          <Link to="/brain" className="text-sm font-medium transition-colors hover:text-primary">
+            Brain
+          </Link>
+          <Link to="/mind-heart-gut" className="text-sm font-medium transition-colors hover:text-primary">
+            Mind-Heart-Gut
+          </Link>
+          <Link to="/neuroscience" className="text-sm font-medium transition-colors hover:text-primary">
+            Neuroscience
+          </Link>
           <Link to="/newsletters" className="text-sm font-medium transition-colors hover:text-primary">
             {t('newsletters')}
           </Link>
           <Link to="/thoughts" className="text-sm font-medium transition-colors hover:text-primary">
             {t('thoughts')}
-          </Link>
-          <Link to="/dashboard" className="text-sm font-medium transition-colors hover:text-primary">
-            Dashboard
           </Link>
           <LanguageSelector />
           <Button asChild variant="ghost" size="sm">
@@ -74,6 +89,48 @@ export default function Navbar() {
               Home
             </Link>
             <Link 
+              to="/stress" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Stress
+            </Link>
+            <Link 
+              to="/trauma" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Trauma
+            </Link>
+            <Link 
+              to="/adhd" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              ADHD
+            </Link>
+            <Link 
+              to="/brain" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Brain Functionality
+            </Link>
+            <Link 
+              to="/mind-heart-gut" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Mind-Heart-Gut
+            </Link>
+            <Link 
+              to="/neuroscience" 
+              className="text-base font-medium transition-colors hover:text-primary"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Neuroscience Timeline
+            </Link>
+            <Link 
               to="/newsletters" 
               className="text-base font-medium transition-colors hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
@@ -86,13 +143,6 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(false)}
             >
               {t('thoughts')}
-            </Link>
-            <Link 
-              to="/dashboard" 
-              className="text-base font-medium transition-colors hover:text-primary"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Dashboard
             </Link>
             <Link 
               to="/profile" 

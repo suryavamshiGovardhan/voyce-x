@@ -9,6 +9,7 @@ interface MusicTrack {
   title: string;
   artist: string;
   url: string;
+  spotifyId: string;
   type: string;
   mood: 'healing' | 'dark' | 'space' | 'calm' | 'epic' | 'meditative' | 'spiritual';
   timeOfDay?: 'morning' | 'afternoon' | 'evening' | 'night';
@@ -18,7 +19,8 @@ const musicTracks: MusicTrack[] = [
   {
     title: "Interstellar Main Theme",
     artist: "Hans Zimmer",
-    url: "https://www.soundjay.com/misc/sounds-1015.mp3",
+    url: "https://open.spotify.com/embed/track/6790lLyykAbxSpHKcVhyX5",
+    spotifyId: "6790lLyykAbxSpHKcVhyX5",
     type: "cinematic",
     mood: "epic",
     timeOfDay: "evening"
@@ -26,7 +28,8 @@ const musicTracks: MusicTrack[] = [
   {
     title: "Art of Life",
     artist: "X Japan",
-    url: "https://www.soundjay.com/misc/sounds-1016.mp3",
+    url: "https://open.spotify.com/embed/track/1234567890abcdef",
+    spotifyId: "1234567890abcdef",
     type: "emotional",
     mood: "dark",
     timeOfDay: "night"
@@ -34,7 +37,8 @@ const musicTracks: MusicTrack[] = [
   {
     title: "Tibetan Healing Chants",
     artist: "Monks of Tibet",
-    url: "https://www.soundjay.com/misc/sounds-1017.mp3",
+    url: "https://open.spotify.com/embed/track/7ouMYWpwJ8MyGY1FALA9oN",
+    spotifyId: "7ouMYWpwJ8MyGY1FALA9oN",
     type: "chant",
     mood: "healing",
     timeOfDay: "morning"
@@ -42,7 +46,8 @@ const musicTracks: MusicTrack[] = [
   {
     title: "Forest Whispers",
     artist: "Nature Collective",
-    url: "https://www.soundjay.com/misc/sounds-1018.mp3",
+    url: "https://open.spotify.com/embed/track/4uLU6hMCjMI75M1A2tKUQC",
+    spotifyId: "4uLU6hMCjMI75M1A2tKUQC",
     type: "ambient",
     mood: "calm",
     timeOfDay: "afternoon"
@@ -50,7 +55,8 @@ const musicTracks: MusicTrack[] = [
   {
     title: "Rain Meditation",
     artist: "Peaceful Mind",
-    url: "https://www.soundjay.com/misc/sounds-1019.mp3",
+    url: "https://open.spotify.com/embed/track/6DqaZ8BQNepxYgRa4hbFD1",
+    spotifyId: "6DqaZ8BQNepxYgRa4hbFD1",
     type: "ambient",
     mood: "meditative",
     timeOfDay: "evening"
@@ -58,7 +64,8 @@ const musicTracks: MusicTrack[] = [
   {
     title: "Cornfield Chase",
     artist: "Hans Zimmer",
-    url: "https://www.soundjay.com/misc/sounds-1020.mp3",
+    url: "https://open.spotify.com/embed/track/0YP6WjOFbkv5PnCtyfTIDc",
+    spotifyId: "0YP6WjOFbkv5PnCtyfTIDc",
     type: "cinematic",
     mood: "space",
     timeOfDay: "night"
@@ -66,15 +73,17 @@ const musicTracks: MusicTrack[] = [
   {
     title: "Om Mani Padme Hum",
     artist: "Sacred Chants",
-    url: "https://www.soundjay.com/misc/sounds-1021.mp3",
+    url: "https://open.spotify.com/embed/track/7bfHtY2m4jVOJRdMOKoJNd",
+    spotifyId: "7bfHtY2m4jVOJRdMOKoJNd",
     type: "chant",
     mood: "spiritual",
     timeOfDay: "morning"
   },
   {
-    title: "Traumatic Memory Processing",
-    artist: "EMDR Sounds",
-    url: "https://www.soundjay.com/misc/sounds-1022.mp3",
+    title: "EMDR Bilateral Sounds",
+    artist: "Therapeutic Audio",
+    url: "https://open.spotify.com/embed/track/1A0UkNy5tfI4K8DdJ5tFNH",
+    spotifyId: "1A0UkNy5tfI4K8DdJ5tFNH",
     type: "therapeutic",
     mood: "healing",
     timeOfDay: "afternoon"
@@ -82,14 +91,10 @@ const musicTracks: MusicTrack[] = [
 ];
 
 export default function EnhancedMusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
-  const [volume, setVolume] = useState(0.5);
-  const [isMuted, setIsMuted] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedMood, setSelectedMood] = useState<string>('all');
   const [autoSuggest, setAutoSuggest] = useState(true);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Auto-suggest based on time of day
   useEffect(() => {
@@ -108,36 +113,6 @@ export default function EnhancedMusicPlayer() {
       }
     }
   }, [autoSuggest]);
-
-  // Auto-pause on tab change
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden && isPlaying && audioRef.current) {
-        audioRef.current.pause();
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-  }, [isPlaying]);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = isMuted ? 0 : volume;
-    }
-  }, [volume, isMuted]);
-
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-      hapticFeedback.onClick();
-    }
-  };
 
   const getMoodColor = (mood: string) => {
     const colors = {
@@ -165,20 +140,6 @@ export default function EnhancedMusicPlayer() {
             {!isExpanded ? (
               // Compact Player with Now Playing
               <div className="flex items-center space-x-3">
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  onClick={togglePlay}
-                  className="rounded-full hover:bg-green-100"
-                  aria-label={isPlaying ? "Pause music" : "Play music"}
-                >
-                  {isPlaying ? (
-                    <Pause className="h-5 w-5 text-green-600" />
-                  ) : (
-                    <Play className="h-5 w-5 text-green-600" />
-                  )}
-                </Button>
-                
                 <div className="flex flex-col min-w-0">
                   <p className="text-sm font-medium text-slate-700 truncate">
                     {musicTracks[currentTrack].title}
@@ -239,61 +200,17 @@ export default function EnhancedMusicPlayer() {
                   </div>
                 </div>
                 
-                {/* Current Track Info */}
-                <div className="mb-4 p-3 bg-green-50 rounded-xl">
-                  <h4 className="font-medium text-slate-700">{musicTracks[currentTrack].title}</h4>
-                  <p className="text-sm text-slate-500">{musicTracks[currentTrack].artist}</p>
-                  <div className="flex items-center space-x-2 mt-2">
-                    <span className={`text-xs px-2 py-1 rounded-full ${getMoodColor(musicTracks[currentTrack].mood)}`}>
-                      {musicTracks[currentTrack].mood}
-                    </span>
-                    <span className="text-xs px-2 py-1 rounded-full bg-white text-slate-600">
-                      {musicTracks[currentTrack].type}
-                    </span>
-                  </div>
-                </div>
-                
-                {/* Controls */}
-                <div className="flex items-center justify-center space-x-4 mb-4">
-                  <Button
-                    size="lg"
-                    onClick={togglePlay}
-                    className="rounded-full bg-green-500 hover:bg-green-600 text-white"
-                    aria-label={isPlaying ? "Pause music" : "Play music"}
-                  >
-                    {isPlaying ? (
-                      <Pause className="h-6 w-6" />
-                    ) : (
-                      <Play className="h-6 w-6" />
-                    )}
-                  </Button>
-                </div>
-                
-                {/* Volume Control */}
-                <div className="flex items-center space-x-2 mb-4">
-                  <Button 
-                    size="icon" 
-                    variant="ghost" 
-                    onClick={() => setIsMuted(!isMuted)} 
-                    className="rounded-full"
-                    aria-label={isMuted ? "Unmute" : "Mute"}
-                  >
-                    {isMuted ? (
-                      <VolumeX className="h-4 w-4 text-slate-600" />
-                    ) : (
-                      <Volume2 className="h-4 w-4 text-slate-600" />
-                    )}
-                  </Button>
-                  <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.1"
-                    value={volume}
-                    onChange={(e) => setVolume(parseFloat(e.target.value))}
-                    className="flex-1 h-2 bg-green-200 rounded-lg appearance-none cursor-pointer"
-                    aria-label="Volume control"
-                  />
+                {/* Current Track Spotify Player */}
+                <div className="mb-4">
+                  <iframe
+                    src={`${musicTracks[currentTrack].url}?utm_source=generator&theme=0`}
+                    width="100%"
+                    height="152"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    className="rounded-xl"
+                  ></iframe>
                 </div>
                 
                 {/* Track List */}
@@ -328,16 +245,6 @@ export default function EnhancedMusicPlayer() {
           </CardContent>
         </Card>
       </div>
-
-      {/* Audio Element */}
-      <audio
-        ref={audioRef}
-        src={musicTracks[currentTrack].url}
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-        loop={true}
-        preload="metadata"
-      />
     </>
   );
 }

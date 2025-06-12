@@ -16,6 +16,12 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import DashboardPage from "./pages/DashboardPage";
 import ProfilePage from "./pages/ProfilePage";
+import StressPage from "./pages/StressPage";
+import TraumaPage from "./pages/TraumaPage";
+import ADHDPage from "./pages/ADHDPage";
+import BrainPage from "./pages/BrainPage";
+import MindHeartGutPage from "./pages/MindHeartGutPage";
+import NeurosciencePage from "./pages/NeurosciencePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +41,12 @@ const App = () => (
             <Route path="/library" element={<LibraryPage />} />
             <Route path="/newsletters" element={<NewslettersPage />} />
             <Route path="/thoughts" element={<ThoughtsPage />} />
+            <Route path="/stress" element={<StressPage />} />
+            <Route path="/trauma" element={<TraumaPage />} />
+            <Route path="/adhd" element={<ADHDPage />} />
+            <Route path="/brain" element={<BrainPage />} />
+            <Route path="/mind-heart-gut" element={<MindHeartGutPage />} />
+            <Route path="/neuroscience" element={<NeurosciencePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />

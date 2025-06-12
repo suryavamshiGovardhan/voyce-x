@@ -31,6 +31,7 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --home-gradient: from-slate-900 via-green-900 to-slate-800;
   }
 
   .dark {
@@ -136,6 +137,56 @@
   .haptic-btn:hover {
     transform: scale(1.02);
   }
+
+  /* Dynamic home theme support */
+  .dynamic-gradient {
+    background: linear-gradient(to bottom right, var(--home-gradient));
+  }
+
+  /* Enhanced content cards */
+  .content-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl;
+    transition: all 0.3s ease;
+  }
+
+  .content-card:hover {
+    @apply bg-white/15 shadow-2xl;
+    transform: translateY(-4px);
+  }
+
+  /* Resource hover effects */
+  .resource-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .resource-item:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Smooth scrolling */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* View counter animations */
+  .view-counter {
+    animation: countUp 2s ease-out;
+  }
+
+  /* Interactive elements */
+  .interactive {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .interactive:hover {
+    transform: translateY(-1px);
+  }
+
+  .interactive:active {
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
@@ -186,6 +237,17 @@
   }
 }
 
+@keyframes countUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes slide {
   0% {
     transform: translateX(-100%);
@@ -211,4 +273,19 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .card-3d:hover {
+    transform: none;
+  }
+  
+  .content-card:hover {
+    transform: none;
+  }
+  
+  .resource-item:hover {
+    transform: none;
+  }
 }

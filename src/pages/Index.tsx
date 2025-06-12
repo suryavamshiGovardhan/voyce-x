@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import LearningPath from "@/components/LearningPath";
 import ImmersionTools from "@/components/ImmersionTools";
 import LibraryPreview from "@/components/LibraryPreview";
+import HomeScreenSelector from "@/components/HomeScreenSelector";
+import RichContentLibrary from "@/components/RichContentLibrary";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Brain, Eye, Heart, Zap } from "lucide-react";
@@ -28,6 +30,8 @@ export default function Index() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-orange-900 japanese-pattern" ref={sectionRef}>
       <Navbar />
+      <HomeScreenSelector />
+      
       <main className="flex-grow">
         {/* Hero Section */}
         <Hero />
@@ -55,6 +59,13 @@ export default function Index() {
                 </Card>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Rich Content Library */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 slide-3d-enter">
+          <div className="max-w-7xl mx-auto">
+            <RichContentLibrary topic="Mental Health & Brain Science" category="brain" />
           </div>
         </section>
 

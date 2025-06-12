@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import { hapticFeedback } from "@/utils/hapticFeedback";
-import { Heart, Upload, Send } from "lucide-react";
+import { Heart, Upload, Send, FileText, MessageSquare } from "lucide-react";
 
 export default function WorkbookPage() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,6 @@ export default function WorkbookPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     hapticFeedback.onSuccess();
-    // Handle form submission here
     console.log("Story submitted:", formData);
     alert("Thank you for sharing your VOYCE story! We'll be in touch soon.");
   };
@@ -47,7 +47,7 @@ export default function WorkbookPage() {
         {/* Hero Section */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-light text-slate-100 mb-6">
-            VOYCE <span className="text-green-400">Workshop Workbook</span>
+            VOYCE <span className="text-green-400">Workshop</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Your guided journey through mental clarity and emotional freedom. 
@@ -55,27 +55,77 @@ export default function WorkbookPage() {
           </p>
         </div>
 
-        {/* Embedded Google Doc */}
-        <Card className="bg-white/10 backdrop-blur-lg border-green-200/20 shadow-xl rounded-2xl mb-16">
-          <CardHeader>
-            <CardTitle className="text-3xl text-slate-100 text-center">Workshop Workbook</CardTitle>
-          </CardHeader>
-          <CardContent className="p-8">
-            <div className="w-full h-[600px] rounded-xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://docs.google.com/document/d/1BQt0KYI80v0zOzGQrDgVwA9Dqqxz98v8iKCb7eB4Tj0/edit?usp=sharing"
-                width="100%"
-                height="100%"
-                className="border-0 rounded-xl"
-                title="VOYCE Workshop Workbook"
-                allow="fullscreen"
-              />
-            </div>
-            <p className="text-center text-slate-400 text-sm mt-4">
-              Click and scroll within the document to explore the full workbook experience
-            </p>
-          </CardContent>
-        </Card>
+        {/* Tabbed Interface */}
+        <Tabs defaultValue="workbook" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-8 bg-white/10 backdrop-blur-lg">
+            <TabsTrigger value="workbook" className="flex items-center space-x-2">
+              <FileText className="h-4 w-4" />
+              <span>Workshop Workbook</span>
+            </TabsTrigger>
+            <TabsTrigger value="form" className="flex items-center space-x-2">
+              <MessageSquare className="h-4 w-4" />
+              <span>VOYCE Form</span>
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="workbook">
+            {/* Embedded Google Doc */}
+            <Card className="bg-white/10 backdrop-blur-lg border-green-200/20 shadow-xl rounded-2xl mb-16">
+              <CardHeader>
+                <CardTitle className="text-3xl text-slate-100 text-center">Workshop Workbook</CardTitle>
+              </CardHeader>
+              <CardContent className="p-8">
+                <div className="w-full h-[600px] rounded-xl overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://docs.google.com/document/d/1BQt0KYI80v0zOzGQrDgVwA9Dqqxz98v8iKCb7eB4Tj0/edit?usp=sharing"
+                    width="100%"
+                    height="100%"
+                    className="border-0 rounded-xl"
+                    title="VOYCE Workshop Workbook"
+                    allow="fullscreen"
+                  />
+                </div>
+                <p className="text-center text-slate-400 text-sm mt-4">
+                  Click and scroll within the document to explore the full workbook experience
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="form">
+            {/* Embedded Google Form */}
+            <Card className="bg-white/10 backdrop-blur-lg border-green-200/20 shadow-xl rounded-2xl mb-16">
+              <CardHeader>
+                <CardTitle className="text-3xl text-slate-100 text-center flex items-center justify-center space-x-3">
+                  <MessageSquare className="h-8 w-8 text-green-400" />
+                  <span>VOYCE Community Form</span>
+                </CardTitle>
+                <p className="text-slate-300 text-center mt-4">
+                  Connect with the VOYCE community and share your journey
+                </p>
+              </CardHeader>
+              <CardContent className="p-8">
+                <div className="w-full h-[700px] rounded-xl overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSfRfrRKJsrX9P8E3kzV4rpsjaWa3nDTiaZbR5XZgJbN6qoamg/viewform?embedded=true"
+                    width="100%"
+                    height="100%"
+                    className="border-0 rounded-xl"
+                    title="VOYCE Community Form"
+                    frameBorder="0"
+                    marginHeight="0"
+                    marginWidth="0"
+                  >
+                    Loading…
+                  </iframe>
+                </div>
+                <p className="text-center text-slate-400 text-sm mt-4">
+                  Your responses help us build a stronger VOYCE community
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
 
         {/* Story Submission Form */}
         <Card className="bg-white/10 backdrop-blur-lg border-green-200/20 shadow-xl rounded-2xl">

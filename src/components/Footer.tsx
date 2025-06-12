@@ -2,6 +2,7 @@
 import { Heart, Mail, Instagram, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { hapticFeedback } from "@/utils/hapticFeedback";
+import ViewCounter from "@/components/ViewCounter";
 
 export default function Footer() {
   const handleLinkClick = () => {
@@ -107,17 +108,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-slate-700 mt-8 pt-8 text-center">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <Heart className="h-4 w-4 text-red-400" />
-            <span className="text-slate-300 text-sm">
-              VOYCE — Created by S. Suryavamshi
-            </span>
+        {/* View Counter */}
+        <div className="border-t border-slate-700 mt-8 pt-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+            <ViewCounter />
+            <div className="text-center md:text-right">
+              <div className="flex items-center justify-center md:justify-end space-x-2 mb-2">
+                <Heart className="h-4 w-4 text-red-400" />
+                <span className="text-slate-300 text-sm">
+                  VOYCE — Created by S. Suryavamshi
+                </span>
+              </div>
+              <p className="text-slate-400 text-sm italic">
+                "Not just mental health, but clarity. Not just awareness, but a voice."
+              </p>
+            </div>
           </div>
-          <p className="text-slate-400 text-sm italic max-w-2xl mx-auto mb-4">
-            "Not just mental health, but clarity. Not just awareness, but a voice."
-          </p>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-slate-700 mt-6 pt-6 text-center">
           <p className="text-slate-400 text-sm mb-4">
             Share your VOYCE story ❤️
           </p>

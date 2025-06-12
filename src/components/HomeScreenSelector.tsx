@@ -1,10 +1,9 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Settings, Palette, Brain, Heart, Zen, Moon, Sun, Stars } from "lucide-react";
+import { Settings, Palette, Brain, Heart, Circle, Moon, Sun, Stars } from "lucide-react";
 import { hapticFeedback } from "@/utils/hapticFeedback";
 
 interface HomeTheme {
@@ -30,7 +29,7 @@ const homeThemes: HomeTheme[] = [
     name: "Zen Garden",
     description: "Peaceful minimalism for deep reflection",
     gradient: "from-gray-900 via-green-800 to-teal-900",
-    icon: <Zen className="h-5 w-5" />,
+    icon: <Circle className="h-5 w-5" />,
     mood: "Calm"
   },
   {

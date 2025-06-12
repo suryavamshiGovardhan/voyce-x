@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -112,9 +111,9 @@ export default function WorkbookPage() {
                     height="100%"
                     className="border-0 rounded-xl"
                     title="VOYCE Community Form"
-                    frameBorder="0"
-                    marginHeight="0"
-                    marginWidth="0"
+                    frameBorder={0}
+                    marginHeight={0}
+                    marginWidth={0}
                   >
                     Loading…
                   </iframe>

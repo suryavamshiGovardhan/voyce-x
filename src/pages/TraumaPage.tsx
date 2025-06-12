@@ -1,10 +1,11 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
+import InfiniteKnowledge from "@/components/InfiniteKnowledge";
+import ShareStoryButton from "@/components/ShareStoryButton";
 
 export default function TraumaPage() {
   return (
@@ -23,6 +24,12 @@ export default function TraumaPage() {
             on the mind, body, and spirit, and discover pathways to healing and post-traumatic growth.
           </p>
         </div>
+
+        {/* Infinite Knowledge Section */}
+        <InfiniteKnowledge 
+          topic="Trauma" 
+          searchTerms={['trauma', 'PTSD', 'EMDR', 'trauma therapy', 'generational trauma']} 
+        />
 
         {/* Gabor Maté Quote Block */}
         <Card className="bg-red-100/10 backdrop-blur-lg border-red-200/30 shadow-xl rounded-2xl mb-16">
@@ -226,6 +233,9 @@ export default function TraumaPage() {
             </Button>
           </CardContent>
         </Card>
+
+        {/* Share Story Button */}
+        <ShareStoryButton />
       </div>
 
       <Footer />

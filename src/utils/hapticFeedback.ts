@@ -112,3 +112,31 @@ export const addHapticToElement = (element: HTMLElement, type: 'click' | 'hover'
     element.addEventListener('click', handleInteraction);
   }
 };
+
+// Global event listener for all interactive elements
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add haptic feedback to all clickable elements
+    const clickableSelectors = [
+      'button', 'a', '[role="button"]', '[onclick]', 
+      'input[type="button"]', 'input[type="submit"]',
+      '.card', '.hover\\:scale-105', '.cursor-pointer'
+    ];
+    
+    clickableSelectors.forEach(selector => {
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.matches(selector) || target.closest(selector)) {
+          hapticFeedback.onClick();
+        }
+      });
+      
+      document.addEventListener('mouseenter', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.matches(selector) || target.closest(selector)) {
+          hapticFeedback.onHover();
+        }
+      }, true);
+    });
+  });
+}

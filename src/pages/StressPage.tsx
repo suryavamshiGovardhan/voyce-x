@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
+import InfiniteKnowledge from "@/components/InfiniteKnowledge";
+import ShareStoryButton from "@/components/ShareStoryButton";
 
 export default function StressPage() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -26,6 +27,12 @@ export default function StressPage() {
             its impact on your mind and body, and evidence-based pathways to resilience.
           </p>
         </div>
+
+        {/* Infinite Knowledge Section */}
+        <InfiniteKnowledge 
+          topic="Stress" 
+          searchTerms={['stress', 'cortisol', 'anxiety', 'stress management', 'chronic stress']} 
+        />
 
         {/* Animated Cortisol Cycle Visual */}
         <div className="mb-16">
@@ -232,6 +239,9 @@ export default function StressPage() {
             </Button>
           </CardContent>
         </Card>
+
+        {/* Share Story Button */}
+        <ShareStoryButton />
       </div>
 
       <Footer />

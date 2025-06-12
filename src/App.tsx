@@ -22,6 +22,7 @@ import ADHDPage from "./pages/ADHDPage";
 import BrainPage from "./pages/BrainPage";
 import MindHeartGutPage from "./pages/MindHeartGutPage";
 import NeurosciencePage from "./pages/NeurosciencePage";
+import WorkbookPage from "./pages/WorkbookPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const App = () => (
             <Route path="/brain" element={<BrainPage />} />
             <Route path="/mind-heart-gut" element={<MindHeartGutPage />} />
             <Route path="/neuroscience" element={<NeurosciencePage />} />
+            <Route path="/workbook" element={<WorkbookPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />

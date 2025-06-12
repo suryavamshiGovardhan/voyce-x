@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Music, Play, Pause, volume-2, volume-off, headphones } from 'lucide-react';
+import { Music, Play, Pause, Volume2, VolumeX, Headphones } from 'lucide-react';
 import { hapticFeedback } from '@/utils/hapticFeedback';
 
 interface MusicTrack {
@@ -200,7 +200,7 @@ export default function EnhancedMusicPlayer() {
                   className="rounded-full hover:bg-green-100"
                   aria-label="Expand music player"
                 >
-                  <headphones className="h-4 w-4 text-green-600" />
+                  <Headphones className="h-4 w-4 text-green-600" />
                 </Button>
               </div>
             ) : (
@@ -279,9 +279,9 @@ export default function EnhancedMusicPlayer() {
                     aria-label={isMuted ? "Unmute" : "Mute"}
                   >
                     {isMuted ? (
-                      <volume-off className="h-4 w-4 text-slate-600" />
+                      <VolumeX className="h-4 w-4 text-slate-600" />
                     ) : (
-                      <volume-2 className="h-4 w-4 text-slate-600" />
+                      <Volume2 className="h-4 w-4 text-slate-600" />
                     )}
                   </Button>
                   <input

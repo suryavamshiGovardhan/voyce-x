@@ -187,9 +187,142 @@
   .interactive:active {
     transform: translateY(0);
   }
+
+  /* Japanese-inspired design elements for Schools page */
+  .bamboo-pattern {
+    background-image: 
+      linear-gradient(135deg, transparent 25%, rgba(34, 197, 94, 0.1) 25%, rgba(34, 197, 94, 0.1) 50%, transparent 50%),
+      linear-gradient(-135deg, transparent 25%, rgba(34, 197, 94, 0.05) 25%, rgba(34, 197, 94, 0.05) 50%, transparent 50%);
+    background-size: 40px 40px;
+  }
+
+  .washi-texture {
+    position: relative;
+  }
+
+  .washi-texture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .ink-brush-divider {
+    position: relative;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.6) 20%, rgba(34, 197, 94, 0.8) 50%, rgba(34, 197, 94, 0.6) 80%, transparent 100%);
+    overflow: hidden;
+  }
+
+  .ink-brush-divider::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -100%;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.8) 50%, transparent 100%);
+    animation: brushStroke 3s ease-in-out infinite;
+  }
+
+  .cherry-blossom-bg {
+    position: relative;
+  }
+
+  .cherry-blossom-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 182, 193, 0.05) 0%, transparent 50%);
+    animation: cherryBlossomFloat 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* Staggered fade-in animations */
+  .staggered-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: staggeredFadeIn 0.6s ease-out forwards;
+  }
+
+  .staggered-fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .staggered-fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .staggered-fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .staggered-fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+  /* Parallax effect for world map */
+  .parallax-map {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Enhanced hover shadows */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Educational card styling */
+  .edu-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .edu-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(34, 197, 94, 0.3);
+    box-shadow: 
+      0 20px 40px -12px rgba(34, 197, 94, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Minimalist typography */
+  .japanese-heading {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  .japanese-text {
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    line-height: 1.6;
+  }
 }
 
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes staggeredFadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -260,6 +393,31 @@
   }
 }
 
+@keyframes brushStroke {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes cherryBlossomFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+    opacity: 0.1;
+  }
+}
+
 /* Utility classes for text truncation */
 .line-clamp-2 {
   display: -webkit-box;
@@ -287,5 +445,26 @@
   
   .resource-item:hover {
     transform: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+  
+  .edu-card:hover {
+    transform: none;
+  }
+}
+
+/* Print styles for educational materials */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-friendly {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
   }
 }

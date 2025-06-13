@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Brain, Heart, Zap, Shield, TreePine, Microscope, AlertTriangle, Baby, Focus, BookOpen, Compass, Wrench, Library, Mail, MessageSquare, User, LogIn } from "lucide-react";
+import { Menu, X, Brain, Heart, Zap, Shield, TreePine, Microscope, AlertTriangle, Baby, Focus, BookOpen, Compass, Wrench, Library, Mail, MessageSquare, User, LogIn, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { hapticFeedback } from "@/utils/hapticFeedback";
@@ -39,6 +39,13 @@ const navigationItems = [
     items: [
       { title: "ACEs Impact", href: "/aces", icon: AlertTriangle, description: "Adverse childhood experiences" },
       { title: "CDS Research", href: "/cds", icon: Focus, description: "Cognitive disengagement syndrome" },
+    ]
+  },
+  {
+    title: "Educational",
+    icon: GraduationCap,
+    items: [
+      { title: "VOYCE for Schools", href: "/schools", icon: GraduationCap, description: "Mental health framework for educational institutions" },
     ]
   },
   {

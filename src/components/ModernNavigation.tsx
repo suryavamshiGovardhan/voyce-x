@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Brain, Heart, Zap, Shield, TreePine, Microscope, AlertTriangle, Baby, Focus } from "lucide-react";
+import { Menu, X, Brain, Heart, Zap, Shield, TreePine, Microscope, AlertTriangle, Baby, Focus, BookOpen, Compass, Wrench, Library, Mail, MessageSquare, User, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { hapticFeedback } from "@/utils/hapticFeedback";
@@ -39,6 +39,17 @@ const navigationItems = [
     items: [
       { title: "ACEs Impact", href: "/aces", icon: AlertTriangle, description: "Adverse childhood experiences" },
       { title: "CDS Research", href: "/cds", icon: Focus, description: "Cognitive disengagement syndrome" },
+    ]
+  },
+  {
+    title: "Resources",
+    icon: Library,
+    items: [
+      { title: "VOYCE Path", href: "/path", icon: Compass, description: "Your personal growth journey" },
+      { title: "Tools & Techniques", href: "/tools", icon: Wrench, description: "Practical mental health tools" },
+      { title: "Knowledge Library", href: "/library", icon: Library, description: "Curated resources and content" },
+      { title: "Newsletters", href: "/newsletters", icon: Mail, description: "Stay updated with latest insights" },
+      { title: "Share Thoughts", href: "/thoughts", icon: MessageSquare, description: "Community stories and experiences" },
     ]
   }
 ];
@@ -103,13 +114,23 @@ export default function ModernNavigation() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <Link
-              to="/workbook"
-              className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
-              onClick={() => hapticFeedback.onNavigation()}
-            >
-              VOYCE Workbook
-            </Link>
+            <div className="flex items-center space-x-4">
+              <Link
+                to="/workbook"
+                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+                onClick={() => hapticFeedback.onNavigation()}
+              >
+                VOYCE Workbook
+              </Link>
+              <Link
+                to="/login"
+                className="text-slate-300 hover:text-green-300 text-sm font-medium transition-colors"
+                onClick={() => hapticFeedback.onNavigation()}
+              >
+                <LogIn className="h-4 w-4 inline mr-1" />
+                Login
+              </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -151,16 +172,29 @@ export default function ModernNavigation() {
                 </Link>
               ))
             )}
-            <Link
-              to="/workbook"
-              className="block bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium text-center mt-4"
-              onClick={() => {
-                setIsOpen(false);
-                hapticFeedback.onNavigation();
-              }}
-            >
-              VOYCE Workbook
-            </Link>
+            <div className="border-t border-slate-600 pt-4 mt-4 space-y-2">
+              <Link
+                to="/workbook"
+                className="block bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium text-center"
+                onClick={() => {
+                  setIsOpen(false);
+                  hapticFeedback.onNavigation();
+                }}
+              >
+                VOYCE Workbook
+              </Link>
+              <Link
+                to="/login"
+                className="flex items-center justify-center space-x-2 text-slate-300 hover:text-green-300 px-4 py-2 text-sm font-medium transition-colors"
+                onClick={() => {
+                  setIsOpen(false);
+                  hapticFeedback.onNavigation();
+                }}
+              >
+                <LogIn className="h-4 w-4" />
+                <span>Login</span>
+              </Link>
+            </div>
           </div>
         )}
       </div>

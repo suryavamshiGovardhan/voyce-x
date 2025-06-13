@@ -10,8 +10,7 @@ export default function StressPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-orange-900">
       <Navbar />
-      <Enh
-ancedMusicPlayer />
+      <EnhancedMusicPlayer />
       
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}

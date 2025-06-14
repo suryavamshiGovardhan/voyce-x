@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,25 +6,21 @@ import { Brain, Heart, Zap, BookOpen, Users, Stethoscope, Leaf, Target } from "l
 import { Link } from "react-router-dom";
 import { hapticFeedback } from "@/utils/hapticFeedback";
 import { useEffect, useRef } from "react";
-
 export default function Index() {
   const sectionRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const buttons = sectionRef.current?.querySelectorAll('button, a');
-    buttons?.forEach((button) => {
+    buttons?.forEach(button => {
       button.addEventListener('click', () => hapticFeedback.onClick());
       button.addEventListener('mouseenter', () => hapticFeedback.onHover());
     });
   }, []);
-
-  return (
-    <div className="min-h-screen flex flex-col bg-gray-50" ref={sectionRef}>
+  return <div className="min-h-screen flex flex-col bg-gray-50" ref={sectionRef}>
       <Navbar />
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 text-center bg-white">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 text-center bg-white rounded-sm">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-center mb-8 space-x-4">
               <Brain className="h-16 w-16 text-blue-600" />
@@ -61,17 +56,55 @@ export default function Index() {
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Explore Mental Health Topics</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { title: "Stress", icon: Brain, color: "blue", path: "/stress", description: "Understanding and managing stress" },
-                { title: "Trauma", icon: Heart, color: "purple", path: "/trauma", description: "Healing from traumatic experiences" },
-                { title: "ADHD", icon: Zap, color: "orange", path: "/adhd", description: "Managing attention and focus" },
-                { title: "Brain Science", icon: Stethoscope, color: "green", path: "/brain", description: "How your brain works" },
-                { title: "Mind-Heart-Gut", icon: Target, color: "pink", path: "/mind-heart-gut", description: "The connection trilogy" },
-                { title: "Neuroscience", icon: Brain, color: "indigo", path: "/neuroscience", description: "The science of the nervous system" },
-                { title: "Schools", icon: BookOpen, color: "teal", path: "/schools", description: "Mental health in education" },
-                { title: "Community", icon: Users, color: "cyan", path: "/library", description: "Resources and support" }
-              ].map((topic, index) => (
-                <Card key={topic.title} className="hover:shadow-lg transition-all duration-200 cursor-pointer bg-white border border-gray-200">
+              {[{
+              title: "Stress",
+              icon: Brain,
+              color: "blue",
+              path: "/stress",
+              description: "Understanding and managing stress"
+            }, {
+              title: "Trauma",
+              icon: Heart,
+              color: "purple",
+              path: "/trauma",
+              description: "Healing from traumatic experiences"
+            }, {
+              title: "ADHD",
+              icon: Zap,
+              color: "orange",
+              path: "/adhd",
+              description: "Managing attention and focus"
+            }, {
+              title: "Brain Science",
+              icon: Stethoscope,
+              color: "green",
+              path: "/brain",
+              description: "How your brain works"
+            }, {
+              title: "Mind-Heart-Gut",
+              icon: Target,
+              color: "pink",
+              path: "/mind-heart-gut",
+              description: "The connection trilogy"
+            }, {
+              title: "Neuroscience",
+              icon: Brain,
+              color: "indigo",
+              path: "/neuroscience",
+              description: "The science of the nervous system"
+            }, {
+              title: "Schools",
+              icon: BookOpen,
+              color: "teal",
+              path: "/schools",
+              description: "Mental health in education"
+            }, {
+              title: "Community",
+              icon: Users,
+              color: "cyan",
+              path: "/library",
+              description: "Resources and support"
+            }].map((topic, index) => <Card key={topic.title} className="hover:shadow-lg transition-all duration-200 cursor-pointer bg-white border border-gray-200">
                   <Link to={topic.path}>
                     <CardContent className="p-6 text-center">
                       <topic.icon className={`w-12 h-12 mx-auto mb-4 text-${topic.color}-500`} />
@@ -79,8 +112,7 @@ export default function Index() {
                       <p className="text-sm text-gray-600">{topic.description}</p>
                     </CardContent>
                   </Link>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </div>
         </section>
@@ -140,6 +172,5 @@ export default function Index() {
       </main>
       
       <Footer />
-    </div>
-  );
+    </div>;
 }

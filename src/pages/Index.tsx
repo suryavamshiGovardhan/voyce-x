@@ -20,12 +20,12 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-green-50" ref={sectionRef}>
+    <div className="min-h-screen flex flex-col bg-white" ref={sectionRef}>
       <Navbar />
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 text-center">
+        <section className="py-16 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-br from-blue-50 to-green-50">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-center mb-8 space-x-4">
               <Brain className="h-16 w-16 text-blue-500" />
@@ -33,23 +33,23 @@ export default function Index() {
               <Zap className="h-16 w-16 text-orange-500" />
             </div>
             
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
               <span className="text-blue-600">VOYCE</span>{" "}
               <span className="text-green-600">Academy</span>
             </h1>
             
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
               Mental Clarity, Emotional Freedom — Your journey to understanding the mind, brain, and heart connection
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
+              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg rounded-lg">
                 <Link to="/voyce">
                   Discover VOYCE
                   <Leaf className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 text-lg">
+              <Button asChild size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 text-lg rounded-lg">
                 <Link to="/path">Begin Your Path</Link>
               </Button>
             </div>
@@ -71,7 +71,7 @@ export default function Index() {
                 { title: "Schools", icon: BookOpen, color: "teal", path: "/schools", description: "Mental health in education" },
                 { title: "Community", icon: Users, color: "cyan", path: "/library", description: "Resources and support" }
               ].map((topic, index) => (
-                <Card key={topic.title} className="hover:shadow-lg transition-shadow cursor-pointer bg-white">
+                <Card key={topic.title} className="hover:shadow-lg transition-all duration-200 cursor-pointer bg-white border border-gray-200 rounded-xl">
                   <Link to={topic.path}>
                     <CardContent className="p-6 text-center">
                       <topic.icon className={`w-12 h-12 mx-auto mb-4 text-${topic.color}-500`} />
@@ -90,7 +90,7 @@ export default function Index() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Quick Access</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="bg-blue-50 hover:bg-blue-100 transition-colors">
+              <Card className="bg-blue-50 hover:bg-blue-100 transition-colors border border-blue-200 rounded-xl">
                 <Link to="/tools">
                   <CardContent className="p-6 text-center">
                     <Zap className="w-10 h-10 mx-auto mb-4 text-blue-600" />
@@ -100,7 +100,7 @@ export default function Index() {
                 </Link>
               </Card>
               
-              <Card className="bg-green-50 hover:bg-green-100 transition-colors">
+              <Card className="bg-green-50 hover:bg-green-100 transition-colors border border-green-200 rounded-xl">
                 <Link to="/workbook">
                   <CardContent className="p-6 text-center">
                     <BookOpen className="w-10 h-10 mx-auto mb-4 text-green-600" />
@@ -110,7 +110,7 @@ export default function Index() {
                 </Link>
               </Card>
               
-              <Card className="bg-purple-50 hover:bg-purple-100 transition-colors">
+              <Card className="bg-purple-50 hover:bg-purple-100 transition-colors border border-purple-200 rounded-xl">
                 <Link to="/thoughts">
                   <CardContent className="p-6 text-center">
                     <Heart className="w-10 h-10 mx-auto mb-4 text-purple-600" />
@@ -132,7 +132,7 @@ export default function Index() {
               and emotional wellbeing. We combine ancient wisdom with modern science to provide accessible, 
               evidence-based tools for mental clarity and emotional freedom.
             </p>
-            <Button asChild size="lg" variant="outline" className="border-gray-600 text-gray-600 hover:bg-gray-100">
+            <Button asChild size="lg" variant="outline" className="border-gray-600 text-gray-600 hover:bg-gray-100 rounded-lg">
               <Link to="/voyce">Learn More About VOYCE</Link>
             </Button>
           </div>

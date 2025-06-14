@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
@@ -6,37 +5,27 @@ import ComprehensiveContent from "@/components/ComprehensiveContent";
 import ShareStoryButton from "@/components/ShareStoryButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, BookOpen, Users, Phone, Focus, Brain, Zap } from "lucide-react";
+import { ExternalLink, BookOpen, Users, Phone, Mail, Zap, Star, Brain } from "lucide-react";
 
 const adhdResources = [
   {
     type: 'research' as const,
-    title: 'ADHD: What Everyone Needs to Know',
-    description: 'Comprehensive guide to understanding ADHD across the lifespan.',
-    url: 'https://www.amazon.com/ADHD-What-Everyone-Needs-Know/dp/0190266007',
-    author: 'Russell A. Barkley',
+    title: 'ADHD: A Complete and Authoritative Guide',
+    description: 'Comprehensive guide to understanding and managing ADHD across the lifespan.',
+    url: 'https://www.amazon.com/ADHD-Complete-Authoritative-Guide/dp/1462542581',
+    author: 'Children and Adults with ADHD (CHADD)',
     year: '2020',
-    source: 'Oxford University Press',
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop'
-  },
-  {
-    type: 'research' as const,
-    title: 'The ADHD Brain: Understanding Neurodivergence',
-    description: 'Latest neuroscience research on ADHD brain differences and strengths.',
-    url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8567890/',
-    author: 'American Journal of Psychiatry',
-    year: '2024',
-    source: 'NCBI',
+    source: 'Guilford Press',
     imageUrl: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop'
   },
   {
-    type: 'tool' as const,
-    title: 'ADHD Self-Assessment Tools',
-    description: 'Evidence-based screening tools and symptom trackers for ADHD.',
-    url: 'https://www.additudemag.com/adhd-symptoms-test-adults/',
-    author: 'ADDitude Magazine',
+    type: 'website' as const,
+    title: 'ADHD Management Tools',
+    description: 'Evidence-based tools and strategies for managing ADHD symptoms.',
+    url: 'https://chadd.org/',
+    author: 'Children and Adults with ADHD',
     year: '2024',
-    source: 'ADDitude',
+    source: 'CHADD.org',
     imageUrl: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=250&fit=crop'
   }
 ];
@@ -62,90 +51,76 @@ const topicKeyFacts = {
 
 export default function ADHDPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-yellow-50">
       <Navbar />
       <EnhancedMusicPlayer />
       
-      <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-light text-slate-100 mb-6">
-            Understanding <span className="text-blue-400">ADHD</span>
+      <div className="container mx-auto px-4 py-8">
+        {/* Simplified Hero Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Understanding <span className="text-orange-600">ADHD</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
-            Comprehensive resources on Attention Deficit Hyperactivity Disorder — 
-            from neuroscience to management strategies and celebrating neurodivergent strengths.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+            ADHD is not a deficit of attention, but rather a difference in how attention is regulated. 
+            Discover the neuroscience, strengths, and strategies for thriving with ADHD.
           </p>
           
-          {/* Quick Navigation */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <Button variant="outline" className="border-blue-300 hover:bg-blue-50/10 text-white">
+          {/* Simple Navigation Buttons */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            <Button variant="outline" className="text-sm">
               <a href="#understanding" className="flex items-center">
                 <Brain className="h-4 w-4 mr-2" />
-                Understanding ADHD
+                Understanding
               </a>
             </Button>
-            <Button variant="outline" className="border-blue-300 hover:bg-blue-50/10 text-white">
+            <Button variant="outline" className="text-sm">
               <a href="#management" className="flex items-center">
-                <Focus className="h-4 w-4 mr-2" />
-                Management Strategies
+                <Zap className="h-4 w-4 mr-2" />
+                Management
               </a>
             </Button>
-            <Button variant="outline" className="border-blue-300 hover:bg-blue-50/10 text-white">
+            <Button variant="outline" className="text-sm">
               <a href="#strengths" className="flex items-center">
-                <Zap className="h-4 w-4 mr-2" />
-                ADHD Strengths
+                <Star className="h-4 w-4 mr-2" />
+                Strengths
               </a>
             </Button>
           </div>
         </div>
 
         {/* Understanding ADHD Section */}
-        <section id="understanding" className="mb-16">
-          <Card className="bg-white/10 backdrop-blur-lg border-blue-200/20 shadow-xl rounded-2xl">
+        <section id="understanding" className="mb-12">
+          <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-3xl text-slate-100">What is ADHD?</CardTitle>
+              <CardTitle className="text-2xl text-gray-900">What is ADHD?</CardTitle>
             </CardHeader>
-            <CardContent className="text-slate-300 space-y-6">
-              <p className="text-lg leading-relaxed">
-                ADHD (Attention Deficit Hyperactivity Disorder) is a neurodevelopmental condition 
-                characterized by persistent patterns of inattention, hyperactivity, and impulsivity 
-                that interfere with functioning or development. It's not a character flaw or lack of willpower.
+            <CardContent className="text-gray-700 space-y-4">
+              <p className="text-base leading-relaxed">
+                Attention Deficit Hyperactivity Disorder (ADHD) is a neurodevelopmental condition 
+                characterized by differences in attention regulation, impulse control, and activity levels. 
+                It affects how the brain processes information and manages executive functions.
               </p>
               
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Inattentive Type</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-orange-600">Types of ADHD</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><strong>Inattentive Type:</strong> Difficulty focusing, organizing, and completing tasks</li>
+                    <li><strong>Hyperactive-Impulsive Type:</strong> Restlessness, fidgeting, and impulsive actions</li>
+                    <li><strong>Combined Type:</strong> Features of both inattentive and hyperactive-impulsive</li>
+                  </ul>
+                </div>
+                
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-orange-600">Common Signs</h3>
                   <ul className="space-y-2 text-sm">
                     <li>Difficulty sustaining attention</li>
-                    <li>Trouble organizing tasks</li>
-                    <li>Avoids tasks requiring mental effort</li>
-                    <li>Loses things frequently</li>
-                    <li>Easily distracted</li>
-                    <li>Forgetful in daily activities</li>
-                  </ul>
-                </div>
-                
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Hyperactive-Impulsive</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>Fidgets or squirms</li>
-                    <li>Difficulty staying seated</li>
-                    <li>Runs or climbs excessively</li>
-                    <li>Difficulty playing quietly</li>
-                    <li>Talks excessively</li>
-                    <li>Interrupts others</li>
-                  </ul>
-                </div>
-                
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Executive Function</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>Working memory challenges</li>
-                    <li>Difficulty with time management</li>
-                    <li>Problems with emotional regulation</li>
-                    <li>Trouble with planning and organization</li>
-                    <li>Difficulty shifting attention</li>
-                    <li>Issues with impulse control</li>
+                    <li>Forgetfulness in daily activities</li>
+                    <li>Difficulty organizing tasks</li>
+                    <li>Restlessness or fidgeting</li>
+                    <li>Impulsive decision-making</li>
+                    <li>Time management challenges</li>
                   </ul>
                 </div>
               </div>
@@ -153,172 +128,159 @@ export default function ADHDPage() {
           </Card>
         </section>
 
-        {/* Management Strategies Section */}
-        <section id="management" className="mb-16">
-          <Card className="bg-white/10 backdrop-blur-lg border-blue-200/20 shadow-xl rounded-2xl">
+        {/* Management Strategies */}
+        <section id="management" className="mb-12">
+          <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-3xl text-slate-100">Evidence-Based Management Strategies</CardTitle>
+              <CardTitle className="text-2xl text-gray-900">Management Strategies</CardTitle>
             </CardHeader>
-            <CardContent className="text-slate-300 space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Behavioral Strategies</h3>
-                  <ul className="space-y-2">
-                    <li><strong>Structure & Routine:</strong> Consistent daily schedules</li>
-                    <li><strong>Break Tasks Down:</strong> Chunk large projects into smaller steps</li>
-                    <li><strong>Use Timers:</strong> Pomodoro technique and time boxing</li>
-                    <li><strong>Create Reminders:</strong> Alarms, sticky notes, apps</li>
-                    <li><strong>Minimize Distractions:</strong> Organized, quiet workspaces</li>
-                    <li><strong>Reward Systems:</strong> Positive reinforcement for goals</li>
+            <CardContent className="text-gray-700 space-y-4">
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-green-600">Behavioral Strategies</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>Break tasks into smaller steps</li>
+                    <li>Use timers and reminders</li>
+                    <li>Create structured routines</li>
+                    <li>Minimize distractions</li>
+                    <li>Use visual organizers</li>
                   </ul>
                 </div>
                 
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Lifestyle Interventions</h3>
-                  <ul className="space-y-2">
-                    <li><strong>Regular Exercise:</strong> Improves focus and mood</li>
-                    <li><strong>Mindfulness & Meditation:</strong> Enhances attention control</li>
-                    <li><strong>Adequate Sleep:</strong> 7-9 hours for optimal function</li>
-                    <li><strong>Nutrition:</strong> Balanced diet, limit sugar/caffeine</li>
-                    <li><strong>Stress Management:</strong> Relaxation techniques</li>
-                    <li><strong>Social Support:</strong> ADHD support groups and communities</li>
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-green-600">Lifestyle Support</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>Regular exercise and movement</li>
+                    <li>Consistent sleep schedule</li>
+                    <li>Balanced nutrition</li>
+                    <li>Mindfulness and meditation</li>
+                    <li>Stress management techniques</li>
                   </ul>
                 </div>
-              </div>
-              
-              <div className="mt-6 p-4 bg-blue-500/20 rounded-lg border border-blue-400/30">
-                <h4 className="font-semibold text-blue-300 mb-2">Professional Treatment</h4>
-                <p className="text-sm">
-                  Consider consulting with healthcare providers about medication options, 
-                  cognitive behavioral therapy (CBT), and coaching specifically designed for ADHD management.
-                </p>
+                
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-green-600">Professional Support</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li>ADHD coaching</li>
+                    <li>Cognitive Behavioral Therapy</li>
+                    <li>Educational accommodations</li>
+                    <li>Medication management</li>
+                    <li>Support groups</li>
+                  </ul>
+                </div>
               </div>
             </CardContent>
           </Card>
         </section>
 
-        {/* ADHD Strengths Section */}
-        <section id="strengths" className="mb-16">
-          <Card className="bg-white/10 backdrop-blur-lg border-blue-200/20 shadow-xl rounded-2xl">
+        {/* ADHD Strengths */}
+        <section id="strengths" className="mb-12">
+          <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-3xl text-slate-100">ADHD Superpowers & Strengths</CardTitle>
+              <CardTitle className="text-2xl text-gray-900">ADHD Strengths & Superpowers</CardTitle>
             </CardHeader>
-            <CardContent className="text-slate-300 space-y-6">
-              <p className="text-lg leading-relaxed">
-                While ADHD presents challenges, it also comes with unique strengths and abilities 
-                that can be incredible assets when properly understood and channeled.
+            <CardContent className="text-gray-700 space-y-4">
+              <p className="text-base leading-relaxed">
+                ADHD comes with unique strengths and abilities that can be incredible assets when properly understood and channeled.
               </p>
               
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Creativity & Innovation</h3>
-                  <ul className="space-y-2">
-                    <li>Out-of-the-box thinking</li>
-                    <li>Creative problem solving</li>
-                    <li>Artistic and musical talents</li>
-                    <li>Innovative approaches</li>
-                    <li>Originality in ideas</li>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-yellow-600">Cognitive Strengths</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><strong>Creativity:</strong> Unique problem-solving and innovative thinking</li>
+                    <li><strong>Hyperfocus:</strong> Intense concentration on interesting tasks</li>
+                    <li><strong>Out-of-the-box thinking:</strong> Novel approaches and perspectives</li>
+                    <li><strong>Rapid idea generation:</strong> Quick brainstorming and connections</li>
                   </ul>
                 </div>
                 
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Energy & Enthusiasm</h3>
-                  <ul className="space-y-2">
-                    <li>High energy levels</li>
-                    <li>Enthusiasm for interests</li>
-                    <li>Spontaneity and fun</li>
-                    <li>Resilience and bounce-back</li>
-                    <li>Passionate engagement</li>
-                  </ul>
-                </div>
-                
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Unique Abilities</h3>
-                  <ul className="space-y-2">
-                    <li>Hyperfocus on interests</li>
-                    <li>Quick thinking and adaptability</li>
-                    <li>Risk-taking and entrepreneurship</li>
-                    <li>Empathy and intuition</li>
-                    <li>Multitasking capabilities</li>
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-yellow-600">Personal Strengths</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li><strong>Energy and enthusiasm:</strong> High levels of passion and drive</li>
+                    <li><strong>Adaptability:</strong> Flexibility in changing situations</li>
+                    <li><strong>Empathy:</strong> Strong emotional sensitivity and understanding</li>
+                    <li><strong>Resilience:</strong> Ability to bounce back from challenges</li>
                   </ul>
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-green-500/20 rounded-lg border border-green-400/30">
-                <h4 className="font-semibold text-green-300 mb-2">Famous People with ADHD</h4>
-                <p className="text-sm">
-                  Michael Phelps, Simone Biles, Richard Branson, Whoopi Goldberg, Justin Timberlake, 
-                  and many other successful individuals have thrived with ADHD, using their unique strengths 
-                  to achieve remarkable success in their fields.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Resources Section */}
-        <section className="mb-16">
-          <Card className="bg-white/10 backdrop-blur-lg border-blue-200/20 shadow-xl rounded-2xl">
-            <CardHeader>
-              <CardTitle className="text-3xl text-slate-100">Helpful Resources & Support</CardTitle>
-            </CardHeader>
-            <CardContent className="text-slate-300 space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Organizations & Websites</h3>
-                  <ul className="space-y-3">
-                    <li>
-                      <a href="https://chadd.org/" target="_blank" rel="noopener noreferrer" 
-                         className="flex items-center hover:text-blue-300 transition-colors">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        CHADD - National Resource on ADHD
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.additudemag.com/" target="_blank" rel="noopener noreferrer"
-                         className="flex items-center hover:text-blue-300 transition-colors">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        ADDitude Magazine
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.understood.org/en/learning-thinking-differences/child-learning-disabilities/add-adhd" target="_blank" rel="noopener noreferrer"
-                         className="flex items-center hover:text-blue-300 transition-colors">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Understood.org - ADHD Resources
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-blue-400">Apps & Tools</h3>
-                  <div className="grid gap-4">
-                    <Card className="bg-slate-800/50 border-blue-300/20">
-                      <CardContent className="p-4">
-                        <h4 className="font-semibold text-slate-200">Forest</h4>
-                        <p className="text-sm text-slate-400">Focus and productivity timer</p>
-                      </CardContent>
-                    </Card>
-                    <Card className="bg-slate-800/50 border-blue-300/20">
-                      <CardContent className="p-4">
-                        <h4 className="font-semibold text-slate-200">Todoist</h4>
-                        <p className="text-sm text-slate-400">Task management and organization</p>
-                      </CardContent>
-                    </Card>
-                    <Card className="bg-slate-800/50 border-blue-300/20">
-                      <CardContent className="p-4">
-                        <h4 className="font-semibold text-slate-200">Brain.fm</h4>
-                        <p className="text-sm text-slate-400">Focus-enhancing background music</p>
-                      </CardContent>
-                    </Card>
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-orange-600 mb-4">Professional Resources & Support</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <ul className="space-y-3">
+                      <li>
+                        <a href="https://chadd.org/" target="_blank" rel="noopener noreferrer" 
+                           className="flex items-center text-orange-600 hover:text-orange-800 transition-colors">
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Children and Adults with ADHD (CHADD)
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://add.org/" target="_blank" rel="noopener noreferrer"
+                           className="flex items-center text-orange-600 hover:text-orange-800 transition-colors">
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Attention Deficit Disorder Association
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.understood.org/en/learning-thinking-differences/child-learning-disabilities/add-adhd" target="_blank" rel="noopener noreferrer"
+                           className="flex items-center text-orange-600 hover:text-orange-800 transition-colors">
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Understood.org - ADHD Resources
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <h4 className="text-lg font-semibold text-red-600">Crisis Support</h4>
+                    <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center">
+                          <Phone className="h-4 w-4 mr-2" />
+                          <span>Crisis Text Line: Text HOME to 741741</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Phone className="h-4 w-4 mr-2" />
+                          <span>National Suicide Prevention Lifeline: 988</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-orange-600 mb-4">Helpful Apps & Tools</h3>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <Card className="bg-gray-50">
+                    <CardContent className="p-4">
+                      <h4 className="font-semibold text-gray-800">Forest</h4>
+                      <p className="text-sm text-gray-600">Focus and productivity timer</p>
+                    </CardContent>
+                  </Card>
+                  <Card className="bg-gray-50">
+                    <CardContent className="p-4">
+                      <h4 className="font-semibold text-gray-800">Todoist</h4>
+                      <p className="text-sm text-gray-600">Task management and organization</p>
+                    </CardContent>
+                  </Card>
+                  <Card className="bg-gray-50">
+                    <CardContent className="p-4">
+                      <h4 className="font-semibold text-gray-800">Brain.fm</h4>
+                      <p className="text-sm text-gray-600">Focus-enhancing background music</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </section>
 
+        {/* Comprehensive Content */}
         <ComprehensiveContent 
           topic="ADHD"
           resources={adhdResources}
@@ -326,6 +288,7 @@ export default function ADHDPage() {
           keyFacts={topicKeyFacts.adhd}
         />
 
+        {/* Share Story Button */}
         <ShareStoryButton />
       </div>
 

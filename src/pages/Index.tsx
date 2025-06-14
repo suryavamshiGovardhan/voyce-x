@@ -1,17 +1,10 @@
 
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import LearningPath from "@/components/LearningPath";
-import ImmersionTools from "@/components/ImmersionTools";
-import LibraryPreview from "@/components/LibraryPreview";
-import HomeScreenSelector from "@/components/HomeScreenSelector";
-import RichContentLibrary from "@/components/RichContentLibrary";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Brain, Eye, Heart, Zap } from "lucide-react";
+import { Brain, Heart, Zap, BookOpen, Users, Stethoscope, Leaf, Target } from "lucide-react";
 import { Link } from "react-router-dom";
-import JapaneseIcon from "@/components/JapaneseIcon";
 import { hapticFeedback } from "@/utils/hapticFeedback";
 import { useEffect, useRef } from "react";
 
@@ -19,7 +12,6 @@ export default function Index() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Add haptic feedback to interactive elements
     const buttons = sectionRef.current?.querySelectorAll('button, a');
     buttons?.forEach((button) => {
       button.addEventListener('click', () => hapticFeedback.onClick());
@@ -28,89 +20,121 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-orange-900 japanese-pattern" ref={sectionRef}>
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-green-50" ref={sectionRef}>
       <Navbar />
-      <HomeScreenSelector />
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <Hero />
+        <section className="py-20 px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-center mb-8 space-x-4">
+              <Brain className="h-16 w-16 text-blue-500" />
+              <Heart className="h-20 w-20 text-green-500" />
+              <Zap className="h-16 w-16 text-orange-500" />
+            </div>
+            
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6">
+              <span className="text-blue-600">VOYCE</span>{" "}
+              <span className="text-green-600">Academy</span>
+            </h1>
+            
+            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Mental Clarity, Emotional Freedom — Your journey to understanding the mind, brain, and heart connection
+            </p>
+            
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
+                <Link to="/voyce">
+                  Discover VOYCE
+                  <Leaf className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 text-lg">
+                <Link to="/path">Begin Your Path</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
 
-        {/* Core Pillars Navigation */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-800 via-slate-700 to-orange-800 slide-3d-enter">
+        {/* Topics Grid */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-light text-white text-center mb-12 tracking-wide float-3d">Core Pillars of Awakening</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Explore Mental Health Topics</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { title: "Ego", icon: "zen", color: "sky" },
-                { title: "Emotions", icon: "wave", color: "orange" },
-                { title: "Mind", icon: "mountain", color: "sky" },
-                { title: "Brain", icon: "bamboo", color: "orange" },
-                { title: "Trauma", icon: "crane", color: "sky" },
-                { title: "Awareness", icon: "lotus", color: "orange" }
-              ].map((pillar, index) => (
-                <Card key={pillar.title} className="bg-black/30 backdrop-blur-sm hover:bg-black/50 zen-transition border-orange-300/30 hover:border-sky-300/50 card-3d haptic-btn">
-                  <CardContent className="pt-6 pb-4">
-                    <div className="flex flex-col items-center text-center space-y-3">
-                      <JapaneseIcon type={pillar.icon as any} className={`text-${pillar.color}-400 w-8 h-8`} />
-                      <h3 className="text-lg font-medium text-white">{pillar.title}</h3>
-                    </div>
-                  </CardContent>
+                { title: "Stress", icon: Brain, color: "blue", path: "/stress", description: "Understanding and managing stress" },
+                { title: "Trauma", icon: Heart, color: "purple", path: "/trauma", description: "Healing from traumatic experiences" },
+                { title: "ADHD", icon: Zap, color: "orange", path: "/adhd", description: "Managing attention and focus" },
+                { title: "Brain Science", icon: Stethoscope, color: "green", path: "/brain", description: "How your brain works" },
+                { title: "Mind-Heart-Gut", icon: Target, color: "pink", path: "/mind-heart-gut", description: "The connection trilogy" },
+                { title: "Neuroscience", icon: Brain, color: "indigo", path: "/neuroscience", description: "The science of the nervous system" },
+                { title: "Schools", icon: BookOpen, color: "teal", path: "/schools", description: "Mental health in education" },
+                { title: "Community", icon: Users, color: "cyan", path: "/library", description: "Resources and support" }
+              ].map((topic, index) => (
+                <Card key={topic.title} className="hover:shadow-lg transition-shadow cursor-pointer bg-white">
+                  <Link to={topic.path}>
+                    <CardContent className="p-6 text-center">
+                      <topic.icon className={`w-12 h-12 mx-auto mb-4 text-${topic.color}-500`} />
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{topic.title}</h3>
+                      <p className="text-sm text-gray-600">{topic.description}</p>
+                    </CardContent>
+                  </Link>
                 </Card>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Rich Content Library */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 slide-3d-enter">
-          <div className="max-w-7xl mx-auto">
-            <RichContentLibrary topic="Mental Health & Brain Science" category="brain" />
+        {/* Quick Access */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Quick Access</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="bg-blue-50 hover:bg-blue-100 transition-colors">
+                <Link to="/tools">
+                  <CardContent className="p-6 text-center">
+                    <Zap className="w-10 h-10 mx-auto mb-4 text-blue-600" />
+                    <h3 className="text-lg font-semibold text-blue-900 mb-2">Tools & Resources</h3>
+                    <p className="text-sm text-blue-700">Interactive tools for mental wellness</p>
+                  </CardContent>
+                </Link>
+              </Card>
+              
+              <Card className="bg-green-50 hover:bg-green-100 transition-colors">
+                <Link to="/workbook">
+                  <CardContent className="p-6 text-center">
+                    <BookOpen className="w-10 h-10 mx-auto mb-4 text-green-600" />
+                    <h3 className="text-lg font-semibold text-green-900 mb-2">Workbook</h3>
+                    <p className="text-sm text-green-700">Self-assessment and tracking</p>
+                  </CardContent>
+                </Link>
+              </Card>
+              
+              <Card className="bg-purple-50 hover:bg-purple-100 transition-colors">
+                <Link to="/thoughts">
+                  <CardContent className="p-6 text-center">
+                    <Heart className="w-10 h-10 mx-auto mb-4 text-purple-600" />
+                    <h3 className="text-lg font-semibold text-purple-900 mb-2">Share Your Story</h3>
+                    <p className="text-sm text-purple-700">Connect with the community</p>
+                  </CardContent>
+                </Link>
+              </Card>
+            </div>
           </div>
         </section>
 
-        {/* Learning Path Preview */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 slide-3d-enter">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-4xl font-light text-white tracking-wide float-3d">The Path - Stages of Awakening</h2>
-              <Button asChild variant="outline" className="border-sky-300 hover:bg-sky-50/10 text-white haptic-btn">
-                <Link to="/path">View Full Journey</Link>
-              </Button>
-            </div>
-            <div className="card-3d">
-              <LearningPath />
-            </div>
-          </div>
-        </section>
-
-        {/* Immersion Tools */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-800 via-slate-700 to-orange-800 slide-3d-enter">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-4xl font-light text-white tracking-wide float-3d">Immersion Tools</h2>
-              <Button asChild variant="outline" className="border-orange-300 hover:bg-orange-50/10 text-white haptic-btn">
-                <Link to="/tools">Explore Tools</Link>
-              </Button>
-            </div>
-            <div className="card-3d">
-              <ImmersionTools />
-            </div>
-          </div>
-        </section>
-
-        {/* Library Preview */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 slide-3d-enter">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-4xl font-light text-white tracking-wide float-3d">The Archive - Wisdom Library</h2>
-              <Button asChild variant="outline" className="border-sky-300 hover:bg-sky-50/10 text-white haptic-btn">
-                <Link to="/library">Enter Library</Link>
-              </Button>
-            </div>
-            <div className="card-3d">
-              <LibraryPreview />
-            </div>
+        {/* About Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">About VOYCE Academy</h2>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              VOYCE Academy is your comprehensive resource for understanding mental health, neuroscience, 
+              and emotional wellbeing. We combine ancient wisdom with modern science to provide accessible, 
+              evidence-based tools for mental clarity and emotional freedom.
+            </p>
+            <Button asChild size="lg" variant="outline" className="border-gray-600 text-gray-600 hover:bg-gray-100">
+              <Link to="/voyce">Learn More About VOYCE</Link>
+            </Button>
           </div>
         </section>
       </main>

@@ -31,7 +31,7 @@ const stressResources = [
     imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop'
   },
   {
-    type: 'tool' as const,
+    type: 'website' as const,
     title: 'Stress Management Toolkit',
     description: 'Interactive tools for measuring and managing stress levels.',
     url: 'https://www.apa.org/topics/stress',
@@ -63,61 +63,61 @@ const topicKeyFacts = {
 
 export default function StressPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-orange-900">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       <Navbar />
       <EnhancedMusicPlayer />
       
-      <div className="container mx-auto px-4 py-12">
-        {/* Hero Section */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-light text-slate-100 mb-6">
-            Understanding <span className="text-orange-400">Stress</span>
+      <div className="container mx-auto px-4 py-8">
+        {/* Simplified Hero Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Understanding <span className="text-blue-600">Stress</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
             From ancient survival mechanisms to modern overwhelm — explore the complete science of stress, 
             its impact on your mind and body, and evidence-based pathways to resilience.
           </p>
           
-          {/* Quick Links */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <Button variant="outline" className="border-orange-300 hover:bg-orange-50/10 text-white">
+          {/* Simple Navigation Buttons */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            <Button variant="outline" className="text-sm">
               <a href="#understanding" className="flex items-center">
                 <BookOpen className="h-4 w-4 mr-2" />
-                Understanding Stress
+                What is Stress?
               </a>
             </Button>
-            <Button variant="outline" className="border-orange-300 hover:bg-orange-50/10 text-white">
+            <Button variant="outline" className="text-sm">
               <a href="#management" className="flex items-center">
                 <Users className="h-4 w-4 mr-2" />
-                Management Techniques
+                Management
               </a>
             </Button>
-            <Button variant="outline" className="border-orange-300 hover:bg-orange-50/10 text-white">
+            <Button variant="outline" className="text-sm">
               <a href="#resources" className="flex items-center">
                 <ExternalLink className="h-4 w-4 mr-2" />
-                Resources & Support
+                Resources
               </a>
             </Button>
           </div>
         </div>
 
         {/* What is Stress Section */}
-        <section id="understanding" className="mb-16">
-          <Card className="bg-white/10 backdrop-blur-lg border-orange-200/20 shadow-xl rounded-2xl">
+        <section id="understanding" className="mb-12">
+          <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-3xl text-slate-100">What is Stress?</CardTitle>
+              <CardTitle className="text-2xl text-gray-900">What is Stress?</CardTitle>
             </CardHeader>
-            <CardContent className="text-slate-300 space-y-6">
-              <p className="text-lg leading-relaxed">
+            <CardContent className="text-gray-700 space-y-4">
+              <p className="text-base leading-relaxed">
                 Stress is your body's natural response to challenges or threats. When you perceive danger, 
                 your nervous system releases a flood of stress hormones including adrenaline and cortisol, 
                 which prepare your body for emergency action.
               </p>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-orange-400">Types of Stress</h3>
-                  <ul className="space-y-2">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-blue-600">Types of Stress</h3>
+                  <ul className="space-y-2 text-sm">
                     <li><strong>Acute Stress:</strong> Short-term stress from immediate challenges</li>
                     <li><strong>Chronic Stress:</strong> Long-term stress from ongoing pressures</li>
                     <li><strong>Eustress:</strong> Positive stress that motivates and energizes</li>
@@ -125,9 +125,9 @@ export default function StressPage() {
                   </ul>
                 </div>
                 
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-orange-400">Common Triggers</h3>
-                  <ul className="space-y-2">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-blue-600">Common Triggers</h3>
+                  <ul className="space-y-2 text-sm">
                     <li>Work pressure and deadlines</li>
                     <li>Financial concerns</li>
                     <li>Relationship conflicts</li>
@@ -142,16 +142,16 @@ export default function StressPage() {
         </section>
 
         {/* Stress Management Techniques */}
-        <section id="management" className="mb-16">
-          <Card className="bg-white/10 backdrop-blur-lg border-orange-200/20 shadow-xl rounded-2xl">
+        <section id="management" className="mb-12">
+          <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-3xl text-slate-100">Evidence-Based Management Techniques</CardTitle>
+              <CardTitle className="text-2xl text-gray-900">Evidence-Based Management Techniques</CardTitle>
             </CardHeader>
-            <CardContent className="text-slate-300 space-y-6">
+            <CardContent className="text-gray-700 space-y-4">
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-orange-400">Immediate Techniques</h3>
-                  <ul className="space-y-2">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-green-600">Immediate Techniques</h3>
+                  <ul className="space-y-2 text-sm">
                     <li>Deep breathing exercises</li>
                     <li>Progressive muscle relaxation</li>
                     <li>Grounding techniques (5-4-3-2-1)</li>
@@ -160,9 +160,9 @@ export default function StressPage() {
                   </ul>
                 </div>
                 
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-orange-400">Long-term Strategies</h3>
-                  <ul className="space-y-2">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-green-600">Long-term Strategies</h3>
+                  <ul className="space-y-2 text-sm">
                     <li>Regular exercise routine</li>
                     <li>Healthy sleep hygiene</li>
                     <li>Balanced nutrition</li>
@@ -171,9 +171,9 @@ export default function StressPage() {
                   </ul>
                 </div>
                 
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-orange-400">Professional Help</h3>
-                  <ul className="space-y-2">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-green-600">Professional Help</h3>
+                  <ul className="space-y-2 text-sm">
                     <li>Cognitive Behavioral Therapy</li>
                     <li>Mindfulness-Based Stress Reduction</li>
                     <li>Stress management counseling</li>
@@ -187,33 +187,33 @@ export default function StressPage() {
         </section>
 
         {/* Resources Section */}
-        <section id="resources" className="mb-16">
-          <Card className="bg-white/10 backdrop-blur-lg border-orange-200/20 shadow-xl rounded-2xl">
+        <section id="resources" className="mb-12">
+          <Card className="shadow-md">
             <CardHeader>
-              <CardTitle className="text-3xl text-slate-100">Helpful Resources & Support</CardTitle>
+              <CardTitle className="text-2xl text-gray-900">Helpful Resources & Support</CardTitle>
             </CardHeader>
-            <CardContent className="text-slate-300 space-y-6">
+            <CardContent className="text-gray-700 space-y-4">
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-orange-400">Organizations & Websites</h3>
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-blue-600">Organizations & Websites</h3>
                   <ul className="space-y-3">
                     <li>
                       <a href="https://www.apa.org/topics/stress" target="_blank" rel="noopener noreferrer" 
-                         className="flex items-center hover:text-orange-300 transition-colors">
+                         className="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         American Psychological Association - Stress
                       </a>
                     </li>
                     <li>
                       <a href="https://www.nimh.nih.gov/health/publications/stress" target="_blank" rel="noopener noreferrer"
-                         className="flex items-center hover:text-orange-300 transition-colors">
+                         className="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         NIMH - Stress and Mental Health
                       </a>
                     </li>
                     <li>
                       <a href="https://www.helpguide.org/articles/stress/stress-management.htm" target="_blank" rel="noopener noreferrer"
-                         className="flex items-center hover:text-orange-300 transition-colors">
+                         className="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
                         <ExternalLink className="h-4 w-4 mr-2" />
                         HelpGuide - Stress Management
                       </a>
@@ -221,12 +221,12 @@ export default function StressPage() {
                   </ul>
                 </div>
                 
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-orange-400">Crisis Support</h3>
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-red-600">Crisis Support</h3>
                   <div className="space-y-3">
-                    <div className="p-4 bg-red-500/20 rounded-lg border border-red-400/30">
-                      <h4 className="font-semibold text-red-300 mb-2">Emergency Help</h4>
-                      <div className="space-y-2">
+                    <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                      <h4 className="font-semibold text-red-800 mb-2">Emergency Help</h4>
+                      <div className="space-y-2 text-sm">
                         <div className="flex items-center">
                           <Phone className="h-4 w-4 mr-2" />
                           <span>Crisis Helpline: 988</span>
@@ -245,25 +245,25 @@ export default function StressPage() {
                 </div>
               </div>
               
-              <div className="mt-8">
-                <h3 className="text-xl font-semibold text-orange-400 mb-4">Recommended Apps & Tools</h3>
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-blue-600 mb-4">Recommended Apps & Tools</h3>
                 <div className="grid md:grid-cols-3 gap-4">
-                  <Card className="bg-slate-800/50 border-orange-300/20">
+                  <Card className="bg-gray-50">
                     <CardContent className="p-4">
-                      <h4 className="font-semibold text-slate-200">Headspace</h4>
-                      <p className="text-sm text-slate-400">Guided meditation and mindfulness</p>
+                      <h4 className="font-semibold text-gray-800">Headspace</h4>
+                      <p className="text-sm text-gray-600">Guided meditation and mindfulness</p>
                     </CardContent>
                   </Card>
-                  <Card className="bg-slate-800/50 border-orange-300/20">
+                  <Card className="bg-gray-50">
                     <CardContent className="p-4">
-                      <h4 className="font-semibold text-slate-200">Calm</h4>
-                      <p className="text-sm text-slate-400">Sleep stories and relaxation</p>
+                      <h4 className="font-semibold text-gray-800">Calm</h4>
+                      <p className="text-sm text-gray-600">Sleep stories and relaxation</p>
                     </CardContent>
                   </Card>
-                  <Card className="bg-slate-800/50 border-orange-300/20">
+                  <Card className="bg-gray-50">
                     <CardContent className="p-4">
-                      <h4 className="font-semibold text-slate-200">Insight Timer</h4>
-                      <p className="text-sm text-slate-400">Free meditation community</p>
+                      <h4 className="font-semibold text-gray-800">Insight Timer</h4>
+                      <p className="text-sm text-gray-600">Free meditation community</p>
                     </CardContent>
                   </Card>
                 </div>

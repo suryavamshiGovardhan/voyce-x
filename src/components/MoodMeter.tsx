@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Smile, Frown, Angry, Meh, Heart, Brain, Zap, Sparkles } from 'lucide-react';
 

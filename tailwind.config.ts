@@ -61,8 +61,43 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        indian: {
+          saffron: "#FF9933",
+          green: "#138808",
+          red: "#DC143C"
+        },
+        eastasia: {
+          accent: "#DA251D",      // Red (festive)
+          gold: "#FFD700"
+        },
+        arabic: {
+          emerald: "#278878",
+          gold: "#E5C965"
+        },
+        egyptian: {
+          blue: "#243C89",
+          gold: "#F3C13A"
+        },
+        greek: {
+          marble: "#F8F6F3",
+          laurel: "#B8A165",
+        },
+        russian: {
+          berry: "#F25038",
+          pine: "#37833B"
+        }
 			},
+			fontFamily: {
+        // Note: Add these font families after you add Google Fonts to index.html!
+        // Keep fallback values for safety.
+				indian: ["'Yatra One'", "cursive", "sans-serif"],
+        roman: ["'Cinzel'", "serif"],
+        arabic: ["'Cairo'", "sans-serif"],
+        egyptian: ["'UnifrakturCook'", "serif"],
+        eastasia: ["'Noto Sans SC'", "sans-serif"],
+        russian: ["'Lobster Cyrillic'", "cursive", "sans-serif"]
+      },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

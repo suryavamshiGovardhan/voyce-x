@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -167,6 +166,16 @@ export default {
           '0%': { opacity: '0.1' },
           '50%': { opacity: '0.25' },
           '100%': { opacity: '0.1' }
+        },
+        'cherry-bloom': {
+          '0%': { transform: 'scale(0.9) rotate(0deg)', opacity: '0.2' },
+          '50%': { transform: 'scale(1.1) rotate(5deg)', opacity: '0.4' },
+          '100%': { transform: 'scale(1) rotate(0deg)', opacity: '0.2' }
+        },
+        'pagoda-rise': {
+          '0%': { transform: 'translateY(5px)', opacity: '0.1' },
+          '50%': { transform: 'translateY(-2px)', opacity: '0.3' },
+          '100%': { transform: 'translateY(0px)', opacity: '0.15' }
         }
 			},
 			animation: {
@@ -174,7 +183,9 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
         'mandala-spin': 'mandala-spin 8s ease-in-out infinite',
         'lotus-bloom': 'lotus-bloom 3s ease-in-out infinite',
-        'laurel-shimmer': 'laurel-shimmer 4s ease-in-out infinite'
+        'laurel-shimmer': 'laurel-shimmer 4s ease-in-out infinite',
+        'cherry-bloom': 'cherry-bloom 4s ease-in-out infinite',
+        'pagoda-rise': 'pagoda-rise 5s ease-in-out infinite'
 			}
 		}
 	},

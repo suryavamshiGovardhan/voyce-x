@@ -115,15 +115,15 @@ export default function MoodMeter() {
             const CurrentIcon = moodTips[mood].icon;
             const isSelected = selectedMood === mood;
             
-            const buttonClasses = isSelected 
-              ? `group relative p-6 md:p-8 rounded-3xl transition-all duration-500 transform hover:scale-125 hover:-translate-y-4 bg-gradient-to-br ${moodTips[mood].bgGradient} border-2 ${moodTips[mood].borderColor} scale-110 shadow-2xl ${moodTips[mood].glowColor}`
-              : 'group relative p-6 md:p-8 rounded-3xl transition-all duration-500 transform hover:scale-125 hover:-translate-y-4 bg-white/70 backdrop-blur-sm hover:bg-white/90 border-2 border-white/50 shadow-xl hover:shadow-2xl';
+            const baseClasses = "group relative p-6 md:p-8 rounded-3xl transition-all duration-500 transform hover:scale-125 hover:-translate-y-4";
+            const selectedClasses = `bg-gradient-to-br ${moodTips[mood].bgGradient} border-2 ${moodTips[mood].borderColor} scale-110 shadow-2xl ${moodTips[mood].glowColor}`;
+            const unselectedClasses = "bg-white/70 backdrop-blur-sm hover:bg-white/90 border-2 border-white/50 shadow-xl hover:shadow-2xl";
             
             return (
               <button
                 key={mood}
                 onClick={() => handleMoodSelect(mood)}
-                className={buttonClasses}
+                className={`${baseClasses} ${isSelected ? selectedClasses : unselectedClasses}`}
                 style={{
                   animationDelay: `${index * 0.1}s`,
                 }}

@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Brain, Heart, Compass, Mountain, TreeDeciduous, Gem, Temple, Crown, Shield, Lotus } from 'lucide-react';
+import { Brain, Heart, Compass, Mountain, TreeDeciduous, Gem, Church, Crown, Shield, Flower } from 'lucide-react';
 
 const BrainContent = () => {
   return (
@@ -12,7 +11,7 @@ const BrainContent = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-3xl japanese-heading">
             <Brain className="h-8 w-8 text-indigo-700" />
-            <Temple className="h-6 w-6 text-purple-600" />
+            <Church className="h-6 w-6 text-purple-600" />
             Brain Function & Neuroplasticity
             <Crown className="h-6 w-6 text-indigo-600" />
           </CardTitle>
@@ -30,7 +29,7 @@ const BrainContent = () => {
               <div className="text-sm text-indigo-600 japanese-text">Neurons in human brain</div>
             </div>
             <div className="bg-white/70 p-6 rounded-xl border border-purple-200 hover-lift">
-              <Lotus className="h-8 w-8 text-purple-700 mb-3" />
+              <Flower className="h-8 w-8 text-purple-700 mb-3" />
               <div className="text-3xl font-bold text-purple-700 mb-1">100T</div>
               <div className="text-sm text-purple-600 japanese-text">Synaptic connections</div>
             </div>
@@ -109,7 +108,7 @@ const BrainContent = () => {
             <Card className="edu-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 japanese-heading">
-                  <Temple className="h-6 w-6 text-amber-600" />
+                  <Church className="h-6 w-6 text-amber-600" />
                   Ancient Brain Wisdom
                 </CardTitle>
               </CardHeader>
@@ -117,7 +116,7 @@ const BrainContent = () => {
                 <div className="space-y-4">
                   <div className="bg-amber-50/80 p-4 rounded-lg border border-amber-200">
                     <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
-                      <Lotus className="h-4 w-4" />
+                      <Flower className="h-4 w-4" />
                       Sanskrit: मनस् (Manas) - Mind Principle
                     </h4>
                     <p className="text-sm text-amber-700 japanese-text">

@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Brain, Heart, Compass, Lotus, Gem, TreeDeciduous, Mountain, Temple, Crown, Shield } from 'lucide-react';
+import { Brain, Heart, Compass, Flower, Gem, TreeDeciduous, Mountain, Church, Crown, Shield } from 'lucide-react';
 
 const ADHDContent = () => {
   return (
@@ -14,7 +13,7 @@ const ADHDContent = () => {
             <Brain className="h-8 w-8 text-emerald-700" />
             <Compass className="h-6 w-6 text-teal-600" />
             ADHD: Neurodiversity & Focus Mastery
-            <Lotus className="h-6 w-6 text-emerald-600" />
+            <Flower className="h-6 w-6 text-emerald-600" />
           </CardTitle>
           <div className="ink-brush-divider my-4"></div>
         </CardHeader>
@@ -35,7 +34,7 @@ const ADHDContent = () => {
               <div className="text-sm text-teal-600 japanese-text">Global prevalence rate</div>
             </div>
             <div className="bg-white/70 p-6 rounded-xl border border-blue-200 hover-lift">
-              <Temple className="h-8 w-8 text-blue-700 mb-3" />
+              <Church className="h-8 w-8 text-blue-700 mb-3" />
               <div className="text-3xl font-bold text-blue-700 mb-1">75%</div>
               <div className="text-sm text-blue-600 japanese-text">Improvement with treatment</div>
             </div>
@@ -110,7 +109,7 @@ const ADHDContent = () => {
             <Card className="edu-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 japanese-heading">
-                  <Lotus className="h-6 w-6 text-orange-600" />
+                  <Flower className="h-6 w-6 text-orange-600" />
                   Ancient Wisdom & Modern Understanding
                 </CardTitle>
               </CardHeader>
@@ -138,7 +137,7 @@ const ADHDContent = () => {
 
                   <div className="bg-blue-50/80 p-4 rounded-lg border border-blue-200">
                     <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
-                      <Temple className="h-4 w-4" />
+                      <Church className="h-4 w-4" />
                       Greek: Ἀκρασία (Akrasia)
                     </h4>
                     <p className="text-sm text-blue-700 japanese-text">
@@ -248,7 +247,7 @@ const ADHDContent = () => {
                   <ul className="space-y-2">
                     {strength.traits.map((trait, idx) => (
                       <li key={idx} className={`text-sm text-${strength.color}-600 flex items-center gap-2 japanese-text`}>
-                        <Lotus className="w-3 h-3" />
+                        <Flower className="w-3 h-3" />
                         {trait}
                       </li>
                     ))}

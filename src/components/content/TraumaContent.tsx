@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Shield, Heart, Brain, Lotus, Mountain, Gem, Temple, TreeDeciduous, Compass, Crown } from 'lucide-react';
+import { Shield, Heart, Brain, Flower, Mountain, Gem, Church, TreeDeciduous, Compass, Crown } from 'lucide-react';
 
 const TraumaContent = () => {
   return (
@@ -12,7 +11,7 @@ const TraumaContent = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-3xl japanese-heading">
             <Shield className="h-8 w-8 text-amber-700" />
-            <Lotus className="h-6 w-6 text-orange-600" />
+            <Flower className="h-6 w-6 text-orange-600" />
             Trauma Recovery & Resilience
             <Mountain className="h-6 w-6 text-amber-600" />
           </CardTitle>
@@ -25,7 +24,7 @@ const TraumaContent = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="bg-white/70 p-6 rounded-xl border border-amber-200 hover-lift">
-              <Temple className="h-8 w-8 text-amber-700 mb-3" />
+              <Church className="h-8 w-8 text-amber-700 mb-3" />
               <div className="text-3xl font-bold text-amber-700 mb-1">1 in 4</div>
               <div className="text-sm text-amber-600 japanese-text">Adults experience trauma</div>
             </div>
@@ -118,7 +117,7 @@ const TraumaContent = () => {
                 <div className="space-y-4">
                   <div className="bg-amber-50/80 p-4 rounded-lg border border-amber-200">
                     <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
-                      <Lotus className="h-4 w-4" />
+                      <Flower className="h-4 w-4" />
                       Sanskrit: त्राण (Trana) - Protection
                     </h4>
                     <p className="text-sm text-amber-700 japanese-text">
@@ -128,7 +127,7 @@ const TraumaContent = () => {
 
                   <div className="bg-blue-50/80 p-4 rounded-lg border border-blue-200">
                     <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
-                      <Temple className="h-4 w-4" />
+                      <Church className="h-4 w-4" />
                       Greek: Κάθαρσις (Katharsis) - Purification
                     </h4>
                     <p className="text-sm text-blue-700 japanese-text">

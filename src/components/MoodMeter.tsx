@@ -82,7 +82,7 @@ export default function MoodMeter() {
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="w-full h-full" 
                style={{
-                 backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0)`,
+                 backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0)',
                  backgroundSize: '50px 50px',
                  animation: 'grid-float 20s ease-in-out infinite'
                }} />
@@ -124,9 +124,6 @@ export default function MoodMeter() {
                 }`}
                 style={{
                   animationDelay: `${index * 0.1}s`,
-                  ...(isSelected && {
-                    boxShadow: `0 25px 50px -12px ${moodTips[mood].color.replace('text-', 'rgba(').replace('-500', ', 0.4)')}`
-                  })
                 }}
                 aria-label={`Select ${mood} mood`}
               >
@@ -172,10 +169,7 @@ export default function MoodMeter() {
           {selectedMood && (
             <Card className={`relative bg-white/80 backdrop-blur-lg border-2 ${moodTips[selectedMood].borderColor} text-center transition-all duration-700 w-full shadow-2xl overflow-hidden ${
               isAnimating ? 'animate-pulse scale-95 opacity-50' : 'animate-fade-in scale-100 opacity-100'
-            }`}
-            style={{
-              boxShadow: `0 25px 50px -12px ${moodTips[selectedMood].color.replace('text-', 'rgba(').replace('-500', ', 0.2)')}`
-            }}>
+            }`}>
               {/* Animated Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${moodTips[selectedMood].bgGradient} opacity-50`} />
               

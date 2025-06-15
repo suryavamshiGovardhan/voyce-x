@@ -80,12 +80,14 @@ export default function MoodMeter() {
         
         {/* Animated Grid Pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
-          <div className="w-full h-full" 
-               style={{
-                 backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0)',
-                 backgroundSize: '50px 50px',
-                 animation: 'grid-float 20s ease-in-out infinite'
-               }} />
+          <div 
+            className="w-full h-full" 
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0)',
+              backgroundSize: '50px 50px',
+              animation: 'grid-float 20s ease-in-out infinite'
+            }} 
+          />
         </div>
       </div>
 
@@ -113,15 +115,15 @@ export default function MoodMeter() {
             const CurrentIcon = moodTips[mood].icon;
             const isSelected = selectedMood === mood;
             
+            const buttonClasses = isSelected 
+              ? `group relative p-6 md:p-8 rounded-3xl transition-all duration-500 transform hover:scale-125 hover:-translate-y-4 bg-gradient-to-br ${moodTips[mood].bgGradient} border-2 ${moodTips[mood].borderColor} scale-110 shadow-2xl ${moodTips[mood].glowColor}`
+              : 'group relative p-6 md:p-8 rounded-3xl transition-all duration-500 transform hover:scale-125 hover:-translate-y-4 bg-white/70 backdrop-blur-sm hover:bg-white/90 border-2 border-white/50 shadow-xl hover:shadow-2xl';
+            
             return (
               <button
                 key={mood}
                 onClick={() => handleMoodSelect(mood)}
-                className={`group relative p-6 md:p-8 rounded-3xl transition-all duration-500 transform hover:scale-125 hover:-translate-y-4 ${
-                  isSelected 
-                    ? `bg-gradient-to-br ${moodTips[mood].bgGradient} border-2 ${moodTips[mood].borderColor} scale-110 shadow-2xl ${moodTips[mood].glowColor}` 
-                    : 'bg-white/70 backdrop-blur-sm hover:bg-white/90 border-2 border-white/50 shadow-xl hover:shadow-2xl'
-                }`}
+                className={buttonClasses}
                 style={{
                   animationDelay: `${index * 0.1}s`,
                 }}
@@ -177,7 +179,9 @@ export default function MoodMeter() {
               <CardContent className="relative z-10 p-8 md:p-12">
                 <div className="flex items-center justify-center mb-6">
                   <div className={`p-4 rounded-2xl bg-gradient-to-br ${moodTips[selectedMood].bgGradient} border ${moodTips[selectedMood].borderColor}`}>
-                    <moodTips[selectedMood].icon className={`${moodTips[selectedMood].color} w-8 h-8 animate-pulse`} />
+                    {React.createElement(moodTips[selectedMood].icon, {
+                      className: `${moodTips[selectedMood].color} w-8 h-8 animate-pulse`
+                    })}
                   </div>
                 </div>
                 

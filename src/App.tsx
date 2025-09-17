@@ -28,6 +28,7 @@ import NotFound from "./pages/NotFound";
 import ACESPage from "./pages/ACESPage";
 import CDSPage from "./pages/CDSPage";
 import SchoolsPage from "./pages/SchoolsPage";
+import DSM5Page from "./pages/DSM5Page";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
             <Route path="/aces" element={<ACESPage />} />
             <Route path="/cds" element={<CDSPage />} />
             <Route path="/schools" element={<SchoolsPage />} />
+            <Route path="/dsm5" element={<DSM5Page />} />
             <Route path="/theories" element={<TheoriesPage />} />
             <Route path="/workbook" element={<WorkbookPage />} />
             <Route path="/login" element={<LoginPage />} />

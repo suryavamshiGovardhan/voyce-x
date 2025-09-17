@@ -117,6 +117,25 @@ export default {
           berry: "#F25038",    // Berry Red
           pine: "#37833B",     // Forest Pine
           onion: "#B8860B"     // Onion Dome Gold
+        },
+        // Medical/Healthcare Professional Colors
+        medical: {
+          50: "#F8FAFC",       // Medical Light
+          100: "#F1F5F9",      // Clinical White
+          200: "#E2E8F0",      // Lab Coat
+          300: "#CBD5E1",      // Stethoscope Silver
+          400: "#94A3B8",      // Medical Gray
+          500: "#64748B",      // Healthcare Blue
+          600: "#475569",      // Professional Navy
+          700: "#334155",      // Medical Dark
+          800: "#1E293B",      // Deep Medical
+          900: "#0F172A",      // Medical Black
+          primary: "#0EA5E9",  // Medical Blue
+          secondary: "#059669", // Health Green
+          accent: "#DC2626",   // Medical Red
+          success: "#10B981",  // Positive Green
+          warning: "#F59E0B",  // Caution Orange
+          error: "#EF4444"     // Critical Red
         }
 			},
 			fontFamily: {

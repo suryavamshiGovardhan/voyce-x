@@ -56,6 +56,7 @@ const navigationItems = [
       { title: "Tools & Techniques", href: "/tools", icon: Wrench, description: "Practical mental health tools" },
       { title: "Knowledge Library", href: "/library", icon: Library, description: "Curated resources and content" },
       { title: "Psychology Theories", href: "/theories", icon: BookOpen, description: "100+ theories for workshops & education" },
+      { title: "DSM-5-TR Guide", href: "/dsm5", icon: BookOpen, description: "Comprehensive diagnostic manual reference" },
       { title: "Newsletters", href: "/newsletters", icon: Mail, description: "Stay updated with latest insights" },
       { title: "Share Thoughts", href: "/thoughts", icon: MessageSquare, description: "Community stories and experiences" },
     ]

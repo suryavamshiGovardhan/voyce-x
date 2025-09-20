@@ -1,10 +1,19 @@
 export const languages = [
   { code: 'en', name: 'English' },
-  { code: 'te', name: 'Telugu' },
-  { code: 'hi', name: 'Hindi' },
-  { code: 'mr', name: 'Marathi' },
-  { code: 'ta', name: 'Tamil' },
-  { code: 'fr', name: 'French' }
+  { code: 'es', name: 'Español' },
+  { code: 'fr', name: 'Français' },
+  { code: 'de', name: 'Deutsch' },
+  { code: 'it', name: 'Italiano' },
+  { code: 'pt', name: 'Português' },
+  { code: 'ru', name: 'Русский' },
+  { code: 'ja', name: '日本語' },
+  { code: 'ko', name: '한국어' },
+  { code: 'zh', name: '中文' },
+  { code: 'ar', name: 'العربية' },
+  { code: 'hi', name: 'हिन्दी' },
+  { code: 'te', name: 'తెలుగు' },
+  { code: 'ta', name: 'தமிழ்' },
+  { code: 'mr', name: 'मराठी' }
 ];
 
 export const translations = {

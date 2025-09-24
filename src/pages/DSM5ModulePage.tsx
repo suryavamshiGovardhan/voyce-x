@@ -24,6 +24,7 @@ import {
   Stethoscope
 } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { SafeMarkdown } from "@/components/text/SafeMarkdown";
 
 const DSM5ModulePage = () => {
   const { moduleId } = useParams();
@@ -417,19 +418,10 @@ const DSM5ModulePage = () => {
                     <CardTitle>{section.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="prose max-w-none">
-                      {section.content.split('\n').map((paragraph, pIndex) => (
-                        <p key={pIndex} className="mb-4 text-sm leading-relaxed">
-                          {paragraph.trim() && (
-                            paragraph.includes('**') ? (
-                              <span dangerouslySetInnerHTML={{
-                                __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                              }} />
-                            ) : paragraph
-                          )}
-                        </p>
-                      ))}
-                    </div>
+                    <SafeMarkdown 
+                      content={section.content} 
+                      className="prose max-w-none"
+                    />
                     
                     <div className="mt-6">
                       <h5 className="font-semibold mb-3 flex items-center gap-2">
@@ -476,19 +468,10 @@ const DSM5ModulePage = () => {
                       <AccordionItem value="analysis">
                         <AccordionTrigger>Clinical Analysis</AccordionTrigger>
                         <AccordionContent>
-                          <div className="prose max-w-none">
-                            {caseStudy.analysis.split('\n').map((paragraph, pIndex) => (
-                              <p key={pIndex} className="mb-4 text-sm leading-relaxed">
-                                {paragraph.trim() && (
-                                  paragraph.includes('**') ? (
-                                    <span dangerouslySetInnerHTML={{
-                                      __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                    }} />
-                                  ) : paragraph
-                                )}
-                              </p>
-                            ))}
-                          </div>
+                          <SafeMarkdown 
+                            content={caseStudy.analysis} 
+                            className="prose max-w-none"
+                          />
                         </AccordionContent>
                       </AccordionItem>
                       

@@ -41,8 +41,8 @@ export default function SignUpPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Sign up form submitted:", formData);
-    // Here you would typically handle the signup logic
+    // TODO: Implement secure signup with Supabase authentication
+    // Form data validation and secure submission will be added when backend is connected
   };
 
   return (

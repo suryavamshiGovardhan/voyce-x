@@ -60,6 +60,7 @@ const navigationItems = [
       { title: "DSM-5 Academy", href: "/dsm5-academy", icon: GraduationCap, description: "Professional DSM-5 training platform" },
       { title: "Newsletters", href: "/newsletters", icon: Mail, description: "Stay updated with latest insights" },
       { title: "Share Thoughts", href: "/thoughts", icon: MessageSquare, description: "Community stories and experiences" },
+      { title: "Personal Stories", href: "/story", icon: BookOpen, description: "Deeply personal reflections on mental health" },
     ]
   }
 ];

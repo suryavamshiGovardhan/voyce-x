@@ -31,6 +31,13 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --home-gradient: from-slate-900 via-green-900 to-slate-800;
+    
+    /* Blog/Story Page Colors */
+    --blog-background: 180 20% 98%;
+    --blog-text: 180 15% 25%;
+    --blog-muted: 180 10% 45%;
+    --blog-accent: 160 30% 85%;
+    --blog-border: 180 15% 88%;
   }
 
   .dark {
@@ -490,6 +497,65 @@
       radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.04) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, rgba(249, 115, 22, 0.03) 0%, transparent 50%);
     background-size: 50px 50px;
+  }
+
+  /* Blog/Story Page Styles */
+  .blog-container {
+    background: linear-gradient(135deg, hsl(var(--blog-background)) 0%, hsl(180 25% 96%) 100%);
+    min-height: 100vh;
+  }
+
+  .blog-content {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--blog-border));
+  }
+
+  .blog-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: hsl(var(--blog-muted));
+    position: relative;
+  }
+
+  .blog-quote::before,
+  .blog-quote::after {
+    content: '"';
+    font-size: 1.5em;
+    color: hsl(160 40% 70%);
+    position: absolute;
+  }
+
+  .blog-quote::before {
+    top: -0.2em;
+    left: -0.3em;
+  }
+
+  .blog-quote::after {
+    bottom: -0.4em;
+    right: -0.3em;
+  }
+
+  .blog-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: hsl(var(--blog-text));
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  .blog-subheading {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: hsl(var(--blog-text));
+    font-weight: 600;
+  }
+
+  .blog-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, hsl(160 30% 80%) 50%, transparent 100%);
+    margin: 2rem 0;
+  }
+
+  .gentle-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 }
 

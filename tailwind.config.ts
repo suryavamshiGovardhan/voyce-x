@@ -146,7 +146,10 @@ export default {
         egyptian: ["'Papyrus'", "'Hieroglyphic'", "fantasy", "serif"],
         eastasia: ["'Noto Sans SC'", "'Ma Shan Zheng'", "sans-serif"],
         russian: ["'Ruslan Display'", "'Comfortaa'", "cursive", "sans-serif"],
-        zen: ["'Noto Sans JP'", "'Zen Kaku Gothic New'", "sans-serif"]
+        zen: ["'Noto Sans JP'", "'Zen Kaku Gothic New'", "sans-serif"],
+        // Blog Typography Fonts
+        playfair: ["'Playfair Display'", "Georgia", "serif"],
+        blog: ["'Playfair Display'", "Georgia", "Times New Roman", "serif"]
       },
 			borderRadius: {
 				lg: 'var(--radius)',

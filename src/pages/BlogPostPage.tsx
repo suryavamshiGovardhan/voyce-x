@@ -7,7 +7,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { SafeMarkdown } from '@/components/text/SafeMarkdown';
+import { SafeHTML } from '@/components/text/SafeMarkdown';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -99,7 +99,7 @@ export default function BlogPostPage() {
               
               <div className="prose prose-lg max-w-none">
                 {post.content_html ? (
-                  <SafeMarkdown content={post.content_html} />
+                  <SafeHTML html={post.content_html} />
                 ) : (
                   <p className="text-muted-foreground italic">No content available.</p>
                 )}

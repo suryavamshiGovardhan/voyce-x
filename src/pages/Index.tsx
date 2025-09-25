@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import DiscoveryHero from "@/components/DiscoveryHero";
 import MoodMeter from "@/components/MoodMeter";
 import ExploreSection from "@/components/ExploreSection";
+import LatestNews from "@/components/LatestNews";
 import { LaurelWreath, GreekKeyBorder } from "@/components/CulturalPatterns";
 
 // Cultural overlay configuration
@@ -36,7 +37,16 @@ export default function Index() {
           </h1>
           <DiscoveryHero />
           <MoodMeter />
-          <ExploreSection />
+          <div className="container mx-auto px-4 py-8">
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <ExploreSection />
+              </div>
+              <div className="lg:col-span-1">
+                <LatestNews />
+              </div>
+            </div>
+          </div>
         </main>
         <Footer />
       </div>

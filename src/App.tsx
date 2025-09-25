@@ -32,6 +32,9 @@ import DSM5Page from "./pages/DSM5Page";
 import DSM5AcademyPage from "./pages/DSM5AcademyPage";
 import DSM5ModulePage from "./pages/DSM5ModulePage";
 import StoryPage from "./pages/StoryPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
+import DraftsPage from "./pages/DraftsPage";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +54,9 @@ const App = () => (
             <Route path="/newsletters" element={<NewslettersPage />} />
             <Route path="/thoughts" element={<ThoughtsPage />} />
             <Route path="/story" element={<StoryPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/drafts" element={<DraftsPage />} />
             <Route path="/stress" element={<StressPage />} />
             <Route path="/trauma" element={<TraumaPage />} />
             <Route path="/adhd" element={<ADHDPage />} />

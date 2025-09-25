@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Brain, Heart, Zap, Shield, TreePine, Microscope, AlertTriangle, Baby, Focus, BookOpen, Compass, Wrench, Library, Mail, MessageSquare, User, LogIn, GraduationCap } from "lucide-react";
+import { Menu, X, Brain, Heart, Zap, Shield, TreePine, Microscope, AlertTriangle, Baby, Focus, BookOpen, Compass, Wrench, Library, Mail, MessageSquare, User, LogIn, GraduationCap, FileText, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { hapticFeedback } from "@/utils/hapticFeedback";
@@ -46,6 +46,14 @@ const navigationItems = [
     icon: GraduationCap,
     items: [
       { title: "VOYCE for Schools", href: "/schools", icon: GraduationCap, description: "Mental health framework for educational institutions" },
+    ]
+  },
+  {
+    title: "Blog & Content",
+    icon: PenTool,
+    items: [
+      { title: "VOYCE Blog", href: "/blog", icon: FileText, description: "Latest insights and articles" },
+      { title: "Draft Posts", href: "/drafts", icon: PenTool, description: "Work in progress content" },
     ]
   },
   {

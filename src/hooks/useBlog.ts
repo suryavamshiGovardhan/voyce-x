@@ -1,15 +1,41 @@
 import { useState, useEffect } from 'react';
+import { Tables } from '@/integrations/supabase/types';
 import { supabase } from '@/integrations/supabase/client';
-import type { Tables } from '@/integrations/supabase/types';
 
-type Post = Tables<'posts'>;
-type News = Tables<'news'>;
+// Update types to use the blogs table instead of posts
+export type BlogPostPreview = {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  created_at: string;
+};
 
-// Partial types for specific queries
-type BlogPostPreview = Pick<Post, 'id' | 'title' | 'slug' | 'excerpt' | 'created_at'>;
-type BlogPostDetail = Pick<Post, 'title' | 'content_html' | 'hero_image' | 'created_at' | 'tags'>;
-type NewsPreview = Pick<News, 'id' | 'title' | 'slug' | 'created_at'>;
-type DraftPreview = Pick<Post, 'id' | 'title' | 'slug' | 'created_at'>;
+export type BlogPostDetail = {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  hero_image?: string;
+  created_at: string;
+  tags?: string[];
+};
+
+export type NewsPreview = {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  published_at?: string;
+  created_at?: string;
+};
+
+export type DraftPreview = {
+  id: string;
+  title: string;
+  slug: string;
+  created_at: string;
+};
 
 export function useBlogPosts() {
   const [posts, setPosts] = useState<BlogPostPreview[]>([]);
@@ -17,22 +43,31 @@ export function useBlogPosts() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchPosts() {
+    const fetchPosts = async () => {
       try {
         const { data, error } = await supabase
-          .from('posts')
-          .select('id, title, slug, excerpt, created_at')
+          .from('blogs')
+          .select('id, title, slug, summary, created_at')
           .eq('status', 'published')
           .order('created_at', { ascending: false });
 
         if (error) throw error;
-        setPosts(data || []);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch posts');
+        
+        const formattedPosts = data?.map(post => ({
+          id: post.id,
+          title: post.title,
+          slug: post.slug,
+          excerpt: post.summary,
+          created_at: post.created_at
+        })) || [];
+        
+        setPosts(formattedPosts);
+      } catch (err: any) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchPosts();
   }, []);
@@ -46,24 +81,37 @@ export function useBlogPost(slug: string) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchPost() {
+    const fetchPost = async () => {
       if (!slug) return;
       
       try {
         const { data, error } = await supabase
-          .from('posts')
-          .select('title, content_html, hero_image, created_at, tags')
+          .from('blogs')
+          .select('id, title, slug, content, created_at')
           .eq('slug', slug)
-          .single();
+          .eq('status', 'published')
+          .maybeSingle();
 
         if (error) throw error;
-        setPost(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch post');
+        
+        if (data) {
+          const formattedPost: BlogPostDetail = {
+            id: data.id,
+            title: data.title,
+            slug: data.slug,
+            content: data.content,
+            created_at: data.created_at
+          };
+          setPost(formattedPost);
+        } else {
+          setPost(null);
+        }
+      } catch (err: any) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchPost();
   }, [slug]);
@@ -77,22 +125,22 @@ export function useLatestNews() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchNews() {
+    const fetchNews = async () => {
       try {
         const { data, error } = await supabase
           .from('news')
-          .select('id, title, slug, created_at')
+          .select('id, title, slug, excerpt, published_at, created_at')
           .order('published_at', { ascending: false })
           .limit(5);
 
         if (error) throw error;
         setNews(data || []);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch news');
+      } catch (err: any) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchNews();
   }, []);
@@ -106,22 +154,22 @@ export function useDraftPosts() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchDrafts() {
+    const fetchDrafts = async () => {
       try {
         const { data, error } = await supabase
-          .from('posts')
+          .from('blogs')
           .select('id, title, slug, created_at')
           .eq('status', 'draft')
           .order('created_at', { ascending: false });
 
         if (error) throw error;
         setPosts(data || []);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch drafts');
+      } catch (err: any) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchDrafts();
   }, []);

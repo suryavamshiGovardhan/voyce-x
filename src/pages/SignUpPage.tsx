@@ -1,5 +1,7 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,6 +15,8 @@ import { Brain, Shield, Users } from "lucide-react";
 
 export default function SignUpPage() {
   const { t } = useLanguage();
+  const { signUp, loading } = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     mobile: "",
@@ -26,6 +30,7 @@ export default function SignUpPage() {
     agreeToTerms: false,
     subscribeNewsletter: false
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const indianStates = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -39,11 +44,39 @@ export default function SignUpPage() {
     "13-17 (Student)", "18-24 (College/Young Adult)", "25-34", "35-44", "45-54", "55+"
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement secure signup with Supabase authentication
-    // Form data validation and secure submission will be added when backend is connected
+    
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const { error } = await signUp(
+        formData.email,
+        formData.password,
+        formData.fullName,
+        formData.mobile,
+        formData.ageGroup,
+        formData.state,
+        formData.district
+      );
+      
+      if (!error) {
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      console.error('Signup error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  // Redirect if already logged in
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -76,11 +109,10 @@ export default function SignUpPage() {
                 id="mobile"
                 type="tel"
                 placeholder="+91 XXXXX XXXXX"
-                required
                 value={formData.mobile}
                 onChange={(e) => setFormData({...formData, mobile: e.target.value})}
               />
-              <p className="text-xs text-muted-foreground mt-1">We'll send an OTP for verification</p>
+              <p className="text-xs text-muted-foreground mt-1">Optional: We'll send updates about your wellness journey</p>
             </div>
 
             <div>
@@ -177,8 +209,12 @@ export default function SignUpPage() {
               </Label>
             </div>
 
-            <Button type="submit" className="w-full" disabled={!formData.agreeToTerms}>
-              Create Account
+            <Button 
+              type="submit" 
+              className="w-full" 
+              disabled={!formData.agreeToTerms || isSubmitting}
+            >
+              {isSubmitting ? "Creating Account..." : "Create Account"}
             </Button>
 
             <div className="text-center">

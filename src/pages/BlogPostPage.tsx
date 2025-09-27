@@ -98,8 +98,8 @@ export default function BlogPostPage() {
               </header>
               
               <div className="prose prose-lg max-w-none">
-                {post.content_html ? (
-                  <SafeHTML html={post.content_html} />
+                {post.content ? (
+                  <SafeHTML html={post.content} />
                 ) : (
                   <p className="text-muted-foreground italic">No content available.</p>
                 )}

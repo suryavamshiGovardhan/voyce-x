@@ -1,15 +1,44 @@
 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
 import { Brain, Phone, Mail } from "lucide-react";
 
 export default function LoginPage() {
   const { t } = useLanguage();
+  const { signIn, loading } = useAuth();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const { error } = await signIn(formData.email, formData.password);
+      if (!error) {
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Redirect if already logged in
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -26,15 +55,28 @@ export default function LoginPage() {
             </p>
           </div>
           
-          <form className="mt-8 space-y-6">
+          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <div className="space-y-4">
               <div>
-                <Label htmlFor="loginId">Mobile Number or Email</Label>
-                <Input id="loginId" type="text" required placeholder="Enter mobile or email" />
+                <Label htmlFor="email">Email Address</Label>
+                <Input 
+                  id="email" 
+                  type="email" 
+                  required 
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                />
               </div>
               <div>
-                <Label htmlFor="password">{t('password')}</Label>
-                <Input id="password" type="password" required />
+                <Label htmlFor="password">Password</Label>
+                <Input 
+                  id="password" 
+                  type="password" 
+                  required
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
+                />
               </div>
             </div>
 
@@ -45,8 +87,8 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-4">
-              <Button type="submit" className="w-full">
-                {t('login')}
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Signing in..." : "Sign In"}
               </Button>
               
               <div className="relative">
@@ -61,11 +103,6 @@ export default function LoginPage() {
               <Button variant="outline" type="button" className="w-full flex items-center justify-center gap-2">
                 <img src="https://www.google.com/favicon.ico" alt="Google" className="w-4 h-4" />
                 Sign in with Google
-              </Button>
-              
-              <Button variant="outline" type="button" className="w-full flex items-center justify-center gap-2">
-                <Phone className="w-4 h-4" />
-                Sign in with OTP
               </Button>
             </div>
 

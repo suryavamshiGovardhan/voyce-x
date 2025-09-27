@@ -14,6 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_1: {
+        Row: {
+          author: string | null
+          content: string | null
+          date: string | null
+          footer: string | null
+          quotes: string | null
+          references: string | null
+          slug: string | null
+          summary: string | null
+          tips: string | null
+          title: string | null
+        }
+        Insert: {
+          author?: string | null
+          content?: string | null
+          date?: string | null
+          footer?: string | null
+          quotes?: string | null
+          references?: string | null
+          slug?: string | null
+          summary?: string | null
+          tips?: string | null
+          title?: string | null
+        }
+        Update: {
+          author?: string | null
+          content?: string | null
+          date?: string | null
+          footer?: string | null
+          quotes?: string | null
+          references?: string | null
+          slug?: string | null
+          summary?: string | null
+          tips?: string | null
+          title?: string | null
+        }
+        Relationships: []
+      }
+      blogs: {
+        Row: {
+          author: string
+          author_id: string | null
+          blog_references: string | null
+          content: string
+          created_at: string
+          date: string
+          footer: string | null
+          id: string
+          quotes: string | null
+          slug: string
+          status: string | null
+          summary: string | null
+          tips: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author: string
+          author_id?: string | null
+          blog_references?: string | null
+          content: string
+          created_at?: string
+          date?: string
+          footer?: string | null
+          id?: string
+          quotes?: string | null
+          slug: string
+          status?: string | null
+          summary?: string | null
+          tips?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          author_id?: string | null
+          blog_references?: string | null
+          content?: string
+          created_at?: string
+          date?: string
+          footer?: string | null
+          id?: string
+          quotes?: string | null
+          slug?: string
+          status?: string | null
+          summary?: string | null
+          tips?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       news: {
         Row: {
           content_html: string | null
@@ -55,7 +148,7 @@ export type Database = {
           slug: string
           status: string | null
           tags: string[] | null
-          title: string
+          'Unlocking Everyday Joy: "Mindfulness for a Better You"': string
           updated_at: string | null
         }
         Insert: {
@@ -68,7 +161,7 @@ export type Database = {
           slug: string
           status?: string | null
           tags?: string[] | null
-          title: string
+          'Unlocking Everyday Joy: "Mindfulness for a Better You"': string
           updated_at?: string | null
         }
         Update: {
@@ -81,8 +174,44 @@ export type Database = {
           slug?: string
           status?: string | null
           tags?: string[] | null
-          title?: string
+          'Unlocking Everyday Joy: "Mindfulness for a Better You"'?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          age_group: string | null
+          created_at: string
+          district: string | null
+          full_name: string | null
+          id: string
+          mobile: string | null
+          state: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          age_group?: string | null
+          created_at?: string
+          district?: string | null
+          full_name?: string | null
+          id?: string
+          mobile?: string | null
+          state?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          age_group?: string | null
+          created_at?: string
+          district?: string | null
+          full_name?: string | null
+          id?: string
+          mobile?: string | null
+          state?: string | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }

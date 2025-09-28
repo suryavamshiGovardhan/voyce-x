@@ -58,9 +58,11 @@ export type Database = {
           author: string
           author_id: string | null
           blog_references: string | null
+          category: string | null
           content: string
           created_at: string
           date: string
+          featured_image: string | null
           footer: string | null
           id: string
           quotes: string | null
@@ -75,9 +77,11 @@ export type Database = {
           author: string
           author_id?: string | null
           blog_references?: string | null
+          category?: string | null
           content: string
           created_at?: string
           date?: string
+          featured_image?: string | null
           footer?: string | null
           id?: string
           quotes?: string | null
@@ -92,9 +96,11 @@ export type Database = {
           author?: string
           author_id?: string | null
           blog_references?: string | null
+          category?: string | null
           content?: string
           created_at?: string
           date?: string
+          featured_image?: string | null
           footer?: string | null
           id?: string
           quotes?: string | null

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,31 +10,47 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
 import { Brain, Phone, Mail } from "lucide-react";
+import { WelcomeQuoteDialog } from "@/components/WelcomeQuoteDialog";
 
 export default function LoginPage() {
   const { t } = useLanguage();
-  const { signIn, loading } = useAuth();
+  const { signIn, signInWithGoogle, user, loading } = useAuth();
   const navigate = useNavigate();
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [userName, setUserName] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    if (user) {
+      const name = user.user_metadata?.full_name || user.email?.split('@')[0] || 'Friend';
+      setUserName(name);
+      setShowWelcome(true);
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 3000);
+    }
+  }, [user, navigate]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
-      const { error } = await signIn(formData.email, formData.password);
-      if (!error) {
-        navigate('/dashboard');
-      }
+      await signIn(formData.email, formData.password);
+      // Navigation handled by useEffect
     } catch (err) {
       console.error('Login error:', err);
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleGoogleSignIn = async () => {
+    await signInWithGoogle();
   };
 
   // Redirect if already logged in
@@ -100,7 +116,12 @@ export default function LoginPage() {
                 </div>
               </div>
               
-              <Button variant="outline" type="button" className="w-full flex items-center justify-center gap-2">
+              <Button 
+                variant="outline" 
+                type="button" 
+                className="w-full flex items-center justify-center gap-2"
+                onClick={handleGoogleSignIn}
+              >
                 <img src="https://www.google.com/favicon.ico" alt="Google" className="w-4 h-4" />
                 Sign in with Google
               </Button>
@@ -130,6 +151,11 @@ export default function LoginPage() {
           </div>
         </div>
       </main>
+      <WelcomeQuoteDialog 
+        userName={userName}
+        open={showWelcome}
+        onOpenChange={setShowWelcome}
+      />
       <Footer />
     </div>
   );

@@ -7,6 +7,7 @@ export interface Blog {
   slug: string;
   author: string;
   author_id?: string;
+  author_name?: string;
   date: string;
   summary?: string;
   content: string;
@@ -14,6 +15,8 @@ export interface Blog {
   tips?: string;
   blog_references?: string;
   footer?: string;
+  featured_image?: string;
+  category?: string;
   status: string;
   created_at: string;
   updated_at: string;

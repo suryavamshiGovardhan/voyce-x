@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { AuthProvider } from "@/hooks/useAuth";
+import { GlobalErrorHandler } from "@/components/GlobalErrorHandler";
 import Index from "./pages/Index";
 import VoycePage from "./pages/VoycePage";
 import PathPage from "./pages/PathPage";
@@ -35,6 +36,7 @@ import DSM5ModulePage from "./pages/DSM5ModulePage";
 import StoryPage from "./pages/StoryPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import CreateBlogPage from "./pages/CreateBlogPage";
 import DraftsPage from "./pages/DraftsPage";
 
 const queryClient = new QueryClient();
@@ -47,6 +49,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <GlobalErrorHandler />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/voyce" element={<VoycePage />} />
@@ -58,6 +61,8 @@ const App = () => (
               <Route path="/story" element={<StoryPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/blog/create" element={<CreateBlogPage />} />
+              <Route path="/blog/edit/:slug" element={<CreateBlogPage />} />
               <Route path="/drafts" element={<DraftsPage />} />
               <Route path="/stress" element={<StressPage />} />
               <Route path="/trauma" element={<TraumaPage />} />

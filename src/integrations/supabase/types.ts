@@ -57,6 +57,7 @@ export type Database = {
         Row: {
           author: string
           author_id: string | null
+          author_name: string | null
           blog_references: string | null
           category: string | null
           content: string
@@ -65,10 +66,12 @@ export type Database = {
           featured_image: string | null
           footer: string | null
           id: string
+          image_url: string | null
           quotes: string | null
           slug: string
           status: string | null
           summary: string | null
+          tags: string[] | null
           tips: string | null
           title: string
           updated_at: string
@@ -76,6 +79,7 @@ export type Database = {
         Insert: {
           author: string
           author_id?: string | null
+          author_name?: string | null
           blog_references?: string | null
           category?: string | null
           content: string
@@ -84,10 +88,12 @@ export type Database = {
           featured_image?: string | null
           footer?: string | null
           id?: string
+          image_url?: string | null
           quotes?: string | null
           slug: string
           status?: string | null
           summary?: string | null
+          tags?: string[] | null
           tips?: string | null
           title: string
           updated_at?: string
@@ -95,6 +101,7 @@ export type Database = {
         Update: {
           author?: string
           author_id?: string | null
+          author_name?: string | null
           blog_references?: string | null
           category?: string | null
           content?: string
@@ -103,10 +110,12 @@ export type Database = {
           featured_image?: string | null
           footer?: string | null
           id?: string
+          image_url?: string | null
           quotes?: string | null
           slug?: string
           status?: string | null
           summary?: string | null
+          tags?: string[] | null
           tips?: string | null
           title?: string
           updated_at?: string

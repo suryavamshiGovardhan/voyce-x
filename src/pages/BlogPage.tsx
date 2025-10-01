@@ -1,14 +1,26 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useBlogPosts } from '@/hooks/useBlog';
+import { Button } from '@/components/ui/button';
+import { useBlogs } from '@/hooks/useBlogs';
 import { Skeleton } from '@/components/ui/skeleton';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, PenSquare } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
+import { initializeSampleBlogs } from '@/utils/initializeSampleBlogs';
 
 export default function BlogPage() {
-  const { posts, loading, error } = useBlogPosts();
+  const { blogs, loading, error, refetch } = useBlogs();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    // Initialize sample blogs if none exist
+    initializeSampleBlogs().then(() => {
+      refetch();
+    });
+  }, []);
 
   if (error) {
     return (
@@ -37,9 +49,17 @@ export default function BlogPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               VOYCE-X Blog
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground mb-6">
               Insights, stories, and resources for mental health and wellbeing
             </p>
+            {user && (
+              <Button asChild size="lg">
+                <Link to="/blog/create">
+                  <PenSquare className="mr-2 h-5 w-5" />
+                  Write a Blog
+                </Link>
+              </Button>
+            )}
           </header>
 
           {loading ? (
@@ -57,32 +77,47 @@ export default function BlogPage() {
                 </Card>
               ))}
             </div>
-          ) : posts.length === 0 ? (
+          ) : blogs.length === 0 ? (
             <div className="text-center py-12">
               <h2 className="text-2xl font-semibold text-foreground mb-2">No Posts Yet</h2>
               <p className="text-muted-foreground">Check back soon for new content!</p>
             </div>
           ) : (
             <div className="grid gap-6">
-              {posts.map((post) => (
-                <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+              {blogs.map((blog) => (
+                <Card key={blog.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                  {blog.featured_image && (
+                    <div className="w-full h-48 overflow-hidden">
+                      <img 
+                        src={blog.featured_image} 
+                        alt={blog.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
                   <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <CardTitle className="text-xl hover:text-primary transition-colors">
-                        <Link to={`/blog/${post.slug}`}>
-                          {post.title}
+                    <div className="flex items-start justify-between flex-wrap gap-2">
+                      <CardTitle className="text-xl hover:text-primary transition-colors flex-1">
+                        <Link to={`/blog/${blog.slug}`}>
+                          {blog.title}
                         </Link>
                       </CardTitle>
-                      <Badge variant="secondary">
-                        {new Date(post.created_at!).toLocaleDateString()}
-                      </Badge>
+                      <div className="flex gap-2">
+                        <Badge variant="secondary">
+                          {new Date(blog.date).toLocaleDateString()}
+                        </Badge>
+                        {blog.category && (
+                          <Badge variant="outline">{blog.category}</Badge>
+                        )}
+                      </div>
                     </div>
+                    <p className="text-sm text-muted-foreground">By {blog.author}</p>
                   </CardHeader>
-                  {post.excerpt && (
+                  {blog.summary && (
                     <CardContent>
-                      <p className="text-muted-foreground mb-4">{post.excerpt}</p>
+                      <p className="text-muted-foreground mb-4">{blog.summary}</p>
                       <Link 
-                        to={`/blog/${post.slug}`}
+                        to={`/blog/${blog.slug}`}
                         className="text-primary hover:underline font-medium"
                       >
                         Read more →

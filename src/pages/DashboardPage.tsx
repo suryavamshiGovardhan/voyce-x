@@ -1,31 +1,90 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import { 
   Heart, 
   BookOpen, 
-  Trophy, 
   Phone, 
-  Calendar,
-  Star,
-  Target,
   MessageCircle,
-  Bookmark,
-  TrendingUp,
-  Users,
-  Award
+  PenSquare,
+  Edit,
+  Trash2,
+  Eye
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
+interface UserBlog {
+  id: string;
+  title: string;
+  slug: string;
+  status: string;
+  created_at: string;
+  category: string;
+}
 
 export default function DashboardPage() {
   const { t } = useLanguage();
-  const [moodRating, setMoodRating] = useState(0);
+  const { user } = useAuth();
+  const [userBlogs, setUserBlogs] = useState<UserBlog[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      fetchUserBlogs();
+    }
+  }, [user]);
+
+  const fetchUserBlogs = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blogs')
+        .select('id, title, slug, status, created_at, category')
+        .eq('author_id', user?.id)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setUserBlogs(data || []);
+    } catch (error: any) {
+      toast.error('Failed to load your blogs');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id: string, title: string) => {
+    try {
+      const { error } = await supabase
+        .from('blogs')
+        .delete()
+        .eq('id', id)
+        .eq('author_id', user?.id);
+
+      if (error) throw error;
+      toast.success(`"${title}" deleted successfully`);
+      fetchUserBlogs();
+    } catch (error: any) {
+      toast.error('Failed to delete blog');
+    }
+  };
 
   const learningProgress = [
     { module: "Understanding Anxiety", progress: 80, badge: "Expert" },
@@ -49,29 +108,29 @@ export default function DashboardPage() {
       <main className="flex-grow py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Welcome Section */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-primary mb-2">Welcome back, Wellness Warrior!</h1>
-            <p className="text-muted-foreground">Continue your journey towards better mental health</p>
+          <div className="mb-8 flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-primary mb-2">
+                Welcome back, {user?.user_metadata?.full_name || 'Wellness Warrior'}!
+              </h1>
+              <p className="text-muted-foreground">Continue your journey towards better mental health</p>
+            </div>
+            <Button asChild size="lg">
+              <Link to="/blog/create">
+                <PenSquare className="mr-2 h-5 w-5" />
+                Write a Blog
+              </Link>
+            </Button>
           </div>
 
-          {/* Quick Actions & SOS */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          {/* Quick Actions */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card className="bg-red-50 border-red-200">
               <CardContent className="p-4 text-center">
                 <Phone className="h-8 w-8 text-red-600 mx-auto mb-2" />
                 <h3 className="font-semibold text-red-800">Need Help Now?</h3>
                 <Button asChild variant="destructive" size="sm" className="mt-2">
                   <a href="tel:14416">Call Tele MANAS</a>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-md transition-shadow">
-              <CardContent className="p-4 text-center">
-                <BookOpen className="h-8 w-8 text-primary mx-auto mb-2" />
-                <h3 className="font-semibold">Continue Learning</h3>
-                <Button asChild variant="outline" size="sm" className="mt-2">
-                  <Link to="/learning">Resume</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -88,196 +147,101 @@ export default function DashboardPage() {
 
             <Card className="hover:shadow-md transition-shadow">
               <CardContent className="p-4 text-center">
-                <Calendar className="h-8 w-8 text-primary mx-auto mb-2" />
-                <h3 className="font-semibold">Find Support</h3>
+                <BookOpen className="h-8 w-8 text-primary mx-auto mb-2" />
+                <h3 className="font-semibold">Read Blogs</h3>
                 <Button asChild variant="outline" size="sm" className="mt-2">
-                  <Link to="/professionals">Book Session</Link>
+                  <Link to="/blog">Browse</Link>
                 </Button>
               </CardContent>
             </Card>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Mood Check-in */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Heart className="h-5 w-5 mr-2 text-red-500" />
-                    How are you feeling today?
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center space-x-2 mb-4">
-                    {[1, 2, 3, 4, 5].map((rating) => (
-                      <button
-                        key={rating}
-                        onClick={() => setMoodRating(rating)}
-                        className={`w-12 h-12 rounded-full border-2 transition-all ${
-                          moodRating >= rating
-                            ? 'bg-primary text-white border-primary'
-                            : 'border-gray-300 hover:border-primary'
-                        }`}
-                      >
-                        {rating === 1 ? '😢' : rating === 2 ? '😞' : rating === 3 ? '😐' : rating === 4 ? '😊' : '😄'}
-                      </button>
-                    ))}
-                  </div>
-                  {moodRating > 0 && (
-                    <p className="text-sm text-muted-foreground">
-                      Thank you for sharing. Your mood has been recorded privately.
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
-
-              {/* Learning Progress */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <BookOpen className="h-5 w-5 mr-2" />
-                    Your Learning Journey
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {learningProgress.map((module, index) => (
-                      <div key={index} className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium">{module.module}</span>
-                          <Badge variant={module.progress === 100 ? "default" : "outline"}>
-                            {module.badge}
-                          </Badge>
-                        </div>
-                        <Progress value={module.progress} className="h-2" />
-                        <p className="text-sm text-muted-foreground">{module.progress}% complete</p>
-                      </div>
-                    ))}
-                  </div>
-                  <Button asChild className="w-full mt-4">
-                    <Link to="/learning">Continue Learning</Link>
+          {/* User's Blogs Section */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <span className="flex items-center">
+                  <BookOpen className="h-5 w-5 mr-2" />
+                  Your Blog Posts
+                </span>
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/blog/create">
+                    <PenSquare className="mr-2 h-4 w-4" />
+                    Create New
+                  </Link>
+                </Button>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {loading ? (
+                <p className="text-center text-muted-foreground">Loading your blogs...</p>
+              ) : userBlogs.length === 0 ? (
+                <div className="text-center py-8">
+                  <Heart className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-muted-foreground mb-4">You haven't created any blogs yet</p>
+                  <Button asChild>
+                    <Link to="/blog/create">Write Your First Blog</Link>
                   </Button>
-                </CardContent>
-              </Card>
-
-              {/* Latest Resources */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Latest for You</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="border-l-4 border-primary pl-4">
-                      <h4 className="font-semibold">Managing Exam Stress</h4>
-                      <p className="text-sm text-muted-foreground">New techniques for students during exam season</p>
-                      <Button variant="link" className="p-0 h-auto">Read more →</Button>
-                    </div>
-                    <div className="border-l-4 border-secondary pl-4">
-                      <h4 className="font-semibold">Rural Mental Health Initiative</h4>
-                      <p className="text-sm text-muted-foreground">How communities are breaking mental health stigma</p>
-                      <Button variant="link" className="p-0 h-auto">Read more →</Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* Daily Tip */}
-              <Card className="bg-gradient-to-br from-primary/10 to-secondary/10">
-                <CardHeader>
-                  <CardTitle className="text-lg">💡 Today's Wellness Tip</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">{todaysTip}</p>
-                </CardContent>
-              </Card>
-
-              {/* Achievements */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Trophy className="h-5 w-5 mr-2 text-yellow-500" />
-                    Your Achievements
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    {achievements.map((achievement, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <achievement.icon className="h-8 w-8 text-primary" />
-                        <div>
-                          <p className="font-semibold text-sm">{achievement.name}</p>
-                          <p className="text-xs text-muted-foreground">{achievement.description}</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {userBlogs.map((blog) => (
+                    <Card key={blog.id} className="hover:shadow-md transition-shadow">
+                      <CardContent className="p-4">
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <h3 className="font-semibold text-lg">{blog.title}</h3>
+                              <Badge variant={blog.status === 'published' ? 'default' : 'secondary'}>
+                                {blog.status}
+                              </Badge>
+                            </div>
+                            <div className="flex gap-4 text-sm text-muted-foreground">
+                              <span>{blog.category}</span>
+                              <span>{new Date(blog.created_at).toLocaleDateString()}</span>
+                            </div>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button variant="ghost" size="sm" asChild>
+                              <Link to={`/blog/${blog.slug}`}>
+                                <Eye className="h-4 w-4" />
+                              </Link>
+                            </Button>
+                            <Button variant="ghost" size="sm" asChild>
+                              <Link to={`/blog/edit/${blog.slug}`}>
+                                <Edit className="h-4 w-4" />
+                              </Link>
+                            </Button>
+                            <AlertDialog>
+                              <AlertDialogTrigger asChild>
+                                <Button variant="ghost" size="sm">
+                                  <Trash2 className="h-4 w-4 text-destructive" />
+                                </Button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>Delete Blog Post?</AlertDialogTitle>
+                                  <AlertDialogDescription>
+                                    Are you sure you want to delete "{blog.title}"? This action cannot be undone.
+                                  </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogAction onClick={() => handleDelete(blog.id, blog.title)}>
+                                    Delete
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Quick Stats */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <TrendingUp className="h-5 w-5 mr-2" />
-                    Your Impact
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-sm">Days active</span>
-                      <span className="font-semibold">23</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">Modules completed</span>
-                      <span className="font-semibold">7</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">Community interactions</span>
-                      <span className="font-semibold">15</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">Wellness streak</span>
-                      <span className="font-semibold">5 days</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Saved Items */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Bookmark className="h-5 w-5 mr-2" />
-                    Saved Resources
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <Button variant="ghost" size="sm" className="w-full justify-start">
-                      <Target className="h-4 w-4 mr-2" />
-                      Breathing Exercises
-                    </Button>
-                    <Button variant="ghost" size="sm" className="w-full justify-start">
-                      <Heart className="h-4 w-4 mr-2" />
-                      Anxiety Management
-                    </Button>
-                    <Button variant="ghost" size="sm" className="w-full justify-start">
-                      <Users className="h-4 w-4 mr-2" />
-                      Support Groups
-                    </Button>
-                  </div>
-                  <Button asChild variant="outline" size="sm" className="w-full mt-3">
-                    <Link to="/saved">View All Saved</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </div>
       </main>
       <Footer />

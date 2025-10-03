@@ -96,18 +96,19 @@ export default function ModernNavigation() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - Full menu on lg+, Compact on md-lg */}
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
             <NavigationMenu>
-              <NavigationMenuList className="space-x-2">
+              <NavigationMenuList className="space-x-1 lg:space-x-2">
                 {navigationItems.map((section) => (
                   <NavigationMenuItem key={section.title}>
-                    <NavigationMenuTrigger className="bg-transparent text-slate-200 hover:text-green-300 hover:bg-white/10 border-0">
-                      <section.icon className="h-4 w-4 mr-2" />
-                      {section.title}
+                    <NavigationMenuTrigger className="bg-transparent text-slate-200 hover:text-green-300 hover:bg-white/10 border-0 text-sm lg:text-base px-2 lg:px-3">
+                      <section.icon className="h-4 w-4 mr-1 lg:mr-2" />
+                      <span className="hidden lg:inline">{section.title}</span>
+                      <span className="lg:hidden">{section.title.split(' ')[0]}</span>
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="bg-slate-900/95 backdrop-blur-lg border-green-200/20">
-                      <div className="grid w-[400px] gap-3 p-4">
+                    <NavigationMenuContent className="bg-slate-900/98 backdrop-blur-lg border border-green-200/20">
+                      <div className="grid w-[320px] md:w-[400px] gap-3 p-4">
                         {section.items.map((item) => (
                           <NavigationMenuLink key={item.href} asChild>
                             <Link
@@ -133,21 +134,22 @@ export default function ModernNavigation() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 lg:space-x-4">
               <Link
                 to="/workbook"
-                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-medium transition-all duration-200"
                 onClick={() => hapticFeedback.onNavigation()}
               >
-                VOYCE Workbook
+                <span className="hidden lg:inline">VOYCE Workbook</span>
+                <span className="lg:hidden">Workbook</span>
               </Link>
               <Link
                 to="/login"
-                className="text-slate-300 hover:text-green-300 text-sm font-medium transition-colors"
+                className="text-slate-300 hover:text-green-300 text-xs lg:text-sm font-medium transition-colors flex items-center"
                 onClick={() => hapticFeedback.onNavigation()}
               >
-                <LogIn className="h-4 w-4 inline mr-1" />
-                Login
+                <LogIn className="h-4 w-4 lg:mr-1" />
+                <span className="hidden lg:inline">Login</span>
               </Link>
             </div>
           </div>

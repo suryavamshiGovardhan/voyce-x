@@ -18,7 +18,10 @@ import {
   PenSquare,
   Edit,
   Trash2,
-  Eye
+  Eye,
+  Star,
+  Users,
+  Award
 } from "lucide-react";
 import {
   AlertDialog,

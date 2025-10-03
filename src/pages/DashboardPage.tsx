@@ -21,7 +21,8 @@ import {
   Eye,
   Star,
   Users,
-  Award
+  Award,
+  User
 } from "lucide-react";
 import {
   AlertDialog,
@@ -111,19 +112,27 @@ export default function DashboardPage() {
       <main className="flex-grow py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Welcome Section */}
-          <div className="mb-8 flex justify-between items-center">
+          <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h1 className="text-3xl font-bold text-primary mb-2">
                 Welcome back, {user?.user_metadata?.full_name || 'Wellness Warrior'}!
               </h1>
               <p className="text-muted-foreground">Continue your journey towards better mental health</p>
             </div>
-            <Button asChild size="lg">
-              <Link to="/blog/create">
-                <PenSquare className="mr-2 h-5 w-5" />
-                Write a Blog
-              </Link>
-            </Button>
+            <div className="flex gap-2">
+              <Button asChild variant="outline">
+                <Link to="/profile">
+                  <User className="mr-2 h-5 w-5" />
+                  Profile
+                </Link>
+              </Button>
+              <Button asChild size="lg">
+                <Link to="/blog/create">
+                  <PenSquare className="mr-2 h-5 w-5" />
+                  Write a Blog
+                </Link>
+              </Button>
+            </div>
           </div>
 
           {/* Quick Actions */}

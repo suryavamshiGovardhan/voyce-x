@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,8 +10,11 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarInitials } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import { 
   User, 
   Shield, 
@@ -21,20 +25,24 @@ import {
   Settings,
   Award,
   BookOpen,
-  Heart
+  Heart,
+  ArrowLeft
 } from "lucide-react";
 
 export default function ProfilePage() {
   const { t } = useLanguage();
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+
   const [profileData, setProfileData] = useState({
-    fullName: "Wellness Warrior",
-    email: "user@example.com",
-    mobile: "+91 98765 43210",
-    ageGroup: "18-24 (College/Young Adult)",
-    state: "Maharashtra",
-    district: "Mumbai",
-    language: "en",
-    emergencyContact: "+91 98765 43211"
+    fullName: "",
+    email: "",
+    mobile: "",
+    ageGroup: "",
+    state: "",
+    district: ""
   });
 
   const [notifications, setNotifications] = useState({
@@ -50,34 +58,155 @@ export default function ProfilePage() {
     anonymousMode: false
   });
 
-  const userStats = {
-    joinDate: "March 2024",
-    modulesCompleted: 7,
-    daysActive: 23,
-    communityPoints: 156,
-    certificatesEarned: 3
+  const [userStats, setUserStats] = useState({
+    joinDate: "Recent",
+    modulesCompleted: 0,
+    blogsPublished: 0,
+    daysActive: 0
+  });
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+    fetchProfile();
+    fetchUserStats();
+  }, [user, navigate]);
+
+  const fetchProfile = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('user_id', user?.id)
+        .single();
+
+      if (error && error.code !== 'PGRST116') throw error;
+
+      if (data) {
+        setProfileData({
+          fullName: data.full_name || user?.user_metadata?.full_name || '',
+          email: user?.email || '',
+          mobile: data.mobile || '',
+          ageGroup: data.age_group || '',
+          state: data.state || '',
+          district: data.district || ''
+        });
+      } else {
+        setProfileData({
+          fullName: user?.user_metadata?.full_name || '',
+          email: user?.email || '',
+          mobile: '',
+          ageGroup: '',
+          state: '',
+          district: ''
+        });
+      }
+    } catch (error: any) {
+      toast.error('Failed to load profile');
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const fetchUserStats = async () => {
+    try {
+      const { data: blogs, error } = await supabase
+        .from('blogs')
+        .select('id, status', { count: 'exact' })
+        .eq('author_id', user?.id);
+
+      if (!error && blogs) {
+        const published = blogs.filter(b => b.status === 'published').length;
+        setUserStats(prev => ({
+          ...prev,
+          blogsPublished: published,
+          joinDate: new Date(user?.created_at || '').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+        }));
+      }
+    } catch (error) {
+      console.error('Failed to fetch stats:', error);
+    }
+  };
+
+  const handleSaveProfile = async () => {
+    setSaving(true);
+    try {
+      const { error } = await supabase
+        .from('profiles')
+        .upsert({
+          user_id: user?.id,
+          full_name: profileData.fullName,
+          mobile: profileData.mobile,
+          age_group: profileData.ageGroup,
+          state: profileData.state,
+          district: profileData.district,
+          updated_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+      toast.success('Profile updated successfully');
+    } catch (error: any) {
+      toast.error('Failed to update profile');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+      try {
+        await supabase.auth.admin.deleteUser(user?.id || '');
+        toast.success('Account deleted successfully');
+        await signOut();
+        navigate('/');
+      } catch (error: any) {
+        toast.error('Failed to delete account. Please contact support.');
+      }
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow flex items-center justify-center">
+          <p className="text-muted-foreground">Loading profile...</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate('/dashboard')}
+            className="mb-4"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Dashboard
+          </Button>
+
           <div className="flex items-center mb-8">
-            <Avatar className="h-20 w-20 mr-6">
-              <AvatarFallback className="text-2xl">WW</AvatarFallback>
+            <Avatar className="h-20 w-20 mr-6 bg-primary/10">
+              <AvatarFallback className="text-2xl text-primary">
+                {profileData.fullName?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
+              </AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-3xl font-bold">{profileData.fullName}</h1>
-              <p className="text-muted-foreground">Member since {userStats.joinDate}</p>
+              <h1 className="text-3xl font-bold">{profileData.fullName || 'User'}</h1>
+              <p className="text-muted-foreground">{profileData.email}</p>
+              <p className="text-sm text-muted-foreground">Member since {userStats.joinDate}</p>
               <div className="flex space-x-2 mt-2">
                 <Badge variant="secondary">
-                  <Award className="h-3 w-3 mr-1" />
-                  {userStats.certificatesEarned} Certificates
-                </Badge>
-                <Badge variant="outline">
                   <BookOpen className="h-3 w-3 mr-1" />
-                  {userStats.modulesCompleted} Modules
+                  {userStats.blogsPublished} Published Blogs
                 </Badge>
               </div>
             </div>
@@ -154,19 +283,13 @@ export default function ProfilePage() {
                       />
                     </div>
                   </div>
-                  <div>
-                    <Label htmlFor="emergencyContact">Emergency Contact (Optional)</Label>
-                    <Input
-                      id="emergencyContact"
-                      placeholder="Trusted person's phone number"
-                      value={profileData.emergencyContact}
-                      onChange={(e) => setProfileData({...profileData, emergencyContact: e.target.value})}
-                    />
-                    <p className="text-xs text-muted-foreground mt-1">
-                      This will be stored securely and only accessible to you
-                    </p>
-                  </div>
-                  <Button className="w-full">Save Changes</Button>
+                  <Button 
+                    className="w-full" 
+                    onClick={handleSaveProfile}
+                    disabled={saving}
+                  >
+                    {saving ? 'Saving...' : 'Save Changes'}
+                  </Button>
                 </CardContent>
               </Card>
 
@@ -277,11 +400,15 @@ export default function ProfilePage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full" disabled>
                     <Download className="h-4 w-4 mr-2" />
-                    Download My Data
+                    Download My Data (Coming Soon)
                   </Button>
-                  <Button variant="destructive" className="w-full">
+                  <Button 
+                    variant="destructive" 
+                    className="w-full"
+                    onClick={handleDeleteAccount}
+                  >
                     <Trash2 className="h-4 w-4 mr-2" />
                     Delete Account
                   </Button>
@@ -301,20 +428,16 @@ export default function ProfilePage() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-sm">Days Active</span>
-                    <span className="font-semibold">{userStats.daysActive}</span>
+                    <span className="text-sm">Member Since</span>
+                    <span className="font-semibold">{userStats.joinDate}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Published Blogs</span>
+                    <span className="font-semibold">{userStats.blogsPublished}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm">Modules Completed</span>
                     <span className="font-semibold">{userStats.modulesCompleted}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm">Community Points</span>
-                    <span className="font-semibold">{userStats.communityPoints}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm">Certificates</span>
-                    <span className="font-semibold">{userStats.certificatesEarned}</span>
                   </div>
                 </CardContent>
               </Card>

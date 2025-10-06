@@ -14,45 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      blog_1: {
-        Row: {
-          author: string | null
-          content: string | null
-          date: string | null
-          footer: string | null
-          quotes: string | null
-          references: string | null
-          slug: string | null
-          summary: string | null
-          tips: string | null
-          title: string | null
-        }
-        Insert: {
-          author?: string | null
-          content?: string | null
-          date?: string | null
-          footer?: string | null
-          quotes?: string | null
-          references?: string | null
-          slug?: string | null
-          summary?: string | null
-          tips?: string | null
-          title?: string | null
-        }
-        Update: {
-          author?: string | null
-          content?: string | null
-          date?: string | null
-          footer?: string | null
-          quotes?: string | null
-          references?: string | null
-          slug?: string | null
-          summary?: string | null
-          tips?: string | null
-          title?: string | null
-        }
-        Relationships: []
-      }
       blogs: {
         Row: {
           author: string
@@ -67,6 +28,9 @@ export type Database = {
           footer: string | null
           id: string
           image_url: string | null
+          moderated_at: string | null
+          moderated_by: string | null
+          moderation_status: string | null
           quotes: string | null
           slug: string
           status: string | null
@@ -89,6 +53,9 @@ export type Database = {
           footer?: string | null
           id?: string
           image_url?: string | null
+          moderated_at?: string | null
+          moderated_by?: string | null
+          moderation_status?: string | null
           quotes?: string | null
           slug: string
           status?: string | null
@@ -111,6 +78,9 @@ export type Database = {
           footer?: string | null
           id?: string
           image_url?: string | null
+          moderated_at?: string | null
+          moderated_by?: string | null
+          moderation_status?: string | null
           quotes?: string | null
           slug?: string
           status?: string | null

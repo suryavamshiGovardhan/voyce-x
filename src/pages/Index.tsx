@@ -6,6 +6,7 @@ import MoodMeter from "@/components/MoodMeter";
 import ExploreSection from "@/components/ExploreSection";
 import LatestNews from "@/components/LatestNews";
 import { LaurelWreath, GreekKeyBorder } from "@/components/CulturalPatterns";
+import { SEOHead } from "@/components/SEOHead";
 
 // Cultural overlay configuration
 const getCulturalOverlay = () => {
@@ -23,33 +24,39 @@ const getCulturalOverlay = () => {
 export default function Index() {
   const { pattern, font } = getCulturalOverlay();
   return (
-    <div className="bg-white relative overflow-hidden">
-      {/* Subtle cultural SVG pattern in the background */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {pattern}
-      </div>
-      <div className="relative z-10">
-        <Navbar />
-        <main>
-          {/* Cultural font applied to main heading */}
-          <h1 className={`text-5xl md:text-7xl mt-8 text-center text-greek-olympic ${font}`}>
-            Welcome to VOYCE-X
-          </h1>
-          <DiscoveryHero />
-          <MoodMeter />
-          <div className="container mx-auto px-4 py-8">
-            <div className="grid lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2">
-                <ExploreSection />
-              </div>
-              <div className="lg:col-span-1">
-                <LatestNews />
+    <>
+      <SEOHead 
+        description="VOYCE-X: Your compassionate mental health companion. Explore mindfulness practices, psychology insights, and emotional wellbeing resources."
+        keywords="mental health, mindfulness, psychology, emotional wellbeing, self-care, meditation, mental wellness, DSM-5, therapy resources"
+      />
+      <div className="bg-white relative overflow-hidden">
+        {/* Subtle cultural SVG pattern in the background */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          {pattern}
+        </div>
+        <div className="relative z-10">
+          <Navbar />
+          <main>
+            {/* Cultural font applied to main heading */}
+            <h1 className={`text-5xl md:text-7xl mt-8 text-center text-greek-olympic ${font}`}>
+              Welcome to VOYCE-X
+            </h1>
+            <DiscoveryHero />
+            <MoodMeter />
+            <div className="container mx-auto px-4 py-8">
+              <div className="grid lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2">
+                  <ExploreSection />
+                </div>
+                <div className="lg:col-span-1">
+                  <LatestNews />
+                </div>
               </div>
             </div>
-          </div>
-        </main>
-        <Footer />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

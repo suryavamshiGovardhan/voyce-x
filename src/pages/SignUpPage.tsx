@@ -69,7 +69,10 @@ export default function SignUpPage() {
         navigate('/dashboard');
       }
     } catch (err) {
-      console.error('Signup error:', err);
+      // Error already handled by auth context with toast
+      if (import.meta.env.DEV) {
+        console.error('Signup error:', err);
+      }
     } finally {
       setIsSubmitting(false);
     }

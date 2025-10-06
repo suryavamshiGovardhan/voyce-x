@@ -8,6 +8,7 @@ import { AlertCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SafeHTML } from '@/components/text/SafeMarkdown';
+import { SEOHead } from '@/components/SEOHead';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -35,7 +36,17 @@ export default function BlogPostPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      {post && (
+        <SEOHead 
+          title={post.title}
+          description={post.content?.substring(0, 160) || 'VOYCE-X Blog Post'}
+          keywords="mental health, mindfulness, wellbeing"
+          canonicalUrl={`https://voyce-x.lovable.app/blog/${post.slug}`}
+          ogType="article"
+        />
+      )}
+      <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
@@ -110,5 +121,6 @@ export default function BlogPostPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }

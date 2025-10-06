@@ -42,8 +42,12 @@ export default function ThoughtCard({ thought, onLike }: ThoughtCardProps) {
           description: "Thought shared successfully",
         });
       })
-      .catch((error) => {
-        console.error('Error sharing:', error);
+      .catch(() => {
+        toast({
+          title: "Sharing failed",
+          description: "Unable to share at this time",
+          variant: "destructive"
+        });
       });
     } else {
       // Fallback for browsers that don't support navigator.share

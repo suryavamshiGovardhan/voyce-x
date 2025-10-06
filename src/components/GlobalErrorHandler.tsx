@@ -34,7 +34,10 @@ export function GlobalErrorHandler() {
         
         return response;
       } catch (error) {
-        console.error('Network error:', error);
+        // Log in development only
+        if (import.meta.env.DEV) {
+          console.error('Network error:', error);
+        }
         throw error;
       }
     };

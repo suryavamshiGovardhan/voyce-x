@@ -126,7 +126,10 @@ export default function ProfilePage() {
         }));
       }
     } catch (error) {
-      console.error('Failed to fetch stats:', error);
+      // Silently fail - stats are non-critical
+      if (import.meta.env.DEV) {
+        console.error('Failed to fetch stats:', error);
+      }
     }
   };
 

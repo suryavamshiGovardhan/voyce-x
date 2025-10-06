@@ -43,7 +43,10 @@ export default function LoginPage() {
       await signIn(formData.email, formData.password);
       // Navigation handled by useEffect
     } catch (err) {
-      console.error('Login error:', err);
+      // Error already handled by auth context with toast
+      if (import.meta.env.DEV) {
+        console.error('Login error:', err);
+      }
     } finally {
       setIsSubmitting(false);
     }

@@ -9,13 +9,14 @@ export const initializeSampleBlogs = async () => {
       .limit(1);
 
     if (checkError) {
-      console.error('Error checking existing blogs:', checkError);
+      if (import.meta.env.DEV) {
+        console.error('Error checking existing blogs:', checkError);
+      }
       return;
     }
 
     // Only insert if no blogs exist
     if (existing && existing.length > 0) {
-      console.log('Sample blogs already initialized');
       return;
     }
 
@@ -75,11 +76,13 @@ export const initializeSampleBlogs = async () => {
       .insert(sampleBlogs);
 
     if (insertError) {
-      console.error('Error inserting sample blogs:', insertError);
-    } else {
-      console.log('Sample blogs initialized successfully');
+      if (import.meta.env.DEV) {
+        console.error('Error inserting sample blogs:', insertError);
+      }
     }
   } catch (error) {
-    console.error('Failed to initialize sample blogs:', error);
+    if (import.meta.env.DEV) {
+      console.error('Failed to initialize sample blogs:', error);
+    }
   }
 };

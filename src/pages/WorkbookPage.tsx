@@ -22,7 +22,9 @@ export default function WorkbookPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     hapticFeedback.onSuccess();
-    console.log("Story submitted:", formData);
+    if (import.meta.env.DEV) {
+      console.log("Story submitted:", formData);
+    }
     alert("Thank you for sharing your VOYCE story! We'll be in touch soon.");
   };
 

@@ -22,7 +22,7 @@ class HapticFeedback {
     try {
       this.audioContext = new AudioContext();
     } catch (e) {
-      console.log('Web Audio API not supported');
+      // Audio API not available - silently continue
     }
   }
 

@@ -10,6 +10,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { AlertCircle, PenSquare } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { initializeSampleBlogs } from '@/utils/initializeSampleBlogs';
+import { SEOHead } from '@/components/SEOHead';
 
 export default function BlogPage() {
   const { blogs, loading, error, refetch } = useBlogs();
@@ -41,7 +42,13 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead 
+        title="Mental Health Blog"
+        description="Read insightful articles on mental health, mindfulness, psychology, and emotional wellbeing from the VOYCE-X community."
+        keywords="mental health blog, psychology articles, mindfulness tips, emotional wellbeing, mental health resources"
+      />
+      <div className="min-h-screen bg-background">
       <Navbar />
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
@@ -132,5 +139,6 @@ export default function BlogPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }

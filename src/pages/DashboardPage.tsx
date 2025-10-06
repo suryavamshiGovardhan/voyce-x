@@ -10,6 +10,8 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { AuthGuard } from "@/components/AuthGuard";
+import { SEOHead } from "@/components/SEOHead";
 import { 
   Heart, 
   BookOpen, 
@@ -107,7 +109,13 @@ export default function DashboardPage() {
   const todaysTip = "Remember: It's okay to not be okay. Every small step towards mental wellness counts.";
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <AuthGuard>
+      <SEOHead 
+        title="Dashboard"
+        description="Your personal VOYCE-X dashboard"
+        noindex
+      />
+      <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -258,5 +266,6 @@ export default function DashboardPage() {
       </main>
       <Footer />
     </div>
+    </AuthGuard>
   );
 }

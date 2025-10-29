@@ -9,6 +9,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { GlobalErrorHandler } from "@/components/GlobalErrorHandler";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { LoadingFallback } from "@/components/LoadingFallback";
+import { DailyCheckIn } from "@/components/engagement/DailyCheckIn";
 
 // Eager load critical pages
 import Index from "./pages/Index";
@@ -25,6 +26,8 @@ const NewslettersPage = lazy(() => import("./pages/NewslettersPage"));
 const ThoughtsPage = lazy(() => import("./pages/ThoughtsPage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const JournalPage = lazy(() => import("./pages/JournalPage"));
+const JournalHistoryPage = lazy(() => import("./pages/JournalHistoryPage"));
 const StressPage = lazy(() => import("./pages/StressPage"));
 const TraumaPage = lazy(() => import("./pages/TraumaPage"));
 const ADHDPage = lazy(() => import("./pages/ADHDPage"));
@@ -66,6 +69,7 @@ const App = () => (
             <Sonner />
             <BrowserRouter>
               <GlobalErrorHandler />
+              <DailyCheckIn />
               <Suspense fallback={<LoadingFallback />}>
                 <Routes>
                   {/* Critical routes - no lazy loading */}
@@ -102,6 +106,8 @@ const App = () => (
                   <Route path="/workbook" element={<WorkbookPage />} />
                   <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/journal" element={<JournalPage />} />
+                  <Route path="/journal/history" element={<JournalHistoryPage />} />
                   
                   {/* 404 catch-all */}
                   <Route path="*" element={<NotFound />} />

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
+import { sanitizeDbError } from '@/lib/errorHandler';
 import { AuthGuard } from '@/components/AuthGuard';
 import { SEOHead } from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
@@ -43,7 +44,7 @@ export default function JournalPage() {
     if (error) {
       toast({
         title: 'Error',
-        description: 'Failed to save your journal entry. Please try again.',
+        description: sanitizeDbError(error),
         variant: 'destructive',
       });
     } else {

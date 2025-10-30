@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { sanitizeDbError } from '@/lib/errorHandler';
 import { ArrowLeft, Save } from 'lucide-react';
 import { z } from 'zod';
 
@@ -148,7 +149,7 @@ export default function CreateBlogPage() {
       if (error instanceof z.ZodError) {
         toast.error(error.errors[0].message);
       } else {
-        toast.error(error.message || 'Failed to save blog');
+        toast.error(sanitizeDbError(error));
       }
     } finally {
       setLoading(false);

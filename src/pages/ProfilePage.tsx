@@ -15,6 +15,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { sanitizeDbError } from "@/lib/errorHandler";
 import { 
   User, 
   Shield, 
@@ -104,7 +105,7 @@ export default function ProfilePage() {
         });
       }
     } catch (error: any) {
-      toast.error('Failed to load profile');
+      toast.error(sanitizeDbError(error));
     } finally {
       setLoading(false);
     }
@@ -151,20 +152,41 @@ export default function ProfilePage() {
       if (error) throw error;
       toast.success('Profile updated successfully');
     } catch (error: any) {
-      toast.error('Failed to update profile');
+      toast.error(sanitizeDbError(error));
     } finally {
       setSaving(false);
     }
   };
 
   const handleDeleteAccount = async () => {
-    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+    if (confirm('Are you sure you want to delete your account? This action cannot be undone. All your data including journals, mood entries, and blogs will be permanently deleted.')) {
       try {
-        await supabase.auth.admin.deleteUser(user?.id || '');
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          toast.error('Please log in again to delete your account');
+          return;
+        }
+
+        const response = await fetch(
+          `${import.meta.env.VITE_SUPABASE_URL || 'https://eebbwnfkitnmceeokdqd.supabase.co'}/functions/v1/delete-user-account`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${session.access_token}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to delete account');
+        }
+
         toast.success('Account deleted successfully');
         await signOut();
         navigate('/');
       } catch (error: any) {
+        console.error('Account deletion error:', error);
         toast.error('Failed to delete account. Please contact support.');
       }
     }

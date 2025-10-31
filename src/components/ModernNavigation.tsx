@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Brain, Heart, Zap, Shield, TreePine, Microscope, AlertTriangle, Baby, Focus, BookOpen, Compass, Wrench, Library, Mail, MessageSquare, User, LogIn, GraduationCap, FileText, PenTool, FileBarChart } from "lucide-react";
+import { Menu, X, Brain, Heart, Zap, Shield, TreePine, Microscope, AlertTriangle, Baby, Focus, BookOpen, Compass, Wrench, Library, Mail, MessageSquare, User, LogIn, GraduationCap, FileText, PenTool, FileBarChart, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { hapticFeedback } from "@/utils/hapticFeedback";
@@ -67,6 +67,7 @@ const navigationItems = [
       { title: "DSM-5-TR Guide", href: "/dsm5", icon: BookOpen, description: "Comprehensive diagnostic manual reference" },
       { title: "DSM-5 Academy", href: "/dsm5-academy", icon: GraduationCap, description: "Professional DSM-5 training platform" },
       { title: "ICD-9-CM Master Hub", href: "/icd9", icon: FileBarChart, description: "Complete ICD-9 diagnostic codes with multi-language support" },
+      { title: "Integrated Diagnostics", href: "/diagnostics", icon: Stethoscope, description: "ICD-9 & DSM-5 with case studies and cross-references" },
       { title: "Newsletters", href: "/newsletters", icon: Mail, description: "Stay updated with latest insights" },
       { title: "Share Thoughts", href: "/thoughts", icon: MessageSquare, description: "Community stories and experiences" },
       { title: "Personal Stories", href: "/story", icon: BookOpen, description: "Deeply personal reflections on mental health" },

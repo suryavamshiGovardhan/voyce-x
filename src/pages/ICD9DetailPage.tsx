@@ -9,6 +9,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { icd9Categories, sampleICD9Codes } from "@/data/icd9Categories";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { getDSM5FromICD9 } from "@/data/icd9ToDsm5Mapping";
+import { CrossReferenceCard } from "@/components/diagnostics/CrossReferenceCard";
+import { Badge } from "@/components/ui/badge";
 
 export default function ICD9DetailPage() {
   const { range } = useParams<{ range: string }>();
@@ -142,6 +145,34 @@ export default function ICD9DetailPage() {
               )}
             </div>
           </section>
+
+          {/* DSM-5 Cross-References */}
+          {filteredCodes.length > 0 && (
+            <section className="py-8 px-4 bg-muted/20">
+              <div className="container mx-auto max-w-6xl">
+                <div className="mb-6">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Badge variant="outline" className="px-3 py-1">
+                      DSM-5 Cross-References
+                    </Badge>
+                  </div>
+                  <h2 className="text-2xl font-bold mb-2">Related DSM-5 Diagnostic Criteria</h2>
+                  <p className="text-muted-foreground">
+                    See how these ICD-9-CM codes map to DSM-5 psychiatric diagnoses
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  {Array.from(new Set(filteredCodes.map(code => code.code)))
+                    .slice(0, 6)
+                    .flatMap(code => getDSM5FromICD9(code))
+                    .map((ref, idx) => (
+                      <CrossReferenceCard key={idx} reference={ref} showFrom="icd9" />
+                    ))
+                  }
+                </div>
+              </div>
+            </section>
+          )}
 
           {/* Codes Table */}
           <section className="py-8 px-4">

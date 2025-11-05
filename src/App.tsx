@@ -50,6 +50,9 @@ const DraftsPage = lazy(() => import("./pages/DraftsPage"));
 const ICD9Page = lazy(() => import("./pages/ICD9Page"));
 const ICD9DetailPage = lazy(() => import("./pages/ICD9DetailPage"));
 const IntegratedDiagnosticsPage = lazy(() => import("./pages/IntegratedDiagnosticsPage"));
+const QuizListPage = lazy(() => import("./pages/QuizListPage"));
+const LeaderboardPage = lazy(() => import("./pages/LeaderboardPage"));
+const OnboardingFlow = lazy(() => import("./components/onboarding/OnboardingFlow"));
 
 const queryClient = new QueryClient({
   defaultOptions: {

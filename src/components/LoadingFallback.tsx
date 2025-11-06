@@ -1,4 +1,4 @@
-import { Loader2 } from 'lucide-react';
+import { ThinkingLoader } from './ThinkingLoader';
 
 interface LoadingFallbackProps {
   message?: string;
@@ -9,25 +9,7 @@ export function LoadingFallback({
   message = "Loading...", 
   fullScreen = true 
 }: LoadingFallbackProps) {
-  const containerClass = fullScreen 
-    ? "min-h-screen flex items-center justify-center"
-    : "flex items-center justify-center p-8";
-
-  return (
-    <div className={containerClass}>
-      <div className="text-center space-y-4 animate-fade-in">
-        <div className="flex justify-center">
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse" />
-            <Loader2 className="h-12 w-12 text-primary animate-spin relative" />
-          </div>
-        </div>
-        <p className="text-muted-foreground text-lg font-medium">
-          {message}
-        </p>
-      </div>
-    </div>
-  );
+  return <ThinkingLoader message={message} fullScreen={fullScreen} />;
 }
 
 export function PageLoadingSkeleton() {

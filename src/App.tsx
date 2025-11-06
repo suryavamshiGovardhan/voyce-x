@@ -52,7 +52,6 @@ const ICD9DetailPage = lazy(() => import("./pages/ICD9DetailPage"));
 const IntegratedDiagnosticsPage = lazy(() => import("./pages/IntegratedDiagnosticsPage"));
 const QuizListPage = lazy(() => import("./pages/QuizListPage"));
 const LeaderboardPage = lazy(() => import("./pages/LeaderboardPage"));
-const OnboardingFlow = lazy(() => import("./components/onboarding/OnboardingFlow"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -114,9 +113,11 @@ const App = () => (
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/journal" element={<JournalPage />} />
                   <Route path="/journal/history" element={<JournalHistoryPage />} />
-            <Route path="/icd9" element={<ICD9Page />} />
-            <Route path="/icd9/:range" element={<ICD9DetailPage />} />
-            <Route path="/diagnostics" element={<IntegratedDiagnosticsPage />} />
+                  <Route path="/icd9" element={<ICD9Page />} />
+                  <Route path="/icd9/:range" element={<ICD9DetailPage />} />
+                  <Route path="/diagnostics" element={<IntegratedDiagnosticsPage />} />
+                  <Route path="/quizzes" element={<QuizListPage />} />
+                  <Route path="/leaderboard" element={<LeaderboardPage />} />
                   
                   {/* 404 catch-all */}
                   <Route path="*" element={<NotFound />} />

@@ -10,6 +10,9 @@ import { StatsWidget } from '@/components/dashboard/StatsWidget';
 import { MoodChart } from '@/components/dashboard/MoodChart';
 import { JournalPreview } from '@/components/dashboard/JournalPreview';
 import { ProgressWidget } from '@/components/dashboard/ProgressWidget';
+import GamificationWidget from '@/components/gamification/GamificationWidget';
+import DailyChallenge from '@/components/daily/DailyChallenge';
+import ReferralCard from '@/components/referral/ReferralCard';
 import { 
   Heart, 
   BookOpen, 
@@ -61,6 +64,12 @@ export default function DashboardPage() {
                 </Button>
               </div>
             </div>
+
+            {/* Gamification Widget */}
+            <GamificationWidget />
+
+            {/* Daily Challenge */}
+            <DailyChallenge />
 
             {/* Today's Tip */}
             <Card className="p-6 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-primary/20">
@@ -136,8 +145,11 @@ export default function DashboardPage() {
               <JournalPreview />
             </div>
 
-            {/* Learning Progress */}
-            <ProgressWidget />
+            {/* Learning Progress & Referral */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <ProgressWidget />
+              <ReferralCard />
+            </div>
           </div>
         </main>
         <Footer />

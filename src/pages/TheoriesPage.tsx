@@ -15,6 +15,7 @@ import {
   GraduationCap, Microscope, TreePine, Target, Star, Clock,
   User, Award, AlertTriangle, CheckCircle, ArrowRight
 } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
 
 const categoryIcons = {
   developmental: <User className="h-4 w-4" />,
@@ -72,9 +73,15 @@ export default function TheoriesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800">
-      <Navbar />
-      <EnhancedMusicPlayer />
+    <>
+      <SEOHead 
+        title="100+ Psychology Theories"
+        description="Comprehensive guide to over 100 psychology theories from developmental to neuroscience. Search, filter, and explore theories from basic to advanced levels."
+        keywords="psychology theories, cognitive psychology, behavioral psychology, developmental psychology, psychotherapy theories, VOYCE"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800">
+        <Navbar />
+        <EnhancedMusicPlayer />
       
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
@@ -337,5 +344,6 @@ export default function TheoriesPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

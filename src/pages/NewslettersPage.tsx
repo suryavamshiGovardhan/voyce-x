@@ -2,11 +2,18 @@
 import Navbar from "@/components/Navbar";
 import Newsletters from "@/components/Newsletters";
 import Footer from "@/components/Footer";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function NewslettersPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
+    <>
+      <SEOHead 
+        title="Mental Health Newsletters"
+        description="Curated mental health newsletters and resources to support your journey. Stay updated with the latest insights, research, and community knowledge."
+        keywords="mental health newsletter, wellness resources, psychology updates, community resources, VOYCE newsletter"
+      />
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
       <main className="flex-grow">
         <div className="bg-gradient-to-r from-primary/10 to-secondary/10 py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
@@ -23,5 +30,6 @@ export default function NewslettersPage() {
       
       <Footer />
     </div>
+    </>
   );
 }

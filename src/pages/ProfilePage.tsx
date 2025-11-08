@@ -29,6 +29,7 @@ import {
   Heart,
   ArrowLeft
 } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function ProfilePage() {
   const { t } = useLanguage();
@@ -205,8 +206,15 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
+    <>
+      <SEOHead 
+        title="My Profile"
+        description="Manage your VOYCE profile, preferences, and account settings."
+        keywords="profile settings, account management, user preferences"
+        noindex={true}
+      />
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
       <main className="flex-grow py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <Button 
@@ -515,9 +523,10 @@ export default function ProfilePage() {
               </Card>
             </div>
           </div>
-        </div>
-      </main>
-      <Footer />
-    </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }

@@ -5,12 +5,19 @@ import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import ShareStoryButton from "@/components/ShareStoryButton";
 import TraumaContent from "@/components/content/TraumaContent";
 import { CherryBlossomAccent, PagodaAccent } from "@/components/CulturalPatterns";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function TraumaPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-amber-900 to-orange-900 relative overflow-hidden">
-      {/* Japanese/East Asian cultural overlay for healing themes */}
-      <div className="absolute inset-0 pointer-events-none z-0 opacity-60">
+    <>
+      <SEOHead 
+        title="Trauma Recovery & Healing"
+        description="Transform wounds into wisdom with trauma-informed healing approaches. Learn about PTSD recovery, resilience building, and ancient healing practices for complete restoration."
+        keywords="trauma recovery, PTSD treatment, healing trauma, resilience, trauma-informed care, emotional healing, VOYCE"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-amber-900 to-orange-900 relative overflow-hidden">
+        {/* Japanese/East Asian cultural overlay for healing themes */}
+        <div className="absolute inset-0 pointer-events-none z-0 opacity-60">
         <CherryBlossomAccent className="absolute top-20 right-20 w-32 h-32 animate-cherry-bloom" />
         <PagodaAccent className="absolute bottom-32 left-16 w-24 h-12 animate-pagoda-rise" />
         <CherryBlossomAccent className="absolute top-1/2 left-1/4 w-24 h-24 animate-cherry-bloom delay-1000" />
@@ -42,5 +49,6 @@ export default function TraumaPage() {
         <Footer />
       </div>
     </div>
+    </>
   );
 }

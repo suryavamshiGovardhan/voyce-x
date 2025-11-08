@@ -5,12 +5,19 @@ import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import ShareStoryButton from "@/components/ShareStoryButton";
 import ADHDContent from "@/components/content/ADHDContent";
 import { MandalaPattern, LotusAccent } from "@/components/CulturalPatterns";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function ADHDPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-teal-900 relative overflow-hidden">
-      {/* Subtle Indian/Vedic cultural overlay for ADHD focus themes */}
-      <div className="absolute inset-0 pointer-events-none z-0">
+    <>
+      <SEOHead 
+        title="ADHD Support & Management"
+        description="Harness neurodiversity and transform ADHD into your superpower. Learn evidence-based strategies for focus, organization, and celebrating unique cognitive strengths."
+        keywords="ADHD support, attention deficit, focus strategies, neurodiversity, ADHD management, executive function, VOYCE"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-teal-900 relative overflow-hidden">
+        {/* Subtle Indian/Vedic cultural overlay for ADHD focus themes */}
+        <div className="absolute inset-0 pointer-events-none z-0">
         <MandalaPattern className="absolute top-10 right-10 w-64 h-64 animate-mandala-spin" />
         <LotusAccent className="absolute bottom-20 left-10 w-32 h-20 animate-lotus-bloom" />
       </div>
@@ -40,5 +47,6 @@ export default function ADHDPage() {
         <Footer />
       </div>
     </div>
+    </>
   );
 }

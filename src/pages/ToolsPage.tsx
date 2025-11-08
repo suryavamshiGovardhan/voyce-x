@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import JapaneseIcon from "@/components/JapaneseIcon";
 import { hapticFeedback } from "@/utils/hapticFeedback";
 import { useEffect, useRef } from "react";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function ToolsPage() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -21,8 +22,14 @@ export default function ToolsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-orange-900 japanese-pattern" ref={sectionRef}>
-      <Navbar />
+    <>
+      <SEOHead 
+        title="Mental Health Tools"
+        description="Practical mental health tools including breathing exercises, meditation guides, mood trackers, and mindfulness resources for daily emotional wellbeing."
+        keywords="mental health tools, meditation, breathing exercises, mood tracking, mindfulness resources, VOYCE tools"
+      />
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-orange-900 japanese-pattern" ref={sectionRef}>
+        <Navbar />
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 slide-3d-enter">
@@ -67,5 +74,6 @@ export default function ToolsPage() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }

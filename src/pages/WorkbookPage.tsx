@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import { hapticFeedback } from "@/utils/hapticFeedback";
 import { Heart, Upload, Send, FileText, MessageSquare } from "lucide-react";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function WorkbookPage() {
   const [formData, setFormData] = useState({
@@ -40,9 +41,15 @@ export default function WorkbookPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-green-900 to-slate-800">
-      <Navbar />
-      <EnhancedMusicPlayer />
+    <>
+      <SEOHead 
+        title="Interactive Workbook"
+        description="Share your personal story and engage with interactive mental health workbook exercises. Your voice matters in building a supportive community."
+        keywords="mental health workbook, personal story, therapy exercises, self-reflection, VOYCE community"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-green-900 to-slate-800">
+        <Navbar />
+        <EnhancedMusicPlayer />
       
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
@@ -211,5 +218,6 @@ export default function WorkbookPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

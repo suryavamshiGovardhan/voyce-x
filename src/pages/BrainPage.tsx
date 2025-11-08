@@ -4,11 +4,18 @@ import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import ShareStoryButton from "@/components/ShareStoryButton";
 import BrainContent from "@/components/content/BrainContent";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function BrainPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900">
-      <Navbar />
+    <>
+      <SEOHead 
+        title="Brain Function & Neuroscience"
+        description="Explore the magnificent architecture of consciousness and unlock your brain's infinite potential through ancient wisdom and cutting-edge neuroscience."
+        keywords="brain function, neuroscience, consciousness, neuroplasticity, cognitive science, brain health, VOYCE"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900">
+        <Navbar />
       <EnhancedMusicPlayer />
       
       <div className="container mx-auto px-4 py-12">
@@ -31,5 +38,6 @@ export default function BrainPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

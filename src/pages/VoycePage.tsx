@@ -9,6 +9,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import NewsletterSection from "@/components/sections/NewsletterSection";
 import CallToActionSection from "@/components/sections/CallToActionSection";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function VoycePage() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -114,13 +115,19 @@ export default function VoycePage() {
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-1000 ${
-      isDarkMode 
-        ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900' 
-        : 'bg-gradient-to-br from-green-50 via-white to-orange-50'
-    } japanese-pattern`}>
-      {/* Enhanced Music Player */}
-      <EnhancedMusicPlayer />
+    <>
+      <SEOHead 
+        title="About VOYCE"
+        description="Comprehensive guide to stress, mental health, and emotional wellbeing. Learn from ancient wisdom and modern neuroscience about managing stress, trauma, and building resilience."
+        keywords="stress management, mental health education, neuroscience, trauma recovery, mindfulness, emotional wellbeing, VOYCE"
+      />
+      <div className={`min-h-screen transition-colors duration-1000 ${
+        isDarkMode 
+          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900' 
+          : 'bg-gradient-to-br from-green-50 via-white to-orange-50'
+      } japanese-pattern`}>
+        {/* Enhanced Music Player */}
+        <EnhancedMusicPlayer />
 
       {/* Hero Section */}
       <HeroSection />
@@ -310,5 +317,6 @@ export default function VoycePage() {
         </Button>
       </div>
     </div>
+    </>
   );
 }

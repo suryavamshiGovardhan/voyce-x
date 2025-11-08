@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Brain, Heart, Users, AlertTriangle, BookOpen, Search, FileText, Stethoscope, TrendingUp } from "lucide-react";
 import dsm5HeroImage from "@/assets/dsm5-hero.jpg";
+import { SEOHead } from "@/components/SEOHead";
 
 const DSM5Page = () => {
   const [activeCategory, setActiveCategory] = useState("overview");
@@ -355,7 +356,13 @@ const DSM5Page = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-medical-50 to-primary-50">
+    <>
+      <SEOHead 
+        title="DSM-5-TR Diagnostic Manual"
+        description="Complete DSM-5-TR guide to mental health disorders classification, diagnostic criteria, and clinical applications. Essential resource for healthcare professionals and students."
+        keywords="DSM-5, diagnostic manual, mental disorders, psychiatric diagnosis, mental health classification, clinical psychology"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-medical-50 to-primary-50">
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${dsm5HeroImage})` }}>
         <div className="max-w-7xl mx-auto text-center">
@@ -791,6 +798,7 @@ const DSM5Page = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

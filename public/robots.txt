@@ -1,0 +1,38 @@
+# robots.txt for VOYCE-X Mental Health Platform
+# Last updated: 2025
+
+User-agent: *
+Allow: /
+
+# Public pages - encourage indexing
+Allow: /voyce
+Allow: /path
+Allow: /tools
+Allow: /library
+Allow: /blog
+Allow: /stress
+Allow: /trauma
+Allow: /adhd
+Allow: /brain
+Allow: /neuroscience
+Allow: /theories
+Allow: /dsm5
+Allow: /icd9
+Allow: /diagnostics
+Allow: /newsletters
+
+# Private/Auth pages - discourage indexing
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /journal
+Disallow: /login
+Disallow: /signup
+Disallow: /drafts
+Disallow: /blog/create
+Disallow: /blog/edit
+
+# API endpoints
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://voyce-x.lovable.app/sitemap.xml

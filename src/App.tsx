@@ -52,6 +52,7 @@ const ICD9DetailPage = lazy(() => import("./pages/ICD9DetailPage"));
 const IntegratedDiagnosticsPage = lazy(() => import("./pages/IntegratedDiagnosticsPage"));
 const QuizListPage = lazy(() => import("./pages/QuizListPage"));
 const LeaderboardPage = lazy(() => import("./pages/LeaderboardPage"));
+const DesireSufferingArticlePage = lazy(() => import("./pages/DesireSufferingArticlePage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -118,6 +119,7 @@ const App = () => (
                   <Route path="/diagnostics" element={<IntegratedDiagnosticsPage />} />
                   <Route path="/quizzes" element={<QuizListPage />} />
                   <Route path="/leaderboard" element={<LeaderboardPage />} />
+                  <Route path="/article/desire-suffering-journey" element={<DesireSufferingArticlePage />} />
                   
                   {/* 404 catch-all */}
                   <Route path="*" element={<NotFound />} />

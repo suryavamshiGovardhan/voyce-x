@@ -15,6 +15,7 @@ export const sitemapRoutes: SitemapRoute[] = [
   { path: '/', priority: 1.0, changefreq: 'daily', title: 'VOYCE-X Home' },
   { path: '/voyce', priority: 0.9, changefreq: 'weekly', title: 'About VOYCE' },
   { path: '/blog', priority: 0.9, changefreq: 'daily', title: 'Mental Health Blog' },
+  { path: '/article/desire-suffering-journey', priority: 0.9, changefreq: 'monthly', title: 'Desire, Suffering & The Human Journey' },
   
   // Mental Wellness
   { path: '/stress', priority: 0.8, changefreq: 'weekly', title: 'Stress Management' },

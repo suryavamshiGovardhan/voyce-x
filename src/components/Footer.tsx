@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-green-200/20 bg-slate-900/50 backdrop-blur-sm mt-20">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-5 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -61,6 +61,16 @@ export default function Footer() {
               </a>
               <a href="/thoughts" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
                 Thoughts
+              </a>
+            </div>
+          </div>
+
+          {/* Philosophy */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-medium text-slate-100">Philosophy</h3>
+            <div className="space-y-2">
+              <a href="/article/desire-suffering-journey" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
+                Desire & Suffering
               </a>
             </div>
           </div>

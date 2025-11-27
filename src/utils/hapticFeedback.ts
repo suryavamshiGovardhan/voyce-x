@@ -125,16 +125,20 @@ if (typeof window !== 'undefined') {
     
     clickableSelectors.forEach(selector => {
       document.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        if (target.matches(selector) || target.closest(selector)) {
-          hapticFeedback.onClick();
+        const target = e.target;
+        if (target instanceof Element) {
+          if (target.matches(selector) || target.closest(selector)) {
+            hapticFeedback.onClick();
+          }
         }
       });
       
       document.addEventListener('mouseenter', (e) => {
-        const target = e.target as HTMLElement;
-        if (target.matches(selector) || target.closest(selector)) {
-          hapticFeedback.onHover();
+        const target = e.target;
+        if (target instanceof Element) {
+          if (target.matches(selector) || target.closest(selector)) {
+            hapticFeedback.onHover();
+          }
         }
       }, true);
     });

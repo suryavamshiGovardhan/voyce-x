@@ -69,6 +69,29 @@ export default function BlogPage() {
             )}
           </header>
 
+          {/* Featured Philosophy Article */}
+          <Card className="mb-8 overflow-hidden border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5">
+            <CardHeader>
+              <Badge className="w-fit mb-2" variant="outline">Featured Philosophy</Badge>
+              <CardTitle className="text-2xl">
+                <Link to="/article/desire-suffering-journey" className="hover:text-primary transition-colors">
+                  Desire, Suffering & The Human Journey
+                </Link>
+              </CardTitle>
+              <p className="text-sm text-muted-foreground">The Debate Buddha Never Finished</p>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                For thousands of years, people have repeated: "Desire is the root of suffering." But if that's really true... why does the entire universe run on desire? VOYCE questions the wisdom the world blindly repeats.
+              </p>
+              <Button asChild variant="outline">
+                <Link to="/article/desire-suffering-journey">
+                  Read Full Article →
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+
           {loading ? (
             <div className="grid gap-6">
               {Array.from({ length: 6 }).map((_, i) => (

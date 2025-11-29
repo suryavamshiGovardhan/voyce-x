@@ -20,7 +20,7 @@ const homeThemes: HomeTheme[] = [
     id: "default",
     name: "VOYCE Original",
     description: "Classic VOYCE experience with green harmony",
-    gradient: "from-slate-900 via-green-900 to-slate-800",
+    gradient: "from-emerald-950 via-green-900 to-teal-950",
     icon: <Brain className="h-5 w-5" />,
     mood: "Balanced"
   },
@@ -28,39 +28,39 @@ const homeThemes: HomeTheme[] = [
     id: "zen",
     name: "Zen Garden",
     description: "Peaceful minimalism for deep reflection",
-    gradient: "from-gray-900 via-green-800 to-teal-900",
+    gradient: "from-slate-950 via-emerald-900 to-cyan-950",
     icon: <Circle className="h-5 w-5" />,
     mood: "Calm"
   },
   {
     id: "warmth",
     name: "Warm Embrace",
-    description: "Comforting oranges and soft browns",
-    gradient: "from-orange-900 via-red-900 to-pink-900",
+    description: "Comforting sunset tones and earth",
+    gradient: "from-amber-950 via-orange-900 to-rose-950",
     icon: <Heart className="h-5 w-5" />,
     mood: "Comforting"
   },
   {
     id: "night",
     name: "Night Therapy",
-    description: "Deep blues for evening contemplation",
-    gradient: "from-indigo-900 via-purple-900 to-blue-900",
+    description: "Deep indigo for evening contemplation",
+    gradient: "from-indigo-950 via-purple-900 to-blue-950",
     icon: <Moon className="h-5 w-5" />,
     mood: "Introspective"
   },
   {
     id: "sunrise",
     name: "Morning Clarity",
-    description: "Energizing yellows and warm light",
-    gradient: "from-yellow-800 via-orange-800 to-red-800",
+    description: "Golden dawn energy and light",
+    gradient: "from-yellow-900 via-amber-800 to-orange-900",
     icon: <Sun className="h-5 w-5" />,
     mood: "Energizing"
   },
   {
     id: "cosmic",
     name: "Cosmic Journey",
-    description: "Deep space purples for exploration",
-    gradient: "from-purple-900 via-indigo-900 to-black",
+    description: "Deep space and infinite exploration",
+    gradient: "from-violet-950 via-purple-950 to-slate-950",
     icon: <Stars className="h-5 w-5" />,
     mood: "Expansive"
   }

@@ -69,28 +69,52 @@ export default function BlogPage() {
             )}
           </header>
 
-          {/* Featured Philosophy Article */}
-          <Card className="mb-8 overflow-hidden border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5">
-            <CardHeader>
-              <Badge className="w-fit mb-2" variant="outline">Featured Philosophy</Badge>
-              <CardTitle className="text-2xl">
-                <Link to="/article/desire-suffering-journey" className="hover:text-primary transition-colors">
-                  Desire, Suffering & The Human Journey
-                </Link>
-              </CardTitle>
-              <p className="text-sm text-muted-foreground">The Debate Buddha Never Finished</p>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4">
-                For thousands of years, people have repeated: "Desire is the root of suffering." But if that's really true... why does the entire universe run on desire? VOYCE questions the wisdom the world blindly repeats.
-              </p>
-              <Button asChild variant="outline">
-                <Link to="/article/desire-suffering-journey">
-                  Read Full Article →
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
+          {/* Featured Philosophy Articles */}
+          <div className="space-y-6 mb-8">
+            <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2" variant="outline">Featured Philosophy</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/desire-suffering-journey" className="hover:text-primary transition-colors">
+                    Desire, Suffering & The Human Journey
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">The Debate Buddha Never Finished</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  For thousands of years, people have repeated: "Desire is the root of suffering." But if that's really true... why does the entire universe run on desire? VOYCE questions the wisdom the world blindly repeats.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/desire-suffering-journey">
+                    Read Full Article →
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2" variant="outline">Featured Philosophy</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/atheism-doctrines" className="hover:text-primary transition-colors">
+                    Doctrines of Atheism: The Rebel's Reason
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">The pursuit of truth without excuses</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Atheism isn't the worship of disbelief. It is the pursuit of truth without excuses — a journey through philosophy, reason, and the courage to question everything we've been taught to accept.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/atheism-doctrines">
+                    Read Full Article →
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
 
           {loading ? (
             <div className="grid gap-6">

@@ -53,6 +53,7 @@ const IntegratedDiagnosticsPage = lazy(() => import("./pages/IntegratedDiagnosti
 const QuizListPage = lazy(() => import("./pages/QuizListPage"));
 const LeaderboardPage = lazy(() => import("./pages/LeaderboardPage"));
 const DesireSufferingArticlePage = lazy(() => import("./pages/DesireSufferingArticlePage"));
+const AtheismDoctrinePage = lazy(() => import("./pages/AtheismDoctrinePage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -120,6 +121,7 @@ const App = () => (
                   <Route path="/quizzes" element={<QuizListPage />} />
                   <Route path="/leaderboard" element={<LeaderboardPage />} />
                   <Route path="/article/desire-suffering-journey" element={<DesireSufferingArticlePage />} />
+                  <Route path="/article/atheism-doctrines" element={<AtheismDoctrinePage />} />
                   
                   {/* 404 catch-all */}
                   <Route path="*" element={<NotFound />} />

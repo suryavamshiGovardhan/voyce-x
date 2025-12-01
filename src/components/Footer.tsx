@@ -72,6 +72,9 @@ export default function Footer() {
               <a href="/article/desire-suffering-journey" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
                 Desire & Suffering
               </a>
+              <a href="/article/atheism-doctrines" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
+                Atheism Doctrines
+              </a>
             </div>
           </div>
 

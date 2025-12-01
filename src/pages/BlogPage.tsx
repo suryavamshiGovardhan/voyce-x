@@ -114,6 +114,28 @@ export default function BlogPage() {
                 </Button>
               </CardContent>
             </Card>
+
+            <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-muted/30 to-muted/10">
+              <CardHeader>
+                <Badge className="w-fit mb-2" variant="outline">Personal Narrative</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/the-misplaced-man" className="hover:text-primary transition-colors">
+                    The Man Who Misplaced Himself
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">A Kafkaesque autobiography</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  A deeply personal exploration of disorientation, identity loss, and quiet despair. A first-person journey through the feeling of being a stranger in one's own life.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/the-misplaced-man">
+                    Read Full Article →
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
           {loading ? (

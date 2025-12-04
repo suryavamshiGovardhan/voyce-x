@@ -1,1 +1,10 @@
 project_id = "eebbwnfkitnmceeokdqd"
+
+[functions.delete-user-account]
+verify_jwt = true
+
+[functions.sanitize-blog-content]
+verify_jwt = false
+
+[functions.analyze-journal]
+verify_jwt = false

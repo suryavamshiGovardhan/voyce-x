@@ -136,6 +136,28 @@ export default function BlogPage() {
                 </Button>
               </CardContent>
             </Card>
+
+            <Card className="overflow-hidden border-green-500/20 bg-gradient-to-br from-green-500/5 to-emerald-500/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2 bg-green-500/10 text-green-600 border-green-500/20">21-Day Protocol</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/day-1-journal" className="hover:text-primary transition-colors">
+                    Day 1: Installing a New Mental Operating System
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">5th December 2025 • Personal Journal</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Breaking the cycle of passive overthinking through structured discipline. A 21-day protocol to rebuild self-thinking ability with proof of execution over motivation.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/day-1-journal">
+                    Read & Start Your Journey →
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
           {loading ? (

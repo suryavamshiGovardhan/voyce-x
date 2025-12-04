@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Brain, Target, Mic, CheckCircle2, BookOpen, Sparkles, Send } from "lucide-react";
+import { ArrowLeft, Calendar, Brain, Target, Mic, CheckCircle2, BookOpen, Sparkles, Send, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,6 +45,8 @@ const Day1JournalPage = () => {
   const [selfCompassion, setSelfCompassion] = useState("");
   const [selfRating, setSelfRating] = useState([5]);
   const [signatureThought, setSignatureThought] = useState("");
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [aiAnalysis, setAiAnalysis] = useState<string | null>(null);
 
   const emotionOptions = ["Calm", "Stressed", "Confused", "Motivated", "Numb", "Hopeful", "Overwhelmed", "Balanced"];
   const inputCategories = ["Philosophy", "Psychology", "Spiritual/Vedic", "Technology", "Automobile/Bikes", "History", "Other"];
@@ -56,10 +59,62 @@ const Day1JournalPage = () => {
     );
   };
 
-  const handleSubmit = () => {
-    toast.success("Your Day 1 reflection has been saved!", {
-      description: "Keep building consistency. See you tomorrow!",
-    });
+  const handleSubmit = async () => {
+    setIsAnalyzing(true);
+    setAiAnalysis(null);
+    
+    const journalData = {
+      emotions: emotionState,
+      emotionIntensity: emotionIntensity[0],
+      completedTasks,
+      hardestPart,
+      whyHard,
+      objectAnalyzed,
+      insights,
+      prePoint,
+      preReason,
+      preExample,
+      actionTask,
+      timeSpent,
+      satisfied,
+      inputCategory,
+      inputSource,
+      inputTakeaway,
+      disciplineShown,
+      struggled,
+      carryForward,
+      selfCompassion,
+      selfRating: selfRating[0],
+      signatureThought,
+    };
+
+    try {
+      const { data, error } = await supabase.functions.invoke('analyze-journal', {
+        body: { journalData }
+      });
+
+      if (error) {
+        console.error("Error calling analyze-journal:", error);
+        toast.error("Couldn't generate analysis", {
+          description: "Your entry was saved. AI analysis temporarily unavailable.",
+        });
+        return;
+      }
+
+      if (data?.analysis) {
+        setAiAnalysis(data.analysis);
+        toast.success("Your reflection has been analyzed!", {
+          description: "Scroll down to see your personalized insights.",
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Something went wrong", {
+        description: "Please try again later.",
+      });
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   return (
@@ -544,14 +599,59 @@ const Day1JournalPage = () => {
 
               {/* Submit Button */}
               <div className="text-center pt-4">
-                <Button size="lg" onClick={handleSubmit} className="gap-2">
-                  <Send className="w-5 h-5" />
-                  Save My Day 1 Entry
+                <Button size="lg" onClick={handleSubmit} disabled={isAnalyzing} className="gap-2">
+                  {isAnalyzing ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Analyzing Your Entry...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Get AI Analysis
+                    </>
+                  )}
                 </Button>
                 <p className="text-sm text-muted-foreground mt-4">
                   You're building consistency, not perfection. That's the foundation warriors are made from. 💪
                 </p>
               </div>
+
+              {/* AI Analysis Result */}
+              {aiAnalysis && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Card className="border-2 border-primary/40 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3 text-xl">
+                        <div className="p-2 rounded-full bg-primary/20">
+                          <Sparkles className="w-6 h-6 text-primary" />
+                        </div>
+                        Your Personalized AI Analysis
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="prose prose-lg dark:prose-invert max-w-none">
+                        {aiAnalysis.split('\n').map((paragraph, index) => (
+                          paragraph.trim() && (
+                            <p key={index} className="text-muted-foreground leading-relaxed mb-4">
+                              {paragraph}
+                            </p>
+                          )
+                        ))}
+                      </div>
+                      <div className="mt-6 pt-4 border-t border-border/50 text-center">
+                        <p className="text-sm text-muted-foreground italic">
+                          This analysis is generated based on your unique inputs. Keep journaling to track your growth over the 21 days.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              )}
             </div>
           </motion.section>
 

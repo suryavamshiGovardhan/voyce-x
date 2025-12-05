@@ -1,6 +1,8 @@
-# robots.txt for VOYCE-X Mental Health Platform
-# Last updated: 2025
+# robots.txt for VOYCE Mental Health Platform
+# https://voyce.lovable.app
+# Last updated: 2025-12-05
 
+# Allow all crawlers
 User-agent: *
 Allow: /
 
@@ -10,6 +12,7 @@ Allow: /path
 Allow: /tools
 Allow: /library
 Allow: /blog
+Allow: /blog/*
 Allow: /stress
 Allow: /trauma
 Allow: /adhd
@@ -17,22 +20,57 @@ Allow: /brain
 Allow: /neuroscience
 Allow: /theories
 Allow: /dsm5
+Allow: /dsm5-academy
+Allow: /dsm5-academy/*
 Allow: /icd9
+Allow: /icd9/*
 Allow: /diagnostics
 Allow: /newsletters
+Allow: /schools
+Allow: /aces
+Allow: /cds
+Allow: /mind-heart-gut
+Allow: /workbook
+Allow: /article/*
+Allow: /quizzes
+Allow: /leaderboard
 
 # Private/Auth pages - discourage indexing
 Disallow: /dashboard
 Disallow: /profile
 Disallow: /journal
+Disallow: /journal/*
 Disallow: /login
 Disallow: /signup
 Disallow: /drafts
 Disallow: /blog/create
-Disallow: /blog/edit
+Disallow: /blog/edit/*
 
-# API endpoints
+# API endpoints and functions
 Disallow: /api/
+Disallow: /_next/
+Disallow: /supabase/
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://voyce-x.lovable.app/sitemap.xml
+Sitemap: https://voyce.lovable.app/sitemap.xml
+
+# Additional directives for specific bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /

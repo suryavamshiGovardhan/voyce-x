@@ -5,17 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     
-    <!-- Primary SEO Meta Tags -->
-    <title>VOYCE - Mental Health & Wellness Platform | Psychology & Personal Growth</title>
-    <meta name="title" content="VOYCE - Mental Health & Wellness Platform | Psychology & Personal Growth">
-    <meta name="description" content="VOYCE is a comprehensive mental health and wellness platform offering educational resources, philosophical insights, mood tracking, journaling, DSM-5 training, and personal growth tools. Start your mental wellness journey today.">
-    <meta name="keywords" content="mental health, wellness, psychology, mindfulness, self-improvement, mood tracking, journaling, DSM-5, meditation, therapy, anxiety, depression, stress management, emotional intelligence, personal development">
-    <meta name="author" content="VOYCE" />
+    <!-- Primary SEO Meta Tags - Enhanced for better indexing -->
+    <title>VOYCE - Mental Health & Wellness Platform | Psychology, Mindfulness & Personal Growth</title>
+    <meta name="title" content="VOYCE - Mental Health & Wellness Platform | Psychology, Mindfulness & Personal Growth">
+    <meta name="description" content="VOYCE: Your comprehensive mental health companion. Access evidence-based psychology resources, DSM-5 training, mood tracking, journaling tools, and mindfulness practices. Join thousands on their wellness journey today.">
+    <meta name="keywords" content="mental health platform, wellness app, psychology resources, mindfulness meditation, self-improvement tools, mood tracker, digital journaling, DSM-5 training, therapy resources, anxiety help, depression support, stress management techniques, emotional intelligence, personal development, mental wellness, cognitive behavioral therapy, mindfulness exercises, self-care practices, emotional wellbeing, mental health education">
+    <meta name="author" content="VOYCE Mental Health Platform" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="bingbot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="geo.region" content="IN">
     <link rel="canonical" href="https://voyce.lovable.app/">
     
+    <!-- Prerender hint for faster navigation -->
+    <link rel="prerender" href="https://voyce.lovable.app/blog">
+    <link rel="prefetch" href="https://voyce.lovable.app/dsm5-academy">
+
     <!-- Performance & Security -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -148,16 +156,39 @@
       });
     </script>
     
-    <!-- Critical CSS for Above-the-Fold Content -->
+    <!-- Critical CSS for Above-the-Fold Content - LCP Optimization -->
     <style>
       /* Critical CSS - Inline for faster first paint */
       *{margin:0;padding:0;box-sizing:border-box}
-      html{scroll-behavior:smooth}
-      body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-      #root{min-height:100vh}
+      html{scroll-behavior:smooth;text-size-adjust:100%;-webkit-text-size-adjust:100%}
+      body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5;overflow-x:hidden}
+      #root{min-height:100vh;display:flex;flex-direction:column}
+      
+      /* Screen Reader Only - Accessibility */
       .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-      .skip-link{position:absolute;top:-40px;left:0;background:#22c55e;color:#fff;padding:8px 16px;z-index:100;transition:top 0.3s}
-      .skip-link:focus{top:0}
+      
+      /* Skip Link - Accessibility */
+      .skip-link{position:absolute;top:-40px;left:0;background:#22c55e;color:#fff;padding:8px 16px;z-index:9999;transition:top 0.3s;font-weight:600;text-decoration:none;border-radius:0 0 4px 0}
+      .skip-link:focus{top:0;outline:2px solid #fff;outline-offset:2px}
+      
+      /* Focus Visible States - Accessibility */
+      :focus-visible{outline:2px solid #22c55e;outline-offset:2px}
+      
+      /* Reduced Motion - Accessibility */
+      @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}}
+      
+      /* Loading State - Prevent CLS */
+      .loading-skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:skeleton 1.5s ease-in-out infinite}
+      @keyframes skeleton{0%{background-position:200% 0}100%{background-position:-200% 0}}
+      
+      /* Hero minimum height to prevent CLS */
+      [data-hero]{min-height:80vh;display:flex;align-items:center;justify-content:center}
+      
+      /* Image aspect ratios to prevent CLS */
+      img{max-width:100%;height:auto;display:block}
+      
+      /* Print styles */
+      @media print{nav,footer,.no-print{display:none!important}body{background:#fff!important;color:#000!important}}
     </style>
   </head>
 

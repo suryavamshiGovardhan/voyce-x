@@ -1,11 +1,12 @@
 /**
  * Structured Data Component for SEO
  * Adds JSON-LD schema.org markup for rich search results
+ * Enhanced for better Google indexing and rich snippets
  */
 
 interface StructuredDataProps {
-  type: 'Organization' | 'WebSite' | 'Article' | 'FAQPage' | 'Course';
-  data: Record<string, any>;
+  type: 'Organization' | 'WebSite' | 'Article' | 'FAQPage' | 'Course' | 'MedicalWebPage' | 'HealthTopicContent';
+  data: Record<string, unknown>;
 }
 
 export function StructuredData({ type, data }: StructuredDataProps) {
@@ -24,25 +25,45 @@ export function StructuredData({ type, data }: StructuredDataProps) {
 }
 
 /**
- * Organization Schema for VOYCE-X
+ * Organization Schema for VOYCE
  */
 export function OrganizationSchema() {
   return (
     <StructuredData
       type="Organization"
       data={{
-        name: 'VOYCE-X',
-        description: 'Mental health and mindfulness platform for emotional wellbeing',
-        url: 'https://voyce-x.lovable.app',
-        logo: 'https://voyce-x.lovable.app/og-image.png',
+        name: 'VOYCE',
+        alternateName: 'VOYCE Mental Health Platform',
+        description: 'Comprehensive mental health and wellness platform offering educational resources, philosophical insights, mood tracking, journaling, DSM-5 training, and personal growth tools.',
+        url: 'https://voyce.lovable.app',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/uploads/1758355648497-1000172409.png',
+          width: 512,
+          height: 512
+        },
+        image: 'https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/social-images/social-1758355685815-1000172409.png',
+        foundingDate: '2025',
         sameAs: [
-          'https://www.instagram.com/suryavamshiiii',
+          'https://www.instagram.com/suryavamshiiii'
         ],
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'customer support',
-          email: 'support@voyce-x.com',
+          availableLanguage: ['English', 'Hindi', 'Telugu', 'Kannada', 'Tamil']
         },
+        areaServed: 'Worldwide',
+        knowsAbout: [
+          'Mental Health',
+          'Psychology',
+          'Mindfulness',
+          'DSM-5',
+          'Emotional Wellbeing',
+          'Stress Management',
+          'Anxiety',
+          'Depression',
+          'Personal Growth'
+        ]
       }}
     />
   );
@@ -56,16 +77,89 @@ export function WebSiteSchema() {
     <StructuredData
       type="WebSite"
       data={{
-        name: 'VOYCE-X',
-        url: 'https://voyce-x.lovable.app',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: {
-            '@type': 'EntryPoint',
-            urlTemplate: 'https://voyce-x.lovable.app/blog?search={search_term_string}',
+        name: 'VOYCE',
+        alternateName: 'VOYCE Mental Health Platform',
+        url: 'https://voyce.lovable.app',
+        description: 'Mental health and wellness platform for emotional wellbeing, psychology education, and personal growth.',
+        inLanguage: ['en', 'hi', 'te'],
+        potentialAction: [
+          {
+            '@type': 'SearchAction',
+            target: {
+              '@type': 'EntryPoint',
+              urlTemplate: 'https://voyce.lovable.app/blog?search={search_term_string}'
+            },
+            'query-input': 'required name=search_term_string'
           },
-          'query-input': 'required name=search_term_string',
+          {
+            '@type': 'ReadAction',
+            target: 'https://voyce.lovable.app/blog'
+          }
+        ],
+        publisher: {
+          '@type': 'Organization',
+          name: 'VOYCE',
+          url: 'https://voyce.lovable.app'
+        }
+      }}
+    />
+  );
+}
+
+/**
+ * FAQ Schema for common questions
+ */
+export function FAQSchema({ faqs }: { faqs: Array<{ question: string; answer: string }> }) {
+  return (
+    <StructuredData
+      type="FAQPage"
+      data={{
+        mainEntity: faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer
+          }
+        }))
+      }}
+    />
+  );
+}
+
+/**
+ * Medical/Health Content Schema
+ */
+export function HealthContentSchema({
+  name,
+  description,
+  about,
+  audience
+}: {
+  name: string;
+  description: string;
+  about: string;
+  audience?: string;
+}) {
+  return (
+    <StructuredData
+      type="MedicalWebPage"
+      data={{
+        name,
+        description,
+        about: {
+          '@type': 'MedicalCondition',
+          name: about
         },
+        audience: audience ? {
+          '@type': 'MedicalAudience',
+          audienceType: audience
+        } : undefined,
+        lastReviewed: new Date().toISOString().split('T')[0],
+        reviewedBy: {
+          '@type': 'Organization',
+          name: 'VOYCE'
+        }
       }}
     />
   );

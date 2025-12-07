@@ -1,62 +1,86 @@
-
+import { lazy, Suspense, memo } from 'react';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import DiscoveryHero from "@/components/DiscoveryHero";
-import MoodMeter from "@/components/MoodMeter";
-import ExploreSection from "@/components/ExploreSection";
-import LatestNews from "@/components/LatestNews";
-import { LaurelWreath, GreekKeyBorder } from "@/components/CulturalPatterns";
+import PerformanceOptimizedHero from "@/components/PerformanceOptimizedHero";
+import QuickEngagementBar from "@/components/QuickEngagementBar";
+import AccessibleExploreSection from "@/components/AccessibleExploreSection";
 import { SEOHead } from "@/components/SEOHead";
+import { OrganizationSchema, WebSiteSchema } from "@/components/StructuredData";
 
-// Cultural overlay configuration
-const getCulturalOverlay = () => {
-  return {
-    pattern: (
-      <>
-        <LaurelWreath className="absolute top-20 left-10 w-48 h-16 animate-laurel-shimmer" />
-        <GreekKeyBorder className="absolute bottom-10 right-10 w-40 h-4" />
-      </>
-    ),
-    font: "font-zen" // Japanese zen aesthetic for overall calm
-  };
-};
+// Lazy load non-critical components for better LCP
+const MoodMeter = lazy(() => import("@/components/MoodMeter"));
+const LatestNews = lazy(() => import("@/components/LatestNews"));
 
-export default function Index() {
-  const { pattern, font } = getCulturalOverlay();
+// Loading fallback with explicit dimensions to prevent CLS
+const LoadingFallback = memo(() => (
+  <div 
+    className="w-full h-48 bg-muted/30 animate-pulse rounded-lg flex items-center justify-center"
+    role="status"
+    aria-label="Loading content"
+  >
+    <span className="sr-only">Loading...</span>
+  </div>
+));
+
+LoadingFallback.displayName = 'LoadingFallback';
+
+function Index() {
   return (
     <>
+      {/* SEO Meta Tags */}
       <SEOHead 
-        description="VOYCE-X: Your compassionate mental health companion. Explore mindfulness practices, psychology insights, and emotional wellbeing resources."
-        keywords="mental health, mindfulness, psychology, emotional wellbeing, self-care, meditation, mental wellness, DSM-5, therapy resources"
+        title="Mental Health & Wellness Platform"
+        description="VOYCE: Your comprehensive mental health companion. Explore evidence-based psychology, mindfulness practices, DSM-5 training, mood tracking, and personal growth resources. Start your wellness journey today."
+        keywords="mental health, mindfulness, psychology, emotional wellbeing, self-care, meditation, mental wellness, DSM-5, therapy resources, mood tracking, journaling, anxiety help, depression support, stress management"
+        ogImage="https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/social-images/social-1758355685815-1000172409.png"
       />
-      <div className="bg-white relative overflow-hidden">
-        {/* Subtle cultural SVG pattern in the background */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          {pattern}
-        </div>
-        <div className="relative z-10">
-          <Navbar />
-          <main>
-            {/* Cultural font applied to main heading */}
-            <h1 className={`text-5xl md:text-7xl mt-8 text-center text-greek-olympic ${font}`}>
-              Welcome to VOYCE-X
-            </h1>
-            <DiscoveryHero />
-            <MoodMeter />
-            <div className="container mx-auto px-4 py-8">
-              <div className="grid lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2">
-                  <ExploreSection />
-                </div>
-                <div className="lg:col-span-1">
+      
+      {/* Structured Data for SEO */}
+      <OrganizationSchema />
+      <WebSiteSchema />
+      
+      <div className="min-h-screen bg-background">
+        {/* Skip Navigation Link - Accessibility */}
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
+        >
+          Skip to main content
+        </a>
+        
+        <Navbar />
+        
+        <main id="main-content" role="main" tabIndex={-1}>
+          {/* Hero Section - Critical LCP element */}
+          <PerformanceOptimizedHero />
+          
+          {/* Quick Engagement Bar - Immediate user actions */}
+          <QuickEngagementBar />
+          
+          {/* Explore Section - Main content */}
+          <AccessibleExploreSection />
+          
+          {/* Secondary Content - Lazy loaded */}
+          <div className="container mx-auto px-4 py-12">
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <Suspense fallback={<LoadingFallback />}>
+                  <MoodMeter />
+                </Suspense>
+              </div>
+              <div className="lg:col-span-1">
+                <Suspense fallback={<LoadingFallback />}>
                   <LatestNews />
-                </div>
+                </Suspense>
               </div>
             </div>
-          </main>
-          <Footer />
-        </div>
+          </div>
+        </main>
+        
+        <Footer />
       </div>
     </>
   );
 }
+
+export default memo(Index);

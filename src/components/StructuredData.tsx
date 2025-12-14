@@ -5,7 +5,7 @@
  */
 
 interface StructuredDataProps {
-  type: 'Organization' | 'WebSite' | 'Article' | 'FAQPage' | 'Course' | 'MedicalWebPage' | 'HealthTopicContent';
+  type: 'Organization' | 'WebSite' | 'Article' | 'FAQPage' | 'Course' | 'MedicalWebPage' | 'HealthTopicContent' | 'Person';
   data: Record<string, unknown>;
 }
 
@@ -32,10 +32,11 @@ export function OrganizationSchema() {
     <StructuredData
       type="Organization"
       data={{
-        name: 'VOYCE',
+        '@id': 'https://voyce-x.lovable.app/#organization',
+        name: 'VOYCE-X',
         alternateName: 'VOYCE Mental Health Platform',
-        description: 'Comprehensive mental health and wellness platform offering educational resources, philosophical insights, mood tracking, journaling, DSM-5 training, and personal growth tools.',
-        url: 'https://voyce.lovable.app',
+        description: 'Comprehensive mental health and wellness platform offering educational resources, philosophical insights, mood tracking, journaling, DSM-5 training, and personal growth tools. Founded by Suryavamshi Govardhan.',
+        url: 'https://voyce-x.lovable.app',
         logo: {
           '@type': 'ImageObject',
           url: 'https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/uploads/1758355648497-1000172409.png',
@@ -44,6 +45,16 @@ export function OrganizationSchema() {
         },
         image: 'https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/social-images/social-1758355685815-1000172409.png',
         foundingDate: '2025',
+        founder: {
+          '@type': 'Person',
+          '@id': 'https://voyce-x.lovable.app/suryavamshi-govardhan#person',
+          name: 'Suryavamshi Govardhan',
+          url: 'https://voyce-x.lovable.app/suryavamshi-govardhan',
+          jobTitle: 'Founder & Visionary',
+          sameAs: [
+            'https://www.instagram.com/suryavamshiiii'
+          ]
+        },
         sameAs: [
           'https://www.instagram.com/suryavamshiiii'
         ],
@@ -194,6 +205,7 @@ export function ArticleSchema({
         author: {
           '@type': 'Person',
           name: author,
+          url: 'https://voyce-x.lovable.app/suryavamshi-govardhan',
         },
         datePublished,
         dateModified: dateModified || datePublished,
@@ -201,15 +213,75 @@ export function ArticleSchema({
         publisher: {
           '@type': 'Organization',
           name: 'VOYCE-X',
+          url: 'https://voyce-x.lovable.app',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://voyce-x.lovable.app/og-image.png',
+            url: 'https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/uploads/1758355648497-1000172409.png',
           },
+          founder: {
+            '@type': 'Person',
+            name: 'Suryavamshi Govardhan',
+            url: 'https://voyce-x.lovable.app/suryavamshi-govardhan'
+          }
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
           '@id': url,
         },
+      }}
+    />
+  );
+}
+
+/**
+ * Person Schema for Suryavamshi Govardhan (Founder)
+ */
+export function FounderSchema() {
+  return (
+    <StructuredData
+      type="Person"
+      data={{
+        '@id': 'https://voyce-x.lovable.app/suryavamshi-govardhan#person',
+        name: 'Suryavamshi Govardhan',
+        givenName: 'Suryavamshi',
+        familyName: 'Govardhan',
+        description: 'Founder of VOYCE-X, a mental health and wellness platform bridging ancient wisdom with modern psychology for accessible emotional wellbeing.',
+        url: 'https://voyce-x.lovable.app/suryavamshi-govardhan',
+        image: 'https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/uploads/1758355648497-1000172409.png',
+        jobTitle: 'Founder & Visionary',
+        worksFor: {
+          '@type': 'Organization',
+          name: 'VOYCE-X',
+          url: 'https://voyce-x.lovable.app'
+        },
+        founder: {
+          '@type': 'Organization',
+          name: 'VOYCE-X',
+          url: 'https://voyce-x.lovable.app'
+        },
+        knowsAbout: [
+          'Mental Health',
+          'Psychology',
+          'Mindfulness',
+          'DSM-5',
+          'Emotional Wellbeing',
+          'Stress Management',
+          'Neuroscience',
+          'Eastern Philosophy',
+          'Buddhist Psychology'
+        ],
+        sameAs: [
+          'https://www.instagram.com/suryavamshiiii',
+          'https://voyce-x.lovable.app'
+        ],
+        alumniOf: {
+          '@type': 'Organization',
+          name: 'Student - Psychology & Human Behavior'
+        },
+        nationality: {
+          '@type': 'Country',
+          name: 'India'
+        }
       }}
     />
   );

@@ -65,10 +65,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Philosophy */}
+          {/* Philosophy & Founder */}
           <div className="space-y-4">
             <h3 className="text-lg font-medium text-slate-100">Philosophy</h3>
             <div className="space-y-2">
+              <a href="/suryavamshi-govardhan" className="block text-slate-300 hover:text-green-300 transition-colors text-sm font-medium" onClick={handleLinkClick}>
+                Meet the Founder
+              </a>
               <a href="/article/desire-suffering-journey" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
                 Desire & Suffering
               </a>
@@ -132,7 +135,14 @@ export default function Footer() {
               <div className="flex items-center justify-center md:justify-end space-x-2 mb-2">
                 <Heart className="h-4 w-4 text-red-400" />
                 <span className="text-slate-300 text-sm">
-                  VOYCE — Created by S. Suryavamshi
+                  VOYCE-X — Founded by{" "}
+                  <a 
+                    href="/suryavamshi-govardhan" 
+                    className="text-green-300 hover:text-green-200 transition-colors font-medium"
+                    onClick={handleLinkClick}
+                  >
+                    Suryavamshi Govardhan
+                  </a>
                 </span>
               </div>
               <p className="text-slate-400 text-sm italic">
@@ -148,7 +158,7 @@ export default function Footer() {
             Share your VOYCE story ❤️
           </p>
           <p className="text-slate-500 text-xs">
-            © 2024 VOYCE. All rights reserved. Built with love for mental clarity and emotional freedom.
+            © 2025 VOYCE-X by Suryavamshi Govardhan. All rights reserved. Built with love for mental clarity and emotional freedom.
           </p>
         </div>
       </div>

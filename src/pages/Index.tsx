@@ -5,7 +5,7 @@ import PerformanceOptimizedHero from "@/components/PerformanceOptimizedHero";
 import QuickEngagementBar from "@/components/QuickEngagementBar";
 import AccessibleExploreSection from "@/components/AccessibleExploreSection";
 import { SEOHead } from "@/components/SEOHead";
-import { OrganizationSchema, WebSiteSchema } from "@/components/StructuredData";
+import { OrganizationSchema, WebSiteSchema, FounderSchema } from "@/components/StructuredData";
 
 // Lazy load non-critical components for better LCP
 const MoodMeter = lazy(() => import("@/components/MoodMeter"));
@@ -29,15 +29,17 @@ function Index() {
     <>
       {/* SEO Meta Tags */}
       <SEOHead 
-        title="Mental Health & Wellness Platform"
-        description="VOYCE: Your comprehensive mental health companion. Explore evidence-based psychology, mindfulness practices, DSM-5 training, mood tracking, and personal growth resources. Start your wellness journey today."
-        keywords="mental health, mindfulness, psychology, emotional wellbeing, self-care, meditation, mental wellness, DSM-5, therapy resources, mood tracking, journaling, anxiety help, depression support, stress management"
+        title="VOYCE-X | Mental Health & Wellness Platform by Suryavamshi Govardhan"
+        description="VOYCE-X: Your comprehensive mental health companion founded by Suryavamshi Govardhan. Explore evidence-based psychology, mindfulness practices, DSM-5 training, mood tracking, and personal growth resources."
+        keywords="VOYCE-X, Suryavamshi Govardhan, mental health, mindfulness, psychology, emotional wellbeing, self-care, meditation, mental wellness, DSM-5, therapy resources, mood tracking, journaling"
         ogImage="https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/social-images/social-1758355685815-1000172409.png"
+        canonicalUrl="https://voyce-x.lovable.app/"
       />
       
       {/* Structured Data for SEO */}
       <OrganizationSchema />
       <WebSiteSchema />
+      <FounderSchema />
       
       <div className="min-h-screen bg-background">
         {/* Skip Navigation Link - Accessibility */}

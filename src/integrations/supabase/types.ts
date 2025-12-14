@@ -704,7 +704,15 @@ export type Database = {
         Returns: boolean
       }
       is_admin: { Args: { _user_id: string }; Returns: boolean }
+      redeem_referral_code: { Args: { p_code: string }; Returns: Json }
       update_streak: { Args: { p_user_id: string }; Returns: undefined }
+      validate_referral_code: {
+        Args: { p_code: string }
+        Returns: {
+          is_valid: boolean
+          points_reward: number
+        }[]
+      }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"

@@ -1,14 +1,16 @@
-/* VOYCE-X Ethical Mental Clarity Ecosystem - Design System */
+/* Performance: Font loaded via index.html with display=swap */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Accessibility: Focus visible styles */
 @layer base {
+  /* Enhanced focus states for accessibility */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-primary;
   }
   
+  /* Reduced motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -20,11 +22,21 @@
     }
   }
   
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --border: 0 0% 20%;
+      --ring: 0 0% 0%;
+    }
+  }
+  
+  /* Print styles */
   @media print {
     body {
       background: white !important;
       color: black !important;
     }
+    
     nav, footer, .no-print {
       display: none !important;
     }
@@ -33,71 +45,66 @@
 
 @layer base {
   :root {
-    /* VOYCE-X Warm, Calm Color Palette - Public Zone */
-    --background: 40 33% 98%;
-    --foreground: 30 10% 20%;
-    --card: 40 30% 99%;
-    --card-foreground: 30 10% 20%;
-    --popover: 40 30% 99%;
-    --popover-foreground: 30 10% 20%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142.1 76.2% 36.3%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --home-gradient: from-slate-900 via-green-900 to-slate-800;
     
-    /* Primary: Warm Sage Green - calming, natural */
-    --primary: 145 30% 45%;
-    --primary-foreground: 40 33% 98%;
-    
-    /* Secondary: Soft Terracotta - warm, grounded */
-    --secondary: 20 40% 92%;
-    --secondary-foreground: 20 30% 30%;
-    
-    /* Muted: Gentle Beige - unobtrusive */
-    --muted: 40 25% 94%;
-    --muted-foreground: 30 15% 50%;
-    
-    /* Accent: Soft Amber - gentle warmth */
-    --accent: 35 60% 92%;
-    --accent-foreground: 35 50% 25%;
-    
-    --destructive: 0 60% 55%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 35 25% 88%;
-    --input: 35 25% 88%;
-    --ring: 145 30% 45%;
-    --radius: 0.75rem;
-    
-    /* VOYCE-X Zone Colors */
-    --voyce-warm: 35 45% 95%;
-    --voyce-calm: 145 25% 95%;
-    --voyce-soft: 20 35% 96%;
-    --voyce-text: 30 15% 25%;
-    --voyce-muted: 30 10% 55%;
-    
-    /* Research Zone - Neutral Academic */
-    --research-bg: 220 15% 97%;
-    --research-text: 220 15% 20%;
-    --research-accent: 220 40% 50%;
-    --research-border: 220 15% 85%;
+    /* Blog/Story Page Colors */
+    --blog-background: 180 20% 98%;
+    --blog-text: 180 15% 25%;
+    --blog-muted: 180 10% 45%;
+    --blog-accent: 160 30% 85%;
+    --blog-border: 180 15% 88%;
   }
 
   .dark {
-    --background: 30 15% 10%;
-    --foreground: 40 20% 90%;
-    --card: 30 12% 12%;
-    --card-foreground: 40 20% 90%;
-    --popover: 30 12% 12%;
-    --popover-foreground: 40 20% 90%;
-    --primary: 145 35% 50%;
-    --primary-foreground: 30 15% 10%;
-    --secondary: 20 20% 18%;
-    --secondary-foreground: 40 20% 90%;
-    --muted: 30 15% 18%;
-    --muted-foreground: 30 10% 60%;
-    --accent: 35 30% 20%;
-    --accent-foreground: 40 20% 90%;
-    --destructive: 0 50% 45%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 30 15% 20%;
-    --input: 30 15% 20%;
-    --ring: 145 35% 50%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -107,160 +114,681 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-  
-  /* Calm, readable typography */
-  h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-  }
-  
-  p {
-    line-height: 1.7;
+    font-family: "Inter", sans-serif;
   }
 }
 
 @layer components {
-  /* VOYCE-X Ethical Animations - Calm, Non-Urgent */
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out;
-  }
-  
-  .animate-gentle-float {
-    animation: gentleFloat 8s ease-in-out infinite;
-  }
-  
-  .animate-breathe {
-    animation: breathe 6s ease-in-out infinite;
+    animation: fadeIn 0.8s ease-out;
   }
 
-  /* Calm Card Styles */
-  .voyce-card {
-    @apply bg-card border border-border rounded-xl shadow-sm;
-    transition: all 0.3s ease;
+  .animate-pulse-gentle {
+    animation: pulseGentle 3s ease-in-out infinite;
   }
-  
-  .voyce-card:hover {
-    @apply shadow-md;
-    transform: translateY(-2px);
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
-  
-  /* Soft Button Hover */
-  .voyce-btn {
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+
+  .card-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+  }
+
+  .zen-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .zen-ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.1);
+    transform: translate(-50%, -50%);
+    animation: ripple 4s infinite;
+  }
+
+  .sound-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sound-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.3);
+    transform: translate(-50%, -50%);
+    animation: soundRipple 1.5s ease-out;
+  }
+
+  .haptic-btn {
     transition: all 0.2s ease;
   }
-  
-  .voyce-btn:hover {
+
+  .haptic-btn:active {
+    transform: scale(0.98);
+  }
+
+  .haptic-btn:hover {
+    transform: scale(1.02);
+  }
+
+  /* Enhanced 3D perspective utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .rotateX-12 {
+    transform: rotateX(12deg);
+  }
+
+  .rotateY-5 {
+    transform: rotateY(5deg);
+  }
+
+  /* Dynamic home theme support */
+  .dynamic-gradient {
+    background: linear-gradient(to bottom right, var(--home-gradient));
+  }
+
+  /* Enhanced content cards */
+  .content-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl;
+    transition: all 0.3s ease;
+  }
+
+  .content-card:hover {
+    @apply bg-white/15 shadow-2xl;
+    transform: translateY(-4px);
+  }
+
+  /* Resource hover effects */
+  .resource-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .resource-item:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Smooth scrolling */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* View counter animations */
+  .view-counter {
+    animation: countUp 2s ease-out;
+  }
+
+  /* Interactive elements */
+  .interactive {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .interactive:hover {
     transform: translateY(-1px);
   }
-  
-  .voyce-btn:active {
+
+  .interactive:active {
     transform: translateY(0);
   }
 
-  /* Ethical Disclaimer Box */
-  .disclaimer-box {
-    @apply bg-muted/50 border-l-4 border-primary/40 p-4 rounded-r-lg;
-    font-size: 0.875rem;
+  /* Japanese-inspired design elements for Schools page */
+  .bamboo-pattern {
+    background-image: 
+      linear-gradient(135deg, transparent 25%, rgba(34, 197, 94, 0.1) 25%, rgba(34, 197, 94, 0.1) 50%, transparent 50%),
+      linear-gradient(-135deg, transparent 25%, rgba(34, 197, 94, 0.05) 25%, rgba(34, 197, 94, 0.05) 50%, transparent 50%);
+    background-size: 40px 40px;
   }
-  
-  /* Calm Section Divider */
-  .section-divider {
-    @apply w-16 h-0.5 mx-auto my-8 rounded-full;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
+
+  .washi-texture {
+    position: relative;
   }
-  
-  /* Story Card - Minimal, Human */
-  .story-card {
-    @apply bg-card border border-border/50 rounded-xl p-6;
-    transition: all 0.3s ease;
+
+  .washi-texture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    border-radius: inherit;
   }
-  
-  .story-card:hover {
-    @apply border-primary/30 shadow-sm;
+
+  .ink-brush-divider {
+    position: relative;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.6) 20%, rgba(34, 197, 94, 0.8) 50%, rgba(34, 197, 94, 0.6) 80%, transparent 100%);
+    overflow: hidden;
   }
-  
-  /* Reflection Prompt Style */
-  .reflection-prompt {
-    @apply italic text-muted-foreground text-center py-6 px-8;
-    font-size: 1.125rem;
+
+  .ink-brush-divider::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -100%;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.8) 50%, transparent 100%);
+    animation: brushStroke 3s ease-in-out infinite;
+  }
+
+  .cherry-blossom-bg {
+    position: relative;
+  }
+
+  .cherry-blossom-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 182, 193, 0.05) 0%, transparent 50%);
+    animation: cherryBlossomFloat 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* Staggered fade-in animations */
+  .staggered-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: staggeredFadeIn 0.6s ease-out forwards;
+  }
+
+  .staggered-fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .staggered-fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .staggered-fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .staggered-fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+  /* Parallax effect for world map */
+  .parallax-map {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Enhanced hover shadows */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Educational card styling */
+  .edu-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .edu-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(34, 197, 94, 0.3);
+    box-shadow: 
+      0 20px 40px -12px rgba(34, 197, 94, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Minimalist typography */
+  .japanese-heading {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  .japanese-text {
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    line-height: 1.6;
+  }
+
+  /* Enhanced Cultural Theme Elements */
+  .japanese-heading {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .japanese-text {
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    line-height: 1.6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Bamboo pattern background */
+  .bamboo-pattern {
+    background-image: 
+      linear-gradient(135deg, transparent 25%, rgba(34, 197, 94, 0.08) 25%, rgba(34, 197, 94, 0.08) 50%, transparent 50%),
+      linear-gradient(-135deg, transparent 25%, rgba(34, 197, 94, 0.04) 25%, rgba(34, 197, 94, 0.04) 50%, transparent 50%);
+    background-size: 40px 40px;
+  }
+
+  /* Washi paper texture */
+  .washi-texture {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+  }
+
+  .washi-texture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.01) 0%, transparent 30%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* Ink brush divider */
+  .ink-brush-divider {
+    position: relative;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(59, 130, 246, 0.3) 10%, 
+      rgba(34, 197, 94, 0.6) 30%, 
+      rgba(168, 85, 247, 0.4) 50%, 
+      rgba(249, 115, 22, 0.5) 70%, 
+      rgba(239, 68, 68, 0.3) 90%, 
+      transparent 100%);
+    overflow: hidden;
+    border-radius: 2px;
+    margin: 1rem 0;
+  }
+
+  .ink-brush-divider::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -100%;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(34, 197, 94, 0.8) 50%, 
+      transparent 100%);
+    animation: brushStroke 4s ease-in-out infinite;
+    border-radius: 2px;
+  }
+
+  /* Cherry blossom floating background */
+  .cherry-blossom-bg {
+    position: relative;
+  }
+
+  .cherry-blossom-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 15% 25%, rgba(255, 182, 193, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 85% 75%, rgba(255, 182, 193, 0.06) 0%, transparent 25%),
+      radial-gradient(circle at 45% 15%, rgba(255, 182, 193, 0.04) 0%, transparent 20%),
+      radial-gradient(circle at 65% 85%, rgba(255, 182, 193, 0.05) 0%, transparent 25%);
+    animation: cherryBlossomFloat 12s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* Enhanced educational card styling */
+  .edu-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1rem;
+  }
+
+  .edu-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+    box-shadow: 
+      0 25px 50px -12px rgba(34, 197, 94, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Enhanced hover lift effect */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 0 20px rgba(34, 197, 94, 0.1);
+  }
+
+  /* Cultural pattern overlays */
+  .greek-pattern {
+    background-image: 
+      repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(59, 130, 246, 0.03) 10px, rgba(59, 130, 246, 0.03) 20px),
+      repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(168, 85, 247, 0.02) 10px, rgba(168, 85, 247, 0.02) 20px);
+  }
+
+  .arabic-pattern {
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+      repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(249, 115, 22, 0.02) 60deg, transparent 120deg);
+    background-size: 60px 60px, 40px 40px;
+  }
+
+  .roman-pattern {
+    background-image: 
+      linear-gradient(90deg, rgba(239, 68, 68, 0.03) 1px, transparent 1px),
+      linear-gradient(rgba(239, 68, 68, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .indian-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(249, 115, 22, 0.03) 0%, transparent 50%);
+    background-size: 50px 50px;
+  }
+
+  /* Blog/Story Page Styles */
+  .blog-container {
+    background: linear-gradient(135deg, hsl(var(--blog-background)) 0%, hsl(180 25% 96%) 100%);
+    min-height: 100vh;
+  }
+
+  .blog-content {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--blog-border));
+  }
+
+  .blog-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: hsl(var(--blog-muted));
+    position: relative;
+  }
+
+  .blog-quote::before,
+  .blog-quote::after {
+    content: '"';
+    font-size: 1.5em;
+    color: hsl(160 40% 70%);
+    position: absolute;
+  }
+
+  .blog-quote::before {
+    top: -0.2em;
+    left: -0.3em;
+  }
+
+  .blog-quote::after {
+    bottom: -0.4em;
+    right: -0.3em;
+  }
+
+  .blog-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: hsl(var(--blog-text));
     line-height: 1.8;
+    font-size: 1.1rem;
   }
-  
-  /* Research Zone Styling - Neutral Academic */
-  .research-zone {
-    --background: var(--research-bg);
-    --foreground: var(--research-text);
-    --border: var(--research-border);
+
+  .blog-subheading {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: hsl(var(--blog-text));
+    font-weight: 600;
   }
-  
-  .research-card {
-    @apply bg-white border border-gray-200 rounded-lg shadow-sm;
+
+  .blog-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, hsl(160 30% 80%) 50%, transparent 100%);
+    margin: 2rem 0;
   }
-  
-  /* Safe Space Container */
-  .safe-space {
-    @apply max-w-3xl mx-auto px-6 py-12;
-  }
-  
-  /* Breathing Space */
-  .breathing-space {
-    @apply py-16 md:py-24;
-  }
-  
-  /* Gentle CTA */
-  .gentle-cta {
-    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full;
-    @apply bg-primary/10 text-primary hover:bg-primary/20;
-    transition: all 0.3s ease;
-  }
-  
-  /* No-Pressure Journey Step */
-  .journey-step {
-    @apply relative pl-8 pb-8;
-  }
-  
-  .journey-step::before {
-    content: '';
-    @apply absolute left-3 top-2 w-0.5 h-full bg-border;
-  }
-  
-  .journey-step::after {
-    content: '';
-    @apply absolute left-1.5 top-0 w-4 h-4 rounded-full bg-primary/20 border-2 border-primary/40;
-  }
-  
-  .journey-step:last-child::before {
-    display: none;
+
+  .gentle-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
 }
 
-@keyframes breathe {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.02); }
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
-/* Smooth scrolling globally */
-html {
-  scroll-behavior: smooth;
+@keyframes grid-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-/* Hide scrollbar but keep functionality */
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@keyframes grid-pulse {
+  0%, 100% {
+    opacity: 0.03;
+  }
+  50% {
+    opacity: 0.08;
+  }
 }
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+
+@keyframes staggeredFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGentle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+
+@keyframes soundRipple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+@keyframes countUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes brushStroke {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes cherryBlossomFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+    opacity: 0.1;
+  }
+}
+
+/* Utility classes for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .card-3d:hover {
+    transform: none;
+  }
+  
+  .content-card:hover {
+    transform: none;
+  }
+  
+  .resource-item:hover {
+    transform: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+  
+  .edu-card:hover {
+    transform: none;
+  }
+}
+
+/* Print styles for educational materials */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-friendly {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
 }

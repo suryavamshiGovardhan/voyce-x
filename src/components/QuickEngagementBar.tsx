@@ -11,8 +11,7 @@ import {
   BookOpen, 
   Brain, 
   PenLine, 
-  Trophy, 
-  Smile,
+  Trophy,
   ArrowRight 
 } from 'lucide-react';
 
@@ -57,14 +56,6 @@ const quickActions: QuickAction[] = [
     link: "/quizzes",
     colorClass: "text-amber-600",
     bgClass: "bg-amber-100 hover:bg-amber-200"
-  },
-  {
-    icon: Smile,
-    label: "Mood Track",
-    description: "Log your mood",
-    link: "/dashboard",
-    colorClass: "text-pink-600",
-    bgClass: "bg-pink-100 hover:bg-pink-200"
   }
 ];
 
@@ -106,17 +97,17 @@ function QuickEngagementBar() {
             Quick Actions
           </h2>
           <Link 
-            to="/dashboard"
+            to="/blog"
             className="text-sm text-primary hover:text-primary/80 flex items-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-2 py-1"
-            aria-label="View all features in dashboard"
+            aria-label="Explore more content"
           >
-            View All
+            Explore More
             <ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
         
         <div 
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4"
           role="list"
           aria-label="Quick action buttons"
         >

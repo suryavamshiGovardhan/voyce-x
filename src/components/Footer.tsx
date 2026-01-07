@@ -1,8 +1,8 @@
-
 import { Heart, Mail, Instagram, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { hapticFeedback } from "@/utils/hapticFeedback";
 import ViewCounter from "@/components/ViewCounter";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const handleLinkClick = () => {
@@ -78,8 +78,8 @@ export default function Footer() {
               <a href="/article/atheism-doctrines" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
                 Atheism Doctrines
               </a>
-              <a href="/article/the-misplaced-man" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
-                The Misplaced Man
+              <a href="/schools" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
+                VOYCE for Schools
               </a>
             </div>
           </div>
@@ -152,12 +152,39 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-slate-700 mt-6 pt-6 text-center">
-          <p className="text-slate-400 text-sm mb-4">
-            Share your VOYCE story ❤️
+        {/* Disclaimer */}
+        <div className="border-t border-slate-700 mt-6 pt-4">
+          <p className="text-slate-500 text-xs text-center mb-4">
+            VOYCE-X is a reflective and educational space. It does not provide therapy, diagnosis, or emergency support.
           </p>
-          <p className="text-slate-500 text-xs">
+        </div>
+
+        {/* Legal Links */}
+        <div className="border-t border-slate-700 pt-4">
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            <Link 
+              to="/privacy-policy" 
+              className="text-slate-400 hover:text-green-300 text-sm transition-colors"
+              onClick={handleLinkClick}
+            >
+              Privacy Policy
+            </Link>
+            <Link 
+              to="/terms-of-use" 
+              className="text-slate-400 hover:text-green-300 text-sm transition-colors"
+              onClick={handleLinkClick}
+            >
+              Terms of Use
+            </Link>
+            <Link 
+              to="/contact" 
+              className="text-slate-400 hover:text-green-300 text-sm transition-colors"
+              onClick={handleLinkClick}
+            >
+              Contact
+            </Link>
+          </div>
+          <p className="text-slate-500 text-xs text-center">
             © 2025 VOYCE-X by Suryavamshi Govardhan. All rights reserved. Built with love for mental clarity and emotional freedom.
           </p>
         </div>

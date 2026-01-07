@@ -87,7 +87,7 @@ export default function BlogPage() {
                 </p>
                 <Button asChild variant="outline">
                   <Link to="/article/desire-suffering-journey">
-                    Read Full Article →
+                    Read Full Article
                   </Link>
                 </Button>
               </CardContent>
@@ -109,29 +109,7 @@ export default function BlogPage() {
                 </p>
                 <Button asChild variant="outline">
                   <Link to="/article/atheism-doctrines">
-                    Read Full Article →
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-muted/30 to-muted/10">
-              <CardHeader>
-                <Badge className="w-fit mb-2" variant="outline">Personal Narrative</Badge>
-                <CardTitle className="text-2xl">
-                  <Link to="/article/the-misplaced-man" className="hover:text-primary transition-colors">
-                    The Man Who Misplaced Himself
-                  </Link>
-                </CardTitle>
-                <p className="text-sm text-muted-foreground">A Kafkaesque autobiography</p>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  A deeply personal exploration of disorientation, identity loss, and quiet despair. A first-person journey through the feeling of being a stranger in one's own life.
-                </p>
-                <Button asChild variant="outline">
-                  <Link to="/article/the-misplaced-man">
-                    Read Full Article →
+                    Read Full Article
                   </Link>
                 </Button>
               </CardContent>
@@ -145,7 +123,7 @@ export default function BlogPage() {
                     Day 1: Installing a New Mental Operating System
                   </Link>
                 </CardTitle>
-                <p className="text-sm text-muted-foreground">5th December 2025 • Personal Journal</p>
+                <p className="text-sm text-muted-foreground">5th December 2025 - Personal Journal</p>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
@@ -153,7 +131,7 @@ export default function BlogPage() {
                 </p>
                 <Button asChild variant="outline">
                   <Link to="/article/day-1-journal">
-                    Read & Start Your Journey →
+                    Read & Start Your Journey
                   </Link>
                 </Button>
               </CardContent>
@@ -218,7 +196,7 @@ export default function BlogPage() {
                         to={`/blog/${blog.slug}`}
                         className="text-primary hover:underline font-medium"
                       >
-                        Read more →
+                        Read more
                       </Link>
                     </CardContent>
                   )}

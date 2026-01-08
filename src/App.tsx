@@ -60,6 +60,8 @@ const WhyIBuiltVoycePage = lazy(() => import("./pages/WhyIBuiltVoycePage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const TermsOfUsePage = lazy(() => import("./pages/TermsOfUsePage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
+const StartHerePage = lazy(() => import("./pages/StartHerePage"));
+const StoriesPage = lazy(() => import("./pages/StoriesPage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -131,6 +133,10 @@ const App = () => (
                   <Route path="/article/day-1-journal" element={<Day1JournalPage />} />
                   <Route path="/suryavamshi-govardhan" element={<FounderPage />} />
                   <Route path="/article/why-i-built-voyce" element={<WhyIBuiltVoycePage />} />
+                  
+                  {/* First-time user journey */}
+                  <Route path="/start-here" element={<StartHerePage />} />
+                  <Route path="/stories" element={<StoriesPage />} />
                   
                   {/* Legal pages */}
                   <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

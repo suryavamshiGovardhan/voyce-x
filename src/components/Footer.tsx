@@ -81,6 +81,15 @@ export default function Footer() {
               <a href="/schools" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
                 VOYCE for Schools
               </a>
+              <a 
+                href="https://sites.google.com/view/4igroups/ai4schools" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block text-green-400 hover:text-green-300 transition-colors text-sm font-medium" 
+                onClick={handleLinkClick}
+              >
+                AI4Schools →
+              </a>
             </div>
           </div>
 

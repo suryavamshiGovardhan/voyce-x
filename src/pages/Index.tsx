@@ -1,15 +1,12 @@
 import { lazy, Suspense, memo } from 'react';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import PerformanceOptimizedHero from "@/components/PerformanceOptimizedHero";
-import QuickEngagementBar from "@/components/QuickEngagementBar";
-import AccessibleExploreSection from "@/components/AccessibleExploreSection";
+import TrustHero from "@/components/TrustHero";
 import { SEOHead } from "@/components/SEOHead";
 import { OrganizationSchema, WebSiteSchema, FounderSchema } from "@/components/StructuredData";
 
 // Lazy load non-critical components for better LCP
-const MoodMeter = lazy(() => import("@/components/MoodMeter"));
-const LatestNews = lazy(() => import("@/components/LatestNews"));
+const AccessibleExploreSection = lazy(() => import("@/components/AccessibleExploreSection"));
 
 // Loading fallback with explicit dimensions to prevent CLS
 const LoadingFallback = memo(() => (
@@ -29,9 +26,9 @@ function Index() {
     <>
       {/* SEO Meta Tags */}
       <SEOHead 
-        title="VOYCE-X | Mental Health & Wellness Platform by Suryavamshi Govardhan"
-        description="VOYCE-X: Your comprehensive mental health companion founded by Suryavamshi Govardhan. Explore evidence-based psychology, mindfulness practices, DSM-5 training, mood tracking, and personal growth resources."
-        keywords="VOYCE-X, Suryavamshi Govardhan, mental health, mindfulness, psychology, emotional wellbeing, self-care, meditation, mental wellness, DSM-5, therapy resources, mood tracking, journaling"
+        title="VOYCE-X | A Quiet Space to Understand Your Own Thoughts"
+        description="VOYCE-X: A reflective and educational space for mental wellness. Not therapy, not diagnosis — just reflection, learning, and awareness. Founded by Suryavamshi Govardhan."
+        keywords="VOYCE-X, Suryavamshi Govardhan, mental health, mindfulness, reflection, self-awareness, emotional wellbeing, mental wellness"
         ogImage="https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/social-images/social-1758355685815-1000172409.png"
         canonicalUrl="https://voyce-x.lovable.app/"
       />
@@ -53,30 +50,13 @@ function Index() {
         <Navbar />
         
         <main id="main-content" role="main" tabIndex={-1}>
-          {/* Hero Section - Critical LCP element */}
-          <PerformanceOptimizedHero />
+          {/* Hero Section - Trust-first, simplified */}
+          <TrustHero />
           
-          {/* Quick Engagement Bar - Immediate user actions */}
-          <QuickEngagementBar />
-          
-          {/* Explore Section - Main content */}
-          <AccessibleExploreSection />
-          
-          {/* Secondary Content - Lazy loaded */}
-          <div className="container mx-auto px-4 py-12">
-            <div className="grid lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2">
-                <Suspense fallback={<LoadingFallback />}>
-                  <MoodMeter />
-                </Suspense>
-              </div>
-              <div className="lg:col-span-1">
-                <Suspense fallback={<LoadingFallback />}>
-                  <LatestNews />
-                </Suspense>
-              </div>
-            </div>
-          </div>
+          {/* Explore Section - For returning users who want more */}
+          <Suspense fallback={<LoadingFallback />}>
+            <AccessibleExploreSection />
+          </Suspense>
         </main>
         
         <Footer />

@@ -54,6 +54,7 @@ const navigationSections = [
     bgColor: "bg-green-500/10",
     hoverColor: "hover:bg-green-500/20",
     items: [
+      { title: "Start Here", href: "/start-here", icon: Compass, description: "Begin your journey" },
       { title: "VOYCE Schools", href: "/schools", icon: GraduationCap, description: "School programs" },
       { title: "DSM-5 Guide", href: "/dsm5", icon: BookOpen, description: "Diagnostic manual" },
       { title: "DSM-5 Academy", href: "/dsm5-academy", icon: GraduationCap, description: "Professional training" },
@@ -69,9 +70,9 @@ const navigationSections = [
     bgColor: "bg-orange-500/10",
     hoverColor: "hover:bg-orange-500/20",
     items: [
+      { title: "Stories", href: "/stories", icon: BookOpen, description: "Anonymous reflections" },
       { title: "VOYCE Blog", href: "/blog", icon: FileText, description: "Latest insights" },
       { title: "Share Thoughts", href: "/thoughts", icon: MessageSquare, description: "Your stories" },
-      { title: "Personal Stories", href: "/story", icon: BookOpen, description: "Deep reflections" },
       { title: "Newsletters", href: "/newsletters", icon: Mail, description: "Stay updated" },
     ]
   },

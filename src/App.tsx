@@ -10,6 +10,7 @@ import { GlobalErrorHandler } from "@/components/GlobalErrorHandler";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { LoadingFallback } from "@/components/LoadingFallback";
 import { DailyCheckIn } from "@/components/engagement/DailyCheckIn";
+import { SuryaChatbot } from "@/components/SuryaChatbot";
 
 // Eager load critical pages
 import Index from "./pages/Index";
@@ -85,6 +86,7 @@ const App = () => (
             <BrowserRouter>
               <GlobalErrorHandler />
               <DailyCheckIn />
+              <SuryaChatbot />
               <Suspense fallback={<LoadingFallback />}>
                 <Routes>
                   {/* Critical routes - no lazy loading */}

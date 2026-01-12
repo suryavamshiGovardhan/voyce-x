@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Heart, Brain, Zap, Eye, Sparkles, Skull, Crown, Target } from "lucide-react";
 import JapaneseIcon from "./JapaneseIcon";
+import { useState } from "react";
+import LibraryArticleDialog, { type LibraryArticle } from "@/components/LibraryArticleDialog";
 
 const libraryContent = [
   {
@@ -146,6 +148,9 @@ const categories = [
 ];
 
 export default function LibraryPreview() {
+  const [activeArticle, setActiveArticle] = useState<LibraryArticle | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="space-y-8">
       <div className="text-center mb-8">
@@ -155,31 +160,37 @@ export default function LibraryPreview() {
           <Sparkles className="h-8 w-8 text-sky-400 float-3d" />
         </div>
         <p className="text-slate-300 text-lg italic leading-relaxed max-w-4xl mx-auto">
-          "This is not a library of books but a library of souls. Each piece of wisdom here 
+          "This is not a library of books but a library of souls. Each piece of wisdom here
           has been earned through blood, tears, and the fire of transformation. Read with reverence."
         </p>
       </div>
-      
+
       <div className="flex flex-wrap justify-center gap-3 mb-8">
         {categories.map((category) => (
-          <Badge key={category.name} variant="outline" className={`border-slate-600 ${category.color} hover:bg-slate-700/50 haptic-btn cursor-pointer`}>
+          <Badge
+            key={category.name}
+            variant="outline"
+            className={`border-slate-600 ${category.color} hover:bg-slate-700/50 haptic-btn cursor-pointer`}
+          >
             {category.name} ({category.count})
           </Badge>
         ))}
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {libraryContent.map((content, index) => {
+        {libraryContent.map((content) => {
           const IconComponent = content.icon;
           return (
-            <Card 
+            <Card
               key={content.title}
               className={`bg-black/40 backdrop-blur-sm ${content.borderColor} ${content.hoverBorder} zen-transition card-3d haptic-btn group cursor-pointer min-h-[300px]`}
             >
               <CardContent className="p-6 flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className={`h-12 w-12 rounded-lg bg-gradient-to-br from-slate-800/50 to-slate-600/50 flex items-center justify-center group-hover:scale-105 transition-transform border ${content.borderColor}`}>
+                    <div
+                      className={`h-12 w-12 rounded-lg bg-gradient-to-br from-slate-800/50 to-slate-600/50 flex items-center justify-center group-hover:scale-105 transition-transform border ${content.borderColor}`}
+                    >
                       <IconComponent className={`h-6 w-6 ${content.color}`} />
                     </div>
                     <div>
@@ -193,19 +204,18 @@ export default function LibraryPreview() {
                       <p className="text-slate-400 text-xs">{content.category}</p>
                     </div>
                   </div>
-                  <JapaneseIcon type={content.japaneseIcon as any} className={`${content.color} w-6 h-6 float-3d`} />
+                  <JapaneseIcon
+                    type={content.japaneseIcon as any}
+                    className={`${content.color} w-6 h-6 float-3d`}
+                  />
                 </div>
-                
+
                 <div className="flex-grow">
-                  <p className="text-slate-300 text-sm leading-relaxed mb-4 italic">
-                    "{content.preview}"
-                  </p>
-                  
-                  <p className="text-slate-400 text-xs leading-relaxed mb-4">
-                    {content.fullContent}
-                  </p>
+                  <p className="text-slate-300 text-sm leading-relaxed mb-4 italic">"{content.preview}"</p>
+
+                  <p className="text-slate-400 text-xs leading-relaxed mb-4">{content.fullContent}</p>
                 </div>
-                
+
                 <div className="space-y-3">
                   <div className="flex flex-wrap gap-1">
                     {content.tags.map((tag) => (
@@ -214,14 +224,30 @@ export default function LibraryPreview() {
                       </Badge>
                     ))}
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-slate-500 text-xs italic">by {content.author}</span>
-                    <Button 
-                      size="sm" 
+                    <Button
+                      size="sm"
                       className={`${content.bgColor} hover:${content.bgColor}/80 text-white haptic-btn text-xs px-4`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setActiveArticle({
+                          title: content.title,
+                          category: content.category,
+                          preview: content.preview,
+                          fullContent: content.fullContent,
+                          tags: content.tags,
+                          level: content.level,
+                          readTime: content.readTime,
+                          author: content.author,
+                        });
+                        setIsOpen(true);
+                      }}
+                      aria-label={`Read full article: ${content.title}`}
                     >
-                      Read Full Article →
+                      Read Full Article  
                     </Button>
                   </div>
                 </div>
@@ -230,14 +256,14 @@ export default function LibraryPreview() {
           );
         })}
       </div>
-      
+
       <div className="mt-12">
         <div className="bg-black/30 backdrop-blur-sm border border-orange-300/30 rounded-lg p-8">
           <div className="text-center">
             <h3 className="text-white text-2xl font-light mb-4">The Living Library</h3>
             <p className="text-slate-300 text-sm leading-relaxed italic max-w-4xl mx-auto mb-6">
-              "This archive grows with each soul that dares to look into the abyss of themselves and report back. 
-              Every piece of wisdom here was purchased with suffering and paid for with truth. 
+              "This archive grows with each soul that dares to look into the abyss of themselves and report back.
+              Every piece of wisdom here was purchased with suffering and paid for with truth.
               Take what serves you, leave what doesn't, but honor the courage it took to write it."
             </p>
             <div className="flex items-center justify-center space-x-6">
@@ -257,6 +283,16 @@ export default function LibraryPreview() {
           </div>
         </div>
       </div>
+
+      <LibraryArticleDialog
+        open={isOpen}
+        onOpenChange={(open) => {
+          setIsOpen(open);
+          if (!open) setActiveArticle(null);
+        }}
+        article={activeArticle}
+      />
     </div>
   );
 }
+

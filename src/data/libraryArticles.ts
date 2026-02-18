@@ -356,7 +356,7 @@ Research on fatherhood shows that involved fathers experience hormonal changes�
         },
         {
           title: "The Father's Return",
-          story: "Suresh, 44, was a 'good provider' but emotionally absent from his children—repeating the pattern of his own father. When his teenage son attempted suicide, everything stopped. 'I realized I didn't know my own son,' he says. 'I had been physically present but emotionally gone.' The family entered therapy together, and Suresh began his own inner work. He learned to name and express emotions he had suppressed for decades. 'My son said something that broke me open,' Suresh recalls. 'He said, "Dad, I don't need you to fix things. I just need you to see me."' Their relationship transformed. 'I'm learning to be a father,' Suresh says. 'Finally.'"
+          story: `Suresh, 44, was a good provider but emotionally absent from his children—repeating the pattern of his own father. When his teenage son attempted suicide, everything stopped. He realized he did not know his own son. He had been physically present but emotionally gone. The family entered therapy together, and Suresh began his own inner work. He learned to name and express emotions he had suppressed for decades. His son told him: "Dad, I don't need you to fix things. I just need you to see me." Their relationship transformed. Suresh says he is finally learning to be a father.`
         }
       ],
 

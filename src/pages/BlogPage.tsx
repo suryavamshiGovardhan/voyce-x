@@ -136,6 +136,50 @@ export default function BlogPage() {
                 </Button>
               </CardContent>
             </Card>
+
+            <Card className="overflow-hidden border-blue-500/20 bg-gradient-to-br from-blue-500/5 to-cyan-500/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2 bg-blue-500/10 text-blue-600 border-blue-500/20">KATA Essay</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/opposite-gender-behavior" className="hover:text-primary transition-colors">
+                    Why We Behave So Abnormally Around the Opposite Gender
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">A human systems explanation, not a love story</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Why does intelligence disappear near attraction? This is human biology + psychology + culture colliding at once. The brain reads attraction as risk, not romance.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/opposite-gender-behavior">
+                    Read Full Essay
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden border-amber-500/20 bg-gradient-to-br from-amber-500/5 to-orange-500/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2 bg-amber-500/10 text-amber-600 border-amber-500/20">KATA Essay</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/second-child-intelligence" className="hover:text-primary transition-colors">
+                    Why the Second Child Often Appears More Intelligent
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">A systems + environment explanation</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Almost every family notices it. The first child is careful, the second is bold. This is not magic — this is environmental psychology. Change the environment, and outcomes change.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/second-child-intelligence">
+                    Read Full Essay
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
           {loading ? (

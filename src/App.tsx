@@ -143,6 +143,10 @@ const App = () => (
                   <Route path="/article/why-i-built-voyce" element={<WhyIBuiltVoycePage />} />
                   <Route path="/article/opposite-gender-behavior" element={<OppositeGenderArticlePage />} />
                   <Route path="/article/second-child-intelligence" element={<SecondChildArticlePage />} />
+                  <Route path="/article/overthinking-at-night" element={<OverthinkingatNightPage />} />
+                  <Route path="/article/silence-discomfort" element={<SilenceDiscomfortPage />} />
+                  <Route path="/article/cannot-say-no" element={<CannotSayNoPage />} />
+                  <Route path="/article/search-for-meaning" element={<SearchForMeaningPage />} />
                   
                   {/* First-time user journey */}
                   <Route path="/start-here" element={<StartHerePage />} />

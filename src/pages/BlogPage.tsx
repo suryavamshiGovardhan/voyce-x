@@ -180,6 +180,94 @@ export default function BlogPage() {
                 </Button>
               </CardContent>
             </Card>
+
+            <Card className="overflow-hidden border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 to-violet-500/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2 bg-indigo-500/10 text-indigo-600 border-indigo-500/20">KATA Essay</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/overthinking-at-night" className="hover:text-primary transition-colors">
+                    Why Humans Overthink More at Night
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">A systems explanation of why your brain spirals after sunset</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Your brain switches from task mode to processing mode at night. Cortisol drops, dopamine depletes, silence amplifies — and every unprocessed emotion arrives uninvited.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/overthinking-at-night">
+                    Read Full Essay
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden border-slate-500/20 bg-gradient-to-br from-slate-500/5 to-gray-500/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2 bg-slate-500/10 text-slate-600 border-slate-500/20">KATA Essay</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/silence-discomfort" className="hover:text-primary transition-colors">
+                    Why Silence Makes People Uncomfortable
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">A systems explanation of the noise inside</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Silence removes the mask. It reveals what you have been avoiding. People do not fear silence — they fear what silence will make them feel.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/silence-discomfort">
+                    Read Full Essay
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden border-rose-500/20 bg-gradient-to-br from-rose-500/5 to-pink-500/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2 bg-rose-500/10 text-rose-600 border-rose-500/20">KATA Essay</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/cannot-say-no" className="hover:text-primary transition-colors">
+                    Why Some People Cannot Say "No"
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">A systems explanation of the invisible chains of approval</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  People-pleasing is not generosity — it is fear management. The inability to say no was trained in childhood, and it runs silently for decades.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/cannot-say-no">
+                    Read Full Essay
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden border-teal-500/20 bg-gradient-to-br from-teal-500/5 to-emerald-500/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2 bg-teal-500/10 text-teal-600 border-teal-500/20">KATA Essay</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/search-for-meaning" className="hover:text-primary transition-colors">
+                    Why Humans Search for Meaning Even When Life Is Simple
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">A systems explanation of the most human question</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Comfort is never enough for humans. The brain is a pattern-seeking machine that cannot stop asking "Why?" — and the search itself may be the answer.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/search-for-meaning">
+                    Read Full Essay
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
           {loading ? (

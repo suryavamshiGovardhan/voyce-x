@@ -13,6 +13,7 @@ import { Slider } from "@/components/ui/slider";
 import { SEOHead } from "@/components/SEOHead";
 import { ArticleSchema } from "@/components/StructuredData";
 import { toast } from "sonner";
+import heroImage from '@/assets/day1-journal-hero.jpg';
 
 const Day1JournalPage = () => {
   const navigate = useNavigate();

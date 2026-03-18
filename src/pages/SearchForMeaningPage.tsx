@@ -37,6 +37,7 @@ export default function SearchForMeaningPage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Person standing alone under a vast starry sky, symbolizing the search for meaning" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why Humans Search for Meaning Even When Life Is Simple
               </h1>

@@ -37,6 +37,7 @@ export default function OverthinkingAtNightPage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Person silhouetted against moonlight at a window, symbolizing overthinking at night" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why Humans Overthink More at Night
               </h1>

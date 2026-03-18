@@ -37,6 +37,7 @@ export default function SecondChildArticlePage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Two siblings playing together, symbolizing birth order psychology" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why the Second Child Often Appears More Intelligent and Active Than the First
               </h1>

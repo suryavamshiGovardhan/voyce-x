@@ -37,6 +37,7 @@ export default function SilenceDiscomfortPage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Empty room with a single chair and soft light, symbolizing the discomfort of silence" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why Silence Makes People Uncomfortable
               </h1>

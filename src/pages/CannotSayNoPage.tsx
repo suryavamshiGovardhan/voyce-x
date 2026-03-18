@@ -37,6 +37,7 @@ export default function CannotSayNoPage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Person standing at a crossroads looking down, symbolizing the inability to say no" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why Some People Cannot Say {`"`}No{`"`} Even When They Want To
               </h1>

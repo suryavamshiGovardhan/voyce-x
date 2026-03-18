@@ -155,6 +155,9 @@ const Day1JournalPage = () => {
             </Button>
           </motion.div>
 
+          {/* Hero Image */}
+          <img src={heroImage} alt="Open journal notebook with pen on a desk, symbolizing a fresh start" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
+
           {/* Header */}
           <motion.header
             initial={{ opacity: 0, y: 20 }}

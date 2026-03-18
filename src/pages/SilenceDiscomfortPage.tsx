@@ -14,6 +14,16 @@ export default function SilenceDiscomfortPage() {
         title="Why Silence Makes People Uncomfortable | VOYCE-X"
         description="A KATA-style essay on why humans fear silence. Social conditioning, self-awareness, and the mind revealed."
         keywords="fear of silence, social anxiety, self-awareness, psychology of silence, VOYCE-X, KATA essay"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/silence-discomfort"
+      />
+      <ArticleSchema
+        title="Why Silence Makes People Uncomfortable"
+        description="A KATA-style essay on why humans fear silence. Social conditioning, self-awareness, and the mind revealed."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-02-21"
+        image={heroImage}
+        url="https://voyce-x.lovable.app/article/silence-discomfort"
       />
       <div className="min-h-screen bg-background">
         <Navbar />

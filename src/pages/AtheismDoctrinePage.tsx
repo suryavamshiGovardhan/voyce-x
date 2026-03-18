@@ -32,6 +32,7 @@ export default function AtheismDoctrinePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
           <div className="max-w-4xl mx-auto relative z-10">
             <img src={heroImage} alt="A lone figure standing at the edge of a cliff looking into the sky, symbolizing independent thought" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
+            <div className="text-center space-y-6 animate-fade-in">
               <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-sm text-primary font-medium mb-4">
                 💭 VOYCE Philosophy
               </div>

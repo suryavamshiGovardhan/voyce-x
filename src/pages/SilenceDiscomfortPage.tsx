@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { ArticleSchema } from '@/components/StructuredData';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import heroImage from '@/assets/silence-discomfort-hero.jpg';
 
 export default function SilenceDiscomfortPage() {
   return (

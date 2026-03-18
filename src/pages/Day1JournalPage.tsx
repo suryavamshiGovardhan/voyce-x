@@ -13,6 +13,7 @@ import { Slider } from "@/components/ui/slider";
 import { SEOHead } from "@/components/SEOHead";
 import { ArticleSchema } from "@/components/StructuredData";
 import { toast } from "sonner";
+import heroImage from '@/assets/day1-journal-hero.jpg';
 
 const Day1JournalPage = () => {
   const navigate = useNavigate();
@@ -128,10 +129,10 @@ const Day1JournalPage = () => {
       <ArticleSchema
         title="Day 1: Installing a New Mental Operating System"
         description="A personal journal documenting the first day of a 21-day self-improvement protocol, breaking free from overthinking through structured action."
-        author="VOYCE Editorial"
+        author="Suryavamshi Govardhan"
         datePublished="2025-12-05"
         dateModified="2025-12-05"
-        image="/og-image.png"
+        image={heroImage}
         url="https://voyce-x.lovable.app/article/day-1-journal"
       />
 
@@ -153,6 +154,9 @@ const Day1JournalPage = () => {
               Back to Blog
             </Button>
           </motion.div>
+
+          {/* Hero Image */}
+          <img src={heroImage} alt="Open journal notebook with pen on a desk, symbolizing a fresh start" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
 
           {/* Header */}
           <motion.header

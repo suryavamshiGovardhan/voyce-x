@@ -1,15 +1,26 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { ArticleSchema } from '@/components/StructuredData';
 import selfCareHero from '@/assets/self-care-selfishness-hero.jpg';
 
 export default function SelfCareSelfishnessPage() {
   return (
     <>
       <SEOHead
-        title="Self-Care is Selfishness — And I Stand By It | VOYCE-X"
+        title="Self-Care is Selfishness — And I Stand By It"
         description="A reflective essay on why self-care is a form of constructive selfishness — and why that's not a flaw but clarity."
         keywords="self-care, selfishness, boundaries, mental health, people pleasing, VOYCE, philosophy"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/self-care-selfishness"
+      />
+      <ArticleSchema
+        title="Self-Care is Selfishness — And I Stand By It"
+        description="A reflective essay on why self-care is a form of constructive selfishness — and why that's not a flaw but clarity."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-03-18"
+        image={selfCareHero}
+        url="https://voyce-x.lovable.app/article/self-care-selfishness"
       />
       <div className="min-h-screen bg-background">
         <Navbar />

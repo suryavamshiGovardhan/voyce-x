@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { ArticleSchema } from '@/components/StructuredData';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import heroImage from '@/assets/cannot-say-no-hero.jpg';
 
 export default function CannotSayNoPage() {
   return (
@@ -12,6 +14,16 @@ export default function CannotSayNoPage() {
         title="Why Some People Cannot Say No | VOYCE-X"
         description="A KATA-style essay on why saying no feels impossible. People-pleasing, childhood conditioning, authority fear, and identity."
         keywords="people pleasing, cannot say no, approval seeking, childhood conditioning, emotional dependency, VOYCE-X"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/cannot-say-no"
+      />
+      <ArticleSchema
+        title="Why Some People Cannot Say No Even When They Want To"
+        description="A KATA-style essay on why saying no feels impossible. People-pleasing, childhood conditioning, authority fear, and identity."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-02-21"
+        image={heroImage}
+        url="https://voyce-x.lovable.app/article/cannot-say-no"
       />
       <div className="min-h-screen bg-background">
         <Navbar />
@@ -25,6 +37,7 @@ export default function CannotSayNoPage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Person standing at a crossroads looking down, symbolizing the inability to say no" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why Some People Cannot Say {`"`}No{`"`} Even When They Want To
               </h1>

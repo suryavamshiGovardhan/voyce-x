@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import heroImage from '@/assets/atheism-doctrine-hero.jpg';
 
 export default function AtheismDoctrinePage() {
   return (
@@ -18,8 +19,9 @@ export default function AtheismDoctrinePage() {
       <ArticleSchema
         title="Doctrines of Atheism: The Rebel's Reason"
         description="VOYCE explores atheism not as disbelief, but as the pursuit of truth without excuses."
-        author="VOYCE Editorial"
-        datePublished={new Date().toISOString()}
+        author="Suryavamshi Govardhan"
+        datePublished="2025-01-15"
+        image={heroImage}
         url="https://voyce-x.lovable.app/article/atheism-doctrines"
       />
       <div className="min-h-screen bg-gradient-to-b from-background via-muted/20 to-background">
@@ -29,6 +31,7 @@ export default function AtheismDoctrinePage() {
         <section className="relative overflow-hidden pt-32 pb-20 px-4">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
           <div className="max-w-4xl mx-auto relative z-10">
+            <img src={heroImage} alt="A lone figure standing at the edge of a cliff looking into the sky, symbolizing independent thought" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
             <div className="text-center space-y-6 animate-fade-in">
               <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-sm text-primary font-medium mb-4">
                 💭 VOYCE Philosophy

@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { ArticleSchema } from '@/components/StructuredData';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import heroImage from '@/assets/second-child-hero.jpg';
 
 export default function SecondChildArticlePage() {
   return (
@@ -12,6 +14,16 @@ export default function SecondChildArticlePage() {
         title="Why the Second Child Often Appears More Intelligent"
         description="A systems and environmental psychology explanation of birth order effects. Not magic — just environment. Decoded the KATA way."
         keywords="birth order psychology, second child intelligence, sibling dynamics, Alfred Adler, environmental psychology, VOYCE-X"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/second-child-intelligence"
+      />
+      <ArticleSchema
+        title="Why the Second Child Often Appears More Intelligent and Active Than the First"
+        description="A systems and environmental psychology explanation of birth order effects. Not magic — just environment."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-02-21"
+        image={heroImage}
+        url="https://voyce-x.lovable.app/article/second-child-intelligence"
       />
       <div className="min-h-screen bg-background">
         <Navbar />
@@ -25,6 +37,7 @@ export default function SecondChildArticlePage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Two siblings playing together, symbolizing birth order psychology" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why the Second Child Often Appears More Intelligent and Active Than the First
               </h1>

@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { ArticleSchema } from '@/components/StructuredData';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import heroImage from '@/assets/opposite-gender-hero.jpg';
 
 export default function OppositeGenderArticlePage() {
   return (
@@ -12,6 +14,16 @@ export default function OppositeGenderArticlePage() {
         title="Why We Behave Abnormally Around the Opposite Gender"
         description="A human systems explanation of why intelligence disappears near attraction. Biology, psychology, culture — decoded the KATA way."
         keywords="attraction psychology, opposite gender behavior, social anxiety, amygdala, self-focused attention, VOYCE-X"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/opposite-gender-behavior"
+      />
+      <ArticleSchema
+        title="Why We Behave So Abnormally Around the Opposite Gender"
+        description="A human systems explanation of why intelligence disappears near attraction. Biology, psychology, culture — decoded the KATA way."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-02-21"
+        image={heroImage}
+        url="https://voyce-x.lovable.app/article/opposite-gender-behavior"
       />
       <div className="min-h-screen bg-background">
         <Navbar />
@@ -25,6 +37,7 @@ export default function OppositeGenderArticlePage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Two figures facing each other with visible tension, symbolizing attraction psychology" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why We Behave So Abnormally Around the Opposite Gender
               </h1>

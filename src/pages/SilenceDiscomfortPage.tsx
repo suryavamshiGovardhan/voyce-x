@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { ArticleSchema } from '@/components/StructuredData';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import heroImage from '@/assets/silence-discomfort-hero.jpg';
 
 export default function SilenceDiscomfortPage() {
   return (
@@ -12,6 +14,16 @@ export default function SilenceDiscomfortPage() {
         title="Why Silence Makes People Uncomfortable | VOYCE-X"
         description="A KATA-style essay on why humans fear silence. Social conditioning, self-awareness, and the mind revealed."
         keywords="fear of silence, social anxiety, self-awareness, psychology of silence, VOYCE-X, KATA essay"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/silence-discomfort"
+      />
+      <ArticleSchema
+        title="Why Silence Makes People Uncomfortable"
+        description="A KATA-style essay on why humans fear silence. Social conditioning, self-awareness, and the mind revealed."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-02-21"
+        image={heroImage}
+        url="https://voyce-x.lovable.app/article/silence-discomfort"
       />
       <div className="min-h-screen bg-background">
         <Navbar />
@@ -25,6 +37,7 @@ export default function SilenceDiscomfortPage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Empty room with a single chair and soft light, symbolizing the discomfort of silence" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why Silence Makes People Uncomfortable
               </h1>

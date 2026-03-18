@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { SEOHead } from '@/components/SEOHead';
+import { ArticleSchema } from '@/components/StructuredData';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import heroImage from '@/assets/overthinking-night-hero.jpg';
 
 export default function OverthinkingAtNightPage() {
   return (
@@ -12,6 +14,16 @@ export default function OverthinkingAtNightPage() {
         title="Why Humans Overthink More at Night | VOYCE-X"
         description="A KATA-style explanation of why your brain spirals at night. Brain fatigue, cortisol, dopamine, and the silence that reveals everything."
         keywords="overthinking at night, night anxiety, cortisol cycle, brain fatigue, VOYCE-X, KATA essay"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/overthinking-at-night"
+      />
+      <ArticleSchema
+        title="Why Humans Overthink More at Night"
+        description="A KATA-style explanation of why your brain spirals at night. Brain fatigue, cortisol, dopamine, and the silence that reveals everything."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-02-21"
+        image={heroImage}
+        url="https://voyce-x.lovable.app/article/overthinking-at-night"
       />
       <div className="min-h-screen bg-background">
         <Navbar />
@@ -25,6 +37,7 @@ export default function OverthinkingAtNightPage() {
             </Button>
 
             <article className="prose prose-lg max-w-none dark:prose-invert">
+              <img src={heroImage} alt="Person silhouetted against moonlight at a window, symbolizing overthinking at night" className="w-full rounded-xl mb-8 shadow-lg" loading="eager" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Why Humans Overthink More at Night
               </h1>

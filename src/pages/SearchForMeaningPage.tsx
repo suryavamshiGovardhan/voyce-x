@@ -14,6 +14,16 @@ export default function SearchForMeaningPage() {
         title="Why Humans Search for Meaning | VOYCE-X"
         description="A KATA-style essay on why humans need meaning even when life is simple. Existential curiosity, pattern-seeking, and consciousness."
         keywords="search for meaning, existential psychology, purpose of life, human consciousness, VOYCE-X, KATA essay"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/search-for-meaning"
+      />
+      <ArticleSchema
+        title="Why Humans Search for Meaning Even When Life Is Simple"
+        description="A KATA-style essay on why humans need meaning even when life is simple. Existential curiosity, pattern-seeking, and consciousness."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-02-21"
+        image={heroImage}
+        url="https://voyce-x.lovable.app/article/search-for-meaning"
       />
       <div className="min-h-screen bg-background">
         <Navbar />

@@ -19,8 +19,9 @@ export default function AtheismDoctrinePage() {
       <ArticleSchema
         title="Doctrines of Atheism: The Rebel's Reason"
         description="VOYCE explores atheism not as disbelief, but as the pursuit of truth without excuses."
-        author="VOYCE Editorial"
-        datePublished={new Date().toISOString()}
+        author="Suryavamshi Govardhan"
+        datePublished="2025-01-15"
+        image={heroImage}
         url="https://voyce-x.lovable.app/article/atheism-doctrines"
       />
       <div className="min-h-screen bg-gradient-to-b from-background via-muted/20 to-background">

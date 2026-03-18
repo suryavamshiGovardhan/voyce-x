@@ -148,6 +148,7 @@ const App = () => (
                   <Route path="/article/silence-discomfort" element={<SilenceDiscomfortPage />} />
                   <Route path="/article/cannot-say-no" element={<CannotSayNoPage />} />
                   <Route path="/article/search-for-meaning" element={<SearchForMeaningPage />} />
+                  <Route path="/article/self-care-selfishness" element={<SelfCareSelfishnessPage />} />
                   
                   {/* First-time user journey */}
                   <Route path="/start-here" element={<StartHerePage />} />

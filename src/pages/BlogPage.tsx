@@ -268,6 +268,28 @@ export default function BlogPage() {
                 </Button>
               </CardContent>
             </Card>
+
+            <Card className="overflow-hidden border-yellow-500/20 bg-gradient-to-br from-yellow-500/5 to-amber-500/5">
+              <CardHeader>
+                <Badge className="w-fit mb-2 bg-yellow-500/10 text-yellow-600 border-yellow-500/20">Personal Essay</Badge>
+                <CardTitle className="text-2xl">
+                  <Link to="/article/self-care-selfishness" className="hover:text-primary transition-colors">
+                    Self-Care is Selfishness — And I Stand By It
+                  </Link>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground">A reflective essay on choosing yourself without guilt</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  We romanticized exhaustion and glorified people who give everything away. But maybe selfish isn't the villain we think it is — maybe it's the clarity we need.
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/article/self-care-selfishness">
+                    Read Full Essay
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
           {loading ? (

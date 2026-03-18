@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import heroImage from '@/assets/desire-suffering-hero.jpg';
 
 export default function DesireSufferingArticlePage() {
   return (

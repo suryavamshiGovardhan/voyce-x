@@ -64,6 +64,7 @@ const OverthinkingatNightPage = lazy(() => import("./pages/OverthinkingatNightPa
 const SilenceDiscomfortPage = lazy(() => import("./pages/SilenceDiscomfortPage"));
 const CannotSayNoPage = lazy(() => import("./pages/CannotSayNoPage"));
 const SearchForMeaningPage = lazy(() => import("./pages/SearchForMeaningPage"));
+const SelfCareSelfishnessPage = lazy(() => import("./pages/SelfCareSelfishnessPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const TermsOfUsePage = lazy(() => import("./pages/TermsOfUsePage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
@@ -147,6 +148,7 @@ const App = () => (
                   <Route path="/article/silence-discomfort" element={<SilenceDiscomfortPage />} />
                   <Route path="/article/cannot-say-no" element={<CannotSayNoPage />} />
                   <Route path="/article/search-for-meaning" element={<SearchForMeaningPage />} />
+                  <Route path="/article/self-care-selfishness" element={<SelfCareSelfishnessPage />} />
                   
                   {/* First-time user journey */}
                   <Route path="/start-here" element={<StartHerePage />} />

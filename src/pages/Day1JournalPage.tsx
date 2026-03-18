@@ -129,10 +129,10 @@ const Day1JournalPage = () => {
       <ArticleSchema
         title="Day 1: Installing a New Mental Operating System"
         description="A personal journal documenting the first day of a 21-day self-improvement protocol, breaking free from overthinking through structured action."
-        author="VOYCE Editorial"
+        author="Suryavamshi Govardhan"
         datePublished="2025-12-05"
         dateModified="2025-12-05"
-        image="/og-image.png"
+        image={heroImage}
         url="https://voyce-x.lovable.app/article/day-1-journal"
       />
 

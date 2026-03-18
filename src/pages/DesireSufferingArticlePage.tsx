@@ -19,8 +19,9 @@ export default function DesireSufferingArticlePage() {
       <ArticleSchema
         title="Desire, Suffering & The Human Journey — The Debate Buddha Never Finished"
         description="VOYCE explores the philosophical debate between desire and suffering, questioning Buddha's teachings through modern psychology and existential truth."
-        author="VOYCE Editorial"
-        datePublished={new Date().toISOString()}
+        author="Suryavamshi Govardhan"
+        datePublished="2025-01-15"
+        image={heroImage}
         url="https://voyce-x.lovable.app/article/desire-suffering-journey"
       />
       <div className="min-h-screen bg-gradient-to-b from-background via-muted/20 to-background">

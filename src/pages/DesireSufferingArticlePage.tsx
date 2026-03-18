@@ -30,7 +30,7 @@ export default function DesireSufferingArticlePage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden pt-32 pb-20 px-4">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-          <div className="max-w-4xl mx-auto relative z-10">
+          <img src={heroImage} alt="A lotus flower with flame emerging from dark water, symbolizing desire and suffering" className="w-full max-w-3xl mx-auto rounded-xl mb-8 shadow-lg relative z-10" loading="eager" />
             <div className="text-center space-y-6 animate-fade-in">
               <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-sm text-primary font-medium mb-4">
                 🌿 VOYCE Philosophy

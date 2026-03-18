@@ -14,6 +14,16 @@ export default function OppositeGenderArticlePage() {
         title="Why We Behave Abnormally Around the Opposite Gender"
         description="A human systems explanation of why intelligence disappears near attraction. Biology, psychology, culture — decoded the KATA way."
         keywords="attraction psychology, opposite gender behavior, social anxiety, amygdala, self-focused attention, VOYCE-X"
+        ogType="article"
+        canonicalUrl="https://voyce-x.lovable.app/article/opposite-gender-behavior"
+      />
+      <ArticleSchema
+        title="Why We Behave So Abnormally Around the Opposite Gender"
+        description="A human systems explanation of why intelligence disappears near attraction. Biology, psychology, culture — decoded the KATA way."
+        author="Suryavamshi Govardhan"
+        datePublished="2025-02-21"
+        image={heroImage}
+        url="https://voyce-x.lovable.app/article/opposite-gender-behavior"
       />
       <div className="min-h-screen bg-background">
         <Navbar />

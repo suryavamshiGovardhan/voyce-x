@@ -70,6 +70,8 @@ const TermsOfUsePage = lazy(() => import("./pages/TermsOfUsePage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const StartHerePage = lazy(() => import("./pages/StartHerePage"));
 const StoriesPage = lazy(() => import("./pages/StoriesPage"));
+const SeriesIndexPage = lazy(() => import("./pages/SeriesIndexPage"));
+const SeriesEpisodePage = lazy(() => import("./pages/SeriesEpisodePage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -151,6 +153,8 @@ const App = () => (
                   <Route path="/article/self-care-selfishness" element={<SelfCareSelfishnessPage />} />
                   
                   {/* First-time user journey */}
+                  <Route path="/series" element={<SeriesIndexPage />} />
+                  <Route path="/series/:episodeId" element={<SeriesEpisodePage />} />
                   <Route path="/start-here" element={<StartHerePage />} />
                   <Route path="/stories" element={<StoriesPage />} />
                   

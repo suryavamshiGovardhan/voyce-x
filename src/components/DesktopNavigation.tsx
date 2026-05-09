@@ -71,6 +71,7 @@ const navigationSections = [
     hoverColor: "hover:bg-orange-500/20",
     items: [
       { title: "Stories", href: "/stories", icon: BookOpen, description: "Anonymous reflections" },
+      { title: "The Unheard Mind", href: "/series", icon: BookOpen, description: "VOYCE original series" },
       { title: "VOYCE Blog", href: "/blog", icon: FileText, description: "Latest insights" },
       { title: "Share Thoughts", href: "/thoughts", icon: MessageSquare, description: "Your stories" },
       { title: "Newsletters", href: "/newsletters", icon: Mail, description: "Stay updated" },

@@ -2,7 +2,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { episodes, getEpisode } from "@/data/unheardMindEpisodes";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SEOHead from "@/components/SEOHead";
+import { SEOHead } from "@/components/SEOHead";
 
 // Lightweight markdown: **bold** and *italic*
 function renderInline(text: string) {

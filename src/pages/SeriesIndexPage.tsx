@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { episodes } from "@/data/unheardMindEpisodes";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SEOHead from "@/components/SEOHead";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function SeriesIndexPage() {
   return (

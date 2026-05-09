@@ -12,6 +12,16 @@ export default function Footer() {
   return (
     <footer className="border-t border-green-200/20 bg-slate-900/50 backdrop-blur-sm mt-20">
       <div className="container mx-auto px-4 py-12">
+        {/* Tagline strip */}
+        <div className="text-center mb-10 pb-8 border-b border-slate-700/60">
+          <p className="font-display italic text-xl md:text-2xl text-slate-100 leading-snug">
+            VOYCE — Giving Language to the Unheard Mind.
+          </p>
+          <Link to="/series" className="inline-block mt-3 text-emerald-300 hover:text-emerald-200 text-sm font-medium" onClick={handleLinkClick}>
+            Read the original series →
+          </Link>
+        </div>
+
         <div className="grid md:grid-cols-5 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
@@ -47,6 +57,9 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-medium text-slate-100">Connect</h3>
             <div className="space-y-2">
+              <a href="/series" className="block text-emerald-300 hover:text-emerald-200 transition-colors text-sm font-medium" onClick={handleLinkClick}>
+                The Unheard Mind Series
+              </a>
               <a href="/mind-heart-gut" className="block text-slate-300 hover:text-green-300 transition-colors text-sm" onClick={handleLinkClick}>
                 Mind-Heart-Gut
               </a>

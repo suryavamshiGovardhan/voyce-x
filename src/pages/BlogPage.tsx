@@ -53,11 +53,12 @@ export default function BlogPage() {
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <header className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <p className="text-xs uppercase tracking-[0.3em] text-primary/80 mb-3 font-medium">VOYCE Journal</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-4 leading-tight">
               VOYCE-X Blog
             </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              Insights, stories, and resources for mental health and wellbeing
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto leading-relaxed">
+              Insights, stories, and resources for mental health and wellbeing — slow reads for an unquiet mind.
             </p>
             {user && (
               <Button asChild size="lg">
@@ -68,6 +69,26 @@ export default function BlogPage() {
               </Button>
             )}
           </header>
+
+          {/* Featured: The Unheard Mind series */}
+          <Card className="overflow-hidden mb-8 border-emerald-400/20 bg-gradient-to-br from-slate-900 via-emerald-950/40 to-slate-900 text-white">
+            <CardHeader>
+              <Badge className="w-fit mb-2 bg-emerald-400/15 text-emerald-200 border border-emerald-400/30 hover:bg-emerald-400/25">VOYCE Original Series</Badge>
+              <CardTitle className="font-display text-3xl md:text-4xl text-white">
+                <Link to="/series" className="hover:text-emerald-300 transition-colors">
+                  The Unheard Mind
+                </Link>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-white/70 mb-4 leading-relaxed">
+                8 episodes. Psychology, philosophy, and ancient wisdom — explained slowly, without filter.
+              </p>
+              <Button asChild variant="outline" className="border-emerald-400/40 text-emerald-200 hover:bg-emerald-400/10 hover:text-emerald-100">
+                <Link to="/series">Read the series →</Link>
+              </Button>
+            </CardContent>
+          </Card>
 
           {/* Featured Philosophy Articles */}
           <div className="space-y-6 mb-8">

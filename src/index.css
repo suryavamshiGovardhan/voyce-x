@@ -3,6 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Display font utility — Playfair Display (loaded in index.html) */
+.font-display {
+  font-family: 'Playfair Display', Georgia, ui-serif, serif;
+  letter-spacing: -0.01em;
+}
+
+/* Subtle floating-particle animation for hero */
+@keyframes voyce-float {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.35; }
+  50% { transform: translateY(-24px) translateX(8px); opacity: 0.7; }
+}
+.voyce-particle {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(134, 239, 172, 0.5);
+  filter: blur(1px);
+  animation: voyce-float 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
 /* Accessibility: Focus visible styles */
 @layer base {
   /* Enhanced focus states for accessibility */

@@ -109,7 +109,7 @@ export default function CreateBlogPage() {
           body: {
             content: formData.content,
             summary: formData.summary || '',
-            footer: formData.footer || '',
+            footer: '',
           },
         }
       );
@@ -120,7 +120,6 @@ export default function CreateBlogPage() {
         ...formData,
         content: sanitized?.content ?? formData.content,
         summary: sanitized?.summary ?? formData.summary,
-        footer: sanitized?.footer ?? formData.footer,
       };
 
       const slug = generateSlug(safeFormData.title);

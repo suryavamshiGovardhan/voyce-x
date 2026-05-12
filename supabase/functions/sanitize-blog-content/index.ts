@@ -1,5 +1,9 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.4'
-import DOMPurify from 'https://esm.sh/isomorphic-dompurify@2.18.0'
+import createDOMPurify from 'npm:dompurify@3.1.6'
+import { JSDOM } from 'npm:jsdom@24.1.0'
+
+const window = new JSDOM('').window as unknown as Window
+const DOMPurify = createDOMPurify(window as any)
 
 // DOMPurify configuration for safe HTML
 const DOMPURIFY_CONFIG = {

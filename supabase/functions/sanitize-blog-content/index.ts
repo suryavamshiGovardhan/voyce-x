@@ -1,10 +1,9 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.4'
-import { DOMParser } from 'https://deno.land/x/deno_dom@v0.1.45/deno-dom-wasm.ts'
-import createDOMPurify from 'https://esm.sh/dompurify@3.1.6'
+import createDOMPurify from 'npm:dompurify@3.1.6'
+import { JSDOM } from 'npm:jsdom@24.1.0'
 
-// deno-dom provides a DOM-like global; wire DOMPurify against it
-const window = { document: new DOMParser().parseFromString('<!DOCTYPE html><html><body></body></html>', 'text/html') } as any
-const DOMPurify = createDOMPurify(window)
+const window = new JSDOM('').window as unknown as Window
+const DOMPurify = createDOMPurify(window as any)
 
 // DOMPurify configuration for safe HTML
 const DOMPURIFY_CONFIG = {

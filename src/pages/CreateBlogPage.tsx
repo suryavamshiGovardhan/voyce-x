@@ -102,7 +102,28 @@ export default function CreateBlogPage() {
       blogSchema.parse(formData);
       setLoading(true);
 
-      const slug = generateSlug(formData.title);
+      // Server-side HTML sanitization (defense-in-depth against stored XSS)
+      const { data: sanitized, error: sanitizeError } = await supabase.functions.invoke(
+        'sanitize-blog-content',
+        {
+          body: {
+            content: formData.content,
+            summary: formData.summary || '',
+            footer: formData.footer || '',
+          },
+        }
+      );
+      if (sanitizeError) {
+        throw new Error('Content sanitization failed. Please try again.');
+      }
+      const safeFormData = {
+        ...formData,
+        content: sanitized?.content ?? formData.content,
+        summary: sanitized?.summary ?? formData.summary,
+        footer: sanitized?.footer ?? formData.footer,
+      };
+
+      const slug = generateSlug(safeFormData.title);
       
       // Check for slug collision
       const { data: existing } = await supabase
@@ -117,7 +138,7 @@ export default function CreateBlogPage() {
       }
 
       const blogData = {
-        ...formData,
+        ...safeFormData,
         slug: finalSlug,
         author_id: user.id,
         author: user.user_metadata?.full_name || user.email?.split('@')[0] || 'Anonymous',

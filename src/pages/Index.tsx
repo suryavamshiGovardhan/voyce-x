@@ -7,6 +7,7 @@ import { OrganizationSchema, WebSiteSchema, FounderSchema } from "@/components/S
 
 // Lazy load non-critical components for better LCP
 const AccessibleExploreSection = lazy(() => import("@/components/AccessibleExploreSection"));
+const InvisibleInheritancePopup = lazy(() => import("@/components/InvisibleInheritancePopup"));
 
 // Loading fallback with explicit dimensions to prevent CLS
 const LoadingFallback = memo(() => (
@@ -60,6 +61,10 @@ function Index() {
         </main>
         
         <Footer />
+
+        <Suspense fallback={null}>
+          <InvisibleInheritancePopup />
+        </Suspense>
       </div>
     </>
   );

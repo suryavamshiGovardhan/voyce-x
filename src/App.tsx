@@ -70,6 +70,7 @@ const TermsOfUsePage = lazy(() => import("./pages/TermsOfUsePage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const StartHerePage = lazy(() => import("./pages/StartHerePage"));
 const StoriesPage = lazy(() => import("./pages/StoriesPage"));
+const InvisibleInheritancePage = lazy(() => import("./pages/InvisibleInheritancePage"));
 const SeriesIndexPage = lazy(() => import("./pages/SeriesIndexPage"));
 const SeriesEpisodePage = lazy(() => import("./pages/SeriesEpisodePage"));
 
@@ -157,6 +158,7 @@ const App = () => (
                   <Route path="/series/:episodeId" element={<SeriesEpisodePage />} />
                   <Route path="/start-here" element={<StartHerePage />} />
                   <Route path="/stories" element={<StoriesPage />} />
+                  <Route path="/invisible-inheritance" element={<InvisibleInheritancePage />} />
                   
                   {/* Legal pages */}
                   <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

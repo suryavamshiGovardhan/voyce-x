@@ -42,6 +42,20 @@ export default function InvisibleInheritancePage() {
             <p className="mt-8 text-sm text-muted-foreground">
               An emotional readiness ecosystem — not a marriage exam.
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                to="/invisible-inheritance/test"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-foreground text-background text-sm font-medium hover:opacity-90 transition"
+              >
+                Take the Couple Test
+              </Link>
+              <a
+                href="#vision"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-md border border-border text-sm font-medium hover:bg-muted/40 transition"
+              >
+                Read the vision first
+              </a>
+            </div>
           </header>
 
           <Card className="p-6 md:p-8 bg-muted/30 border-border/60 my-12">

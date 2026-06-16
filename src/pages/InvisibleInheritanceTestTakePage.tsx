@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import SEOHead from "@/components/SEOHead";
+import { SEOHead } from "@/components/SEOHead";
 import QuestionStage from "@/components/iit/QuestionStage";
 import DimensionIntro from "@/components/iit/DimensionIntro";
 import { Button } from "@/components/ui/button";

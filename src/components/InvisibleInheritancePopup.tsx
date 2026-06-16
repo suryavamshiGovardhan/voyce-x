@@ -49,13 +49,20 @@ export default function InvisibleInheritancePopup() {
                 Society trains us for everything — except marriage, parenting, and emotional responsibility.
                 A new readiness ecosystem from VOYCE.
               </p>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
                 <Link
-                  to="/invisible-inheritance"
+                  to="/invisible-inheritance/test"
                   onClick={dismiss}
                   className="text-xs font-medium text-foreground underline underline-offset-4 hover:opacity-70"
                 >
-                  Read the vision
+                  Take the couple test
+                </Link>
+                <Link
+                  to="/invisible-inheritance"
+                  onClick={dismiss}
+                  className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4"
+                >
+                  The vision
                 </Link>
                 <button
                   onClick={dismiss}

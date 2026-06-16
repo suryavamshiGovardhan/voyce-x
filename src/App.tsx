@@ -71,6 +71,9 @@ const ContactPage = lazy(() => import("./pages/ContactPage"));
 const StartHerePage = lazy(() => import("./pages/StartHerePage"));
 const StoriesPage = lazy(() => import("./pages/StoriesPage"));
 const InvisibleInheritancePage = lazy(() => import("./pages/InvisibleInheritancePage"));
+const InvisibleInheritanceTestPage = lazy(() => import("./pages/InvisibleInheritanceTestPage"));
+const InvisibleInheritanceTestTakePage = lazy(() => import("./pages/InvisibleInheritanceTestTakePage"));
+const InvisibleInheritanceReportPage = lazy(() => import("./pages/InvisibleInheritanceReportPage"));
 const SeriesIndexPage = lazy(() => import("./pages/SeriesIndexPage"));
 const SeriesEpisodePage = lazy(() => import("./pages/SeriesEpisodePage"));
 
@@ -159,6 +162,9 @@ const App = () => (
                   <Route path="/start-here" element={<StartHerePage />} />
                   <Route path="/stories" element={<StoriesPage />} />
                   <Route path="/invisible-inheritance" element={<InvisibleInheritancePage />} />
+                  <Route path="/invisible-inheritance/test" element={<InvisibleInheritanceTestPage />} />
+                  <Route path="/invisible-inheritance/test/:sessionCode/report" element={<InvisibleInheritanceReportPage />} />
+                  <Route path="/invisible-inheritance/test/:sessionCode/:partner" element={<InvisibleInheritanceTestTakePage />} />
                   
                   {/* Legal pages */}
                   <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

@@ -209,6 +209,80 @@ export type Database = {
         }
         Relationships: []
       }
+      iit_responses: {
+        Row: {
+          answer_text: string | null
+          answer_value: number
+          created_at: string
+          dimension: string
+          id: string
+          partner: string
+          question_id: string
+          session_id: string
+        }
+        Insert: {
+          answer_text?: string | null
+          answer_value: number
+          created_at?: string
+          dimension: string
+          id?: string
+          partner: string
+          question_id: string
+          session_id: string
+        }
+        Update: {
+          answer_text?: string | null
+          answer_value?: number
+          created_at?: string
+          dimension?: string
+          id?: string
+          partner?: string
+          question_id?: string
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "iit_responses_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "iit_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      iit_sessions: {
+        Row: {
+          created_at: string
+          id: string
+          partner_a_completed_at: string | null
+          partner_a_label: string | null
+          partner_b_completed_at: string | null
+          partner_b_label: string | null
+          session_code: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          partner_a_completed_at?: string | null
+          partner_a_label?: string | null
+          partner_b_completed_at?: string | null
+          partner_b_label?: string | null
+          session_code: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          partner_a_completed_at?: string | null
+          partner_a_label?: string | null
+          partner_b_completed_at?: string | null
+          partner_b_label?: string | null
+          session_code?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       journal_entries: {
         Row: {
           content: string

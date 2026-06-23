@@ -812,3 +812,226 @@
     box-shadow: none !important;
   }
 }
+
+/* ============================================================
+   Invisible Inheritance — scoped maximalist tokens & utilities
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --ii-bg-0: 240 30% 5%;
+  --ii-bg-1: 250 35% 8%;
+  --ii-aurora-1: 158 70% 45%;   /* emerald */
+  --ii-aurora-2: 188 75% 50%;   /* teal */
+  --ii-aurora-3: 38  90% 60%;   /* amber */
+  --ii-aurora-4: 340 75% 60%;   /* rose */
+  --ii-glow: 158 80% 55%;
+}
+
+.ii-aurora-root {
+  position: relative;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, hsl(var(--ii-bg-1) / 0.9) 0%, hsl(var(--ii-bg-0)) 60%),
+    hsl(var(--ii-bg-0));
+  color: hsl(var(--foreground));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ii-aurora-layer {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  filter: blur(80px);
+  z-index: 0;
+}
+.ii-aurora-1 {
+  background:
+    radial-gradient(circle at 20% 30%, hsl(var(--ii-aurora-1) / 0.45), transparent 55%),
+    radial-gradient(circle at 80% 20%, hsl(var(--ii-aurora-2) / 0.4), transparent 50%);
+  animation: ii-drift-a 26s ease-in-out infinite alternate;
+}
+.ii-aurora-2 {
+  background:
+    radial-gradient(circle at 70% 80%, hsl(var(--ii-aurora-3) / 0.35), transparent 55%),
+    radial-gradient(circle at 30% 90%, hsl(var(--ii-aurora-4) / 0.35), transparent 50%);
+  animation: ii-drift-b 32s ease-in-out infinite alternate;
+}
+.ii-aurora-3 {
+  background:
+    conic-gradient(from 120deg at 50% 50%, transparent 0%, hsl(var(--ii-aurora-2) / 0.22) 25%, transparent 50%, hsl(var(--ii-aurora-4) / 0.18) 75%, transparent 100%);
+  opacity: 0.35;
+  animation: ii-spin 60s linear infinite;
+}
+
+.ii-aurora-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+.ii-orb-a { width: 380px; height: 380px; top: 12%; left: -120px; background: hsl(var(--ii-aurora-1) / 0.55); animation: ii-float-a 18s ease-in-out infinite; }
+.ii-orb-b { width: 320px; height: 320px; top: 55%; right: -100px; background: hsl(var(--ii-aurora-3) / 0.45); animation: ii-float-b 22s ease-in-out infinite; }
+.ii-orb-c { width: 280px; height: 280px; bottom: -120px; left: 30%; background: hsl(var(--ii-aurora-4) / 0.4); animation: ii-float-c 26s ease-in-out infinite; }
+
+.ii-aurora-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.ii-aurora-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at center, transparent 55%, hsl(var(--ii-bg-0) / 0.85) 100%);
+}
+
+@keyframes ii-drift-a { 0% { transform: translate3d(0,0,0) scale(1); } 100% { transform: translate3d(4%, -3%, 0) scale(1.08); } }
+@keyframes ii-drift-b { 0% { transform: translate3d(0,0,0) scale(1.05); } 100% { transform: translate3d(-3%, 4%, 0) scale(1); } }
+@keyframes ii-spin    { to { transform: rotate(360deg); } }
+@keyframes ii-float-a { 0%,100% { transform: translate(0,0); } 50% { transform: translate(40px,-30px); } }
+@keyframes ii-float-b { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-50px,30px); } }
+@keyframes ii-float-c { 0%,100% { transform: translate(0,0); } 50% { transform: translate(30px,-40px); } }
+
+/* Typography */
+.ii-display {
+  font-family: 'Cormorant Garamond', 'Instrument Serif', Georgia, serif;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+}
+.ii-serif {
+  font-family: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+.ii-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+.ii-text-gradient {
+  background: linear-gradient(120deg,
+    hsl(var(--ii-aurora-1)) 0%,
+    hsl(var(--ii-aurora-2)) 40%,
+    hsl(var(--ii-aurora-3)) 70%,
+    hsl(var(--ii-aurora-4)) 100%);
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ii-text-sweep 12s ease-in-out infinite;
+}
+@keyframes ii-text-sweep { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+.ii-dropcap::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  float: left;
+  font-size: 4.2em;
+  line-height: 0.85;
+  padding: 0.05em 0.12em 0 0;
+  color: hsl(var(--ii-aurora-1));
+  font-weight: 500;
+}
+
+/* Cards & surfaces */
+.ii-glass-card {
+  background: linear-gradient(160deg, hsl(0 0% 100% / 0.04), hsl(0 0% 100% / 0.015));
+  border: 1px solid hsl(0 0% 100% / 0.09);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 20px 60px -30px hsl(var(--ii-aurora-1) / 0.35),
+              inset 0 1px 0 hsl(0 0% 100% / 0.08);
+}
+.ii-glass-card-hover {
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.ii-glass-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: hsl(var(--ii-aurora-1) / 0.45);
+  box-shadow: 0 30px 80px -30px hsl(var(--ii-aurora-1) / 0.5),
+              inset 0 1px 0 hsl(0 0% 100% / 0.12);
+}
+
+.ii-gradient-border {
+  position: relative;
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(140deg,
+    hsl(var(--ii-aurora-1) / 0.6),
+    hsl(var(--ii-aurora-2) / 0.4),
+    hsl(var(--ii-aurora-3) / 0.5),
+    hsl(var(--ii-aurora-4) / 0.45));
+}
+.ii-gradient-border > * {
+  border-radius: 13px;
+  background: hsl(var(--ii-bg-0) / 0.92);
+  backdrop-filter: blur(16px);
+}
+
+.ii-pill {
+  border-radius: 9999px !important;
+  padding-left: 1.1rem !important;
+  padding-right: 1.1rem !important;
+  backdrop-filter: blur(8px);
+}
+
+.ii-cta {
+  background: linear-gradient(120deg,
+    hsl(var(--ii-aurora-1)) 0%,
+    hsl(var(--ii-aurora-2)) 60%,
+    hsl(var(--ii-aurora-3)) 100%);
+  color: hsl(240 30% 6%);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  box-shadow: 0 12px 40px -10px hsl(var(--ii-aurora-1) / 0.6);
+}
+.ii-cta:hover { filter: brightness(1.08); }
+
+.ii-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.18), transparent);
+  margin: 2.5rem 0;
+}
+
+.ii-ornament::before, .ii-ornament::after {
+  content: "✦";
+  display: inline-block;
+  margin: 0 0.6em;
+  color: hsl(var(--ii-aurora-3));
+  font-size: 0.8em;
+  vertical-align: middle;
+}
+
+.ii-marginalia {
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Constellation map glow */
+.ii-node-glow { filter: drop-shadow(0 0 6px hsl(var(--ii-glow) / 0.7)); }
+.ii-line-draw {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: ii-draw 1.8s ease-out forwards;
+}
+@keyframes ii-draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ii-aurora-layer, .ii-aurora-orb { animation: none !important; }
+  .ii-text-gradient { animation: none !important; }
+  .ii-line-draw { animation: none !important; stroke-dashoffset: 0 !important; }
+}

@@ -4,16 +4,22 @@ interface Props {
 
 export default function ConversationPrompts({ prompts }: Props) {
   return (
-    <div className="space-y-3">
+    <div className="grid sm:grid-cols-2 gap-4">
       {prompts.map((p, i) => (
         <div
           key={i}
-          className="border border-border rounded-md p-5 bg-card/20 hover:bg-card/40 transition-colors"
+          className="ii-glass-card ii-glass-card-hover rounded-xl p-6 relative overflow-hidden"
         >
-          <p className="text-[10px] tracking-[0.3em] text-muted-foreground mb-2">
-            CONVERSATION {String(i + 1).padStart(2, "0")}
+          <span
+            className="absolute -top-4 -right-2 ii-display text-7xl text-white/5 select-none"
+            aria-hidden
+          >
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <p className="ii-marginalia mb-3 relative">CONVERSATION {String(i + 1).padStart(2, "0")}</p>
+          <p className="ii-serif text-base sm:text-lg text-foreground/90 leading-relaxed relative">
+            {p}
           </p>
-          <p className="text-sm sm:text-base text-foreground leading-relaxed">{p}</p>
         </div>
       ))}
     </div>

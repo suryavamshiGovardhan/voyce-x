@@ -6,6 +6,7 @@ import QuestionStage from "@/components/iit/QuestionStage";
 import DimensionIntro from "@/components/iit/DimensionIntro";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import AuroraBackground from "@/components/iit/AuroraBackground";
 import {
   IIT_DIMENSIONS,
   IIT_QUESTIONS,
@@ -44,7 +45,6 @@ export default function InvisibleInheritanceTestTakePage() {
   const questionStepsTotal = TOTAL_QUESTIONS;
   const questionNumber = steps.slice(0, stepIdx + 1).filter((s) => s.kind === "question").length;
 
-  // Load session
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -88,7 +88,6 @@ export default function InvisibleInheritanceTestTakePage() {
 
       const isLast = stepIdx === steps.length - 1;
       if (isLast) {
-        // Mark partner complete
         const updates: Record<string, string> =
           partnerKey === "a"
             ? { partner_a_completed_at: new Date().toISOString() }
@@ -108,30 +107,38 @@ export default function InvisibleInheritanceTestTakePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-sm text-muted-foreground">
-        Opening your session…
-      </div>
+      <AuroraBackground>
+        <div className="min-h-screen flex items-center justify-center text-sm text-muted-foreground ii-serif italic">
+          Opening your session…
+        </div>
+      </AuroraBackground>
     );
   }
 
   if (alreadyDone) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
-        <SEOHead title="Already Completed — The Invisible Inheritance Test" description="You've already completed this test." canonicalUrl={`https://voyce-x.lovable.app/invisible-inheritance/test/${sessionCode}`} />
-        <p className="text-[10px] tracking-[0.4em] text-muted-foreground mb-6">ALREADY COMPLETED</p>
-        <h1 className="text-3xl font-serif text-foreground mb-4">You've finished your half.</h1>
-        <p className="text-muted-foreground max-w-md mb-8">
-          When your partner finishes theirs, the shared reflection opens.
-        </p>
-        <Link to={`/invisible-inheritance/test/${sessionCode.toUpperCase()}/report`}>
-          <Button size="lg">Open the report</Button>
-        </Link>
-      </div>
+      <AuroraBackground>
+        <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+          <SEOHead title="Already Completed — The Invisible Inheritance Test" description="You've already completed this test." canonicalUrl={`https://voyce-x.lovable.app/invisible-inheritance/test/${sessionCode}`} />
+          <p className="ii-eyebrow mb-6">ALREADY COMPLETED</p>
+          <h1 className="ii-display text-4xl sm:text-5xl mb-5">
+            <span className="ii-text-gradient">You've finished your half.</span>
+          </h1>
+          <p className="ii-serif text-muted-foreground italic max-w-md mb-10 text-lg">
+            When your partner finishes theirs, the shared reflection opens.
+          </p>
+          <Link to={`/invisible-inheritance/test/${sessionCode.toUpperCase()}/report`}>
+            <Button size="lg" className="ii-cta ii-pill">Open the report</Button>
+          </Link>
+        </div>
+      </AuroraBackground>
     );
   }
 
+  const progressPct = (questionNumber / questionStepsTotal) * 100;
+
   return (
-    <div className="min-h-screen bg-background">
+    <AuroraBackground>
       <SEOHead
         title={`Partner ${partnerKey.toUpperCase()} — The Invisible Inheritance Test`}
         description="Sixty quiet questions. Ten dimensions. Take your half privately."
@@ -139,16 +146,20 @@ export default function InvisibleInheritanceTestTakePage() {
       />
 
       {/* progress */}
-      <div className="h-1 w-full bg-muted">
+      <div className="h-[3px] w-full bg-white/5">
         <div
-          className="h-1 bg-emerald-500/80 transition-all"
-          style={{ width: `${(questionNumber / questionStepsTotal) * 100}%` }}
+          className="h-[3px] transition-all"
+          style={{
+            width: `${progressPct}%`,
+            background: "linear-gradient(90deg, hsl(var(--ii-aurora-1)), hsl(var(--ii-aurora-2)), hsl(var(--ii-aurora-3)))",
+            boxShadow: "0 0 14px hsl(var(--ii-glow) / 0.6)",
+          }}
         />
       </div>
 
-      <div className="px-4 py-6 flex items-center justify-between text-xs text-muted-foreground max-w-2xl mx-auto">
-        <span className="font-mono tracking-widest">{sessionCode.toUpperCase()} · Partner {partnerKey.toUpperCase()}</span>
-        <span>{questionNumber} / {questionStepsTotal}</span>
+      <div className="px-4 py-5 flex items-center justify-between max-w-2xl mx-auto">
+        <span className="ii-marginalia font-mono">{sessionCode.toUpperCase()} · PARTNER {partnerKey.toUpperCase()}</span>
+        <span className="ii-marginalia">{String(questionNumber).padStart(2, "0")} / {String(questionStepsTotal).padStart(2, "0")}</span>
       </div>
 
       {current.kind === "intro" ? (
@@ -169,8 +180,8 @@ export default function InvisibleInheritanceTestTakePage() {
       )}
 
       {saving && (
-        <p className="text-center text-xs text-muted-foreground py-4">saving…</p>
+        <p className="text-center text-xs text-muted-foreground py-4 italic ii-serif">saving…</p>
       )}
-    </div>
+    </AuroraBackground>
   );
 }

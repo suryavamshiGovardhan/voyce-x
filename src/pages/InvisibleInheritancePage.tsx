@@ -1,19 +1,26 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
-import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import AuroraBackground from "@/components/iit/AuroraBackground";
 
 const Section = ({ no, title, children }: { no: string; title: string; children: React.ReactNode }) => (
-  <section className="py-12 border-t border-border/40">
+  <motion.section
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-80px" }}
+    transition={{ duration: 0.6 }}
+    className="py-14 border-t border-white/10"
+  >
     <div className="flex items-baseline gap-4 mb-6">
-      <span className="text-sm tracking-[0.3em] text-muted-foreground">{no}</span>
-      <h2 className="text-2xl md:text-3xl font-serif text-foreground">{title}</h2>
+      <span className="ii-marginalia">{no}</span>
+      <h2 className="ii-display text-3xl md:text-5xl text-foreground">{title}</h2>
     </div>
-    <div className="prose prose-stone dark:prose-invert max-w-none prose-p:leading-relaxed prose-li:leading-relaxed prose-headings:font-serif">
+    <div className="ii-serif text-foreground/85 text-base md:text-lg leading-relaxed space-y-5 [&_strong]:text-foreground [&_em]:text-emerald-300/90 [&_li]:my-1 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6">
       {children}
     </div>
-  </section>
+  </motion.section>
 );
 
 export default function InvisibleInheritancePage() {
@@ -25,51 +32,62 @@ export default function InvisibleInheritancePage() {
         keywords="emotional inheritance, generational trauma, marriage readiness, parenting readiness, relationship literacy, VOYCE, India"
         canonicalUrl="https://voyce-x.lovable.app/invisible-inheritance"
       />
-      <div className="min-h-screen bg-background">
+      <AuroraBackground variant="spectrum">
         <Navbar />
 
-        <main id="main-content" className="max-w-4xl mx-auto px-6 py-16 md:py-24">
+        <main id="main-content" className="max-w-4xl mx-auto px-6 py-20 md:py-28">
           {/* Hero */}
-          <header className="mb-12 text-center">
-            <p className="text-xs tracking-[0.4em] text-muted-foreground mb-4">A VOYCE INITIATIVE</p>
-            <h1 className="text-4xl md:text-6xl font-serif leading-tight text-foreground mb-6">
-              The Invisible<br/>Inheritance
+          <motion.header
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-16 text-center"
+          >
+            <p className="ii-eyebrow mb-6">A VOYCE INITIATIVE</p>
+            <h1 className="ii-display text-5xl md:text-8xl leading-[0.95] mb-8">
+              The <em className="not-italic ii-text-gradient">Invisible</em><br />
+              Inheritance
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed italic">
+            <p className="ii-serif text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed italic">
               Society trains us for everything — driving, exams, jobs, machines.
               But nobody trains us for marriage, emotional responsibility, or raising a human.
             </p>
-            <p className="mt-8 text-sm text-muted-foreground">
-              An emotional readiness ecosystem — not a marriage exam.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <p className="mt-8 ii-marginalia">AN EMOTIONAL READINESS ECOSYSTEM — NOT A MARRIAGE EXAM</p>
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 to="/invisible-inheritance/test"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-foreground text-background text-sm font-medium hover:opacity-90 transition"
+                className="ii-cta ii-pill inline-flex items-center justify-center px-7 py-3.5 text-sm font-medium hover:opacity-95 transition"
               >
                 Take the Couple Test
               </Link>
               <a
                 href="#vision"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-md border border-border text-sm font-medium hover:bg-muted/40 transition"
+                className="ii-pill inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/15 bg-white/[0.03] backdrop-blur text-sm font-medium text-foreground hover:bg-white/[0.08] transition"
               >
                 Read the vision first
               </a>
             </div>
-          </header>
+          </motion.header>
 
-          <Card className="p-6 md:p-8 bg-muted/30 border-border/60 my-12">
-            <p className="text-base md:text-lg leading-relaxed text-foreground/90">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="ii-glass-card rounded-2xl p-7 md:p-10 my-14"
+          >
+            <p className="ii-serif text-lg md:text-xl leading-relaxed text-foreground/90 ii-dropcap">
               Two emotionally unprepared people get married. Unresolved trauma becomes parenting.
               Stress becomes shouting. Silence becomes neglect. Ego becomes control. Children absorb everything —
               and another generation silently suffers. Society calls it <em>"normal family problems."</em>
-              <br/><br/>
+              <br /><br />
               We don't believe it's normal. We believe it's inherited.
               And we believe it can be interrupted — gently, ethically, and with intelligence.
             </p>
-          </Card>
+          </motion.div>
 
-          {/* 1. Vision */}
+          <div id="vision" />
+
           <Section no="01" title="The Big Vision">
             <p>
               Every emotional wound a child carries was, at some point, an unhealed wound in a parent.
@@ -84,15 +102,13 @@ export default function InvisibleInheritancePage() {
             <p>
               This is not a relationship app. It is a quiet civilizational repair — an attempt to make
               emotional preparedness as obvious as financial planning, as expected as a driving license.
-              If we get this right, we don't just help couples. We change what the next generation
-              walks into.
+              If we get this right, we don't just help couples. We change what the next generation walks into.
             </p>
           </Section>
 
-          {/* 2. Names */}
           <Section no="02" title="Name Directions">
-            <p className="text-sm text-muted-foreground">Twenty working names — Indian, futuristic, poetic, philosophical.</p>
-            <ol className="grid md:grid-cols-2 gap-x-8">
+            <p className="ii-marginalia">TWENTY WORKING NAMES — INDIAN, FUTURISTIC, POETIC, PHILOSOPHICAL</p>
+            <ol className="grid md:grid-cols-2 gap-x-8 ii-serif">
               <li>The Invisible Inheritance</li>
               <li>Antaratma — the inner self</li>
               <li>Sankalpa — conscious intention</li>
@@ -116,7 +132,6 @@ export default function InvisibleInheritancePage() {
             </ol>
           </Section>
 
-          {/* 3. Philosophy */}
           <Section no="03" title="The Philosophy">
             <p>
               We inherit more than wealth and surnames. We inherit the way our father went silent when
@@ -135,79 +150,62 @@ export default function InvisibleInheritancePage() {
             </p>
           </Section>
 
-          {/* 4. Modules */}
           <Section no="04" title="The Core Modules">
-            <p className="text-sm text-muted-foreground">Twenty domains. Each one a thread in the fabric of a future family.</p>
+            <p className="ii-marginalia">TWENTY DOMAINS — EACH A THREAD IN THE FABRIC OF A FUTURE FAMILY</p>
             <ul>
-              <li><strong>Emotional Awareness</strong> — naming what you feel before it controls you. Children of unaware parents grow up translating moods instead of being seen.</li>
-              <li><strong>Communication</strong> — the difference between saying something and being understood. Most marriages fail in translation, not in love.</li>
-              <li><strong>Anger Patterns</strong> — anger is a messenger, not a personality. Untracked, it becomes the loudest teacher in the house.</li>
-              <li><strong>Ego Management</strong> — the cost of being right is often being alone. Children inherit the silence between two egos.</li>
+              <li><strong>Emotional Awareness</strong> — naming what you feel before it controls you.</li>
+              <li><strong>Communication</strong> — the difference between saying something and being understood.</li>
+              <li><strong>Anger Patterns</strong> — anger is a messenger, not a personality.</li>
+              <li><strong>Ego Management</strong> — the cost of being right is often being alone.</li>
               <li><strong>Stress Response</strong> — your nervous system is the room your child grows up in.</li>
-              <li><strong>Conflict Handling</strong> — fighting is fine. Repair is the skill. Children remember the repair, not the fight.</li>
-              <li><strong>Financial Pressure</strong> — money is rarely about money. It's about safety, fairness, and unspoken fear.</li>
+              <li><strong>Conflict Handling</strong> — fighting is fine. Repair is the skill.</li>
+              <li><strong>Financial Pressure</strong> — money is rarely about money.</li>
               <li><strong>Work–Life Balance</strong> — when work owns the parent, the child rents the leftovers.</li>
-              <li><strong>Digital Addiction</strong> — presence is the new affection. Phones are quietly raising the next generation.</li>
-              <li><strong>Emotional Safety</strong> — the prerequisite for everything. Without it, intimacy becomes performance.</li>
-              <li><strong>Parenting Readiness</strong> — not whether you can have a child, but whether the child will have a regulated adult.</li>
-              <li><strong>Childhood Trauma Awareness</strong> — naming the inheritance so you don't pass the package on unopened.</li>
-              <li><strong>Intimacy & Trust</strong> — closeness is built by small consistencies, not grand gestures.</li>
+              <li><strong>Digital Addiction</strong> — presence is the new affection.</li>
+              <li><strong>Emotional Safety</strong> — the prerequisite for everything.</li>
+              <li><strong>Parenting Readiness</strong> — whether the child will have a regulated adult.</li>
+              <li><strong>Childhood Trauma Awareness</strong> — naming the inheritance.</li>
+              <li><strong>Intimacy & Trust</strong> — closeness built by small consistencies.</li>
               <li><strong>Family Boundary Systems</strong> — where your relationship ends and everyone else begins.</li>
-              <li><strong>In-Law Pressure</strong> — the third presence in every Indian marriage, often unaddressed.</li>
-              <li><strong>Masculine & Feminine Conditioning</strong> — what you were told a man is, what you were told a woman is, and the cost of both.</li>
-              <li><strong>Emotional Neglect Detection</strong> — neglect is rarely loud. It is the food, not the slap.</li>
+              <li><strong>In-Law Pressure</strong> — the third presence in every Indian marriage.</li>
+              <li><strong>Masculine & Feminine Conditioning</strong> — and the cost of both.</li>
+              <li><strong>Emotional Neglect Detection</strong> — neglect is rarely loud.</li>
               <li><strong>Emotional Maturity Mapping</strong> — a living mirror, not a verdict.</li>
               <li><strong>Emotional Resilience</strong> — the ability to bend without becoming bitter.</li>
               <li><strong>Future Child Wellbeing</strong> — the silent end of every other module.</li>
             </ul>
           </Section>
 
-          {/* 5. Experience */}
           <Section no="05" title="The Experience">
             <p>
               The system feels less like an app and more like a long, honest walk with someone wise.
-              Onboarding begins not with forms, but with a single question: <em>"What did you inherit
-              that you don't want to pass on?"</em>
+              Onboarding begins with a single question: <em>"What did you inherit that you don't want to pass on?"</em>
             </p>
             <ul>
-              <li><strong>Emotional Mapping</strong> — a private inner-landscape: triggers, patterns, emotional vocabulary.</li>
-              <li><strong>Couple Mode</strong> — two private journeys that gently meet in shared reflections.</li>
+              <li><strong>Emotional Mapping</strong> — a private inner-landscape.</li>
+              <li><strong>Couple Mode</strong> — two private journeys that meet in shared reflections.</li>
               <li><strong>AI-Guided Conversations</strong> — not advice. Better questions.</li>
-              <li><strong>Emotional Simulations</strong> — what happens when money is tight, the in-laws arrive, the baby cries at 3am.</li>
-              <li><strong>Reflective Journaling</strong> — slow, written, encrypted. The opposite of social media.</li>
+              <li><strong>Emotional Simulations</strong> — money tight, in-laws arrive, baby cries at 3am.</li>
+              <li><strong>Reflective Journaling</strong> — slow, written, encrypted.</li>
               <li><strong>Voice Interactions</strong> — for those who think out loud.</li>
-              <li><strong>Pressure Scenarios</strong> — controlled exposure to the moments most marriages quietly break in.</li>
-              <li><strong>Parenting Simulations</strong> — meeting the child you might raise, before you raise them.</li>
+              <li><strong>Pressure Scenarios</strong> — controlled exposure to the moments marriages quietly break in.</li>
+              <li><strong>Parenting Simulations</strong> — meeting the child you might raise.</li>
               <li><strong>Habit Tracking</strong> — small daily acts of emotional fitness.</li>
               <li><strong>Growth Paths</strong> — never linear, never gamified into shame.</li>
             </ul>
           </Section>
 
-          {/* 6. Masked Personality */}
           <Section no="06" title="Masked Personality Detection (Ethical)">
+            <p>People-pleasing looks like kindness. Control looks like care. Avoidance looks like peace.</p>
             <p>
-              Some of the most dangerous patterns wear the best clothes. People-pleasing looks like kindness.
-              Control looks like care. Avoidance looks like peace.
-            </p>
-            <p>
-              The system does not <em>diagnose</em>. It does not label. It looks for <strong>contradictions
-              between stated values and observed responses across time</strong> — and gently reflects them
-              back to the user, only to the user. Never to the partner without consent. Never as a verdict.
-              Always as a mirror.
-            </p>
-            <p>
-              Detection signals: response latency under pressure, language softening around accountability,
-              emotional vocabulary range, repair behaviour after conflict, consistency between solo and
-              couple modes. All processed locally where possible. All reversible. All explained.
+              The system does not <em>diagnose</em>. It looks for <strong>contradictions between stated values
+              and observed responses across time</strong> — and gently reflects them back, only to the user.
+              Never to the partner without consent. Never as a verdict. Always as a mirror.
             </p>
           </Section>
 
-          {/* 7. AI Role */}
           <Section no="07" title="The Role of the AI">
-            <p>
-              The AI is not a therapist. It is not a friend. It is a <em>thoughtful elder</em> — calm,
-              observant, patient, allergic to clichés.
-            </p>
+            <p>The AI is not a therapist. It is not a friend. It is a <em>thoughtful elder</em> — calm, observant, patient, allergic to clichés.</p>
             <ul>
               <li>It asks one question at a time.</li>
               <li>It notices what you don't say.</li>
@@ -216,78 +214,51 @@ export default function InvisibleInheritancePage() {
               <li>It never gives medical, legal, or directive marital advice.</li>
               <li>It always points back to a human professional when the weight crosses a line.</li>
             </ul>
-            <p>
-              The AI's highest skill is restraint. The second is silence. The third is the right question
-              at the right moment.
-            </p>
           </Section>
 
-          {/* 8. Insight System */}
           <Section no="08" title="The Insight System">
-            <p>
-              No scores. No "compatibility percentage." No "marriage ready: yes/no." Those frameworks
-              create shame, not growth.
-            </p>
             <ul>
-              <li><strong>Readiness Levels</strong> — emerging, practising, integrated. Always moving.</li>
+              <li><strong>Readiness Levels</strong> — emerging, practising, integrated.</li>
               <li><strong>Growth Zones</strong> — the two or three areas worth your next 90 days.</li>
               <li><strong>Communication Patterns</strong> — how you tend to enter, escalate, exit.</li>
               <li><strong>Blind Spots</strong> — gently surfaced, never publicly.</li>
               <li><strong>Resilience Indicators</strong> — recovery time, repair quality, support seeking.</li>
-              <li><strong>Parenting Preparedness</strong> — emotional regulation, presence, co-parenting alignment.</li>
-              <li><strong>Harmony Map</strong> — for couples, the rhythm of two nervous systems learning each other.</li>
+              <li><strong>Parenting Preparedness</strong> — regulation, presence, co-parenting alignment.</li>
+              <li><strong>Harmony Map</strong> — the rhythm of two nervous systems learning each other.</li>
             </ul>
           </Section>
 
-          {/* 9. Ethics */}
           <Section no="09" title="The Ethics">
-            <p>
-              This system handles the most intimate data a human produces. Our defaults must be
-              uncomfortable for us and safe for the user.
-            </p>
             <ul>
               <li><strong>Consent</strong> — granular, revocable, plain-language.</li>
-              <li><strong>Privacy</strong> — encryption at rest, no advertising, no data sales, ever.</li>
-              <li><strong>Ownership</strong> — the user owns their emotional data and can export or erase it in one tap.</li>
-              <li><strong>AI Boundaries</strong> — no diagnosis, no manipulation, no dark patterns, no emotional dependency loops.</li>
-              <li><strong>Cultural Sensitivity</strong> — designed with Indian families, not retrofitted from Western therapy.</li>
-              <li><strong>Misuse Prevention</strong> — we will never let one partner weaponise the system against the other.</li>
-              <li><strong>Anti-discrimination</strong> — caste, religion, orientation, gender, income — never inputs to insight.</li>
+              <li><strong>Privacy</strong> — encryption at rest, no advertising, no data sales.</li>
+              <li><strong>Ownership</strong> — export or erase in one tap.</li>
+              <li><strong>AI Boundaries</strong> — no diagnosis, no manipulation, no dependency loops.</li>
+              <li><strong>Cultural Sensitivity</strong> — designed with Indian families.</li>
+              <li><strong>Misuse Prevention</strong> — never weaponised against a partner.</li>
+              <li><strong>Anti-discrimination</strong> — caste, religion, orientation never inputs to insight.</li>
             </ul>
             <p>It must always feel like guidance — never surveillance.</p>
           </Section>
 
-          {/* 10. Social impact */}
           <Section no="10" title="The Social Impact">
             <p>
-              Imagine a country where every couple, before children, has spent even fifty hours
-              understanding their own nervous system. Imagine the reduction in domestic conflict.
-              The reduction in childhood emotional neglect. The reduction in adult anxiety twenty
-              years later.
-            </p>
-            <p>
-              We cannot prove this in a quarter. We can prove it in a generation. The Invisible
-              Inheritance is a hundred-year project disguised as a product.
+              Imagine a country where every couple, before children, has spent fifty hours
+              understanding their own nervous system. We cannot prove this in a quarter.
+              We can prove it in a generation.
             </p>
           </Section>
 
-          {/* 11. India */}
           <Section no="11" title="Designed for India, First">
-            <p>
-              Arranged and love marriages, joint families, in-law dynamics, financial dependency,
-              "log kya kahenge", masculine stoicism, female emotional labour — these are not edge
-              cases. They are the centre of the design.
-            </p>
             <ul>
               <li>Multilingual (Hindi, Telugu, Tamil, Kannada, Marathi, Bengali, English).</li>
               <li>Voice-first paths for low-literacy users.</li>
-              <li>Family modules that include parents and in-laws — without surrendering the couple's privacy.</li>
+              <li>Family modules that include parents and in-laws without surrendering the couple's privacy.</li>
               <li>Gentle scripts for pre-engagement conversations the family won't allow.</li>
-              <li>Rural and tier-3 friendly: low-bandwidth, offline reflection.</li>
+              <li>Low-bandwidth, offline reflection for tier-3 and rural India.</li>
             </ul>
           </Section>
 
-          {/* 12. Business Model */}
           <Section no="12" title="The Business Model">
             <ul>
               <li><strong>Free forever</strong> — solo emotional awareness, journaling, basic insights.</li>
@@ -301,52 +272,51 @@ export default function InvisibleInheritancePage() {
             <p>Profit is fuel, not the destination. The destination is a healthier next generation.</p>
           </Section>
 
-          {/* 13. MVP */}
           <Section no="13" title="The MVP">
-            <p>Version one is small on purpose. It must hurt to ship something this small.</p>
             <ol>
-              <li><strong>The Inheritance Map</strong> — a 20-minute solo reflection that surfaces what you carry.</li>
-              <li><strong>The Quiet Conversation</strong> — an AI-guided conversation that asks better questions than your friends do.</li>
-              <li><strong>The Readiness Mirror</strong> — three growth zones, no score, with one practice for the next 30 days.</li>
+              <li><strong>The Inheritance Map</strong> — a 20-minute solo reflection.</li>
+              <li><strong>The Quiet Conversation</strong> — an AI-guided conversation that asks better questions.</li>
+              <li><strong>The Readiness Mirror</strong> — three growth zones, no score, one practice for 30 days.</li>
             </ol>
-            <p>First user journey: a single person, alone, late at night, opening the app for the first time
-            and finishing with the words <em>"someone finally said the thing."</em></p>
+            <p>First user journey: a single person, alone, late at night, finishing with the words <em>"someone finally said the thing."</em></p>
           </Section>
 
-          {/* 14. Future */}
           <Section no="14" title="The Future">
-            <p><strong>Year 1</strong> — a beloved tool for individuals and couples in India who feel the gap.</p>
-            <p><strong>Year 3</strong> — a recognised relationship literacy standard, integrated into colleges,
-            counselling centres, and pre-marital programs across South Asia.</p>
-            <p><strong>Year 10</strong> — emotional readiness becomes as expected as a driving license. A generation
-            of children grow up inside regulated homes, and the data on adolescent mental health quietly,
-            permanently bends.</p>
+            <p><strong>Year 1</strong> — a beloved tool for individuals and couples in India.</p>
+            <p><strong>Year 3</strong> — a recognised relationship literacy standard across South Asia.</p>
+            <p><strong>Year 10</strong> — emotional readiness becomes as expected as a driving license.</p>
             <p>This is the long game. We are building emotional infrastructure for civilisation.</p>
           </Section>
 
           {/* CTA */}
-          <div className="mt-16 p-8 md:p-10 bg-foreground text-background rounded-lg text-center">
-            <p className="text-sm tracking-[0.3em] mb-4 opacity-70">JOIN EARLY</p>
-            <h3 className="text-2xl md:text-3xl font-serif mb-4">Be part of the first generation that paused.</h3>
-            <p className="opacity-80 max-w-xl mx-auto mb-6">
-              The Invisible Inheritance is being built quietly. If this resonates, walk with us.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-block px-6 py-3 bg-background text-foreground rounded-md font-medium hover:opacity-90 transition"
-            >
-              Get notified when we open
-            </Link>
+          <div className="mt-20 ii-gradient-border">
+            <div className="p-10 md:p-14 text-center">
+              <p className="ii-marginalia mb-4">JOIN EARLY</p>
+              <h3 className="ii-display text-3xl md:text-5xl mb-5">
+                <span className="ii-text-gradient">Be part of the first generation that paused.</span>
+              </h3>
+              <p className="ii-serif text-foreground/80 max-w-xl mx-auto mb-8 text-lg italic">
+                The Invisible Inheritance is being built quietly. If this resonates, walk with us.
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <Link to="/invisible-inheritance/test" className="ii-cta ii-pill inline-flex items-center px-7 py-3.5 text-sm font-medium">
+                  Take the Couple Test
+                </Link>
+                <Link to="/contact" className="ii-pill inline-flex items-center px-7 py-3.5 rounded-full border border-white/15 bg-white/[0.03] text-sm font-medium text-foreground hover:bg-white/[0.08] transition">
+                  Get notified
+                </Link>
+              </div>
+            </div>
           </div>
 
-          <p className="mt-10 text-xs text-center text-muted-foreground italic">
+          <p className="mt-12 text-xs text-center text-muted-foreground italic ii-serif">
             VOYCE is reflective and educational. It is not therapy or diagnosis.
             For clinical support, please consult a licensed professional.
           </p>
         </main>
 
         <Footer />
-      </div>
+      </AuroraBackground>
     </>
   );
 }

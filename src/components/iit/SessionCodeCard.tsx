@@ -11,6 +11,7 @@ interface Props {
 
 export default function SessionCodeCard({ code, partnerALink, partnerBLink, reportLink }: Props) {
   const [copied, setCopied] = useState<string | null>(null);
+  const origin = typeof window !== "undefined" ? window.location.origin : "";
 
   const copy = (text: string, key: string) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -19,42 +20,43 @@ export default function SessionCodeCard({ code, partnerALink, partnerBLink, repo
     }).catch(() => { /* ignore */ });
   };
 
-  const origin = typeof window !== "undefined" ? window.location.origin : "";
-
   return (
-    <div className="border border-border rounded-lg p-6 sm:p-8 bg-card/30 backdrop-blur-sm space-y-6">
-      <div className="text-center">
-        <p className="text-[10px] tracking-[0.4em] text-muted-foreground mb-3">YOUR SESSION CODE</p>
-        <p className="text-4xl sm:text-5xl font-mono tracking-[0.5em] text-foreground select-all">
-          {code}
-        </p>
-      </div>
+    <div className="ii-gradient-border">
+      <div className="p-6 sm:p-10 space-y-7">
+        <div className="text-center">
+          <p className="ii-eyebrow mb-3">YOUR SESSION CODE</p>
+          <p className="ii-display text-5xl sm:text-7xl tracking-[0.35em] ii-text-gradient select-all">
+            {code}
+          </p>
+          <p className="ii-marginalia mt-3">SHARE THIS — IT IS THE THREAD BETWEEN YOU</p>
+        </div>
 
-      <div className="grid sm:grid-cols-2 gap-4">
-        <LinkRow
-          label="Partner A — your link"
-          url={`${origin}${partnerALink}`}
-          onCopy={() => copy(`${origin}${partnerALink}`, "a")}
-          copied={copied === "a"}
-        />
-        <LinkRow
-          label="Partner B — their link"
-          url={`${origin}${partnerBLink}`}
-          onCopy={() => copy(`${origin}${partnerBLink}`, "b")}
-          copied={copied === "b"}
-        />
-      </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <LinkRow
+            label="Partner A — your link"
+            url={`${origin}${partnerALink}`}
+            onCopy={() => copy(`${origin}${partnerALink}`, "a")}
+            copied={copied === "a"}
+          />
+          <LinkRow
+            label="Partner B — their link"
+            url={`${origin}${partnerBLink}`}
+            onCopy={() => copy(`${origin}${partnerBLink}`, "b")}
+            copied={copied === "b"}
+          />
+        </div>
 
-      <div className="pt-4 border-t border-border">
-        <p className="text-xs text-muted-foreground mb-3">
-          When both of you finish, the shared reflection opens here:
-        </p>
-        <LinkRow
-          label="Shared reflection (unlocks when both complete)"
-          url={`${origin}${reportLink}`}
-          onCopy={() => copy(`${origin}${reportLink}`, "r")}
-          copied={copied === "r"}
-        />
+        <div className="pt-4 border-t border-white/10">
+          <p className="text-xs text-muted-foreground mb-3 italic ii-serif">
+            When both of you finish, the shared reflection opens here:
+          </p>
+          <LinkRow
+            label="Shared reflection"
+            url={`${origin}${reportLink}`}
+            onCopy={() => copy(`${origin}${reportLink}`, "r")}
+            copied={copied === "r"}
+          />
+        </div>
       </div>
     </div>
   );
@@ -64,14 +66,14 @@ function LinkRow({
   label, url, onCopy, copied,
 }: { label: string; url: string; onCopy: () => void; copied: boolean }) {
   return (
-    <div>
-      <p className="text-[10px] tracking-[0.2em] text-muted-foreground mb-2 uppercase">{label}</p>
+    <div className="min-w-0">
+      <p className="ii-marginalia mb-2">{label}</p>
       <div className="flex items-center gap-2">
-        <code className="flex-1 text-xs bg-muted/40 border border-border rounded px-3 py-2 truncate">
+        <code className="flex-1 text-xs bg-white/5 border border-white/10 rounded-md px-3 py-2 truncate font-mono text-foreground/80">
           {url}
         </code>
-        <Button size="sm" variant="outline" onClick={onCopy} aria-label={`Copy ${label}`}>
-          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+        <Button size="sm" variant="outline" onClick={onCopy} aria-label={`Copy ${label}`} className="ii-pill">
+          {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
         </Button>
       </div>
     </div>

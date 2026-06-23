@@ -1,105 +1,61 @@
-## The Invisible Inheritance Test — Pre-Marriage Emotional Readiness Assessment
+# Invisible Inheritance — PDF, Share Links & Maximalist Redesign
 
-A futuristic, cinematic, deeply human assessment for couples before marriage. Not a quiz. A mirror.
+## 1. Download PDF on the Report
 
-### Concept
+On `InvisibleInheritanceReportPage.tsx`, add a **Download PDF** button (top + bottom of report) that captures the rendered reflection as a styled, multi-page PDF.
 
-Most couples discuss finances, families, careers — but never the *invisible inheritance* they each carry: unspoken childhood patterns, conflict styles, emotional triggers, parenting templates, attachment wounds. This test surfaces what usually surfaces only after the wedding — too late.
+- Use `html2canvas` + `jspdf` (lightweight, client-side, no backend).
+- Wrap the report sections (overall alignment, constellation, dimension cards, conversations, disclaimer) in a `reportRef` div.
+- PDF style: dark cinematic canvas, serif headings, session code in header, footer with disclaimer + voyce-x.lovable.app link.
+- Filename: `invisible-inheritance-{SESSIONCODE}.pdf`.
+- Button only enabled when both partners have completed.
 
-Two partners take it separately. The system then generates a **shared compatibility map** showing where they align, where they'll clash, and where one will unknowingly trigger the other's inherited wounds.
+## 2. Shareable Results Link + Copy-to-Clipboard
 
-### User Flow
+Already partially exists in `SessionCodeCard.tsx`. Extend and surface on the **report page** too:
 
-```
-Landing → Create Couple Session → Partner A code + Partner B code
-   ↓
-Each partner takes test independently (private, no peek)
-   ↓
-When both complete → Shared Reflection Report unlocked
-   ↓
-Conversation Prompts (the 12 conversations to have before vows)
-```
+- New `ShareLinksPanel` shown at top of report:
+  - Partner A link → `/invisible-inheritance/test/{CODE}/take/a`
+  - Partner B link → `/invisible-inheritance/test/{CODE}/take/b`
+  - Shared report link → `/invisible-inheritance/test/{CODE}/report`
+  - Each row: label + truncated URL + **Copy** button (with copied checkmark feedback, reuse existing pattern).
+- Add a single **Share** button using `navigator.share()` when available, falling back to copying the report link.
+- Same panel also appears on the "waiting for the other half" state so partners can resend.
 
-### The 10 Dimensions (60 questions, 6 per dimension)
+## 3. Maximalist Redesign — All Invisible Inheritance Pages
 
-1. **Conflict Inheritance** — how your parents fought becomes your default
-2. **Love Language Origin** — what felt like love in your home
-3. **Money Memory** — scarcity, control, silence around money
-4. **Emotional Vocabulary** — what feelings were allowed
-5. **Parenting Template** — the parent you'll become by default
-6. **Silence vs Confrontation** — how you handle rupture
-7. **Roles & Gender Scripts** — invisible expectations
-8. **Triggers & Wounds** — what will unexpectedly hurt
-9. **Boundary Architecture** — yours, theirs, in-laws
-10. **Vision of "Home"** — what safety actually means
+Apply a unified **maximalist cinematic** aesthetic across:
 
-Each question is scenario-based, not Likert. Example: *"It's 11pm. You're upset. Your partner is on their phone. What do you do — and what did your parent do in the same moment?"*
+- `InvisibleInheritancePage.tsx` (vision page)
+- `InvisibleInheritanceTestPage.tsx` (landing/session creation)
+- `InvisibleInheritanceTestTakePage.tsx` (test stepper)
+- `InvisibleInheritanceReportPage.tsx` (results)
+- `InvisibleInheritancePopup.tsx` (home popup)
+- Supporting components: `QuestionStage`, `DimensionIntro`, `SessionCodeCard`, `CompatibilityMap`, `ConversationPrompts`
 
-### Output: The Compatibility Map
+**Maximalist direction** (no token changes outside this feature — scoped):
 
-Not a score. A **reflection artifact**:
+- **Layered depth**: animated aurora gradient backgrounds (emerald → teal → amber → rose), subtle grain/noise overlay, floating blurred orbs.
+- **Typography drama**: oversized serif display (Cormorant / Instrument Serif via Google Fonts) for hero numbers + section openers, paired with refined sans body. Mixed sizes — 96px hero numerals, italic accent words, drop caps on long paragraphs.
+- **Editorial composition**: asymmetric grids, pull-quotes, side-marginalia (small caps tracking-widest labels rotated -90° on desktop), ornate divider glyphs.
+- **Motion**: framer-motion entrance animations (stagger, fade-up, scale), parallax orbs, animated SVG constellation lines on the map, shimmer on session code, gradient text sweep on headings.
+- **Constellation upgrade**: `CompatibilityMap` rewritten as a true starfield — radial layout instead of linear rows, glowing nodes, animated draw-on lines, pulsing zone indicators.
+- **Test stepper**: full-bleed dimension intro cards with cinematic imagery cues, progress shown as a constellation being drawn, question options as elevated glass cards with hover bloom.
+- **Popup**: re-styled as a layered card with gradient border, ornamental corner marks, animated entry.
+- All work stays within existing semantic tokens; introduce **scoped tokens** in `index.css` only (`--ii-aurora-1/2/3`, `--ii-glow`, `--ii-grain`) and a small `ii-*` utility class set. No global theme changes, no impact on other pages.
 
-- **Resonance Zones** — where you naturally align (green threads)
-- **Tension Zones** — where inherited patterns will collide (amber threads)
-- **Blind Spots** — what one carries that the other doesn't see (red threads)
-- **The 12 Conversations** — generated prompts personalized to their map
-- **Inherited Loop Warning** — patterns they're likely to repeat with future children
+## Technical Notes
 
-### Design Direction
+- New deps: `html2canvas`, `jspdf`, `framer-motion` (verify if already installed; if yes, skip).
+- New files:
+  - `src/components/iit/ShareLinksPanel.tsx`
+  - `src/components/iit/AuroraBackground.tsx`
+  - `src/components/iit/ReportPDFButton.tsx`
+  - `src/lib/iit/generatePdf.ts`
+- Edited files: the 5 pages + 5 components above, plus a scoped block appended to `src/index.css`.
+- No DB changes. No edge function changes. No routing changes.
+- Accessibility preserved: animations respect `prefers-reduced-motion`; PDF button has clear label; copy buttons keep aria-labels.
 
-Futuristic + realistic, calm cinematic. Dark canvas, warm emerald/teal/amber accents (matches Voyce). Slow type-in narration, KATA-documentary feel. No gamification, no points, no badges. The test feels like a **ritual**, not a form.
+## Out of Scope
 
-- Full-screen single-question view (one question, breathing space)
-- Soft ambient gradient that shifts per dimension
-- Optional Surya narration of each question (Web Speech API, already in stack)
-- Partner pairing via 6-character session code (no account friction)
-- Final report renders as a **two-column constellation map** (Partner A | Partner B with threads between)
-
-### Files to Create
-
-```
-src/pages/InvisibleInheritanceTestPage.tsx       # /invisible-inheritance/test landing + session
-src/pages/InvisibleInheritanceTestTakePage.tsx   # /invisible-inheritance/test/:sessionCode/:partner
-src/pages/InvisibleInheritanceReportPage.tsx     # /invisible-inheritance/test/:sessionCode/report
-src/components/iit/QuestionStage.tsx             # cinematic single-question view
-src/components/iit/DimensionIntro.tsx            # dimension transition scene
-src/components/iit/CompatibilityMap.tsx          # constellation report visual
-src/components/iit/ConversationPrompts.tsx       # the 12 conversations
-src/components/iit/SessionCodeCard.tsx           # shareable code with copy
-src/data/invisibleInheritanceQuestions.ts        # 60 scenario questions, 10 dimensions
-src/data/conversationPromptTemplates.ts          # report prompt logic
-src/lib/iit/scoring.ts                           # resonance/tension/blind-spot computation
-```
-
-### Files to Edit
-
-- `src/App.tsx` — three new routes
-- `src/pages/InvisibleInheritancePage.tsx` — prominent CTA card linking to the Test
-- `src/components/InvisibleInheritancePopup.tsx` — add "Take the Couple Test" secondary CTA
-
-### Backend (Lovable Cloud / Supabase)
-
-Two tables, RLS by session code (no auth required so engaged couples can use without signing up):
-
-- `iit_sessions` — session_code (unique), created_at, partner_a_completed_at, partner_b_completed_at
-- `iit_responses` — session_id, partner ('a'|'b'), dimension, question_id, answer_value, answer_text
-
-Public read/insert scoped to session_code (knowledge of code = access). Report computed client-side from both partners' rows once both complete.
-
-### Technical Notes
-
-- Routing: lazy-loaded pages, Suspense fallback uses existing `ThinkingLoader`
-- State: React Query for session + responses; localStorage stores current partner code so refresh resumes
-- Animation: framer-motion for question transitions; respects `prefers-reduced-motion`
-- A11y: WCAG 2.2 AA — full keyboard nav, ARIA-live for question changes, narration toggle
-- SEO: dedicated `SEOHead` per page, JSON-LD `Quiz`/`Assessment` schema, indexable landing only (report private)
-- Honesty: clear disclaimer — *reflection tool, not clinical/diagnostic, not a predictor*
-
-### Out of Scope (this plan)
-
-- Account-based history of multiple tests
-- Therapist dashboard / pro mode
-- Multilingual narration beyond English (Phase 2)
-- AI-generated personalized report copy (Phase 2 — uses templates first)
-
-Approve and I'll build it end-to-end.
+- Server-side PDF rendering, emailing the PDF, authenticated history of past reports, multilingual report, AI-written narrative report (Phase 2).

@@ -1,61 +1,74 @@
-# Invisible Inheritance — PDF, Share Links & Maximalist Redesign
+## Goal
+Help you see who's taking the Invisible Inheritance Test, by (a) showing you where the data lives in Supabase and (b) optionally capturing each partner's first name + email so your rows aren't just anonymous codes.
 
-## 1. Download PDF on the Report
+---
 
-On `InvisibleInheritanceReportPage.tsx`, add a **Download PDF** button (top + bottom of report) that captures the rendered reflection as a styled, multi-page PDF.
+## Part 1 — Where to view the data (no code, just links)
 
-- Use `html2canvas` + `jspdf` (lightweight, client-side, no backend).
-- Wrap the report sections (overall alignment, constellation, dimension cards, conversations, disclaimer) in a `reportRef` div.
-- PDF style: dark cinematic canvas, serif headings, session code in header, footer with disclaimer + voyce-x.lovable.app link.
-- Filename: `invisible-inheritance-{SESSIONCODE}.pdf`.
-- Button only enabled when both partners have completed.
+Two tables hold everything:
 
-## 2. Shareable Results Link + Copy-to-Clipboard
+**`iit_sessions`** — one row per couple
+- `session_code` (the 6-char code)
+- `created_at`
+- `partner_a_completed_at` / `partner_b_completed_at`
 
-Already partially exists in `SessionCodeCard.tsx`. Extend and surface on the **report page** too:
+**`iit_responses`** — one row per answered question (up to 120 per session)
+- `session_id`, `partner` (a/b), `dimension`, `question_id`, `answer_value`
 
-- New `ShareLinksPanel` shown at top of report:
-  - Partner A link → `/invisible-inheritance/test/{CODE}/take/a`
-  - Partner B link → `/invisible-inheritance/test/{CODE}/take/b`
-  - Shared report link → `/invisible-inheritance/test/{CODE}/report`
-  - Each row: label + truncated URL + **Copy** button (with copied checkmark feedback, reuse existing pattern).
-- Add a single **Share** button using `navigator.share()` when available, falling back to copying the report link.
-- Same panel also appears on the "waiting for the other half" state so partners can resend.
+Quick links I'll surface in chat after the plan runs:
+- Table editor (browse rows visually)
+- SQL editor with 3 ready-to-run queries:
+  1. **Recent sessions + completion status**
+  2. **Per-session answer counts** (drop-off detection)
+  3. **Full answer dump for a given session code** (paste a code, see both partners' 60 answers side-by-side)
 
-## 3. Maximalist Redesign — All Invisible Inheritance Pages
+No code changes for this part.
 
-Apply a unified **maximalist cinematic** aesthetic across:
+---
 
-- `InvisibleInheritancePage.tsx` (vision page)
-- `InvisibleInheritanceTestPage.tsx` (landing/session creation)
-- `InvisibleInheritanceTestTakePage.tsx` (test stepper)
-- `InvisibleInheritanceReportPage.tsx` (results)
-- `InvisibleInheritancePopup.tsx` (home popup)
-- Supporting components: `QuestionStage`, `DimensionIntro`, `SessionCodeCard`, `CompatibilityMap`, `ConversationPrompts`
+## Part 2 — Capture optional first name + email per partner
 
-**Maximalist direction** (no token changes outside this feature — scoped):
+### Schema change (1 migration)
+Add four nullable columns to `iit_sessions`:
+- `partner_a_name`, `partner_a_email`
+- `partner_b_name`, `partner_b_email`
 
-- **Layered depth**: animated aurora gradient backgrounds (emerald → teal → amber → rose), subtle grain/noise overlay, floating blurred orbs.
-- **Typography drama**: oversized serif display (Cormorant / Instrument Serif via Google Fonts) for hero numbers + section openers, paired with refined sans body. Mixed sizes — 96px hero numerals, italic accent words, drop caps on long paragraphs.
-- **Editorial composition**: asymmetric grids, pull-quotes, side-marginalia (small caps tracking-widest labels rotated -90° on desktop), ornate divider glyphs.
-- **Motion**: framer-motion entrance animations (stagger, fade-up, scale), parallax orbs, animated SVG constellation lines on the map, shimmer on session code, gradient text sweep on headings.
-- **Constellation upgrade**: `CompatibilityMap` rewritten as a true starfield — radial layout instead of linear rows, glowing nodes, animated draw-on lines, pulsing zone indicators.
-- **Test stepper**: full-bleed dimension intro cards with cinematic imagery cues, progress shown as a constellation being drawn, question options as elevated glass cards with hover bloom.
-- **Popup**: re-styled as a layered card with gradient border, ornamental corner marks, animated entry.
-- All work stays within existing semantic tokens; introduce **scoped tokens** in `index.css` only (`--ii-aurora-1/2/3`, `--ii-glow`, `--ii-grain`) and a small `ii-*` utility class set. No global theme changes, no impact on other pages.
+All optional. Indexed on email for lookup. No RLS changes (anonymous flow stays).
 
-## Technical Notes
+### Frontend change (test-taking flow only — no redesign)
+On the partner's test page (`/invisible-inheritance/test/:code/:partner`), add a small **"Before we begin (optional)"** card shown once at the very start, before the first dimension intro:
 
-- New deps: `html2canvas`, `jspdf`, `framer-motion` (verify if already installed; if yes, skip).
-- New files:
-  - `src/components/iit/ShareLinksPanel.tsx`
-  - `src/components/iit/AuroraBackground.tsx`
-  - `src/components/iit/ReportPDFButton.tsx`
-  - `src/lib/iit/generatePdf.ts`
-- Edited files: the 5 pages + 5 components above, plus a scoped block appended to `src/index.css`.
-- No DB changes. No edge function changes. No routing changes.
-- Accessibility preserved: animations respect `prefers-reduced-motion`; PDF button has clear label; copy buttons keep aria-labels.
+- First name (optional, max 50 chars, zod-validated)
+- Email (optional, valid email, max 255 chars, zod-validated)
+- Microcopy: *"Optional. Helps us send you the reflection if you lose your code. We never share this."*
+- Two buttons: **"Continue"** (saves if filled) and **"Skip — stay anonymous"**
 
-## Out of Scope
+Values saved to `iit_sessions` via an `update()` keyed on `session_code` + partner column. If skipped, fields remain `null` — fully backward compatible.
 
-- Server-side PDF rendering, emailing the PDF, authenticated history of past reports, multilingual report, AI-written narrative report (Phase 2).
+### Where you'll see it in Supabase
+Same `iit_sessions` table — the new columns appear automatically in the Table editor. Updated SQL query #1 will join name/email so you see:
+
+```
+code   | A name   | A email          | A done | B name | B email | B done
+A7K2P9 | Riya     | riya@gmail.com   | ✓      | Arjun  | (null)  | ✗
+```
+
+---
+
+## Files
+
+**New migration** (via migration tool — adds 4 nullable columns + 2 indexes to `iit_sessions`)
+
+**Edited:**
+- `src/pages/InvisibleInheritanceTestTakePage.tsx` — add the optional intro card before the stepper begins
+- `src/lib/validation.ts` (or inline zod) — schema for name/email
+
+**No new components, no design changes** beyond a small glass card matching existing `ii-*` aesthetic.
+
+---
+
+## Out of scope
+- Admin dashboard in-app (you chose Supabase-only)
+- Emailing the report to partners (separate feature — easy to add later via Lovable transactional email)
+- Making name/email mandatory
+- Capturing IP, device, location, or any other tracking

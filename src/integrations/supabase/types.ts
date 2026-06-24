@@ -255,9 +255,13 @@ export type Database = {
           created_at: string
           id: string
           partner_a_completed_at: string | null
+          partner_a_email: string | null
           partner_a_label: string | null
+          partner_a_name: string | null
           partner_b_completed_at: string | null
+          partner_b_email: string | null
           partner_b_label: string | null
+          partner_b_name: string | null
           session_code: string
           updated_at: string
         }
@@ -265,9 +269,13 @@ export type Database = {
           created_at?: string
           id?: string
           partner_a_completed_at?: string | null
+          partner_a_email?: string | null
           partner_a_label?: string | null
+          partner_a_name?: string | null
           partner_b_completed_at?: string | null
+          partner_b_email?: string | null
           partner_b_label?: string | null
+          partner_b_name?: string | null
           session_code: string
           updated_at?: string
         }
@@ -275,9 +283,13 @@ export type Database = {
           created_at?: string
           id?: string
           partner_a_completed_at?: string | null
+          partner_a_email?: string | null
           partner_a_label?: string | null
+          partner_a_name?: string | null
           partner_b_completed_at?: string | null
+          partner_b_email?: string | null
           partner_b_label?: string | null
+          partner_b_name?: string | null
           session_code?: string
           updated_at?: string
         }

@@ -7,11 +7,19 @@ import DimensionIntro from "@/components/iit/DimensionIntro";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import AuroraBackground from "@/components/iit/AuroraBackground";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { z } from "zod";
 import {
   IIT_DIMENSIONS,
   IIT_QUESTIONS,
   TOTAL_QUESTIONS,
 } from "@/data/invisibleInheritanceQuestions";
+
+const introSchema = z.object({
+  name: z.string().trim().max(50, "Keep it under 50 characters").optional().or(z.literal("")),
+  email: z.string().trim().email("That doesn't look like a valid email").max(255).optional().or(z.literal("")),
+});
 
 type Step = { kind: "intro"; dimensionIndex: number } | { kind: "question"; questionIndex: number };
 
@@ -37,6 +45,11 @@ export default function InvisibleInheritanceTestTakePage() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [alreadyDone, setAlreadyDone] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
+  const [introName, setIntroName] = useState("");
+  const [introEmail, setIntroEmail] = useState("");
+  const [introError, setIntroError] = useState<string | null>(null);
+  const [savingIntro, setSavingIntro] = useState(false);
   const [stepIdx, setStepIdx] = useState(0);
   const [saving, setSaving] = useState(false);
 
@@ -130,6 +143,107 @@ export default function InvisibleInheritanceTestTakePage() {
           <Link to={`/invisible-inheritance/test/${sessionCode.toUpperCase()}/report`}>
             <Button size="lg" className="ii-cta ii-pill">Open the report</Button>
           </Link>
+        </div>
+      </AuroraBackground>
+    );
+  }
+
+  const handleIntroSubmit = async (skip: boolean) => {
+    setIntroError(null);
+    const name = skip ? "" : introName;
+    const email = skip ? "" : introEmail;
+    const parsed = introSchema.safeParse({ name, email });
+    if (!parsed.success) {
+      setIntroError(parsed.error.issues[0]?.message ?? "Please check your details");
+      return;
+    }
+    setSavingIntro(true);
+    try {
+      if (sessionId && !skip && (name || email)) {
+        const updates: Record<string, string | null> =
+          partnerKey === "a"
+            ? { partner_a_name: name || null, partner_a_email: email || null }
+            : { partner_b_name: name || null, partner_b_email: email || null };
+        const { error } = await supabase.from("iit_sessions").update(updates).eq("id", sessionId);
+        if (error) throw error;
+      }
+      setShowIntro(false);
+    } catch (err) {
+      console.error(err);
+      toast.error("Couldn't save that. You can still continue.");
+      setShowIntro(false);
+    } finally {
+      setSavingIntro(false);
+    }
+  };
+
+  if (showIntro) {
+    return (
+      <AuroraBackground>
+        <SEOHead
+          title={`Partner ${partnerKey.toUpperCase()} — The Invisible Inheritance Test`}
+          description="Optional: leave your name and email before you begin."
+          canonicalUrl={`https://voyce-x.lovable.app/invisible-inheritance/test/${sessionCode}/${partnerKey}`}
+        />
+        <div className="min-h-screen flex items-center justify-center px-4 py-12">
+          <div className="ii-glass max-w-lg w-full p-8 sm:p-10 rounded-2xl">
+            <p className="ii-eyebrow mb-4">BEFORE WE BEGIN — OPTIONAL</p>
+            <h1 className="ii-display text-3xl sm:text-4xl mb-4">
+              <span className="ii-text-gradient">A name to hold the silence.</span>
+            </h1>
+            <p className="ii-serif text-muted-foreground italic mb-8 text-base leading-relaxed">
+              Leave a first name and email — only if you want us to be able to send you your reflection later, or help you find your code if you lose it. Skip to stay completely anonymous. We never share this.
+            </p>
+
+            <div className="space-y-5">
+              <div>
+                <Label htmlFor="ii-name" className="ii-marginalia">FIRST NAME</Label>
+                <Input
+                  id="ii-name"
+                  value={introName}
+                  onChange={(e) => setIntroName(e.target.value)}
+                  maxLength={50}
+                  placeholder="Riya"
+                  className="mt-2 bg-white/5 border-white/10"
+                />
+              </div>
+              <div>
+                <Label htmlFor="ii-email" className="ii-marginalia">EMAIL</Label>
+                <Input
+                  id="ii-email"
+                  type="email"
+                  value={introEmail}
+                  onChange={(e) => setIntroEmail(e.target.value)}
+                  maxLength={255}
+                  placeholder="you@example.com"
+                  className="mt-2 bg-white/5 border-white/10"
+                />
+              </div>
+              {introError && (
+                <p className="text-sm text-rose-300 ii-serif italic">{introError}</p>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+              <Button
+                onClick={() => handleIntroSubmit(false)}
+                disabled={savingIntro}
+                size="lg"
+                className="ii-cta ii-pill flex-1"
+              >
+                {savingIntro ? "Saving…" : "Continue"}
+              </Button>
+              <Button
+                onClick={() => handleIntroSubmit(true)}
+                disabled={savingIntro}
+                size="lg"
+                variant="ghost"
+                className="ii-pill flex-1 text-muted-foreground hover:text-foreground"
+              >
+                Skip — stay anonymous
+              </Button>
+            </div>
+          </div>
         </div>
       </AuroraBackground>
     );

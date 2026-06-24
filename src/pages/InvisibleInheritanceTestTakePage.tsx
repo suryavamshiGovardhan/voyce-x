@@ -45,12 +45,13 @@ export default function InvisibleInheritanceTestTakePage() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [alreadyDone, setAlreadyDone] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
+  const [introName, setIntroName] = useState("");
+  const [introEmail, setIntroEmail] = useState("");
+  const [introError, setIntroError] = useState<string | null>(null);
+  const [savingIntro, setSavingIntro] = useState(false);
   const [stepIdx, setStepIdx] = useState(0);
   const [saving, setSaving] = useState(false);
-
-  const steps = useMemo(buildSteps, []);
-  const current = steps[stepIdx];
-  const questionStepsTotal = TOTAL_QUESTIONS;
   const questionNumber = steps.slice(0, stepIdx + 1).filter((s) => s.kind === "question").length;
 
   useEffect(() => {

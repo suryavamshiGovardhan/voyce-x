@@ -7,11 +7,19 @@ import DimensionIntro from "@/components/iit/DimensionIntro";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import AuroraBackground from "@/components/iit/AuroraBackground";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { z } from "zod";
 import {
   IIT_DIMENSIONS,
   IIT_QUESTIONS,
   TOTAL_QUESTIONS,
 } from "@/data/invisibleInheritanceQuestions";
+
+const introSchema = z.object({
+  name: z.string().trim().max(50, "Keep it under 50 characters").optional().or(z.literal("")),
+  email: z.string().trim().email("That doesn't look like a valid email").max(255).optional().or(z.literal("")),
+});
 
 type Step = { kind: "intro"; dimensionIndex: number } | { kind: "question"; questionIndex: number };
 

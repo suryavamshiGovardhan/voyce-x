@@ -52,6 +52,10 @@ export default function InvisibleInheritanceTestTakePage() {
   const [savingIntro, setSavingIntro] = useState(false);
   const [stepIdx, setStepIdx] = useState(0);
   const [saving, setSaving] = useState(false);
+
+  const steps = useMemo(buildSteps, []);
+  const current = steps[stepIdx];
+  const questionStepsTotal = TOTAL_QUESTIONS;
   const questionNumber = steps.slice(0, stepIdx + 1).filter((s) => s.kind === "question").length;
 
   useEffect(() => {

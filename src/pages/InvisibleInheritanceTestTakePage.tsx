@@ -106,6 +106,15 @@ export default function InvisibleInheritanceTestTakePage() {
             ? { partner_a_completed_at: new Date().toISOString() }
             : { partner_b_completed_at: new Date().toISOString() };
         await supabase.from("iit_sessions").update(updates).eq("id", sessionId);
+        supabase.functions.invoke("notify-test-event", {
+          body: {
+            event: "Partner completed test",
+            sessionCode: sessionCode.toUpperCase(),
+            partner: partnerKey,
+            reportUrl: `${window.location.origin}/invisible-inheritance/test/${sessionCode.toUpperCase()}/report`,
+            answersCount: TOTAL_QUESTIONS,
+          },
+        }).catch((e) => console.error("notify failed", e));
         navigate(`/invisible-inheritance/test/${sessionCode.toUpperCase()}/report`);
       } else {
         setStepIdx((i) => i + 1);
@@ -167,6 +176,16 @@ export default function InvisibleInheritanceTestTakePage() {
         const { error } = await supabase.from("iit_sessions").update(updates).eq("id", sessionId);
         if (error) throw error;
       }
+      supabase.functions.invoke("notify-test-event", {
+        body: {
+          event: skip ? "Partner started test (anonymous)" : "Partner started test",
+          sessionCode: sessionCode.toUpperCase(),
+          partner: partnerKey,
+          name,
+          email,
+          reportUrl: `${window.location.origin}/invisible-inheritance/test/${sessionCode.toUpperCase()}/report`,
+        },
+      }).catch((e) => console.error("notify failed", e));
       setShowIntro(false);
     } catch (err) {
       console.error(err);

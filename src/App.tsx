@@ -76,6 +76,7 @@ const InvisibleInheritanceTestTakePage = lazy(() => import("./pages/InvisibleInh
 const InvisibleInheritanceReportPage = lazy(() => import("./pages/InvisibleInheritanceReportPage"));
 const SeriesIndexPage = lazy(() => import("./pages/SeriesIndexPage"));
 const SeriesEpisodePage = lazy(() => import("./pages/SeriesEpisodePage"));
+const AI4SchoolsPage = lazy(() => import("./pages/AI4SchoolsPage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -128,7 +129,8 @@ const App = () => (
                   <Route path="/neuroscience" element={<NeurosciencePage />} />
                   <Route path="/aces" element={<ACESPage />} />
                   <Route path="/cds" element={<CDSPage />} />
-                  <Route path="/schools" element={<SchoolsPage />} />
+                 <Route path="/schools" element={<SchoolsPage />} />
+                 <Route path="/ai4schools" element={<AI4SchoolsPage />} />
                   <Route path="/dsm5" element={<DSM5Page />} />
                   <Route path="/dsm5-academy" element={<DSM5AcademyPage />} />
                   <Route path="/dsm5-academy/module/:moduleId" element={<DSM5ModulePage />} />

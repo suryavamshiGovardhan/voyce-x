@@ -165,7 +165,7 @@ export default function AI4SchoolsPage() {
         title="AI4SCHOOLS — Building India's Next Generation of AI Innovators"
         description="A future-ready AI, Robotics, Coding, STEM & Innovation program for schools. Bootcamps, labs, teacher training, AI clubs and student projects."
         keywords="AI for schools, AI education India, robotics for students, school AI bootcamp, teacher training AI, STEM labs, coding for kids"
-        canonical="/ai4schools"
+        canonicalUrl="/ai4schools"
       />
       <Navbar />
 

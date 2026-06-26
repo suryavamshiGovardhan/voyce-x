@@ -789,6 +789,47 @@ export type Database = {
         }
         Returns: boolean
       }
+      iit_create_session: { Args: { p_code: string }; Returns: boolean }
+      iit_get_responses: {
+        Args: { p_code: string }
+        Returns: {
+          answer_value: number
+          partner: string
+          question_id: string
+        }[]
+      }
+      iit_mark_complete: {
+        Args: { p_code: string; p_partner: string }
+        Returns: undefined
+      }
+      iit_save_partner_info: {
+        Args: {
+          p_code: string
+          p_email: string
+          p_name: string
+          p_partner: string
+        }
+        Returns: undefined
+      }
+      iit_session_exists: { Args: { p_code: string }; Returns: boolean }
+      iit_session_status: {
+        Args: { p_code: string }
+        Returns: {
+          id: string
+          partner_a_completed_at: string
+          partner_b_completed_at: string
+        }[]
+      }
+      iit_upsert_response: {
+        Args: {
+          p_code: string
+          p_dimension: string
+          p_partner: string
+          p_question_id: string
+          p_value: number
+        }
+        Returns: undefined
+      }
       is_admin: { Args: { _user_id: string }; Returns: boolean }
       redeem_referral_code: { Args: { p_code: string }; Returns: Json }
       update_streak: { Args: { p_user_id: string }; Returns: undefined }

@@ -24,12 +24,11 @@ export default function InvisibleInheritanceTestPage() {
     try {
       let code = generateSessionCode();
       for (let attempt = 0; attempt < 4; attempt++) {
-        const { data: existing } = await supabase
-          .from("iit_sessions").select("id").eq("session_code", code).maybeSingle();
-        if (!existing) break;
+        const { data: exists } = await supabase.rpc("iit_session_exists", { p_code: code });
+        if (!exists) break;
         code = generateSessionCode();
       }
-      const { error } = await supabase.from("iit_sessions").insert({ session_code: code });
+      const { error } = await supabase.rpc("iit_create_session", { p_code: code });
       if (error) throw error;
       setCreatedCode(code);
     } catch (err) {
@@ -45,8 +44,7 @@ export default function InvisibleInheritanceTestPage() {
     if (code.length < 4) { toast.error("Enter a valid session code."); return; }
     setJoining(true);
     try {
-      const { data, error } = await supabase
-        .from("iit_sessions").select("session_code").eq("session_code", code).maybeSingle();
+      const { data, error } = await supabase.rpc("iit_session_exists", { p_code: code });
       if (error) throw error;
       if (!data) { toast.error("Session not found."); return; }
       navigate(`/invisible-inheritance/test/${code}/b`);

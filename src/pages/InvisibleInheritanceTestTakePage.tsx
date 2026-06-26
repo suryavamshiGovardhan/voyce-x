@@ -61,19 +61,18 @@ export default function InvisibleInheritanceTestTakePage() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const { data, error } = await supabase
-        .from("iit_sessions")
-        .select("id, partner_a_completed_at, partner_b_completed_at")
-        .eq("session_code", sessionCode.toUpperCase())
-        .maybeSingle();
+      const { data, error } = await supabase.rpc("iit_session_status", {
+        p_code: sessionCode.toUpperCase(),
+      });
       if (cancelled) return;
-      if (error || !data) {
+      const row = Array.isArray(data) ? data[0] : null;
+      if (error || !row) {
         toast.error("Session not found.");
         navigate("/invisible-inheritance/test");
         return;
       }
-      setSessionId(data.id);
-      const done = partnerKey === "a" ? !!data.partner_a_completed_at : !!data.partner_b_completed_at;
+      setSessionId(row.id);
+      const done = partnerKey === "a" ? !!row.partner_a_completed_at : !!row.partner_b_completed_at;
       setAlreadyDone(done);
       setLoading(false);
     })();
@@ -85,27 +84,21 @@ export default function InvisibleInheritanceTestTakePage() {
     const q = IIT_QUESTIONS[current.questionIndex];
     setSaving(true);
     try {
-      const { error } = await supabase
-        .from("iit_responses")
-        .upsert(
-          {
-            session_id: sessionId,
-            partner: partnerKey,
-            dimension: q.dimension,
-            question_id: q.id,
-            answer_value: value,
-          },
-          { onConflict: "session_id,partner,question_id" }
-        );
+      const { error } = await supabase.rpc("iit_upsert_response", {
+        p_code: sessionCode.toUpperCase(),
+        p_partner: partnerKey,
+        p_dimension: q.dimension,
+        p_question_id: q.id,
+        p_value: value,
+      });
       if (error) throw error;
 
       const isLast = stepIdx === steps.length - 1;
       if (isLast) {
-        const updates: Record<string, string> =
-          partnerKey === "a"
-            ? { partner_a_completed_at: new Date().toISOString() }
-            : { partner_b_completed_at: new Date().toISOString() };
-        await supabase.from("iit_sessions").update(updates).eq("id", sessionId);
+        await supabase.rpc("iit_mark_complete", {
+          p_code: sessionCode.toUpperCase(),
+          p_partner: partnerKey,
+        });
         supabase.functions.invoke("notify-test-event", {
           body: {
             event: "Partner completed test",
@@ -169,11 +162,12 @@ export default function InvisibleInheritanceTestTakePage() {
     setSavingIntro(true);
     try {
       if (sessionId && !skip && (name || email)) {
-        const updates: Record<string, string | null> =
-          partnerKey === "a"
-            ? { partner_a_name: name || null, partner_a_email: email || null }
-            : { partner_b_name: name || null, partner_b_email: email || null };
-        const { error } = await supabase.from("iit_sessions").update(updates).eq("id", sessionId);
+        const { error } = await supabase.rpc("iit_save_partner_info", {
+          p_code: sessionCode.toUpperCase(),
+          p_partner: partnerKey,
+          p_name: name || null,
+          p_email: email || null,
+        });
         if (error) throw error;
       }
       supabase.functions.invoke("notify-test-event", {

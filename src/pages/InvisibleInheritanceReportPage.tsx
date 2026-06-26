@@ -33,24 +33,23 @@ export default function InvisibleInheritanceReportPage() {
     let cancelled = false;
     (async () => {
       try {
-        const { data: s, error: se } = await supabase
-          .from("iit_sessions")
-          .select("id, session_code, partner_a_completed_at, partner_b_completed_at")
-          .eq("session_code", code)
-          .maybeSingle();
+        const { data: statusData, error: se } = await supabase.rpc("iit_session_status", { p_code: code });
         if (cancelled) return;
+        const s = Array.isArray(statusData) ? statusData[0] : null;
         if (se || !s) { setError("Session not found."); setLoading(false); return; }
-        setSession(s as SessionRow);
+        setSession({
+          id: s.id,
+          session_code: code,
+          partner_a_completed_at: s.partner_a_completed_at,
+          partner_b_completed_at: s.partner_b_completed_at,
+        });
 
         if (!s.partner_a_completed_at || !s.partner_b_completed_at) {
           setLoading(false);
           return;
         }
 
-        const { data: rows, error: re } = await supabase
-          .from("iit_responses")
-          .select("partner, question_id, answer_value")
-          .eq("session_id", s.id);
+        const { data: rows, error: re } = await supabase.rpc("iit_get_responses", { p_code: code });
         if (cancelled) return;
         if (re) { setError("Couldn't load responses."); setLoading(false); return; }
 

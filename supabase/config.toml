@@ -11,3 +11,7 @@ verify_jwt = false
 
 [functions.notify-test-event]
 verify_jwt = false
+
+[functions.admin-blueprint]
+verify_jwt = false
+

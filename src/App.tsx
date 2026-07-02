@@ -77,6 +77,7 @@ const InvisibleInheritanceReportPage = lazy(() => import("./pages/InvisibleInher
 const SeriesIndexPage = lazy(() => import("./pages/SeriesIndexPage"));
 const SeriesEpisodePage = lazy(() => import("./pages/SeriesEpisodePage"));
 const AI4SchoolsPage = lazy(() => import("./pages/AI4SchoolsPage"));
+const AdminBlueprintPage = lazy(() => import("./pages/AdminBlueprintPage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {

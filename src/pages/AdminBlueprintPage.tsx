@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Lock, Share2, ExternalLink, Pencil, Copy } from "lucide-react";
-import SEOHead from "@/components/SEOHead";
+import { SEOHead } from "@/components/SEOHead";
 
 const STORAGE_KEY = "voyce_admin_blueprint_passkey";
 

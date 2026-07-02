@@ -6,7 +6,10 @@ const CANVA_EDIT_URL = "https://www.canva.com/design/DAHOPRcSnco/nEL8G9piivf4W7u
 const ADMIN_EMAIL = "4igroupss@gmail.com";
 
 function b64url(s: string) {
-  return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const bytes = new TextEncoder().encode(s);
+  let bin = "";
+  bytes.forEach((b) => (bin += String.fromCharCode(b)));
+  return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
 async function sendPasskeyEmail(passkey: string) {

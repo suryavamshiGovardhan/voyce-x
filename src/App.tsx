@@ -132,6 +132,7 @@ const App = () => (
                   <Route path="/cds" element={<CDSPage />} />
                  <Route path="/schools" element={<SchoolsPage />} />
                  <Route path="/ai4schools" element={<AI4SchoolsPage />} />
+                 <Route path="/admin/blueprint" element={<AdminBlueprintPage />} />
                   <Route path="/dsm5" element={<DSM5Page />} />
                   <Route path="/dsm5-academy" element={<DSM5AcademyPage />} />
                   <Route path="/dsm5-academy/module/:moduleId" element={<DSM5ModulePage />} />

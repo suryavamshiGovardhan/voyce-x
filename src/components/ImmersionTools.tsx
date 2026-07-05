@@ -222,6 +222,12 @@ export default function ImmersionTools() {
           </div>
         </div>
       </div>
+
+      <PracticeModal
+        open={activeTool !== null}
+        onOpenChange={(o) => { if (!o) setActiveTool(null); }}
+        toolTitle={activeTool ?? ""}
+      />
     </div>
   );
 }

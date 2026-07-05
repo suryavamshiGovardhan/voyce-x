@@ -136,6 +136,7 @@ const immersionTools = [
 ];
 
 export default function ImmersionTools() {
+  const [activeTool, setActiveTool] = useState<string | null>(null);
   return (
     <div className="space-y-8">
       <div className="text-center mb-8">
@@ -190,9 +191,10 @@ export default function ImmersionTools() {
                   <span className={`${tool.color} text-xs font-mono`}>
                     {tool.sessions}
                   </span>
-                  <Button 
-                    size="sm" 
-                    className={`${tool.bgColor} hover:${tool.bgColor}/80 text-white haptic-btn text-xs px-4`}
+                  <Button
+                    size="sm"
+                    className={`${tool.bgColor} hover:opacity-90 text-white haptic-btn text-xs px-4`}
+                    onClick={() => setActiveTool(tool.title)}
                   >
                     Begin Practice
                   </Button>

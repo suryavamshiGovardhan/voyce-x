@@ -1,8 +1,10 @@
 
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, BookOpen, Headphones, Activity, Compass, Users, Brain, Heart, Eye } from "lucide-react";
 import JapaneseIcon from "./JapaneseIcon";
+import { PracticeModal } from "./PracticeModal";
 
 const immersionTools = [
   {

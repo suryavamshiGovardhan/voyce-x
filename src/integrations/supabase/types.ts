@@ -772,6 +772,36 @@ export type Database = {
         }
         Relationships: []
       }
+      user_stage_progress: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          id: string
+          stage_level: string
+          started_at: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          stage_level: string
+          started_at?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          id?: string
+          stage_level?: string
+          started_at?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

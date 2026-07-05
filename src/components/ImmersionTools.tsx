@@ -1,8 +1,10 @@
 
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, BookOpen, Headphones, Activity, Compass, Users, Brain, Heart, Eye } from "lucide-react";
 import JapaneseIcon from "./JapaneseIcon";
+import { PracticeModal } from "./PracticeModal";
 
 const immersionTools = [
   {
@@ -134,6 +136,7 @@ const immersionTools = [
 ];
 
 export default function ImmersionTools() {
+  const [activeTool, setActiveTool] = useState<string | null>(null);
   return (
     <div className="space-y-8">
       <div className="text-center mb-8">
@@ -188,9 +191,10 @@ export default function ImmersionTools() {
                   <span className={`${tool.color} text-xs font-mono`}>
                     {tool.sessions}
                   </span>
-                  <Button 
-                    size="sm" 
-                    className={`${tool.bgColor} hover:${tool.bgColor}/80 text-white haptic-btn text-xs px-4`}
+                  <Button
+                    size="sm"
+                    className={`${tool.bgColor} hover:opacity-90 text-white haptic-btn text-xs px-4`}
+                    onClick={() => setActiveTool(tool.title)}
                   >
                     Begin Practice
                   </Button>
@@ -218,6 +222,12 @@ export default function ImmersionTools() {
           </div>
         </div>
       </div>
+
+      <PracticeModal
+        open={activeTool !== null}
+        onOpenChange={(o) => { if (!o) setActiveTool(null); }}
+        toolTitle={activeTool ?? ""}
+      />
     </div>
   );
 }

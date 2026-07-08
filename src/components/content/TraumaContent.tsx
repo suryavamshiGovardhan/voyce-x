@@ -231,6 +231,326 @@ const TraumaContent = () => {
             ))}
           </div>
         </TabsContent>
+
+        <TabsContent value="types" className="space-y-6">
+          <Card className="edu-card washi-texture">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 japanese-heading">
+                <Compass className="h-6 w-6 text-amber-700" />
+                The Many Shapes of Trauma
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-amber-900 leading-relaxed japanese-text">
+                Trauma is not one thing. It is the nervous system's response to more than it could hold, at a time when it could not fully process what
+                happened. Sometimes it arrives in a single moment. Sometimes it accumulates so slowly that we mistake it for personality. Naming the shape of it
+                is often the first act of relief — because you cannot heal what you cannot see.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { name: "Acute Trauma", body: "A single, time-bound event — an accident, an assault, a sudden loss. The mind keeps replaying it because it has not yet been fully processed.", color: "amber" },
+                  { name: "Chronic Trauma", body: "Repeated exposure — long illness, ongoing violence, financial precarity. The body learns to live in a state of low, constant alarm.", color: "orange" },
+                  { name: "Complex Trauma (C-PTSD)", body: "Prolonged, interpersonal, and often inescapable — childhood abuse, coercive relationships, captivity. Affects identity, relationships, and the sense of self, not just memory.", color: "red" },
+                  { name: "Developmental Trauma", body: "Occurs during formative years and shapes the nervous system's baseline. Often invisible because it feels like 'just how I am.'", color: "rose" },
+                  { name: "Vicarious / Secondary Trauma", body: "Carried by those who witness or hold others' pain — carers, first responders, therapists, journalists, activists.", color: "purple" },
+                  { name: "Collective & Intergenerational Trauma", body: "Trauma that lives in a community and passes through families — war, displacement, caste violence, systemic oppression. The body remembers what the ancestors survived.", color: "indigo" },
+                  { name: "Medical Trauma", body: "Diagnoses, procedures, ICU stays, or medical betrayal. The body was in a place of extremity and it did not forget.", color: "teal" },
+                  { name: "Betrayal Trauma", body: "When harm comes from someone we depended on for safety. The wound is not just the event, but the collapse of trust itself.", color: "pink" }
+                ].map((t, i) => (
+                  <div key={i} className={`bg-${t.color}-50/80 p-4 rounded-lg border border-${t.color}-200`}>
+                    <h4 className={`font-semibold text-${t.color}-800 mb-2 japanese-heading`}>{t.name}</h4>
+                    <p className={`text-sm text-${t.color}-700 japanese-text`}>{t.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-amber-50/80 p-4 rounded-lg border-l-4 border-amber-400">
+                <p className="text-sm text-amber-800 italic japanese-text">
+                  You may recognise more than one of these. That is common, not broken. Trauma layers. Healing does too.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="symptoms" className="space-y-6">
+          <Card className="edu-card washi-texture">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 japanese-heading">
+                <Heart className="h-6 w-6 text-rose-600" />
+                What Trauma Feels Like from the Inside
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-amber-900 leading-relaxed japanese-text">
+                Trauma responses are not defects. They are old strategies that once kept you alive — the flinch, the freeze, the fawn, the fog. Reading these
+                may be uncomfortable. It may also be the first time you feel less alone in your own body.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-rose-50/80 p-5 rounded-lg border border-rose-200">
+                  <h4 className="font-semibold text-rose-800 mb-2 japanese-heading">Re-experiencing</h4>
+                  <ul className="text-sm text-rose-700 space-y-1 japanese-text">
+                    <li>• Intrusive memories, flashbacks, nightmares</li>
+                    <li>• A sound or smell that yanks you back in time</li>
+                    <li>• Physical waves — chest, throat, gut — with no clear trigger</li>
+                  </ul>
+                </div>
+                <div className="bg-blue-50/80 p-5 rounded-lg border border-blue-200">
+                  <h4 className="font-semibold text-blue-800 mb-2 japanese-heading">Avoidance</h4>
+                  <ul className="text-sm text-blue-700 space-y-1 japanese-text">
+                    <li>• Steering around places, people, conversations</li>
+                    <li>• Overworking, over-scrolling, over-caring for others</li>
+                    <li>• A quiet, persistent "I don't want to talk about it"</li>
+                  </ul>
+                </div>
+                <div className="bg-purple-50/80 p-5 rounded-lg border border-purple-200">
+                  <h4 className="font-semibold text-purple-800 mb-2 japanese-heading">Mood & cognition shifts</h4>
+                  <ul className="text-sm text-purple-700 space-y-1 japanese-text">
+                    <li>• Persistent shame or guilt, often without an object</li>
+                    <li>• A sense that the world is unsafe and people cannot be trusted</li>
+                    <li>• Trouble remembering parts of the event, or entire periods of life</li>
+                    <li>• Losing interest in things that used to matter</li>
+                  </ul>
+                </div>
+                <div className="bg-orange-50/80 p-5 rounded-lg border border-orange-200">
+                  <h4 className="font-semibold text-orange-800 mb-2 japanese-heading">Hyperarousal</h4>
+                  <ul className="text-sm text-orange-700 space-y-1 japanese-text">
+                    <li>• Easily startled; sleep that never quite deepens</li>
+                    <li>• Anger that surprises even you</li>
+                    <li>• Constantly scanning for what could go wrong</li>
+                  </ul>
+                </div>
+                <div className="bg-teal-50/80 p-5 rounded-lg border border-teal-200">
+                  <h4 className="font-semibold text-teal-800 mb-2 japanese-heading">Dissociation</h4>
+                  <ul className="text-sm text-teal-700 space-y-1 japanese-text">
+                    <li>• Feeling far away from your own body</li>
+                    <li>• "Losing time" during hard conversations</li>
+                    <li>• A dreamlike quality that comes and goes</li>
+                  </ul>
+                </div>
+                <div className="bg-green-50/80 p-5 rounded-lg border border-green-200">
+                  <h4 className="font-semibold text-green-800 mb-2 japanese-heading">Somatic signs</h4>
+                  <ul className="text-sm text-green-700 space-y-1 japanese-text">
+                    <li>• Chronic pain, unexplained gut trouble, autoimmune flare-ups</li>
+                    <li>• A body that flinches at touch, or craves it desperately</li>
+                    <li>• Fatigue that sleep does not fix</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="therapies" className="space-y-6">
+          <Card className="edu-card washi-texture">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 japanese-heading">
+                <Gem className="h-6 w-6 text-purple-700" />
+                Therapies That Actually Help
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-amber-900 leading-relaxed japanese-text">
+                No single therapy fits everyone. What matters most is the relationship with the therapist and the sense that your nervous system feels safer,
+                not more overwhelmed, over time. Here are the approaches with the strongest evidence for trauma — described in plain language, so you can walk
+                into a first session with less mystery.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { name: "EMDR (Eye Movement Desensitisation & Reprocessing)", body: "Uses side-to-side eye movements, tapping, or sound while recalling the memory. Helps the brain re-file the memory as past instead of present. Often faster than talk therapy for single-incident trauma.", suits: "Suits: PTSD, phobias, distressing memories with clear imagery." },
+                  { name: "Somatic Experiencing", body: "Works with body sensations rather than the story. Slowly discharges the trapped fight/flight/freeze energy the body did not get to complete at the time.", suits: "Suits: those who feel stuck in their body, freeze responses, medical trauma." },
+                  { name: "Internal Family Systems (IFS)", body: "Treats the psyche as a system of 'parts' — the protector, the exile, the manager. Rather than fighting the parts, you get to know them. Deeply gentle.", suits: "Suits: complex trauma, inner-critic patterns, self-abandonment." },
+                  { name: "Trauma-Focused CBT", body: "Structured, short-term, evidence-heavy. You gradually re-approach the memory in a safe frame and reshape the beliefs that grew around it ('it was my fault,' 'I am unsafe').", suits: "Suits: children and teens, single-incident trauma, those who like structure." },
+                  { name: "Sensorimotor Psychotherapy", body: "Combines body awareness with talk. You notice posture, gesture, breath as you speak — the body speaks first, and it is heard.", suits: "Suits: developmental trauma, chronic dissociation." },
+                  { name: "Group Therapy & Peer Support", body: "Being witnessed by others who understand can undo the isolation trauma builds. Not a replacement for individual work, but often a powerful companion.", suits: "Suits: grief, addiction recovery, shared identity trauma." }
+                ].map((t, i) => (
+                  <div key={i} className="bg-purple-50/80 p-4 rounded-lg border border-purple-200">
+                    <h4 className="font-semibold text-purple-800 mb-2 japanese-heading">{t.name}</h4>
+                    <p className="text-sm text-purple-700 japanese-text mb-2">{t.body}</p>
+                    <p className="text-xs text-purple-600 italic">{t.suits}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-blue-50/80 p-4 rounded-lg border-l-4 border-blue-400">
+                <h4 className="font-semibold text-blue-800 mb-1 japanese-heading">On medication</h4>
+                <p className="text-sm text-blue-700 japanese-text">
+                  Medication does not "cure" trauma, but it can turn the volume down enough for therapy to reach you. SSRIs (like sertraline), prazosin for
+                  nightmares, and short-term anti-anxiety support are common. This is a conversation with a psychiatrist, not a search engine.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="resilience" className="space-y-6">
+          <Card className="edu-card washi-texture">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 japanese-heading">
+                <Mountain className="h-6 w-6 text-emerald-700" />
+                Post-Traumatic Growth
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-amber-900 leading-relaxed japanese-text">
+                Resilience is not the absence of suffering. It is what grows through it, slowly, when the wound is tended rather than hidden. Researchers
+                Tedeschi and Calhoun found that survivors often report growth in five specific domains — not despite what happened, but because of how they met
+                it.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { title: "1. Renewed appreciation for life", body: "Small things — morning light, a warm cup, a friend's voice — begin to matter more, not less." },
+                  { title: "2. Deeper relationships", body: "You learn who really shows up. You become more able to be that person for others." },
+                  { title: "3. Personal strength", body: "A quiet knowing: 'I survived that. I can meet more than I thought.'" },
+                  { title: "4. New possibilities", body: "Old paths lose their grip. New callings — creative, vocational, spiritual — often emerge." },
+                  { title: "5. Spiritual or existential deepening", body: "Not necessarily religious. A larger sense of meaning, or a more honest one." }
+                ].map((d, i) => (
+                  <div key={i} className="bg-emerald-50/80 p-4 rounded-lg border border-emerald-200">
+                    <h4 className="font-semibold text-emerald-800 mb-1 japanese-heading">{d.title}</h4>
+                    <p className="text-sm text-emerald-700 japanese-text">{d.body}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-teal-50/80 p-4 rounded-lg border border-teal-200">
+                  <h4 className="font-semibold text-teal-800 mb-1 japanese-heading">Window of tolerance</h4>
+                  <p className="text-sm text-teal-700 japanese-text">
+                    The zone where you can feel without being flooded. Healing widens the window — through breath, rhythm, and slowly-titrated exposure.
+                  </p>
+                </div>
+                <div className="bg-amber-50/80 p-4 rounded-lg border border-amber-200">
+                  <h4 className="font-semibold text-amber-800 mb-1 japanese-heading">Co-regulation</h4>
+                  <p className="text-sm text-amber-700 japanese-text">
+                    Nervous systems calm each other. A trusted person's steady presence is not a luxury — it is neurobiology.
+                  </p>
+                </div>
+                <div className="bg-orange-50/80 p-4 rounded-lg border border-orange-200">
+                  <h4 className="font-semibold text-orange-800 mb-1 japanese-heading">Ritual & rhythm</h4>
+                  <p className="text-sm text-orange-700 japanese-text">
+                    Morning tea. Sunday walks. Lighting a candle for someone lost. Small repeatable acts rebuild a sense of order the trauma disrupted.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="support" className="space-y-6">
+          <Card className="edu-card washi-texture">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 japanese-heading">
+                <Church className="h-6 w-6 text-indigo-700" />
+                Building the Circle That Holds You
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-amber-900 leading-relaxed japanese-text">
+                Trauma often teaches us that people are unsafe. Healing asks us to test that lesson, gently, with the right people. This is not about opening
+                everything to everyone. It is about learning who deserves your story, and what kind of holding you actually need.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-indigo-50/80 p-5 rounded-lg border border-indigo-200">
+                  <h4 className="font-semibold text-indigo-800 mb-2 japanese-heading">Signs of a safe person</h4>
+                  <ul className="text-sm text-indigo-700 space-y-1 japanese-text">
+                    <li>• They listen without rushing to fix</li>
+                    <li>• They believe you the first time</li>
+                    <li>• They can hold their own emotions while you have yours</li>
+                    <li>• They respect a "no" without punishment</li>
+                    <li>• You feel calmer, not smaller, after being with them</li>
+                  </ul>
+                </div>
+                <div className="bg-rose-50/80 p-5 rounded-lg border border-rose-200">
+                  <h4 className="font-semibold text-rose-800 mb-2 japanese-heading">Boundary language you can borrow</h4>
+                  <ul className="text-sm text-rose-700 space-y-2 japanese-text">
+                    <li>• "I'm not ready to talk about that part."</li>
+                    <li>• "I need you to just listen right now, not solve it."</li>
+                    <li>• "I love you and this topic is off-limits for me."</li>
+                    <li>• "I need to leave this conversation. We can come back to it."</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-teal-50/80 p-5 rounded-lg border border-teal-200">
+                <h4 className="font-semibold text-teal-800 mb-2 japanese-heading">Choosing a therapist — a short checklist</h4>
+                <ul className="text-sm text-teal-700 space-y-1 japanese-text">
+                  <li>• Are they trained specifically in trauma (EMDR, SE, IFS, TF-CBT)?</li>
+                  <li>• Do they explain their approach in plain language?</li>
+                  <li>• Do they welcome your questions about consent, pace, and safety?</li>
+                  <li>• After three sessions, do you feel a little more resourced — or more overwhelmed?</li>
+                  <li>• Do they know when to refer you to a psychiatrist, doctor, or specialist?</li>
+                </ul>
+              </div>
+
+              <div className="bg-amber-50/80 p-4 rounded-lg border-l-4 border-amber-400">
+                <p className="text-sm text-amber-800 italic japanese-text">
+                  If the first therapist is not the right one, this is information — not failure. Fit matters more than credentials.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="resources" className="space-y-6">
+          <Card className="edu-card washi-texture">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 japanese-heading">
+                <Gem className="h-6 w-6 text-amber-700" />
+                Where to Turn Next
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-amber-50/80 p-5 rounded-lg border border-amber-200">
+                  <h4 className="font-semibold text-amber-800 mb-2 japanese-heading">India — support lines & services</h4>
+                  <ul className="text-sm text-amber-700 space-y-2 japanese-text">
+                    <li>• <strong>iCall</strong> — +91 9152987821, Mon–Sat 8 AM–10 PM, free & confidential</li>
+                    <li>• <strong>Vandrevala Foundation</strong> — 1860-2662-345, 24×7</li>
+                    <li>• <strong>KIRAN (Govt of India)</strong> — 1800-599-0019, 24×7, 13 languages</li>
+                    <li>• <strong>NIMHANS Bengaluru</strong> — public research & tertiary care</li>
+                    <li>• <strong>Sangath</strong> — community mental health, Goa/Delhi/Bhopal</li>
+                    <li>• <strong>The Live Love Laugh Foundation</strong> — awareness and access</li>
+                  </ul>
+                </div>
+                <div className="bg-blue-50/80 p-5 rounded-lg border border-blue-200">
+                  <h4 className="font-semibold text-blue-800 mb-2 japanese-heading">Global directories</h4>
+                  <ul className="text-sm text-blue-700 space-y-2 japanese-text">
+                    <li>• <strong>findahelpline.com</strong> — local crisis lines by country</li>
+                    <li>• <strong>ISSTD</strong> — International Society for the Study of Trauma & Dissociation</li>
+                    <li>• <strong>EMDRIA</strong> — find a certified EMDR therapist</li>
+                    <li>• <strong>IFS Institute</strong> — Internal Family Systems practitioners</li>
+                    <li>• <strong>Somatic Experiencing International</strong> — practitioner directory</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-purple-50/80 p-5 rounded-lg border border-purple-200">
+                <h4 className="font-semibold text-purple-800 mb-2 japanese-heading">Books that have helped many</h4>
+                <ul className="text-sm text-purple-700 space-y-1 japanese-text">
+                  <li>• <em>The Body Keeps the Score</em> — Bessel van der Kolk</li>
+                  <li>• <em>What Happened to You?</em> — Bruce Perry & Oprah Winfrey</li>
+                  <li>• <em>The Myth of Normal</em> — Gabor Maté</li>
+                  <li>• <em>Waking the Tiger</em> — Peter Levine</li>
+                  <li>• <em>No Bad Parts</em> — Richard Schwartz (IFS)</li>
+                  <li>• <em>Complex PTSD: From Surviving to Thriving</em> — Pete Walker</li>
+                  <li>• <em>My Grandmother's Hands</em> — Resmaa Menakem (racialised trauma & the body)</li>
+                </ul>
+              </div>
+
+              <div className="bg-slate-50/80 p-4 rounded-lg border-l-4 border-slate-400">
+                <p className="text-sm text-slate-700 italic japanese-text">
+                  VOYCE is a companion, not a clinician. If any of this stirs something that feels too big to carry alone, please reach out to a professional or
+                  one of the lines above. You do not have to earn the right to ask for help.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
       </Tabs>
     </div>
   );

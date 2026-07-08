@@ -1,74 +1,67 @@
-## Goal
-Help you see who's taking the Invisible Inheritance Test, by (a) showing you where the data lives in Supabase and (b) optionally capturing each partner's first name + email so your rows aren't just anonymous codes.
+# Batch A — Ship Plan
+
+Three fixes, all frontend + one small SQL migration. No structural changes.
 
 ---
 
-## Part 1 — Where to view the data (no code, just links)
+## 1. Fix Stress page broken buttons + add missing content (~1200 words)
 
-Two tables hold everything:
+**Problem:** `StressContent.tsx` has 8 tab triggers (Physiology, Types, Symptoms, Assessment, Techniques, Lifestyle, Workplace, Crisis) but only 3 have `<TabsContent>` bodies. Clicking Symptoms/Assessment/Lifestyle/Workplace/Crisis shows nothing — this is why the user sees "buttons not working."
 
-**`iit_sessions`** — one row per couple
-- `session_code` (the 6-char code)
-- `created_at`
-- `partner_a_completed_at` / `partner_b_completed_at`
+**Fix:** Add the 5 missing `<TabsContent>` sections with rich, honest, non-clinical content:
 
-**`iit_responses`** — one row per answered question (up to 120 per session)
-- `session_id`, `partner` (a/b), `dimension`, `question_id`, `answer_value`
+- **Symptoms** — Physical (headaches, GI, sleep, muscle tension, immune), Emotional (irritability, overwhelm, numbness), Cognitive (racing thoughts, forgetfulness, indecision), Behavioral (withdrawal, substance use, procrastination). Each with real explanations, not one-liners.
+- **Assessment** — Self-check questions (Perceived Stress Scale-style, non-diagnostic), stress load worksheet, "when to seek help" honest thresholds, journaling prompts.
+- **Lifestyle** — Sleep hygiene deep dive, nutrition & stress (blood sugar, caffeine, gut-brain), movement prescription (Zone 2, strength, walking), digital hygiene, nature exposure.
+- **Workplace** — Boundary scripts, meeting overload, email triage, saying no, burnout early signs, requesting accommodations, remote work traps.
+- **Crisis** — Honest crisis signs, iCall (India) 9152987821, Vandrevala 1860-2662-345, KIRAN 1800-599-0019, iCare emergency plan, safe-person list, grounding for panic.
 
-Quick links I'll surface in chat after the plan runs:
-- Table editor (browse rows visually)
-- SQL editor with 3 ready-to-run queries:
-  1. **Recent sessions + completion status**
-  2. **Per-session answer counts** (drop-off detection)
-  3. **Full answer dump for a given session code** (paste a code, see both partners' 60 answers side-by-side)
+Target: 1000–1300 words of real content across new sections. Tone: warm, Japanese-minimal, non-clinical, matches VOYCE voice memory.
 
-No code changes for this part.
+## 2. Fix Trauma page broken buttons + add missing content (~1200 words)
 
----
+**Problem:** Same pattern — 8 tab triggers, only 3 have content. Missing: Types, Symptoms, Therapies, Resilience, Support, Resources.
 
-## Part 2 — Capture optional first name + email per partner
+**Fix:** Add 6 missing `<TabsContent>` sections:
 
-### Schema change (1 migration)
-Add four nullable columns to `iit_sessions`:
-- `partner_a_name`, `partner_a_email`
-- `partner_b_name`, `partner_b_email`
+- **Types** — Acute, Chronic, Complex (C-PTSD), Developmental, Vicarious, Collective/intergenerational, Medical, Betrayal. Each with definition + example + how it feels.
+- **Symptoms** — Re-experiencing, avoidance, negative mood/cognition shifts, hyperarousal, dissociation, somatic signs. Honest framing that these are protection responses, not defects.
+- **Therapies** — EMDR, Somatic Experiencing, IFS (parts work), Trauma-focused CBT, Sensorimotor, group therapy, medication basics. What each is, what it feels like, who it suits.
+- **Resilience** — Post-traumatic growth (Tedeschi & Calhoun's 5 domains), window of tolerance, co-regulation, meaning-making, ritual & routine.
+- **Support** — Building safe relationships, boundary language, telling your story safely, choosing a therapist checklist, peer support groups.
+- **Resources** — India: iCall, NIMHANS, Sangath, Vandrevala; Global: ISSTD, EMDRIA, book list (van der Kolk, Maté, Levine), free online tools.
 
-All optional. Indexed on email for lookup. No RLS changes (anonymous flow stays).
+Target: 1000–1300 words. Same voice.
 
-### Frontend change (test-taking flow only — no redesign)
-On the partner's test page (`/invisible-inheritance/test/:code/:partner`), add a small **"Before we begin (optional)"** card shown once at the very start, before the first dimension intro:
+## 3. Blog RLS / moderation fix (Prompt 2)
 
-- First name (optional, max 50 chars, zod-validated)
-- Email (optional, valid email, max 255 chars, zod-validated)
-- Microcopy: *"Optional. Helps us send you the reflection if you lose your code. We never share this."*
-- Two buttons: **"Continue"** (saves if filled) and **"Skip — stay anonymous"**
+**Problem (from user memory):** blog approval workflow needs `can_moderate()` gating; anon reads published only; drafts visible to author + moderators; publish action goes through moderation.
 
-Values saved to `iit_sessions` via an `update()` keyed on `session_code` + partner column. If skipped, fields remain `null` — fully backward compatible.
+**Check first:** query `blogs` policies to see current state, then only patch what's missing. From memory the `can_moderate` function already exists. Likely need:
 
-### Where you'll see it in Supabase
-Same `iit_sessions` table — the new columns appear automatically in the Table editor. Updated SQL query #1 will join name/email so you see:
+- SELECT policy for anon: `status = 'published'` only (probably already correct)
+- SELECT policy for authenticated: own drafts OR published OR (moderator sees all)
+- INSERT: authenticated only, `author_id = auth.uid()`, status forced to `'pending'` or `'draft'`
+- UPDATE: author can edit own drafts; only moderators can flip `status` to `'published'`
+- DELETE: author own OR moderator
 
-```
-code   | A name   | A email          | A done | B name | B email | B done
-A7K2P9 | Riya     | riya@gmail.com   | ✓      | Arjun  | (null)  | ✗
-```
+Migration will add/replace policies only where needed. GRANTs verified.
+
+Frontend: `useBlogs` already filters `status = 'published'` — no change needed for public list. `CreateBlogPage` may need to force status to `'pending'` on submit (will check).
 
 ---
 
-## Files
+## Files touched
 
-**New migration** (via migration tool — adds 4 nullable columns + 2 indexes to `iit_sessions`)
+- `src/components/content/StressContent.tsx` — add 5 TabsContent blocks
+- `src/components/content/TraumaContent.tsx` — add 6 TabsContent blocks
+- `supabase/migrations/<new>.sql` — blog RLS patch (only what's missing)
+- `src/pages/CreateBlogPage.tsx` — force pending status on submit if not already
 
-**Edited:**
-- `src/pages/InvisibleInheritanceTestTakePage.tsx` — add the optional intro card before the stepper begins
-- `src/lib/validation.ts` (or inline zod) — schema for name/email
+## Not in this batch (Batch B next turn)
 
-**No new components, no design changes** beyond a small glass card matching existing `ii-*` aesthetic.
+ADHD/Brain/CDS/ACEs/Neuroscience content expansion, Workshop audit, remaining Navigation button sweep, any other prompt-block items.
 
 ---
 
-## Out of scope
-- Admin dashboard in-app (you chose Supabase-only)
-- Emailing the report to partners (separate feature — easy to add later via Lovable transactional email)
-- Making name/email mandatory
-- Capturing IP, device, location, or any other tracking
+**Approve and I ship immediately, kata style — no more questions.**

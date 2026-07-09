@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import ComprehensiveContent from "@/components/ComprehensiveContent";
 import ShareStoryButton from "@/components/ShareStoryButton";
+import MindHeartGutContent from "@/components/content/MindHeartGutContent";
 import { mindHeartGutResources } from "@/data/mentalHealthResources";
 
 const mindHeartGutStatistics = [
@@ -36,6 +37,10 @@ export default function MindHeartGutPage() {
             Explore the profound interconnection between your mind, heart, and gut — 
             the three intelligence centers that work together for optimal health and wellbeing.
           </p>
+        </div>
+
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl mb-12">
+          <MindHeartGutContent />
         </div>
 
         <ComprehensiveContent 

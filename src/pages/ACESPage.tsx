@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import ComprehensiveContent from "@/components/ComprehensiveContent";
 import ShareStoryButton from "@/components/ShareStoryButton";
+import ACESContent from "@/components/content/ACESContent";
 
 const acesResources = [
   {
@@ -58,6 +59,10 @@ export default function ACESPage() {
             Understanding Adverse Childhood Experiences and their lasting impact on health, 
             behavior, and life outcomes — plus pathways to healing and resilience.
           </p>
+        </div>
+
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl mb-12">
+          <ACESContent />
         </div>
 
         <ComprehensiveContent 

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import ComprehensiveContent from "@/components/ComprehensiveContent";
 import ShareStoryButton from "@/components/ShareStoryButton";
+import NeuroscienceContent from "@/components/content/NeuroscienceContent";
 import { neuroscienceResources } from "@/data/mentalHealthResources";
 
 const neuroscienceStatistics = [
@@ -36,6 +37,10 @@ export default function NeurosciencePage() {
             Journey through the history and cutting-edge advances in neuroscience — 
             from early brain studies to modern AI-powered discoveries about consciousness.
           </p>
+        </div>
+
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl mb-12">
+          <NeuroscienceContent />
         </div>
 
         <ComprehensiveContent 

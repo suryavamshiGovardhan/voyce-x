@@ -1,22 +1,47 @@
 import { SEOHead } from "@/components/SEOHead";
-import { FounderSchema, OrganizationSchema } from "@/components/StructuredData";
+import { FounderSchema, OrganizationSchema, FAQSchema } from "@/components/StructuredData";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Heart, Brain, Users, Sparkles, BookOpen, Target } from "lucide-react";
+import { ArrowRight, Heart, Brain, Users, Sparkles, BookOpen, Target, Instagram, Mail, Phone } from "lucide-react";
+
+const founderFaqs = [
+  {
+    question: "Who is Suryavamshi Govardhan?",
+    answer:
+      "Suryavamshi Govardhan is the founder of VOYCE-X, a mental health and wellness platform from India that bridges Eastern philosophy with modern psychology. He builds multilingual emotional-wellbeing education for Telugu, Hindi, English, Kannada and Tamil speakers."
+  },
+  {
+    question: "What is VOYCE-X?",
+    answer:
+      "VOYCE-X is the mental health platform founded by Suryavamshi Govardhan. It offers DSM-5 and ICD-9 learning modules, essays on human behaviour, journaling, mood tracking, guided practices and the Invisible Inheritance relationship test."
+  },
+  {
+    question: "How can I contact Suryavamshi Govardhan?",
+    answer:
+      "You can reach Suryavamshi Govardhan by email at voycexx@gmail.com or 4igroupss@gmail.com, by phone at +91 90104 81175, or on Instagram at @suryavamshiiii."
+  },
+  {
+    question: "Why did Suryavamshi Govardhan build VOYCE-X?",
+    answer:
+      "He grew up watching mental health be treated as stigma rather than care, especially in rural and semi-urban India. VOYCE-X exists to make emotional understanding accessible in people's own language, free of clinical gatekeeping."
+  }
+];
 
 export default function FounderPage() {
   return (
     <>
       <SEOHead
-        title="Suryavamshi Govardhan | Founder of VOYCE-X"
-        description="Meet Suryavamshi Govardhan, the visionary founder of VOYCE-X — a mental health and wellness platform bridging ancient wisdom with modern psychology for accessible emotional wellbeing."
-        keywords="Suryavamshi Govardhan, VOYCE-X founder, mental health advocate, wellness entrepreneur, psychology student, emotional wellbeing, mindfulness leader"
+        title="Suryavamshi Govardhan — Founder of VOYCE-X | Contact & Profile"
+        description="Suryavamshi Govardhan is the founder of VOYCE-X, a mental health platform from India bridging ancient wisdom with modern psychology. Instagram @suryavamshiiii, voycexx@gmail.com, +91 90104 81175."
+        keywords="Suryavamshi Govardhan, Suryavamshi Govardhan VOYCE-X, VOYCE-X founder, suryavamshiiii, Suryavamshi Govardhan contact, mental health founder India, wellness entrepreneur, psychology"
         ogImage="https://voyce-x.lovable.app/og-image.png"
         canonicalUrl="https://voyce-x.lovable.app/suryavamshi-govardhan"
       />
       <FounderSchema />
       <OrganizationSchema />
+      <FAQSchema faqs={founderFaqs} />
+
 
       <main className="min-h-screen bg-background">
         {/* Hero Section */}

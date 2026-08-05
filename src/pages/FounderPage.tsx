@@ -212,6 +212,76 @@ export default function FounderPage() {
           </div>
         </section>
 
+        {/* Contact Section */}
+        <section className="py-16 bg-background" aria-labelledby="contact-heading">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
+              Contact Suryavamshi Govardhan
+            </h2>
+            <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
+              For collaborations, school programmes, speaking, press or simply to share your story.
+            </p>
+
+            <div className="grid sm:grid-cols-3 gap-6">
+              <Card className="border-border/50">
+                <CardContent className="p-6 text-center">
+                  <Instagram className="w-6 h-6 mx-auto mb-3 text-primary" aria-hidden="true" />
+                  <h3 className="font-semibold text-foreground mb-1">Instagram</h3>
+                  <a
+                    href="https://www.instagram.com/suryavamshiiii"
+                    target="_blank"
+                    rel="me noopener noreferrer"
+                    className="text-primary hover:underline break-words"
+                  >
+                    @suryavamshiiii
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border/50">
+                <CardContent className="p-6 text-center">
+                  <Mail className="w-6 h-6 mx-auto mb-3 text-primary" aria-hidden="true" />
+                  <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                  <a href="mailto:voycexx@gmail.com" className="block text-primary hover:underline break-words">
+                    voycexx@gmail.com
+                  </a>
+                  <a href="mailto:4igroupss@gmail.com" className="block text-primary hover:underline break-words">
+                    4igroupss@gmail.com
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border/50">
+                <CardContent className="p-6 text-center">
+                  <Phone className="w-6 h-6 mx-auto mb-3 text-primary" aria-hidden="true" />
+                  <h3 className="font-semibold text-foreground mb-1">Phone</h3>
+                  <a href="tel:+919010481175" className="text-primary hover:underline">
+                    +91 90104 81175
+                  </a>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-muted/30" aria-labelledby="faq-heading">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold text-foreground mb-10 text-center">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              {founderFaqs.map((faq) => (
+                <div key={faq.question}>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{faq.question}</h3>
+                  <p className="text-muted-foreground">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
         {/* Call to Action */}
         <section className="py-16 bg-primary/5" aria-labelledby="cta-heading">
           <div className="container mx-auto px-4 max-w-3xl text-center">

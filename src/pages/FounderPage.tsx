@@ -1,22 +1,47 @@
 import { SEOHead } from "@/components/SEOHead";
-import { FounderSchema, OrganizationSchema } from "@/components/StructuredData";
+import { FounderSchema, OrganizationSchema, FAQSchema } from "@/components/StructuredData";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Heart, Brain, Users, Sparkles, BookOpen, Target } from "lucide-react";
+import { ArrowRight, Heart, Brain, Users, Sparkles, BookOpen, Target, Instagram, Mail, Phone } from "lucide-react";
+
+const founderFaqs = [
+  {
+    question: "Who is Suryavamshi Govardhan?",
+    answer:
+      "Suryavamshi Govardhan is the founder of VOYCE-X, a mental health and wellness platform from India that bridges Eastern philosophy with modern psychology. He builds multilingual emotional-wellbeing education for Telugu, Hindi, English, Kannada and Tamil speakers."
+  },
+  {
+    question: "What is VOYCE-X?",
+    answer:
+      "VOYCE-X is the mental health platform founded by Suryavamshi Govardhan. It offers DSM-5 and ICD-9 learning modules, essays on human behaviour, journaling, mood tracking, guided practices and the Invisible Inheritance relationship test."
+  },
+  {
+    question: "How can I contact Suryavamshi Govardhan?",
+    answer:
+      "You can reach Suryavamshi Govardhan by email at voycexx@gmail.com or 4igroupss@gmail.com, by phone at +91 90104 81175, or on Instagram at @suryavamshiiii."
+  },
+  {
+    question: "Why did Suryavamshi Govardhan build VOYCE-X?",
+    answer:
+      "He grew up watching mental health be treated as stigma rather than care, especially in rural and semi-urban India. VOYCE-X exists to make emotional understanding accessible in people's own language, free of clinical gatekeeping."
+  }
+];
 
 export default function FounderPage() {
   return (
     <>
       <SEOHead
-        title="Suryavamshi Govardhan | Founder of VOYCE-X"
-        description="Meet Suryavamshi Govardhan, the visionary founder of VOYCE-X — a mental health and wellness platform bridging ancient wisdom with modern psychology for accessible emotional wellbeing."
-        keywords="Suryavamshi Govardhan, VOYCE-X founder, mental health advocate, wellness entrepreneur, psychology student, emotional wellbeing, mindfulness leader"
+        title="Suryavamshi Govardhan — Founder of VOYCE-X | Contact & Profile"
+        description="Suryavamshi Govardhan is the founder of VOYCE-X, a mental health platform from India bridging ancient wisdom with modern psychology. Instagram @suryavamshiiii, voycexx@gmail.com, +91 90104 81175."
+        keywords="Suryavamshi Govardhan, Suryavamshi Govardhan VOYCE-X, VOYCE-X founder, suryavamshiiii, Suryavamshi Govardhan contact, mental health founder India, wellness entrepreneur, psychology"
         ogImage="https://voyce-x.lovable.app/og-image.png"
         canonicalUrl="https://voyce-x.lovable.app/suryavamshi-govardhan"
       />
       <FounderSchema />
       <OrganizationSchema />
+      <FAQSchema faqs={founderFaqs} />
+
 
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
@@ -186,6 +211,76 @@ export default function FounderPage() {
             </div>
           </div>
         </section>
+
+        {/* Contact Section */}
+        <section className="py-16 bg-background" aria-labelledby="contact-heading">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
+              Contact Suryavamshi Govardhan
+            </h2>
+            <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
+              For collaborations, school programmes, speaking, press or simply to share your story.
+            </p>
+
+            <div className="grid sm:grid-cols-3 gap-6">
+              <Card className="border-border/50">
+                <CardContent className="p-6 text-center">
+                  <Instagram className="w-6 h-6 mx-auto mb-3 text-primary" aria-hidden="true" />
+                  <h3 className="font-semibold text-foreground mb-1">Instagram</h3>
+                  <a
+                    href="https://www.instagram.com/suryavamshiiii"
+                    target="_blank"
+                    rel="me noopener noreferrer"
+                    className="text-primary hover:underline break-words"
+                  >
+                    @suryavamshiiii
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border/50">
+                <CardContent className="p-6 text-center">
+                  <Mail className="w-6 h-6 mx-auto mb-3 text-primary" aria-hidden="true" />
+                  <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                  <a href="mailto:voycexx@gmail.com" className="block text-primary hover:underline break-words">
+                    voycexx@gmail.com
+                  </a>
+                  <a href="mailto:4igroupss@gmail.com" className="block text-primary hover:underline break-words">
+                    4igroupss@gmail.com
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="border-border/50">
+                <CardContent className="p-6 text-center">
+                  <Phone className="w-6 h-6 mx-auto mb-3 text-primary" aria-hidden="true" />
+                  <h3 className="font-semibold text-foreground mb-1">Phone</h3>
+                  <a href="tel:+919010481175" className="text-primary hover:underline">
+                    +91 90104 81175
+                  </a>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-muted/30" aria-labelledby="faq-heading">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold text-foreground mb-10 text-center">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              {founderFaqs.map((faq) => (
+                <div key={faq.question}>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{faq.question}</h3>
+                  <p className="text-muted-foreground">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
         {/* Call to Action */}
         <section className="py-16 bg-primary/5" aria-labelledby="cta-heading">

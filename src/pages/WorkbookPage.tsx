@@ -9,35 +9,65 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import { hapticFeedback } from "@/utils/hapticFeedback";
-import { Heart, Upload, Send, FileText, MessageSquare } from "lucide-react";
+import { Heart, Send, FileText, MessageSquare, Loader2 } from "lucide-react";
 import { SEOHead } from "@/components/SEOHead";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 export default function WorkbookPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     story: "",
-    file: null as File | null
+    link: ""
   });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    hapticFeedback.onSuccess();
-    if (import.meta.env.DEV) {
-      console.log("Story submitted:", formData);
+    if (submitting) return;
+
+    if (formData.story.trim().length < 20) {
+      toast({
+        title: "A little more, please",
+        description: "Share at least a couple of sentences so we can understand your story.",
+        variant: "destructive"
+      });
+      return;
     }
-    alert("Thank you for sharing your VOYCE story! We'll be in touch soon.");
+
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.functions.invoke("submit-story", {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          story: formData.story.trim(),
+          link: formData.link.trim()
+        }
+      });
+      if (error) throw error;
+
+      hapticFeedback.onSuccess();
+      toast({
+        title: "Your story has reached us",
+        description: "Thank you for trusting VOYCE with it. We read every submission."
+      });
+      setFormData({ name: "", email: "", story: "", link: "" });
+    } catch (err) {
+      console.error("Story submission failed:", err);
+      toast({
+        title: "We couldn't send that",
+        description: "Something went wrong on our side. Please try again in a moment.",
+        variant: "destructive"
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
-    hapticFeedback.onHover();
     setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    hapticFeedback.onClick();
-    const file = e.target.files?.[0] || null;
-    setFormData(prev => ({ ...prev, file }));
   };
 
   return (
@@ -83,19 +113,30 @@ export default function WorkbookPage() {
                 <CardTitle className="text-3xl text-slate-100 text-center">Workshop Workbook</CardTitle>
               </CardHeader>
               <CardContent className="p-8">
-                <div className="w-full h-[600px] rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full h-[600px] rounded-xl overflow-hidden shadow-lg bg-white">
                   <iframe
-                    src="https://docs.google.com/document/d/1BQt0KYI80v0zOzGQrDgVwA9Dqqxz98v8iKCb7eB4Tj0/edit?usp=sharing"
+                    src="https://docs.google.com/document/d/1BQt0KYI80v0zOzGQrDgVwA9Dqqxz98v8iKCb7eB4Tj0/preview"
                     width="100%"
                     height="100%"
                     className="border-0 rounded-xl"
                     title="VOYCE Workshop Workbook"
+                    loading="lazy"
                     allow="fullscreen"
                   />
                 </div>
-                <p className="text-center text-slate-400 text-sm mt-4">
-                  Click and scroll within the document to explore the full workbook experience
-                </p>
+                <div className="text-center mt-4 space-y-2">
+                  <p className="text-slate-400 text-sm">
+                    Scroll within the document to explore the full workbook.
+                  </p>
+                  <a
+                    href="https://docs.google.com/document/d/1BQt0KYI80v0zOzGQrDgVwA9Dqqxz98v8iKCb7eB4Tj0/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-green-400 hover:text-green-300 underline text-sm"
+                  >
+                    Open the workbook in a new tab
+                  </a>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -113,16 +154,14 @@ export default function WorkbookPage() {
                 </p>
               </CardHeader>
               <CardContent className="p-8">
-                <div className="w-full h-[700px] rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full h-[700px] rounded-xl overflow-hidden shadow-lg bg-white">
                   <iframe
                     src="https://docs.google.com/forms/d/e/1FAIpQLSfRfrRKJsrX9P8E3kzV4rpsjaWa3nDTiaZbR5XZgJbN6qoamg/viewform?embedded=true"
                     width="100%"
                     height="100%"
                     className="border-0 rounded-xl"
                     title="VOYCE Community Form"
-                    frameBorder={0}
-                    marginHeight={0}
-                    marginWidth={0}
+                    loading="lazy"
                   >
                     Loading…
                   </iframe>
@@ -158,6 +197,7 @@ export default function WorkbookPage() {
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     className="bg-white/10 border-green-200/30 text-slate-100 placeholder-slate-400"
                     placeholder="Enter your name"
+                    maxLength={120}
                     required
                   />
                 </div>
@@ -170,6 +210,7 @@ export default function WorkbookPage() {
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     className="bg-white/10 border-green-200/30 text-slate-100 placeholder-slate-400"
                     placeholder="your@email.com"
+                    maxLength={200}
                     required
                   />
                 </div>
@@ -183,33 +224,43 @@ export default function WorkbookPage() {
                   onChange={(e) => handleInputChange('story', e.target.value)}
                   className="bg-white/10 border-green-200/30 text-slate-100 placeholder-slate-400 min-h-32"
                   placeholder="Share your journey, insights, transformation, or how VOYCE has impacted your life..."
+                  maxLength={20000}
                   required
                 />
               </div>
-              
+
               <div className="space-y-2">
-                <Label htmlFor="file" className="text-slate-200">Optional: Upload Audio or Document</Label>
-                <div className="flex items-center space-x-4">
-                  <Input
-                    id="file"
-                    type="file"
-                    onChange={handleFileChange}
-                    className="bg-white/10 border-green-200/30 text-slate-100 file:bg-green-500 file:text-white file:border-0 file:rounded-lg file:px-4 file:py-2"
-                    accept="audio/*,.pdf,.doc,.docx,.txt"
-                  />
-                  <Upload className="h-5 w-5 text-green-400" />
-                </div>
+                <Label htmlFor="link" className="text-slate-200">Optional: Link to audio or a document</Label>
+                <Input
+                  id="link"
+                  type="url"
+                  value={formData.link}
+                  onChange={(e) => handleInputChange('link', e.target.value)}
+                  className="bg-white/10 border-green-200/30 text-slate-100 placeholder-slate-400"
+                  placeholder="https://drive.google.com/..."
+                  maxLength={500}
+                />
                 <p className="text-xs text-slate-400">
-                  Accepted formats: Audio files, PDF, Word documents, or text files
+                  Paste a shareable link (Google Drive, Dropbox, a voice note). We don't host uploads yet.
                 </p>
               </div>
               
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 rounded-xl text-lg font-medium"
+                disabled={submitting}
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 rounded-xl text-lg font-medium disabled:opacity-70"
               >
-                <Send className="h-5 w-5 mr-2" />
-                Share My VOYCE Story
+                {submitting ? (
+                  <>
+                    <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                    Sending your story…
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-5 w-5 mr-2" />
+                    Share My VOYCE Story
+                  </>
+                )}
               </Button>
             </form>
           </CardContent>

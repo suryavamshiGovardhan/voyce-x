@@ -243,12 +243,34 @@ export function FounderSchema() {
       data={{
         '@id': 'https://voyce-x.lovable.app/suryavamshi-govardhan#person',
         name: 'Suryavamshi Govardhan',
+        alternateName: ['Suryavamshi Govardhan VOYCE-X', 'S. Suryavamshi', 'Surya Govardhan'],
         givenName: 'Suryavamshi',
         familyName: 'Govardhan',
         description: 'Founder of VOYCE-X, a mental health and wellness platform bridging ancient wisdom with modern psychology for accessible emotional wellbeing.',
         url: 'https://voyce-x.lovable.app/suryavamshi-govardhan',
+        mainEntityOfPage: 'https://voyce-x.lovable.app/suryavamshi-govardhan',
         image: 'https://storage.googleapis.com/gpt-engineer-file-uploads/TlmOIOM4z7NaylqoW24ZCR1G9mj2/uploads/1758355648497-1000172409.png',
         jobTitle: 'Founder & Visionary',
+        email: 'mailto:voycexx@gmail.com',
+        telephone: '+91-9010481175',
+        address: {
+          '@type': 'PostalAddress',
+          addressCountry: 'IN'
+        },
+        contactPoint: [
+          {
+            '@type': 'ContactPoint',
+            contactType: 'general enquiries',
+            email: 'voycexx@gmail.com',
+            telephone: '+91-9010481175',
+            availableLanguage: ['English', 'Hindi', 'Telugu']
+          },
+          {
+            '@type': 'ContactPoint',
+            contactType: 'partnerships',
+            email: '4igroupss@gmail.com'
+          }
+        ],
         worksFor: {
           '@type': 'Organization',
           name: 'VOYCE-X',
@@ -270,9 +292,12 @@ export function FounderSchema() {
           'Eastern Philosophy',
           'Buddhist Psychology'
         ],
+        knowsLanguage: ['English', 'Hindi', 'Telugu'],
         sameAs: [
           'https://www.instagram.com/suryavamshiiii',
-          'https://voyce-x.lovable.app'
+          'https://voyce-x.lovable.app',
+          'https://voyce-x.lovable.app/suryavamshi-govardhan',
+          'https://voyce-x.lovable.app/article/why-i-built-voyce'
         ],
         alumniOf: {
           '@type': 'Organization',

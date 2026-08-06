@@ -78,6 +78,10 @@ const SeriesIndexPage = lazy(() => import("./pages/SeriesIndexPage"));
 const SeriesEpisodePage = lazy(() => import("./pages/SeriesEpisodePage"));
 const AI4SchoolsPage = lazy(() => import("./pages/AI4SchoolsPage"));
 const AdminBlueprintPage = lazy(() => import("./pages/AdminBlueprintPage"));
+const AdminHubPage = lazy(() => import("./pages/AdminHubPage"));
+const AdminKeynotePage = lazy(() => import("./pages/AdminKeynotePage"));
+const AdminKeynotePrintPage = lazy(() => import("./pages/AdminKeynotePrintPage"));
+const AdminCareersPage = lazy(() => import("./pages/AdminCareersPage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {

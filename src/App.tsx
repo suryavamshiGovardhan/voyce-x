@@ -136,7 +136,11 @@ const App = () => (
                   <Route path="/cds" element={<CDSPage />} />
                  <Route path="/schools" element={<SchoolsPage />} />
                  <Route path="/ai4schools" element={<AI4SchoolsPage />} />
-                 <Route path="/admin/blueprint" element={<AdminBlueprintPage />} />
+                 <Route path="/admin" element={<AdminHubPage />} />
+                 <Route path="/admin/keynote" element={<AdminKeynotePage />} />
+                 <Route path="/admin/keynote/print" element={<AdminKeynotePrintPage />} />
+                 <Route path="/admin/careers" element={<AdminCareersPage />} />
+
                   <Route path="/dsm5" element={<DSM5Page />} />
                   <Route path="/dsm5-academy" element={<DSM5AcademyPage />} />
                   <Route path="/dsm5-academy/module/:moduleId" element={<DSM5ModulePage />} />

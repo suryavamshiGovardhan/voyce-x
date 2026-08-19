@@ -20,6 +20,11 @@ export default {
 		extend: {
 			colors: {
 				border: 'hsl(var(--border))',
+				surface: 'hsl(var(--surface))',
+				ink: {
+					DEFAULT: 'hsl(var(--ink))',
+					foreground: 'hsl(var(--ink-foreground))'
+				},
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
@@ -139,6 +144,8 @@ export default {
         }
 			},
 			fontFamily: {
+        sans: ["'Plus Jakarta Sans'", "Inter", "system-ui", "sans-serif"],
+        display: ["'Fraunces'", "Georgia", "ui-serif", "serif"],
         // Cultural Font Families (Note: These require Google Fonts integration)
 				indian: ["'Yatra One'", "'Baloo 2'", "cursive", "sans-serif"],
         roman: ["'Cinzel'", "'Trajan Pro'", "serif"],

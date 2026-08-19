@@ -5,8 +5,10 @@
 
 /* Display font utility — Playfair Display (loaded in index.html) */
 .font-display {
-  font-family: 'Playfair Display', Georgia, ui-serif, serif;
-  letter-spacing: -0.01em;
+  font-family: 'Fraunces', 'Playfair Display', Georgia, ui-serif, serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+  font-weight: 500;
 }
 
 /* Subtle floating-particle animation for hero */
@@ -141,7 +143,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter", sans-serif;
+    font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 }
 

@@ -82,6 +82,7 @@ const AdminHubPage = lazy(() => import("./pages/AdminHubPage"));
 const AdminKeynotePage = lazy(() => import("./pages/AdminKeynotePage"));
 const AdminKeynotePrintPage = lazy(() => import("./pages/AdminKeynotePrintPage"));
 const AdminCareersPage = lazy(() => import("./pages/AdminCareersPage"));
+const ResourcesPage = lazy(() => import("./pages/ResourcesPage"));
 const HowItWorksPage = lazy(() => import("./pages/HowItWorksPage"));
 const StudentsPage = lazy(() => import("./pages/StudentsPage"));
 const TeachersPage = lazy(() => import("./pages/TeachersPage"));

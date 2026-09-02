@@ -237,7 +237,7 @@ export default function SignUpPage() {
             </div>
             <div className="flex flex-col items-center">
               <Users className="h-8 w-8 text-primary mb-2" />
-              <p className="text-xs text-muted-foreground">Join 10,000+ users</p>
+              <p className="text-xs text-muted-foreground">Free to start. Delete anytime.</p>
             </div>
             <div className="flex flex-col items-center">
               <Brain className="h-8 w-8 text-primary mb-2" />

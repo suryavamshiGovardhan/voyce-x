@@ -82,6 +82,15 @@ const AdminHubPage = lazy(() => import("./pages/AdminHubPage"));
 const AdminKeynotePage = lazy(() => import("./pages/AdminKeynotePage"));
 const AdminKeynotePrintPage = lazy(() => import("./pages/AdminKeynotePrintPage"));
 const AdminCareersPage = lazy(() => import("./pages/AdminCareersPage"));
+const HowItWorksPage = lazy(() => import("./pages/HowItWorksPage"));
+const StudentsPage = lazy(() => import("./pages/StudentsPage"));
+const TeachersPage = lazy(() => import("./pages/TeachersPage"));
+const ParentsPage = lazy(() => import("./pages/ParentsPage"));
+const FeaturesPage = lazy(() => import("./pages/FeaturesPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const SafetyPage = lazy(() => import("./pages/SafetyPage"));
+const FaqPage = lazy(() => import("./pages/FaqPage"));
+const PartnersPage = lazy(() => import("./pages/PartnersPage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -180,7 +189,20 @@ const App = () => (
                   <Route path="/invisible-inheritance/test/:sessionCode/report" element={<InvisibleInheritanceReportPage />} />
                   <Route path="/invisible-inheritance/test/:sessionCode/:partner" element={<InvisibleInheritanceTestTakePage />} />
                   
+                  {/* Marketing / audience pages */}
+                  <Route path="/how-it-works" element={<HowItWorksPage />} />
+                  <Route path="/students" element={<StudentsPage />} />
+                  <Route path="/teachers" element={<TeachersPage />} />
+                  <Route path="/parents" element={<ParentsPage />} />
+                  <Route path="/features" element={<FeaturesPage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/safety" element={<SafetyPage />} />
+                  <Route path="/faq" element={<FaqPage />} />
+                  <Route path="/partners" element={<PartnersPage />} />
+                  <Route path="/resources" element={<ResourcesPage />} />
+
                   {/* Legal pages */}
+                  <Route path="/privacy" element={<PrivacyPolicyPage />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                   <Route path="/terms-of-use" element={<TermsOfUsePage />} />
                   <Route path="/contact" element={<ContactPage />} />

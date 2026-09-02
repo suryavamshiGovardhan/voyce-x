@@ -70,7 +70,7 @@ export default function LoginPage() {
               Welcome back to VOYCE
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Continue your mental wellness journey
+              Welcome back. Pick up where you left off.
             </p>
           </div>
           

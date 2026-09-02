@@ -266,20 +266,6 @@ export default function LibraryPreview() {
               Every piece of wisdom here was purchased with suffering and paid for with truth.
               Take what serves you, leave what doesn't, but honor the courage it took to write it."
             </p>
-            <div className="flex items-center justify-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <BookOpen className="h-5 w-5 text-sky-400" />
-                <span className="text-slate-400 text-sm">200+ Articles</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Heart className="h-5 w-5 text-orange-400" />
-                <span className="text-slate-400 text-sm">Soul-Tested</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Crown className="h-5 w-5 text-sky-400" />
-                <span className="text-slate-400 text-sm">Truth-Verified</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

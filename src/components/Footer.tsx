@@ -1,7 +1,6 @@
 import { Heart, Mail, Instagram, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { hapticFeedback } from "@/utils/hapticFeedback";
-import ViewCounter from "@/components/ViewCounter";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -30,7 +29,7 @@ export default function Footer() {
               <span className="text-2xl font-bold text-slate-100">VOYCE</span>
             </div>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Mental Clarity & Emotional Freedom through evidence-based neuroscience and mindful awareness.
+              A calm place to notice what you feel, understand it, and find the next small step.
             </p>
           </div>
 
@@ -152,7 +151,6 @@ export default function Footer() {
         {/* View Counter */}
         <div className="border-t border-slate-700 mt-8 pt-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-            <ViewCounter />
             <div className="text-center md:text-right">
               <div className="flex items-center justify-center md:justify-end space-x-2 mb-2">
                 <Heart className="h-4 w-4 text-red-400" />

@@ -124,7 +124,7 @@ export default function DesktopNavigation() {
               <span className="text-3xl font-bold bg-gradient-to-r from-green-400 via-blue-400 to-green-300 bg-clip-text text-transparent">
                 VOYCE
               </span>
-              <p className="text-xs text-green-300/80 -mt-1 font-medium">Mental Clarity & Emotional Freedom</p>
+              <p className="text-xs text-green-300/80 -mt-1 font-medium">Understand what you feel</p>
             </div>
           </Link>
 

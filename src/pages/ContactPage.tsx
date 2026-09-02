@@ -33,10 +33,10 @@ export default function ContactPage() {
                   For general inquiries and support
                 </p>
                 <a 
-                  href="mailto:hello@voyce-x.com" 
+                  href="mailto:voycexx@gmail.com" 
                   className="text-primary hover:underline font-medium"
                 >
-                  hello@voyce-x.com
+                  voycexx@gmail.com
                 </a>
               </CardContent>
             </Card>

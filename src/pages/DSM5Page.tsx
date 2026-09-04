@@ -366,14 +366,14 @@ const DSM5Page = () => {
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${dsm5HeroImage})` }}>
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 mb-6">
-            <Stethoscope className="w-5 h-5 text-white" />
-            <span className="text-sm font-medium text-white">DSM-5-TR Comprehensive Guide</span>
+          <div className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-6 py-2 mb-6">
+            <Stethoscope className="w-5 h-5 text-foreground" />
+            <span className="text-sm font-medium text-foreground">DSM-5-TR Comprehensive Guide</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
             Diagnostic & Statistical Manual
           </h1>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-foreground/90 mb-8 max-w-3xl mx-auto">
             Complete guide to mental health disorders classification, diagnostic criteria, and clinical applications for healthcare professionals and students
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -514,28 +514,28 @@ const DSM5Page = () => {
                         <h4 className="font-semibold mb-3">Multi-Axial Assessment Framework</h4>
                         <div className="space-y-3">
                           <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                            <div className="w-8 h-8 bg-primary text-foreground rounded-full flex items-center justify-center text-sm font-bold">1</div>
                             <div>
                               <div className="font-medium">Clinical Interview</div>
                               <div className="text-sm text-muted-foreground">Detailed history and symptom assessment</div>
                             </div>
                           </div>
                           <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                            <div className="w-8 h-8 bg-secondary text-foreground rounded-full flex items-center justify-center text-sm font-bold">2</div>
                             <div>
                               <div className="font-medium">Criteria Evaluation</div>
                               <div className="text-sm text-muted-foreground">Match symptoms to DSM-5-TR criteria</div>
                             </div>
                           </div>
                           <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                            <div className="w-8 h-8 bg-accent text-foreground rounded-full flex items-center justify-center text-sm font-bold">3</div>
                             <div>
                               <div className="font-medium">Differential Diagnosis</div>
                               <div className="text-sm text-muted-foreground">Rule out alternative explanations</div>
                             </div>
                           </div>
                           <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 bg-muted text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                            <div className="w-8 h-8 bg-muted text-foreground rounded-full flex items-center justify-center text-sm font-bold">4</div>
                             <div>
                               <div className="font-medium">Specifiers & Severity</div>
                               <div className="text-sm text-muted-foreground">Determine course and severity markers</div>
@@ -624,7 +624,7 @@ const DSM5Page = () => {
                       <Card key={category.id} className="border-l-4 border-l-primary/30 hover:shadow-lg transition-all duration-300">
                         <CardHeader>
                           <div className="flex items-start gap-4">
-                            <div className={`${category.color} p-3 rounded-lg text-white`}>
+                            <div className={`${category.color} p-3 rounded-lg text-foreground`}>
                               <IconComponent className="w-6 h-6" />
                             </div>
                             <div className="flex-1">
@@ -724,7 +724,7 @@ const DSM5Page = () => {
                     <CardDescription>Important factors to consider when using DSM-5-TR</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
+                    <div className="bg-yellow-50 border border-border p-4 rounded-lg">
                       <h4 className="font-semibold text-yellow-800 mb-2">⚠️ Key Limitations</h4>
                       <ul className="text-sm text-yellow-700 space-y-1">
                         <li>• Categorical vs. dimensional approach debate</li>
@@ -735,7 +735,7 @@ const DSM5Page = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                    <div className="bg-blue-50 border border-border p-4 rounded-lg">
                       <h4 className="font-semibold text-blue-800 mb-2">🎯 Best Practices</h4>
                       <ul className="text-sm text-blue-700 space-y-1">
                         <li>• Use as clinical guide, not rigid rules</li>
@@ -746,7 +746,7 @@ const DSM5Page = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <div className="bg-green-50 border border-border p-4 rounded-lg">
                       <h4 className="font-semibold text-green-800 mb-2">✅ Quality Assurance</h4>
                       <ul className="text-sm text-green-700 space-y-1">
                         <li>• Peer consultation for complex cases</li>

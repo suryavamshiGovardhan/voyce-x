@@ -7,7 +7,7 @@ import { Brain, Heart, Compass, Flower, Gem, TreeDeciduous, Mountain, Church, Cr
 const ADHDContent = () => {
   return (
     <div className="space-y-8 bamboo-pattern">
-      <Card className="bg-gradient-to-br from-emerald-50/80 to-teal-50/80 border-emerald-200/60 washi-texture">
+      <Card className="bg-gradient-to-br from-emerald-50/80 to-teal-50/80 border-border washi-texture">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-3xl japanese-heading">
             <Brain className="h-8 w-8 text-emerald-700" />
@@ -23,22 +23,22 @@ const ADHDContent = () => {
             with Western neuroscience to transform ADHD challenges into unique cognitive strengths and creative gifts.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="bg-white/70 p-6 rounded-xl border border-emerald-200 hover-lift">
+            <div className="bg-card p-6 rounded-xl border border-border hover-lift">
               <Gem className="h-8 w-8 text-emerald-700 mb-3" />
               <div className="text-3xl font-bold text-emerald-700 mb-1">6.4M</div>
               <div className="text-sm text-emerald-600 japanese-text">Children diagnosed in US</div>
             </div>
-            <div className="bg-white/70 p-6 rounded-xl border border-teal-200 hover-lift">
+            <div className="bg-card p-6 rounded-xl border border-border hover-lift">
               <Mountain className="h-8 w-8 text-teal-700 mb-3" />
               <div className="text-3xl font-bold text-teal-700 mb-1">2.8%</div>
               <div className="text-sm text-teal-600 japanese-text">Global prevalence rate</div>
             </div>
-            <div className="bg-white/70 p-6 rounded-xl border border-blue-200 hover-lift">
+            <div className="bg-card p-6 rounded-xl border border-border hover-lift">
               <Church className="h-8 w-8 text-blue-700 mb-3" />
               <div className="text-3xl font-bold text-blue-700 mb-1">75%</div>
               <div className="text-sm text-blue-600 japanese-text">Improvement with treatment</div>
             </div>
-            <div className="bg-white/70 p-6 rounded-xl border border-purple-200 hover-lift">
+            <div className="bg-card p-6 rounded-xl border border-border hover-lift">
               <Crown className="h-8 w-8 text-purple-700 mb-3" />
               <div className="text-3xl font-bold text-purple-700 mb-1">3:1</div>
               <div className="text-sm text-purple-600 japanese-text">Male to female ratio</div>
@@ -48,7 +48,7 @@ const ADHDContent = () => {
       </Card>
 
       <Tabs defaultValue="neuroscience" className="w-full">
-        <TabsList className="grid w-full grid-cols-8 bg-gradient-to-r from-emerald-100 to-teal-100 border border-emerald-200">
+        <TabsList className="grid w-full grid-cols-8 bg-gradient-to-r from-emerald-100 to-teal-100 border border-border">
           <TabsTrigger value="neuroscience" className="japanese-text">Neuroscience</TabsTrigger>
           <TabsTrigger value="types" className="japanese-text">Types</TabsTrigger>
           <TabsTrigger value="symptoms" className="japanese-text">Symptoms</TabsTrigger>
@@ -70,7 +70,7 @@ const ADHDContent = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <div className="bg-blue-50/80 p-4 rounded-lg border-l-4 border-blue-400">
+                  <div className="bg-blue-50/80 p-4 rounded-lg border-l-4 border-border">
                     <h4 className="font-semibold text-blue-800 mb-2 japanese-heading">Prefrontal Cortex</h4>
                     <ul className="text-sm text-blue-700 space-y-1 japanese-text">
                       <li>• Working memory deficits</li>
@@ -81,7 +81,7 @@ const ADHDContent = () => {
                     </ul>
                   </div>
                   
-                  <div className="bg-green-50/80 p-4 rounded-lg border-l-4 border-green-400">
+                  <div className="bg-green-50/80 p-4 rounded-lg border-l-4 border-border">
                     <h4 className="font-semibold text-green-800 mb-2 japanese-heading">Dopamine System</h4>
                     <ul className="text-sm text-green-700 space-y-1 japanese-text">
                       <li>• Reward processing alterations</li>
@@ -92,7 +92,7 @@ const ADHDContent = () => {
                     </ul>
                   </div>
 
-                  <div className="bg-purple-50/80 p-4 rounded-lg border-l-4 border-purple-400">
+                  <div className="bg-purple-50/80 p-4 rounded-lg border-l-4 border-border">
                     <h4 className="font-semibold text-purple-800 mb-2 japanese-heading">Default Mode Network</h4>
                     <ul className="text-sm text-purple-700 space-y-1 japanese-text">
                       <li>• Mind-wandering tendencies</li>
@@ -115,7 +115,7 @@ const ADHDContent = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <div className="bg-orange-50/80 p-4 rounded-lg border border-orange-200">
+                  <div className="bg-orange-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-orange-800 mb-2 flex items-center gap-2">
                       <Mountain className="h-4 w-4" />
                       Zen: 一心不乱 (Isshin-furan)
@@ -125,7 +125,7 @@ const ADHDContent = () => {
                     </p>
                   </div>
 
-                  <div className="bg-amber-50/80 p-4 rounded-lg border border-amber-200">
+                  <div className="bg-amber-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
                       <TreeDeciduous className="h-4 w-4" />
                       Ayurveda: वात (Vata) Imbalance
@@ -135,7 +135,7 @@ const ADHDContent = () => {
                     </p>
                   </div>
 
-                  <div className="bg-blue-50/80 p-4 rounded-lg border border-blue-200">
+                  <div className="bg-blue-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
                       <Church className="h-4 w-4" />
                       Greek: Ἀκρασία (Akrasia)
@@ -145,7 +145,7 @@ const ADHDContent = () => {
                     </p>
                   </div>
 
-                  <div className="bg-red-50/80 p-4 rounded-lg border border-red-200">
+                  <div className="bg-red-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-red-800 mb-2 flex items-center gap-2">
                       <Shield className="h-4 w-4" />
                       Stoic: Προσοχή (Prosoche)
@@ -263,15 +263,15 @@ const ADHDContent = () => {
             <CardHeader><CardTitle className="japanese-heading">The Three Presentations of ADHD</CardTitle></CardHeader>
             <CardContent className="space-y-4 text-slate-700 leading-relaxed">
               <p>ADHD is not one thing. The DSM-5 recognises three presentations, and most people move between them across a lifetime. The label matters less than understanding your own pattern — because the daily strategies that help each presentation are quite different.</p>
-              <div className="bg-emerald-50/70 p-4 rounded-lg border border-emerald-200">
+              <div className="bg-emerald-50/70 p-4 rounded-lg border border-border">
                 <h4 className="font-semibold text-emerald-800 mb-2">Predominantly Inattentive</h4>
                 <p className="text-sm">Historically called ADD. The interior world is loud; the exterior looks quiet. You lose track mid-sentence, misplace keys, start six tabs and finish none. Deadlines catch you by surprise even when they were on the calendar for weeks. This presentation is chronically under-diagnosed in girls and adults because the classroom disruption isn't there — the disruption is inside the head.</p>
               </div>
-              <div className="bg-teal-50/70 p-4 rounded-lg border border-teal-200">
+              <div className="bg-teal-50/70 p-4 rounded-lg border border-border">
                 <h4 className="font-semibold text-teal-800 mb-2">Predominantly Hyperactive-Impulsive</h4>
                 <p className="text-sm">A body that cannot settle, a mouth that speaks before the sentence has finished forming, decisions made in the second between want and act. In adults, the visible hyperactivity often converts into inner restlessness — the leg that won't stop bouncing, the compulsive scrolling, the inability to sit through a meal without reaching for the phone.</p>
               </div>
-              <div className="bg-blue-50/70 p-4 rounded-lg border border-blue-200">
+              <div className="bg-blue-50/70 p-4 rounded-lg border border-border">
                 <h4 className="font-semibold text-blue-800 mb-2">Combined</h4>
                 <p className="text-sm">The most common presentation. Both dimensions are present, though usually one is dominant on any given day. Sleep, stress, hormones, and how interesting the task is all shift the mix. This is why an ADHD person can look "cured" during a passion project and "hopeless" the following Monday morning.</p>
               </div>
@@ -382,7 +382,7 @@ const ADHDContent = () => {
                 <li><strong>iCall</strong> 9152987821 — free psychosocial helpline for immediate mental-health support.</li>
                 <li>Verify any private psychiatrist specifically works with <em>adult</em> ADHD before booking.</li>
               </ul>
-              <p className="text-xs italic text-slate-500 mt-4">VOYCE is not a clinical service. Diagnosis and medication decisions belong with a qualified clinician. Everything here is educational.</p>
+              <p className="text-xs italic text-muted-foreground mt-4">VOYCE is not a clinical service. Diagnosis and medication decisions belong with a qualified clinician. Everything here is educational.</p>
             </CardContent>
           </Card>
         </TabsContent>

@@ -123,7 +123,7 @@ export default function VoycePage() {
       />
       <div className={`min-h-screen transition-colors duration-1000 ${
         isDarkMode 
-          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900' 
+          ? 'bg-background' 
           : 'bg-gradient-to-br from-green-50 via-white to-orange-50'
       } japanese-pattern`}>
         {/* Enhanced Music Player */}
@@ -141,7 +141,7 @@ export default function VoycePage() {
           <div className="text-center mb-16">
             <Brain className="h-16 w-16 text-green-600 mx-auto mb-6 float-3d" />
             <h2 className="text-4xl font-light text-slate-800 mb-8">Stress — The Complete Guide</h2>
-            <div className="max-w-3xl mx-auto p-6 bg-orange-100/50 rounded-2xl border border-orange-200 mb-12">
+            <div className="max-w-3xl mx-auto p-6 bg-muted rounded-2xl border border-border mb-12">
               <p className="text-lg italic text-orange-800 leading-relaxed">
                 🧠 "You cannot heal what you cannot understand. Stress is a language, VOYCE-X is the translator."
               </p>
@@ -153,7 +153,7 @@ export default function VoycePage() {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-white/60 backdrop-blur-sm border border-green-200 rounded-2xl overflow-hidden"
+                className="bg-white/60 backdrop-blur-sm border border-border rounded-2xl overflow-hidden"
               >
                 <AccordionTrigger className="px-6 py-4 hover:bg-green-50/50 transition-colors">
                   <div className="flex items-center space-x-4">
@@ -186,7 +186,7 @@ export default function VoycePage() {
             <h3 className="text-2xl font-light text-slate-800 mb-8 text-center">Educational Videos</h3>
             <div className="grid md:grid-cols-3 gap-6">
               {videoResources.map((video, index) => (
-                <Card key={index} className="bg-white/60 backdrop-blur-sm border-green-200 shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
+                <Card key={index} className="bg-white/60 backdrop-blur-sm border-border shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
                   <div className="relative">
                     <img 
                       src={video.thumbnail} 
@@ -195,7 +195,7 @@ export default function VoycePage() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                      <Youtube className="h-12 w-12 text-white" />
+                      <Youtube className="h-12 w-12 text-foreground" />
                     </div>
                   </div>
                   <CardContent className="p-4">
@@ -241,7 +241,7 @@ export default function VoycePage() {
                 description: "Finding your voice when the world seems to ignore you"
               }
             ].map((item, index) => (
-              <Card key={index} className="bg-white/60 backdrop-blur-sm border-green-200 shadow-lg rounded-2xl hover:shadow-xl transition-shadow overflow-hidden">
+              <Card key={index} className="bg-white/60 backdrop-blur-sm border-border shadow-lg rounded-2xl hover:shadow-xl transition-shadow overflow-hidden">
                 <div className="relative">
                   <img 
                     src={item.image} 
@@ -251,7 +251,7 @@ export default function VoycePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-medium text-white mb-2">Who are you{item.question}</h3>
+                    <h3 className="text-xl font-medium text-foreground mb-2">Who are you{item.question}</h3>
                   </div>
                 </div>
                 <CardContent className="p-6">
@@ -265,7 +265,7 @@ export default function VoycePage() {
             <Button 
               asChild
               size="lg" 
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-12 py-4 rounded-2xl text-lg haptic-btn shadow-lg"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-foreground px-12 py-4 rounded-2xl text-lg haptic-btn shadow-lg"
             >
               <a href="https://www.instagram.com/suryavamshiiii" target="_blank" rel="noopener noreferrer">
                 Follow VOYCE-X on Instagram
@@ -287,7 +287,7 @@ export default function VoycePage() {
         <Button
           size="icon"
           variant="outline"
-          className="rounded-full bg-white/80 backdrop-blur-sm border-green-200 shadow-lg hover:bg-green-50"
+          className="rounded-full bg-white/80 backdrop-blur-sm border-border shadow-lg hover:bg-green-50"
           onClick={() => {
             setIsDarkMode(!isDarkMode);
             hapticFeedback.onClick();
@@ -300,7 +300,7 @@ export default function VoycePage() {
         <Button
           size="icon"
           variant="outline"
-          className="rounded-full bg-white/80 backdrop-blur-sm border-green-200 shadow-lg hover:bg-green-50"
+          className="rounded-full bg-white/80 backdrop-blur-sm border-border shadow-lg hover:bg-green-50"
           onClick={() => {
             if (navigator.share) {
               navigator.share({

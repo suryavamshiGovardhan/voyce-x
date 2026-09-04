@@ -5,7 +5,7 @@ import { Shield, Heart, Users, Sprout, BookOpen } from 'lucide-react';
 const ACESContent = () => {
   return (
     <div className="space-y-8">
-      <Card className="bg-white/70 border-purple-200">
+      <Card className="bg-card border-border">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-slate-800">
             <Shield className="h-6 w-6 text-purple-600" /> Adverse Childhood Experiences — The Full Picture
@@ -18,7 +18,7 @@ const ACESContent = () => {
       </Card>
 
       <Tabs defaultValue="categories" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 bg-white/70">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 bg-card">
           <TabsTrigger value="categories">Categories</TabsTrigger>
           <TabsTrigger value="biology">Biology</TabsTrigger>
           <TabsTrigger value="resilience">Resilience</TabsTrigger>
@@ -79,7 +79,7 @@ const ACESContent = () => {
             <p><strong>Safe relationships</strong> as therapy — chronic loneliness is a maintaining factor; earned secure attachment, whether through therapy, partnership, or long-term friendship, is a genuinely curative force.</p>
             <p><strong>Practical scaffolding</strong> — sleep, nutrition, movement, reduced alcohol, and treatment of any comorbid ADHD, thyroid, or sleep-disordered breathing. Adults with high ACE scores often have measurable physical health issues that need addressing in parallel with psychological work.</p>
             <p>Read Bessel van der Kolk's <em>The Body Keeps the Score</em>, Gabor Maté's <em>The Myth of Normal</em>, and Nakazawa's <em>Childhood Disrupted</em> if you want to go deeper. In India, iCall (9152987821) offers free counsellor support; Sangath, NIMHANS, and Vandrevala (1860-2662-345) all take trauma work seriously.</p>
-            <p className="text-xs italic text-slate-500 mt-3">VOYCE is educational. Trauma work benefits from a qualified professional; please seek one if this material stirs anything you cannot hold alone.</p>
+            <p className="text-xs italic text-muted-foreground mt-3">VOYCE is educational. Trauma work benefits from a qualified professional; please seek one if this material stirs anything you cannot hold alone.</p>
           </CardContent></Card>
         </TabsContent>
       </Tabs>

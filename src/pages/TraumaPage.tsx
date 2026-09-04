@@ -15,7 +15,7 @@ export default function TraumaPage() {
         description="Transform wounds into wisdom with trauma-informed healing approaches. Learn about PTSD recovery, resilience building, and ancient healing practices for complete restoration."
         keywords="trauma recovery, PTSD treatment, healing trauma, resilience, trauma-informed care, emotional healing, VOYCE"
       />
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-amber-900 to-orange-900 relative overflow-hidden">
+      <div className="min-h-screen bg-background">
         {/* Japanese/East Asian cultural overlay for healing themes */}
         <div className="absolute inset-0 pointer-events-none z-0 opacity-60">
         <CherryBlossomAccent className="absolute top-20 right-20 w-32 h-32 animate-cherry-bloom" />
@@ -30,16 +30,16 @@ export default function TraumaPage() {
         
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-light text-slate-100 mb-6 font-eastasia">
+            <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground mb-6 font-eastasia">
               <span className="text-eastasia-cherry">Trauma</span> Recovery
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-zen">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-zen">
               心の癒し - Transform wounds into wisdom through the sacred alchemy of healing, integrating 
               ancient Japanese principles of resilience with modern trauma-informed approaches for complete restoration.
             </p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-eastasia-cherry/20 shadow-2xl">
+          <div className="bg-card rounded-2xl p-8 border border-eastasia-cherry/20 shadow-2xl">
             <TraumaContent />
           </div>
 

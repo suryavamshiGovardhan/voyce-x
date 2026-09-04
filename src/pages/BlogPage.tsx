@@ -71,20 +71,20 @@ export default function BlogPage() {
           </header>
 
           {/* Featured: The Unheard Mind series */}
-          <Card className="overflow-hidden mb-8 border-emerald-400/20 bg-gradient-to-br from-slate-900 via-emerald-950/40 to-slate-900 text-white">
+          <Card className="overflow-hidden mb-8 border-border bg-background">
             <CardHeader>
-              <Badge className="w-fit mb-2 bg-emerald-400/15 text-emerald-200 border border-emerald-400/30 hover:bg-emerald-400/25">VOYCE Original Series</Badge>
-              <CardTitle className="font-display text-3xl md:text-4xl text-white">
-                <Link to="/series" className="hover:text-emerald-300 transition-colors">
+              <Badge className="w-fit mb-2 bg-muted text-primary border border-border hover:bg-muted">VOYCE Original Series</Badge>
+              <CardTitle className="font-display text-3xl md:text-4xl text-foreground">
+                <Link to="/series" className="hover:text-primary transition-colors">
                   The Unheard Mind
                 </Link>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-white/70 mb-4 leading-relaxed">
+              <p className="text-foreground/70 mb-4 leading-relaxed">
                 8 episodes. Psychology, philosophy, and ancient wisdom — explained slowly, without filter.
               </p>
-              <Button asChild variant="outline" className="border-emerald-400/40 text-emerald-200 hover:bg-emerald-400/10 hover:text-emerald-100">
+              <Button asChild variant="outline" className="border-border text-primary hover:bg-muted hover:text-emerald-100">
                 <Link to="/series">Read the series →</Link>
               </Button>
             </CardContent>
@@ -136,9 +136,9 @@ export default function BlogPage() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-green-500/20 bg-gradient-to-br from-green-500/5 to-emerald-500/5">
+            <Card className="overflow-hidden border-border bg-gradient-to-br from-green-500/5 to-emerald-500/5">
               <CardHeader>
-                <Badge className="w-fit mb-2 bg-green-500/10 text-green-600 border-green-500/20">21-Day Protocol</Badge>
+                <Badge className="w-fit mb-2 bg-muted text-green-600 border-border">21-Day Protocol</Badge>
                 <CardTitle className="text-2xl">
                   <Link to="/article/day-1-journal" className="hover:text-primary transition-colors">
                     Day 1: Installing a New Mental Operating System
@@ -158,9 +158,9 @@ export default function BlogPage() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-blue-500/20 bg-gradient-to-br from-blue-500/5 to-cyan-500/5">
+            <Card className="overflow-hidden border-border bg-gradient-to-br from-blue-500/5 to-cyan-500/5">
               <CardHeader>
-                <Badge className="w-fit mb-2 bg-blue-500/10 text-blue-600 border-blue-500/20">KATA Essay</Badge>
+                <Badge className="w-fit mb-2 bg-muted text-blue-600 border-border">KATA Essay</Badge>
                 <CardTitle className="text-2xl">
                   <Link to="/article/opposite-gender-behavior" className="hover:text-primary transition-colors">
                     Why We Behave So Abnormally Around the Opposite Gender
@@ -180,9 +180,9 @@ export default function BlogPage() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-amber-500/20 bg-gradient-to-br from-amber-500/5 to-orange-500/5">
+            <Card className="overflow-hidden border-border bg-gradient-to-br from-amber-500/5 to-orange-500/5">
               <CardHeader>
-                <Badge className="w-fit mb-2 bg-amber-500/10 text-amber-600 border-amber-500/20">KATA Essay</Badge>
+                <Badge className="w-fit mb-2 bg-muted text-amber-600 border-border">KATA Essay</Badge>
                 <CardTitle className="text-2xl">
                   <Link to="/article/second-child-intelligence" className="hover:text-primary transition-colors">
                     Why the Second Child Often Appears More Intelligent
@@ -202,9 +202,9 @@ export default function BlogPage() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-indigo-500/20 bg-gradient-to-br from-indigo-500/5 to-violet-500/5">
+            <Card className="overflow-hidden border-border bg-gradient-to-br from-indigo-500/5 to-violet-500/5">
               <CardHeader>
-                <Badge className="w-fit mb-2 bg-indigo-500/10 text-indigo-600 border-indigo-500/20">KATA Essay</Badge>
+                <Badge className="w-fit mb-2 bg-muted text-indigo-600 border-border">KATA Essay</Badge>
                 <CardTitle className="text-2xl">
                   <Link to="/article/overthinking-at-night" className="hover:text-primary transition-colors">
                     Why Humans Overthink More at Night
@@ -246,9 +246,9 @@ export default function BlogPage() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-rose-500/20 bg-gradient-to-br from-rose-500/5 to-pink-500/5">
+            <Card className="overflow-hidden border-border bg-gradient-to-br from-rose-500/5 to-pink-500/5">
               <CardHeader>
-                <Badge className="w-fit mb-2 bg-rose-500/10 text-rose-600 border-rose-500/20">KATA Essay</Badge>
+                <Badge className="w-fit mb-2 bg-muted text-rose-600 border-border">KATA Essay</Badge>
                 <CardTitle className="text-2xl">
                   <Link to="/article/cannot-say-no" className="hover:text-primary transition-colors">
                     Why Some People Cannot Say "No"
@@ -268,9 +268,9 @@ export default function BlogPage() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-teal-500/20 bg-gradient-to-br from-teal-500/5 to-emerald-500/5">
+            <Card className="overflow-hidden border-border bg-gradient-to-br from-teal-500/5 to-emerald-500/5">
               <CardHeader>
-                <Badge className="w-fit mb-2 bg-teal-500/10 text-teal-600 border-teal-500/20">KATA Essay</Badge>
+                <Badge className="w-fit mb-2 bg-muted text-teal-600 border-border">KATA Essay</Badge>
                 <CardTitle className="text-2xl">
                   <Link to="/article/search-for-meaning" className="hover:text-primary transition-colors">
                     Why Humans Search for Meaning Even When Life Is Simple
@@ -290,9 +290,9 @@ export default function BlogPage() {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-yellow-500/20 bg-gradient-to-br from-yellow-500/5 to-amber-500/5">
+            <Card className="overflow-hidden border-border bg-gradient-to-br from-yellow-500/5 to-amber-500/5">
               <CardHeader>
-                <Badge className="w-fit mb-2 bg-yellow-500/10 text-yellow-600 border-yellow-500/20">Personal Essay</Badge>
+                <Badge className="w-fit mb-2 bg-muted text-yellow-600 border-border">Personal Essay</Badge>
                 <CardTitle className="text-2xl">
                   <Link to="/article/self-care-selfishness" className="hover:text-primary transition-colors">
                     Self-Care is Selfishness — And I Stand By It

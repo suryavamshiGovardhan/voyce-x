@@ -7,7 +7,7 @@ import { Brain, Heart, Compass, Mountain, TreeDeciduous, Gem, Church, Crown, Shi
 const BrainContent = () => {
   return (
     <div className="space-y-8 washi-texture">
-      <Card className="bg-gradient-to-br from-indigo-50/80 to-purple-50/80 border-indigo-200/60 cherry-blossom-bg">
+      <Card className="bg-gradient-to-br from-indigo-50/80 to-purple-50/80 border-border cherry-blossom-bg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3 text-3xl japanese-heading">
             <Brain className="h-8 w-8 text-indigo-700" />
@@ -23,22 +23,22 @@ const BrainContent = () => {
             exploring consciousness, cognition, and the infinite potential of the human mind across cultures and centuries.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="bg-white/70 p-6 rounded-xl border border-indigo-200 hover-lift">
+            <div className="bg-card p-6 rounded-xl border border-border hover-lift">
               <Brain className="h-8 w-8 text-indigo-700 mb-3" />
               <div className="text-3xl font-bold text-indigo-700 mb-1">86B</div>
               <div className="text-sm text-indigo-600 japanese-text">Neurons in human brain</div>
             </div>
-            <div className="bg-white/70 p-6 rounded-xl border border-purple-200 hover-lift">
+            <div className="bg-card p-6 rounded-xl border border-border hover-lift">
               <Flower className="h-8 w-8 text-purple-700 mb-3" />
               <div className="text-3xl font-bold text-purple-700 mb-1">100T</div>
               <div className="text-sm text-purple-600 japanese-text">Synaptic connections</div>
             </div>
-            <div className="bg-white/70 p-6 rounded-xl border border-blue-200 hover-lift">
+            <div className="bg-card p-6 rounded-xl border border-border hover-lift">
               <Gem className="h-8 w-8 text-blue-700 mb-3" />
               <div className="text-3xl font-bold text-blue-700 mb-1">20%</div>
               <div className="text-sm text-blue-600 japanese-text">Body's energy usage</div>
             </div>
-            <div className="bg-white/70 p-6 rounded-xl border border-teal-200 hover-lift">
+            <div className="bg-card p-6 rounded-xl border border-border hover-lift">
               <Mountain className="h-8 w-8 text-teal-700 mb-3" />
               <div className="text-3xl font-bold text-teal-700 mb-1">25</div>
               <div className="text-sm text-teal-600 japanese-text">Years for full maturation</div>
@@ -48,7 +48,7 @@ const BrainContent = () => {
       </Card>
 
       <Tabs defaultValue="structure" className="w-full">
-        <TabsList className="grid w-full grid-cols-8 bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200">
+        <TabsList className="grid w-full grid-cols-8 bg-gradient-to-r from-indigo-100 to-purple-100 border border-border">
           <TabsTrigger value="structure" className="japanese-text">Structure</TabsTrigger>
           <TabsTrigger value="networks" className="japanese-text">Networks</TabsTrigger>
           <TabsTrigger value="plasticity" className="japanese-text">Plasticity</TabsTrigger>
@@ -114,7 +114,7 @@ const BrainContent = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <div className="bg-amber-50/80 p-4 rounded-lg border border-amber-200">
+                  <div className="bg-amber-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
                       <Flower className="h-4 w-4" />
                       Sanskrit: मनस् (Manas) - Mind Principle
@@ -124,7 +124,7 @@ const BrainContent = () => {
                     </p>
                   </div>
 
-                  <div className="bg-blue-50/80 p-4 rounded-lg border border-blue-200">
+                  <div className="bg-blue-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
                       <Crown className="h-4 w-4" />
                       Greek: Ψυχή (Psyche) - Soul-Mind
@@ -134,7 +134,7 @@ const BrainContent = () => {
                     </p>
                   </div>
 
-                  <div className="bg-green-50/80 p-4 rounded-lg border border-green-200">
+                  <div className="bg-green-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-green-800 mb-2 flex items-center gap-2">
                       <Heart className="h-4 w-4" />
                       Arabic: عقل (Aql) - Intellect
@@ -144,7 +144,7 @@ const BrainContent = () => {
                     </p>
                   </div>
 
-                  <div className="bg-purple-50/80 p-4 rounded-lg border border-purple-200">
+                  <div className="bg-purple-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-purple-800 mb-2 flex items-center gap-2">
                       <Mountain className="h-4 w-4" />
                       Japanese: 心 (Kokoro) - Heart-Mind
@@ -253,7 +253,7 @@ const BrainContent = () => {
                     key_points: ["Prediction errors", "Hierarchical processing", "Bayesian brain", "Active inference"]
                   }
                 ].map((theory, index) => (
-                  <div key={index} className="bg-gradient-to-br from-purple-50/80 to-indigo-50/80 p-4 rounded-lg border border-purple-200">
+                  <div key={index} className="bg-gradient-to-br from-purple-50/80 to-indigo-50/80 p-4 rounded-lg border border-border">
                     <h4 className="font-semibold text-purple-800 mb-2 japanese-heading">{theory.theory}</h4>
                     <p className="text-sm text-purple-700 mb-3 japanese-text">{theory.description}</p>
                     <div className="flex flex-wrap gap-1">

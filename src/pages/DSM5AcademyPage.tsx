@@ -473,7 +473,7 @@ const DSM5AcademyPage = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-white" />
+                <GraduationCap className="w-6 h-6 text-foreground" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-primary">Voice-X DSM-5 Academy</h1>
@@ -585,7 +585,7 @@ const DSM5AcademyPage = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className={`w-12 h-12 ${level.color} rounded-xl flex items-center justify-center`}>
-                        <level.icon className="w-6 h-6 text-white" />
+                        <level.icon className="w-6 h-6 text-foreground" />
                       </div>
                       <div>
                         <CardTitle className="text-xl">Level {level.level}: {level.title}</CardTitle>

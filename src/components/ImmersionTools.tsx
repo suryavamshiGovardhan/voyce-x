@@ -27,10 +27,10 @@ const immersionTools = [
     fullDescription: "Your shadow contains everything you've rejected about yourself—and everything you need to become whole. Our AI companion asks the questions you're afraid to ask yourself, guiding you through the darkness with compassion and precision.",
     sessions: "∞ Daily Prompts",
     icon: BookOpen,
-    color: "text-orange-400",
+    color: "text-primary",
     bgColor: "bg-orange-600",
-    borderColor: "border-orange-300/30",
-    hoverBorder: "hover:border-orange-300/60",
+    borderColor: "border-border",
+    hoverBorder: "hover:border-border",
     japaneseIcon: "bamboo",
     features: ["Shadow Integration", "Projection Work", "Dream Analysis", "Trigger Mapping"],
     intensity: "Intermediate"
@@ -55,10 +55,10 @@ const immersionTools = [
     fullDescription: "Trauma lives in the body, not just the mind. Through breathwork, movement, and somatic practices, we help your nervous system remember safety. Each practice is designed to complete incomplete stress cycles and restore natural regulation.",
     sessions: "40+ Practices",
     icon: Headphones,
-    color: "text-orange-400",
+    color: "text-primary",
     bgColor: "bg-orange-600",
-    borderColor: "border-orange-300/30",
-    hoverBorder: "hover:border-orange-300/60",
+    borderColor: "border-border",
+    hoverBorder: "hover:border-border",
     japaneseIcon: "crane",
     features: ["Breathwork", "Body Scanning", "Tension Release", "Energy Work"],
     intensity: "All Levels"
@@ -83,10 +83,10 @@ const immersionTools = [
     fullDescription: "Shame dies in the light of witness. Our anonymous circles create sacred space for sharing what you've never spoken aloud. No fixing, no advice—just presence and the radical act of being seen in your truth.",
     sessions: "24/7 Community",
     icon: Users,
-    color: "text-orange-400",
+    color: "text-primary",
     bgColor: "bg-orange-600",
-    borderColor: "border-orange-300/30",
-    hoverBorder: "hover:border-orange-300/60",
+    borderColor: "border-border",
+    hoverBorder: "hover:border-border",
     japaneseIcon: "lotus",
     features: ["Anonymous Sharing", "Witness Practice", "Peer Support", "Truth Telling"],
     intensity: "Vulnerable"
@@ -111,10 +111,10 @@ const immersionTools = [
     fullDescription: "Most of what we call love is ego in disguise—need, attachment, possession, projection. True love has no opposite because it includes everything. We explore what love looks like when the ego isn't driving the bus.",
     sessions: "Heart Opening",
     icon: Heart,
-    color: "text-orange-400",
+    color: "text-primary",
     bgColor: "bg-orange-600",
-    borderColor: "border-orange-300/30",
-    hoverBorder: "hover:border-orange-300/60",
+    borderColor: "border-border",
+    hoverBorder: "hover:border-border",
     japaneseIcon: "cherry",
     features: ["Unconditional Love", "Attachment Work", "Heart Opening", "Sacred Relating"],
     intensity: "Heart Work"
@@ -140,7 +140,7 @@ export default function ImmersionTools() {
   return (
     <div className="space-y-8">
       <div className="text-center mb-8">
-        <p className="text-slate-300 text-lg italic leading-relaxed max-w-3xl mx-auto">
+        <p className="text-muted-foreground text-lg italic leading-relaxed max-w-3xl mx-auto">
           "These tools are not toys. They are surgical instruments for the soul, 
           designed to cut through the illusions that keep you suffering. Use them with reverence."
         </p>
@@ -165,21 +165,21 @@ export default function ImmersionTools() {
                   </div>
                 </div>
                 
-                <h3 className="text-white font-medium mb-2 text-lg">{tool.title}</h3>
-                <p className="text-slate-300 text-sm leading-relaxed mb-3 italic">
+                <h3 className="text-foreground font-medium mb-2 text-lg">{tool.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-3 italic">
                   "{tool.description}"
                 </p>
                 
                 <div className="flex-grow">
-                  <p className="text-slate-400 text-xs leading-relaxed mb-3">
+                  <p className="text-muted-foreground text-xs leading-relaxed mb-3">
                     {tool.fullDescription}
                   </p>
                   
                   <div className="mb-4">
-                    <span className="text-orange-300 text-xs font-medium mb-2 block">Core Features:</span>
+                    <span className="text-primary text-xs font-medium mb-2 block">Core Features:</span>
                     <div className="grid grid-cols-2 gap-1">
                       {tool.features.map((feature) => (
-                        <span key={feature} className="bg-slate-700/50 text-slate-300 text-xs px-2 py-1 rounded text-center">
+                        <span key={feature} className="bg-muted text-muted-foreground text-xs px-2 py-1 rounded text-center">
                           {feature}
                         </span>
                       ))}
@@ -193,7 +193,7 @@ export default function ImmersionTools() {
                   </span>
                   <Button
                     size="sm"
-                    className={`${tool.bgColor} hover:opacity-90 text-white haptic-btn text-xs px-4`}
+                    className={`${tool.bgColor} hover:opacity-90 text-foreground haptic-btn text-xs px-4`}
                     onClick={() => setActiveTool(tool.title)}
                   >
                     Begin Practice
@@ -208,16 +208,16 @@ export default function ImmersionTools() {
       <div className="mt-12">
         <div className="bg-black/30 backdrop-blur-sm border border-sky-300/30 rounded-lg p-8">
           <div className="text-center">
-            <h3 className="text-white text-2xl font-light mb-4">The Path of No Path</h3>
-            <p className="text-slate-300 text-sm leading-relaxed italic max-w-3xl mx-auto mb-6">
+            <h3 className="text-foreground text-2xl font-light mb-4">The Path of No Path</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed italic max-w-3xl mx-auto mb-6">
               "These tools are fingers pointing at the moon. Don't mistake the finger for the moon. 
               The real work happens in the silence between practices, in the space between thoughts, 
               in the moment when you realize there was never anyone there to be enlightened."
             </p>
             <div className="flex items-center justify-center space-x-4">
               <JapaneseIcon type="lotus" className="text-sky-400 w-6 h-6" />
-              <span className="text-orange-300 font-light">Begin Where You Are</span>
-              <JapaneseIcon type="zen" className="text-orange-400 w-6 h-6" />
+              <span className="text-primary font-light">Begin Where You Are</span>
+              <JapaneseIcon type="zen" className="text-primary w-6 h-6" />
             </div>
           </div>
         </div>

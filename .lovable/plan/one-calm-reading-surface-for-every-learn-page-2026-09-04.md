@@ -33,3 +33,8 @@ Other dark surfaces on the same reading track: Library, Tools, Path, Workbook, S
 - No content deleted, shortened, or reworded.
 - No route changes and no removal of legacy pages.
 - Dark mode tokens remain intact; pages simply follow the site theme instead of forcing their own gradients.
+  > Remember this:- Don't change our writing style - the style must be KATA style, and we have added all the religious things like islamic, hindu, Greek and many more don't distrub them while re-design, they to important....
+  **And complete this as quick as possible with the credits limit now you have..**
+- If you are removing any information tell me about that..
+- And in invisible INHERITANCE TEST also same re-design required..
+- And admin page too I think 

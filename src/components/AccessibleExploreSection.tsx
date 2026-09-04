@@ -32,7 +32,7 @@ const exploreCategories: ExploreCategory[] = [
     colorClass: "from-blue-500 to-indigo-600",
     iconColorClass: "text-blue-600",
     bgColorClass: "bg-blue-50",
-    borderColorClass: "border-blue-200",
+    borderColorClass: "border-border",
     link: "/neuroscience"
   },
   {
@@ -42,7 +42,7 @@ const exploreCategories: ExploreCategory[] = [
     colorClass: "from-pink-500 to-rose-600",
     iconColorClass: "text-pink-600",
     bgColorClass: "bg-pink-50",
-    borderColorClass: "border-pink-200",
+    borderColorClass: "border-border",
     link: "/trauma"
   },
   {
@@ -52,7 +52,7 @@ const exploreCategories: ExploreCategory[] = [
     colorClass: "from-amber-500 to-orange-600",
     iconColorClass: "text-amber-600",
     bgColorClass: "bg-amber-50",
-    borderColorClass: "border-amber-200",
+    borderColorClass: "border-border",
     link: "/adhd"
   },
   {
@@ -62,7 +62,7 @@ const exploreCategories: ExploreCategory[] = [
     colorClass: "from-purple-500 to-violet-600",
     iconColorClass: "text-purple-600",
     bgColorClass: "bg-purple-50",
-    borderColorClass: "border-purple-200",
+    borderColorClass: "border-border",
     link: "/schools"
   },
   {
@@ -72,7 +72,7 @@ const exploreCategories: ExploreCategory[] = [
     colorClass: "from-emerald-500 to-teal-600",
     iconColorClass: "text-emerald-600",
     bgColorClass: "bg-emerald-50",
-    borderColorClass: "border-emerald-200",
+    borderColorClass: "border-border",
     link: "/dsm5-academy"
   },
   {
@@ -82,7 +82,7 @@ const exploreCategories: ExploreCategory[] = [
     colorClass: "from-cyan-500 to-sky-600",
     iconColorClass: "text-cyan-600",
     bgColorClass: "bg-cyan-50",
-    borderColorClass: "border-cyan-200",
+    borderColorClass: "border-border",
     link: "/library"
   }
 ];
@@ -128,7 +128,7 @@ const CategoryCard = memo(({ category, index }: { category: ExploreCategory; ind
         {/* CTA Link */}
         <Button
           variant="outline"
-          className={`w-full border-2 ${category.borderColorClass} ${category.iconColorClass} hover:bg-gradient-to-r ${category.colorClass} hover:text-white hover:border-transparent transition-all duration-300 focus:ring-2 focus:ring-offset-2`}
+          className={`w-full border-2 ${category.borderColorClass} ${category.iconColorClass} hover:bg-gradient-to-r ${category.colorClass} hover:text-primary-foreground hover:border-transparent transition-all duration-300 focus:ring-2 focus:ring-offset-2`}
           asChild
         >
           <Link 
@@ -217,7 +217,7 @@ function AccessibleExploreSection() {
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
               <Button
                 size="lg"
-                className="bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 text-white px-8 py-4 text-lg transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-white/50"
+                className="bg-card backdrop-blur-sm border border-border hover:bg-muted text-foreground px-8 py-4 text-lg transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-white/50"
                 asChild
               >
                 <Link to="/path" aria-label="Start your mental wellness journey">
@@ -229,7 +229,7 @@ function AccessibleExploreSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/50 text-white hover:bg-white hover:text-foreground px-8 py-4 text-lg transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-white/50"
+                className="border-white/50 text-foreground hover:bg-white hover:text-foreground px-8 py-4 text-lg transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-white/50"
                 asChild
               >
                 <Link to="/library" aria-label="Browse the VOYCE resource library">

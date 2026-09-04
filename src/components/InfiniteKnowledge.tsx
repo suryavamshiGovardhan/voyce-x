@@ -96,11 +96,11 @@ export default function InfiniteKnowledge({ topic, searchTerms }: InfiniteKnowle
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'wikipedia': return 'text-blue-300 bg-blue-100/10';
-      case 'article': return 'text-green-300 bg-green-100/10';
-      case 'book': return 'text-purple-300 bg-purple-100/10';
-      case 'external': return 'text-orange-300 bg-orange-100/10';
-      default: return 'text-slate-300 bg-slate-100/10';
+      case 'wikipedia': return 'text-primary bg-muted';
+      case 'article': return 'text-primary bg-muted';
+      case 'book': return 'text-primary bg-muted';
+      case 'external': return 'text-primary bg-muted';
+      default: return 'text-muted-foreground bg-slate-100/10';
     }
   };
 
@@ -111,27 +111,27 @@ export default function InfiniteKnowledge({ topic, searchTerms }: InfiniteKnowle
 
   if (isLoading) {
     return (
-      <Card className="bg-white/10 backdrop-blur-lg border-slate-200/20 shadow-xl rounded-2xl">
+      <Card className="bg-card border-slate-200/20 shadow-xl rounded-2xl">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100">🌐 Infinite Knowledge</CardTitle>
+          <CardTitle className="text-2xl text-foreground">🌐 Infinite Knowledge</CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <div className="animate-pulse space-y-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-slate-700/50 h-20 rounded-lg"></div>
+              <div key={i} className="bg-muted h-20 rounded-lg"></div>
             ))}
           </div>
-          <p className="text-slate-400 text-center mt-4">Loading latest resources...</p>
+          <p className="text-muted-foreground text-center mt-4">Loading latest resources...</p>
         </CardContent>
       </Card>
     );
   }
 
   return (
-    <Card className="bg-white/10 backdrop-blur-lg border-slate-200/20 shadow-xl rounded-2xl mb-16">
+    <Card className="bg-card border-slate-200/20 shadow-xl rounded-2xl mb-16">
       <CardHeader>
-        <CardTitle className="text-3xl text-slate-100">🌐 Infinite Knowledge: {topic}</CardTitle>
-        <p className="text-slate-300">
+        <CardTitle className="text-3xl text-foreground">🌐 Infinite Knowledge: {topic}</CardTitle>
+        <p className="text-muted-foreground">
           Continuously updated resources from trusted sources worldwide
         </p>
       </CardHeader>
@@ -141,25 +141,25 @@ export default function InfiniteKnowledge({ topic, searchTerms }: InfiniteKnowle
             <div
               key={index}
               onClick={() => handleResourceClick(resource.link)}
-              className="min-w-80 bg-slate-800/50 rounded-xl p-4 cursor-pointer hover:bg-slate-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="min-w-80 bg-muted rounded-xl p-4 cursor-pointer hover:bg-muted transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               <div className="flex items-start space-x-3">
                 <div className={`p-2 rounded-lg ${getTypeColor(resource.type)}`}>
                   {getIcon(resource.type)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-slate-100 font-medium text-sm mb-2 line-clamp-2">
+                  <h4 className="text-foreground font-medium text-sm mb-2 line-clamp-2">
                     {resource.title}
                   </h4>
-                  <p className="text-slate-400 text-xs mb-3 line-clamp-3">
+                  <p className="text-muted-foreground text-xs mb-3 line-clamp-3">
                     {resource.summary}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">{resource.source}</span>
-                    <ExternalLink className="h-3 w-3 text-slate-400" />
+                    <span className="text-xs text-muted-foreground">{resource.source}</span>
+                    <ExternalLink className="h-3 w-3 text-muted-foreground" />
                   </div>
                   {resource.date && (
-                    <p className="text-xs text-slate-500 mt-1">{resource.date}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{resource.date}</p>
                   )}
                 </div>
               </div>
@@ -167,13 +167,13 @@ export default function InfiniteKnowledge({ topic, searchTerms }: InfiniteKnowle
           ))}
         </div>
         <div className="text-center mt-6">
-          <p className="text-slate-400 text-sm mb-4">
+          <p className="text-muted-foreground text-sm mb-4">
             More resources available. Knowledge updates automatically.
           </p>
           <Button
             variant="outline"
             size="sm"
-            className="border-green-300 text-green-300 hover:bg-green-100/10"
+            className="border-border text-primary hover:bg-muted"
             onClick={() => hapticFeedback.onClick()}
           >
             <Globe className="h-4 w-4 mr-2" />

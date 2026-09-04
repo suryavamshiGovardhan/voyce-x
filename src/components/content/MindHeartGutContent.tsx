@@ -4,7 +4,7 @@ import { Heart, Brain, Sprout, Wind } from 'lucide-react';
 
 const MindHeartGutContent = () => (
   <div className="space-y-8">
-    <Card className="bg-white/70 border-teal-200">
+    <Card className="bg-card border-border">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-slate-800">
           <Heart className="h-6 w-6 text-teal-600" /> One Nervous System, Three Centres of Intelligence
@@ -17,7 +17,7 @@ const MindHeartGutContent = () => (
     </Card>
 
     <Tabs defaultValue="vagus" className="w-full">
-      <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-white/70">
+      <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-card">
         <TabsTrigger value="vagus">Vagus Nerve</TabsTrigger>
         <TabsTrigger value="gut">Gut-Brain</TabsTrigger>
         <TabsTrigger value="heart">Heart-Brain</TabsTrigger>
@@ -66,7 +66,7 @@ const MindHeartGutContent = () => (
           <p><strong>Fermented and fibre-rich foods.</strong> Curd, kanji, kombucha, kimchi, pickles (fermented, not vinegar-quick), plus abundant vegetables and pulses. This is the diet most of India ate a generation ago and increasingly does not.</p>
           <p><strong>Adequate sleep and morning light.</strong> Circadian regulation drives autonomic regulation; the two systems are functionally inseparable.</p>
           <p><strong>Safe social contact.</strong> The single most powerful, most under-prescribed vagal intervention available. Fifteen minutes of face-to-face conversation with a trusted person does more for the nervous system than an hour of solitary breathwork.</p>
-          <p className="text-xs italic text-slate-500 mt-3">None of this substitutes for medical or psychiatric care where needed. It is scaffolding, not replacement.</p>
+          <p className="text-xs italic text-muted-foreground mt-3">None of this substitutes for medical or psychiatric care where needed. It is scaffolding, not replacement.</p>
         </CardContent></Card>
       </TabsContent>
     </Tabs>

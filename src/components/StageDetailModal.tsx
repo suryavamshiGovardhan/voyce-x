@@ -75,24 +75,24 @@ export function StageDetailModal({ open, onOpenChange, stage, isCompleted, onCom
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl bg-slate-900 border-slate-700 text-slate-100 max-h-[85vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl bg-muted border-border text-foreground max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <div className="flex items-center gap-3 mb-1">
             <span className="text-sky-400 font-mono text-sm">{stage.level}</span>
-            <span className="text-xs text-slate-500">· {stage.duration}</span>
+            <span className="text-xs text-muted-foreground">· {stage.duration}</span>
           </div>
-          <DialogTitle className="text-2xl font-light text-white">{stage.name}</DialogTitle>
-          <DialogDescription className="text-slate-400 italic">"{stage.description}"</DialogDescription>
+          <DialogTitle className="text-2xl font-light text-foreground">{stage.name}</DialogTitle>
+          <DialogDescription className="text-muted-foreground italic">"{stage.description}"</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-5 py-2">
-          <p className="text-slate-300 text-sm leading-relaxed">{stage.deepContent}</p>
+          <p className="text-muted-foreground text-sm leading-relaxed">{stage.deepContent}</p>
 
           <div>
-            <p className="text-orange-300 text-xs font-medium mb-2">Core tools for this stage</p>
+            <p className="text-primary text-xs font-medium mb-2">Core tools for this stage</p>
             <div className="flex flex-wrap gap-2">
               {stage.tools.map((t) => (
-                <span key={t} className="bg-slate-800 border border-slate-700 text-slate-300 text-xs px-3 py-1 rounded-full">
+                <span key={t} className="bg-muted border border-border text-muted-foreground text-xs px-3 py-1 rounded-full">
                   {t}
                 </span>
               ))}
@@ -100,12 +100,12 @@ export function StageDetailModal({ open, onOpenChange, stage, isCompleted, onCom
           </div>
 
           {!user ? (
-            <div className="text-sm text-slate-400 border border-slate-700 rounded p-4">
+            <div className="text-sm text-muted-foreground border border-border rounded p-4">
               Sign in to track your progress and mark this stage complete.
             </div>
           ) : (
-            <div className="flex items-center justify-between border-t border-slate-800 pt-4">
-              <div className="text-xs text-slate-500">
+            <div className="flex items-center justify-between border-t border-border pt-4">
+              <div className="text-xs text-muted-foreground">
                 {startedAt ? `Started ${new Date(startedAt).toLocaleDateString()}` : "Just started"}
               </div>
               <Button

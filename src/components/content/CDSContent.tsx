@@ -9,7 +9,7 @@ const CDSContent = () => {
   return (
     <div className="space-y-8">
       {/* Overview Section */}
-      <Card className="bg-gradient-to-r from-purple-50 to-indigo-50 border-purple-200">
+      <Card className="bg-gradient-to-r from-purple-50 to-indigo-50 border-border">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-2xl">
             <Brain className="h-6 w-6 text-purple-600" />
@@ -98,15 +98,15 @@ const CDSContent = () => {
                     Recent neuroimaging studies suggest CDS involves dysfunction in several brain networks:
                   </p>
                   <div className="space-y-3">
-                    <div className="border-l-4 border-purple-400 pl-4">
+                    <div className="border-l-4 border-border pl-4">
                       <h4 className="font-semibold">Default Mode Network (DMN)</h4>
                       <p className="text-sm text-gray-600">Hyperactivation during tasks requiring focused attention</p>
                     </div>
-                    <div className="border-l-4 border-blue-400 pl-4">
+                    <div className="border-l-4 border-border pl-4">
                       <h4 className="font-semibold">Salience Network</h4>
                       <p className="text-sm text-gray-600">Reduced ability to switch between internal and external focus</p>
                     </div>
-                    <div className="border-l-4 border-green-400 pl-4">
+                    <div className="border-l-4 border-border pl-4">
                       <h4 className="font-semibold">Central Executive Network</h4>
                       <p className="text-sm text-gray-600">Impaired working memory and cognitive control</p>
                     </div>
@@ -181,7 +181,7 @@ const CDSContent = () => {
             <CardContent className="space-y-6">
               <div>
                 <h3 className="text-xl font-semibold mb-4">Current Diagnostic Status</h3>
-                <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
+                <div className="bg-yellow-50 border border-border p-4 rounded-lg">
                   <p className="text-yellow-800">
                     <strong>Important Note:</strong> CDS is not yet officially recognized in the DSM-5-TR or ICD-11. 
                     However, research is ongoing to establish formal diagnostic criteria.
@@ -192,7 +192,7 @@ const CDSContent = () => {
               <div>
                 <h3 className="text-xl font-semibold mb-4">Assessment Tools</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Card className="border-blue-200">
+                  <Card className="border-border">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-lg">Rating Scales</CardTitle>
                     </CardHeader>
@@ -206,7 +206,7 @@ const CDSContent = () => {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-green-200">
+                  <Card className="border-border">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-lg">Clinical Assessments</CardTitle>
                     </CardHeader>
@@ -343,7 +343,7 @@ const CDSContent = () => {
                         findings: ["Potential genetic markers identified", "Heritability estimates around 0.6", "Gene-environment interactions"]
                       }
                     ].map((study, index) => (
-                      <Card key={index} className="border-blue-200">
+                      <Card key={index} className="border-border">
                         <CardHeader className="pb-2">
                           <CardTitle className="text-lg text-blue-800">{study.title}</CardTitle>
                         </CardHeader>
@@ -369,7 +369,7 @@ const CDSContent = () => {
                         findings: ["Persistence into adulthood", "Academic outcome predictions", "Comorbidity development patterns"]
                       }
                     ].map((study, index) => (
-                      <Card key={index} className="border-green-200">
+                      <Card key={index} className="border-border">
                         <CardHeader className="pb-2">
                           <CardTitle className="text-lg text-green-800">{study.title}</CardTitle>
                         </CardHeader>
@@ -400,15 +400,15 @@ const CDSContent = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div className="border-l-4 border-blue-400 pl-3">
+                  <div className="border-l-4 border-border pl-3">
                     <h4 className="font-semibold">CHADD (Children and Adults with ADHD)</h4>
                     <p className="text-sm text-gray-600">Provides resources and support for CDS research</p>
                   </div>
-                  <div className="border-l-4 border-green-400 pl-3">
+                  <div className="border-l-4 border-border pl-3">
                     <h4 className="font-semibold">ADDitude Magazine</h4>
                     <p className="text-sm text-gray-600">Regular articles on CDS developments</p>
                   </div>
-                  <div className="border-l-4 border-purple-400 pl-3">
+                  <div className="border-l-4 border-border pl-3">
                     <h4 className="font-semibold">CDS Research Consortium</h4>
                     <p className="text-sm text-gray-600">Leading research on diagnostic criteria</p>
                   </div>

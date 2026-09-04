@@ -75,7 +75,7 @@ export default function SeriesEpisodePage() {
               <span className="text-[0.7rem] tracking-[3px] uppercase font-mono text-[#8888a8]">
                 {section.label}
               </span>
-              <span className="flex-1 h-px bg-white/10" />
+              <span className="flex-1 h-px bg-card" />
             </div>
 
             {(section.type === "story" || section.type === "psychology") && (
@@ -116,7 +116,7 @@ export default function SeriesEpisodePage() {
             )}
 
             {section.type === "realtalk" && (
-              <div className="rounded-xl border border-white/10 bg-[#13131f] p-7">
+              <div className="rounded-xl border border-border bg-[#13131f] p-7">
                 <ul className="space-y-3 list-disc pl-5 marker:text-[#2dd4bf]">
                   {section.bullets?.map((b, j) => (
                     <li key={j} className="text-[#c8c8d8] leading-relaxed">
@@ -136,7 +136,7 @@ export default function SeriesEpisodePage() {
         </div>
 
         {/* Nav */}
-        <div className="mt-12 pt-10 border-t border-white/10 flex justify-between gap-4 text-sm font-mono">
+        <div className="mt-12 pt-10 border-t border-border flex justify-between gap-4 text-sm font-mono">
           {prev ? (
             <Link to={`/series/${prev.id}`} className="text-[#2dd4bf] hover:underline">
               ← {prev.number}: {prev.title}

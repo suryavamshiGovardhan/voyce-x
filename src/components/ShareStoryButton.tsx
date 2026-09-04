@@ -14,7 +14,7 @@ export default function ShareStoryButton() {
       <Button
         asChild
         size="lg"
-        className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white px-8 py-4 rounded-2xl text-lg font-medium shadow-xl hover:scale-105 transition-all duration-300"
+        className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-primary-foreground px-8 py-4 rounded-2xl text-lg font-medium shadow-xl hover:scale-105 transition-all duration-300"
         onClick={handleClick}
       >
         <Link to="/workbook" className="flex items-center space-x-3">
@@ -22,7 +22,7 @@ export default function ShareStoryButton() {
           <span>Share Your VOYCE Story</span>
         </Link>
       </Button>
-      <p className="text-slate-400 text-sm mt-3">
+      <p className="text-muted-foreground text-sm mt-3">
         Your journey matters. Share your story with the VOYCE community.
       </p>
     </div>

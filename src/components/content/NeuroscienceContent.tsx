@@ -4,7 +4,7 @@ import { Microscope, Brain, Cpu, MapPin } from 'lucide-react';
 
 const NeuroscienceContent = () => (
   <div className="space-y-8">
-    <Card className="bg-white/70 border-cyan-200">
+    <Card className="bg-card border-border">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-slate-800">
           <Microscope className="h-6 w-6 text-cyan-600" /> A Field That Rewrites Itself Every Decade
@@ -17,7 +17,7 @@ const NeuroscienceContent = () => (
     </Card>
 
     <Tabs defaultValue="history" className="w-full">
-      <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-white/70">
+      <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-card">
         <TabsTrigger value="history">History</TabsTrigger>
         <TabsTrigger value="methods">Methods</TabsTrigger>
         <TabsTrigger value="frontiers">Frontiers</TabsTrigger>

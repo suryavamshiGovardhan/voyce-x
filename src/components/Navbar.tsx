@@ -1,5 +1,5 @@
-import DesktopNavigation from "./DesktopNavigation";
+import SiteHeader from "@/components/site/SiteHeader";
 
 export default function Navbar() {
-  return <DesktopNavigation />;
+  return <SiteHeader />;
 }

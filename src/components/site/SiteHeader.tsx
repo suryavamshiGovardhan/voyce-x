@@ -7,7 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 type NavItem = { label: string; to: string; description?: string };
 
-const PRIMARY: { label: string; to?: string; items?: NavItem[] }[] = [
+const PRIMARY: { label: string; to?: string; items?: NavItem[]; wide?: boolean }[] = [
   { label: "How it works", to: "/how-it-works" },
   {
     label: "For people",
@@ -16,17 +16,46 @@ const PRIMARY: { label: string; to?: string; items?: NavItem[] }[] = [
       { label: "Teachers", to: "/teachers", description: "Notice patterns, start better conversations" },
       { label: "Parents", to: "/parents", description: "Understand the signals behind the silence" },
       { label: "Schools", to: "/schools", description: "Build a culture where wellbeing is noticed" },
+      { label: "AI4Schools", to: "/ai4schools", description: "Programs for future-ready classrooms" },
     ],
   },
   { label: "Features", to: "/features" },
   {
+    label: "Learn",
+    wide: true,
+    items: [
+      { label: "Stress", to: "/stress", description: "Understanding stress responses" },
+      { label: "Trauma", to: "/trauma", description: "Healing and recovery" },
+      { label: "ADHD", to: "/adhd", description: "Attention and focus" },
+      { label: "Brain", to: "/brain", description: "How your brain works" },
+      { label: "Neuroscience", to: "/neuroscience", description: "Research explained simply" },
+      { label: "Mind, heart, gut", to: "/mind-heart-gut", description: "The whole-body connection" },
+      { label: "ACEs impact", to: "/aces", description: "Childhood experiences" },
+      { label: "CDS research", to: "/cds", description: "Cognitive disengagement" },
+      { label: "Psychology theories", to: "/theories", description: "Foundational frameworks" },
+      { label: "DSM-5 guide", to: "/dsm5", description: "Reference material" },
+      { label: "DSM-5 Academy", to: "/dsm5-academy", description: "Study modules" },
+      { label: "ICD-9 hub", to: "/icd9", description: "Classification reference" },
+      { label: "Diagnostics library", to: "/diagnostics", description: "Cross-referenced knowledge" },
+      { label: "Quizzes", to: "/quizzes", description: "Check your understanding" },
+    ],
+  },
+  {
     label: "Resources",
+    wide: true,
     items: [
       { label: "Guides & articles", to: "/resources", description: "Editorial library on wellbeing" },
       { label: "The Unheard Mind", to: "/series", description: "Eight-part narrative series" },
       { label: "Library", to: "/library", description: "Long-form deep dives" },
       { label: "Blog", to: "/blog", description: "Essays and reflections" },
       { label: "Stories", to: "/stories", description: "Real experiences, shared with consent" },
+      { label: "Tools", to: "/tools", description: "Practices you can try today" },
+      { label: "VOYCE Path", to: "/path", description: "A guided sequence" },
+      { label: "Workbook", to: "/workbook", description: "Write it out" },
+      { label: "Journal", to: "/journal", description: "Your private entries" },
+      { label: "Newsletters", to: "/newsletters", description: "Occasional letters" },
+      { label: "Thoughts", to: "/thoughts", description: "Short reflections" },
+      { label: "Invisible Inheritance", to: "/invisible-inheritance", description: "For couples" },
     ],
   },
   {
@@ -36,10 +65,12 @@ const PRIMARY: { label: string; to?: string; items?: NavItem[] }[] = [
       { label: "Privacy", to: "/privacy", description: "What we collect and why" },
       { label: "FAQ", to: "/faq", description: "Real questions, plain answers" },
       { label: "Partners", to: "/partners", description: "Work with VOYCE" },
+      { label: "Contact", to: "/contact", description: "Reach the team" },
     ],
   },
   { label: "About", to: "/about" },
 ];
+
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -104,8 +135,18 @@ export default function SiteHeader() {
                     <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </button>
                   {openMenu === entry.label && entry.items && (
-                    <div className="absolute left-0 top-full w-72 pt-2">
-                      <ul className="rounded-2xl border border-border bg-popover p-2 shadow-[0_24px_60px_-30px_hsl(var(--foreground)/0.45)]">
+                    <div
+                      className={cn(
+                        "absolute top-full pt-2",
+                        entry.wide ? "left-1/2 w-[38rem] -translate-x-1/2" : "left-0 w-72",
+                      )}
+                    >
+                      <ul
+                        className={cn(
+                          "rounded-2xl border border-border bg-popover p-2 shadow-[0_24px_60px_-30px_hsl(var(--foreground)/0.45)]",
+                          entry.wide && "grid grid-cols-2 gap-x-2",
+                        )}
+                      >
                         {entry.items.map((item) => (
                           <li key={item.to}>
                             <Link

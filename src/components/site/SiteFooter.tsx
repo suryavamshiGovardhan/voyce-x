@@ -28,7 +28,22 @@ const COLUMNS: { title: string; links: { label: string; to: string; external?: b
       { label: "Library", to: "/library" },
       { label: "Blog", to: "/blog" },
       { label: "Stories", to: "/stories" },
+      { label: "Tools", to: "/tools" },
+      { label: "VOYCE Path", to: "/path" },
       { label: "FAQ", to: "/faq" },
+    ],
+  },
+  {
+    title: "Learn",
+    links: [
+      { label: "Stress", to: "/stress" },
+      { label: "Trauma", to: "/trauma" },
+      { label: "ADHD", to: "/adhd" },
+      { label: "Brain & neuroscience", to: "/brain" },
+      { label: "ACEs impact", to: "/aces" },
+      { label: "DSM-5 guide", to: "/dsm5" },
+      { label: "ICD-9 hub", to: "/icd9" },
+      { label: "Psychology theories", to: "/theories" },
     ],
   },
   {
@@ -47,6 +62,7 @@ const COLUMNS: { title: string; links: { label: string; to: string; external?: b
       { label: "VOYCE for Schools", to: "/schools" },
       { label: "AI4Schools", to: "/ai4schools" },
       { label: "Workbook", to: "/workbook" },
+      { label: "Invisible Inheritance", to: "/invisible-inheritance" },
     ],
   },
 ];
@@ -83,7 +99,7 @@ export default function SiteFooter() {
             </div>
           </div>
 
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
             {COLUMNS.map((col) => (
               <div key={col.title}>
                 <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">

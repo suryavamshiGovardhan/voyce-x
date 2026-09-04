@@ -127,12 +127,12 @@ export default function RichContentLibrary({ topic, category }: RichContentLibra
   };
 
   return (
-    <Card className="bg-white/10 backdrop-blur-lg border-slate-200/20 shadow-xl rounded-2xl mb-16">
+    <Card className="bg-card border-slate-200/20 shadow-xl rounded-2xl mb-16">
       <CardHeader>
-        <CardTitle className="text-3xl text-slate-100">
+        <CardTitle className="text-3xl text-foreground">
           📚 Rich Content Library: {topic}
         </CardTitle>
-        <p className="text-slate-300">
+        <p className="text-muted-foreground">
           Curated books, articles, images, and videos from trusted sources worldwide
         </p>
         
@@ -161,7 +161,7 @@ export default function RichContentLibrary({ topic, category }: RichContentLibra
           {filteredResources.map((resource, index) => (
             <Card
               key={index}
-              className="cursor-pointer bg-slate-800/50 border-slate-600 hover:bg-slate-700/50 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="cursor-pointer bg-muted border-border hover:bg-muted transition-all duration-300 hover:scale-105 hover:shadow-lg"
               onClick={() => handleResourceClick(resource.url)}
             >
               {resource.imageUrl && (
@@ -181,24 +181,24 @@ export default function RichContentLibrary({ topic, category }: RichContentLibra
               <CardContent className="p-4">
                 <div className="space-y-3">
                   <div>
-                    <h4 className="text-slate-100 font-medium text-sm mb-2 line-clamp-2">
+                    <h4 className="text-foreground font-medium text-sm mb-2 line-clamp-2">
                       {resource.title}
                     </h4>
-                    <p className="text-slate-400 text-xs line-clamp-3">
+                    <p className="text-muted-foreground text-xs line-clamp-3">
                       {resource.description}
                     </p>
                   </div>
                   
                   {resource.author && (
-                    <p className="text-slate-500 text-xs">
+                    <p className="text-muted-foreground text-xs">
                       by {resource.author} {resource.year && `(${resource.year})`}
                     </p>
                   )}
                   
                   {resource.rating && (
                     <div className="flex items-center space-x-1">
-                      <Star className="h-3 w-3 text-yellow-400 fill-current" />
-                      <span className="text-slate-400 text-xs">{resource.rating}</span>
+                      <Star className="h-3 w-3 text-primary fill-current" />
+                      <span className="text-muted-foreground text-xs">{resource.rating}</span>
                     </div>
                   )}
                   
@@ -212,9 +212,9 @@ export default function RichContentLibrary({ topic, category }: RichContentLibra
                     </div>
                   )}
                   
-                  <div className="flex items-center justify-between pt-2 border-t border-slate-600">
-                    <span className="text-xs text-slate-500">{resource.source || 'External'}</span>
-                    <ExternalLink className="h-3 w-3 text-slate-400" />
+                  <div className="flex items-center justify-between pt-2 border-t border-border">
+                    <span className="text-xs text-muted-foreground">{resource.source || 'External'}</span>
+                    <ExternalLink className="h-3 w-3 text-muted-foreground" />
                   </div>
                 </div>
               </CardContent>
@@ -223,13 +223,13 @@ export default function RichContentLibrary({ topic, category }: RichContentLibra
         </div>
         
         <div className="text-center mt-8">
-          <p className="text-slate-400 text-sm mb-4">
+          <p className="text-muted-foreground text-sm mb-4">
             More resources available. Updated regularly with latest content.
           </p>
           <Button
             variant="outline"
             size="sm"
-            className="border-green-300 text-green-300 hover:bg-green-100/10"
+            className="border-border text-primary hover:bg-muted"
             onClick={() => hapticFeedback.onClick()}
           >
             <ExternalLink className="h-4 w-4 mr-2" />

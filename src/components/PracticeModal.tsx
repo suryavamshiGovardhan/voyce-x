@@ -74,33 +74,33 @@ export function PracticeModal({ open, onOpenChange, toolTitle }: PracticeModalPr
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl bg-slate-900 border-slate-700 text-slate-100">
+      <DialogContent className="max-w-2xl bg-muted border-border text-foreground">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-light text-white">{toolTitle}</DialogTitle>
-          <DialogDescription className="text-slate-400">
+          <DialogTitle className="text-2xl font-light text-foreground">{toolTitle}</DialogTitle>
+          <DialogDescription className="text-muted-foreground">
             A guided practice. Move at your own pace — the timer is a suggestion, not a rule.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6 py-2">
           <div>
-            <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
+            <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
               <span>Step {stepIndex + 1} of {steps.length}</span>
               <span className="flex items-center gap-1"><Timer className="h-3 w-3" /> {mm}:{ss}</span>
             </div>
-            <Progress value={totalProgress} className="h-2 bg-slate-800" />
+            <Progress value={totalProgress} className="h-2 bg-muted" />
           </div>
 
-          <div className="rounded-lg border border-slate-700 bg-slate-800/50 p-6 min-h-[180px]">
-            <h3 className="text-lg font-medium text-white mb-2">{current.title}</h3>
-            <p className="text-slate-300 leading-relaxed text-sm">{current.description}</p>
+          <div className="rounded-lg border border-border bg-muted p-6 min-h-[180px]">
+            <h3 className="text-lg font-medium text-foreground mb-2">{current.title}</h3>
+            <p className="text-muted-foreground leading-relaxed text-sm">{current.description}</p>
           </div>
 
           <div className="flex items-center justify-between gap-3">
             <Button
               variant="outline"
               size="sm"
-              className="bg-transparent border-slate-600 text-slate-200 hover:bg-slate-800"
+              className="bg-transparent border-border text-foreground hover:bg-muted"
               onClick={() => {
                 setStepIndex((i) => Math.max(0, i - 1));
                 setSecondsLeft(DEFAULT_STEP_SECONDS);
@@ -114,14 +114,14 @@ export function PracticeModal({ open, onOpenChange, toolTitle }: PracticeModalPr
               <Button
                 size="sm"
                 onClick={() => setIsRunning((r) => !r)}
-                className="bg-sky-600 hover:bg-sky-500 text-white"
+                className="bg-sky-600 hover:bg-sky-500 text-foreground"
               >
                 {isRunning ? <><Pause className="h-4 w-4 mr-1" /> Pause</> : <><Play className="h-4 w-4 mr-1" /> Start</>}
               </Button>
               <Button
                 size="sm"
                 variant="outline"
-                className="bg-transparent border-slate-600 text-slate-200 hover:bg-slate-800"
+                className="bg-transparent border-border text-foreground hover:bg-muted"
                 onClick={() => {
                   setSecondsLeft(DEFAULT_STEP_SECONDS);
                   setIsRunning(false);
@@ -134,7 +134,7 @@ export function PracticeModal({ open, onOpenChange, toolTitle }: PracticeModalPr
 
             <Button
               size="sm"
-              className="bg-orange-600 hover:bg-orange-500 text-white"
+              className="bg-orange-600 hover:bg-orange-500 text-primary-foreground"
               onClick={() => {
                 if (stepIndex + 1 < steps.length) {
                   setStepIndex((i) => i + 1);
@@ -149,8 +149,8 @@ export function PracticeModal({ open, onOpenChange, toolTitle }: PracticeModalPr
           </div>
 
           {tool?.content.safetyGuidelines?.length ? (
-            <details className="text-xs text-slate-400">
-              <summary className="cursor-pointer hover:text-slate-200">Safety notes</summary>
+            <details className="text-xs text-muted-foreground">
+              <summary className="cursor-pointer hover:text-foreground">Safety notes</summary>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 {tool.content.safetyGuidelines.slice(0, 5).map((g) => (
                   <li key={g}>{g}</li>

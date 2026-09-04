@@ -99,7 +99,7 @@ export default function SiteFooter() {
             </div>
           </div>
 
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
             {COLUMNS.map((col) => (
               <div key={col.title}>
                 <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">

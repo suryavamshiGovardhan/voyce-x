@@ -135,8 +135,18 @@ export default function SiteHeader() {
                     <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
                   </button>
                   {openMenu === entry.label && entry.items && (
-                    <div className="absolute left-0 top-full w-72 pt-2">
-                      <ul className="rounded-2xl border border-border bg-popover p-2 shadow-[0_24px_60px_-30px_hsl(var(--foreground)/0.45)]">
+                    <div
+                      className={cn(
+                        "absolute top-full pt-2",
+                        entry.wide ? "left-1/2 w-[38rem] -translate-x-1/2" : "left-0 w-72",
+                      )}
+                    >
+                      <ul
+                        className={cn(
+                          "rounded-2xl border border-border bg-popover p-2 shadow-[0_24px_60px_-30px_hsl(var(--foreground)/0.45)]",
+                          entry.wide && "grid grid-cols-2 gap-x-2",
+                        )}
+                      >
                         {entry.items.map((item) => (
                           <li key={item.to}>
                             <Link

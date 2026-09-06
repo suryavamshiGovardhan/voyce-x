@@ -211,7 +211,7 @@ function AccessibleExploreSection() {
               Ready to Transform Your Understanding?
             </h3>
             <p className="text-lg sm:text-xl mb-8 opacity-90">
-              Join thousands discovering integrated mental health wisdom
+              Explore integrated mental health wisdom at your own pace
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">

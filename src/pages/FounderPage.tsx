@@ -289,7 +289,7 @@ export default function FounderPage() {
               Experience VOYCE-X Today
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of users on their journey to emotional wellbeing with the platform 
+              A quiet space for reflection, built and maintained by one person, with the platform 
               created by Suryavamshi Govardhan.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

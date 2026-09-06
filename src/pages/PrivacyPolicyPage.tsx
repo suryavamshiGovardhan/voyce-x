@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-2xl font-semibold text-foreground">5. Your Rights</h2>
               <p className="text-muted-foreground">
                 You have the right to access, correct, or delete your personal data. 
-                Contact us at privacy@voyce-x.com for any data-related requests.
+                Contact us at voycexx@gmail.com for any data-related requests.
               </p>
             </section>
 

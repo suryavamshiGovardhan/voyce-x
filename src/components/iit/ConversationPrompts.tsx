@@ -11,7 +11,7 @@ export default function ConversationPrompts({ prompts }: Props) {
           className="ii-glass-card ii-glass-card-hover rounded-xl p-6 relative overflow-hidden"
         >
           <span
-            className="absolute -top-4 -right-2 ii-display text-7xl text-white/5 select-none"
+            className="absolute -top-4 -right-2 ii-display text-7xl text-foreground/5 select-none"
             aria-hidden
           >
             {String(i + 1).padStart(2, "0")}

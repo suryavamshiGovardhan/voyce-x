@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
           
           <div className="prose prose-slate dark:prose-invert max-w-none space-y-6">
             <p className="text-muted-foreground">
-              <strong>Last updated:</strong> January 2025
+              <strong>Last updated:</strong> September 2026
             </p>
 
             <section className="space-y-4">
@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
             <section className="space-y-4">
               <h2 className="text-2xl font-semibold text-foreground">3. Data Protection</h2>
               <p className="text-muted-foreground">
-                Your data is encrypted and stored securely. We do not sell your personal information to third parties. 
+                Your data is stored on Supabase, which encrypts data in transit (HTTPS) and at rest, and access is restricted by row-level security so only you can read your own entries. We do not sell your personal information to third parties. 
                 You can request deletion of your data at any time by contacting us.
               </p>
             </section>

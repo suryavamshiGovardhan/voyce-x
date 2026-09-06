@@ -197,7 +197,7 @@ export default function SignUpPage() {
                 onCheckedChange={(checked) => setFormData({...formData, agreeToTerms: checked as boolean})}
               />
               <Label htmlFor="agreeToTerms" className="text-sm">
-                I agree to VOYCE's <Link to="/terms" className="text-primary hover:underline">Terms of Use</Link> and <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link>
+                I agree to VOYCE's <Link to="/terms-of-use" className="text-primary hover:underline">Terms of Use</Link> and <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link>
               </Label>
             </div>
 

@@ -235,7 +235,7 @@ export default function ExploreSection() {
               Ready to Transform Your Understanding?
             </h3>
             <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-              Join thousands who have discovered the power of integrated mental health wisdom
+              Explore the power of integrated mental health wisdom at your own pace
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-6">

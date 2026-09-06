@@ -268,7 +268,7 @@ export function FounderSchema() {
           {
             '@type': 'ContactPoint',
             contactType: 'partnerships',
-            email: '4igroupss@gmail.com'
+            email: 'voycexx@gmail.com'
           }
         ],
         worksFor: {

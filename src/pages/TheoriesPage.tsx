@@ -75,7 +75,7 @@ export default function TheoriesPage() {
   return (
     <>
       <SEOHead 
-        title="100+ Psychology Theories"
+        title="Psychology Theories"
         description="Comprehensive guide to over 100 psychology theories from developmental to neuroscience. Search, filter, and explore theories from basic to advanced levels."
         keywords="psychology theories, cognitive psychology, behavioral psychology, developmental psychology, psychotherapy theories, VOYCE"
       />
@@ -90,7 +90,7 @@ export default function TheoriesPage() {
             Psychology <span className="text-primary">Theories</span> Library
           </h1>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Comprehensive collection of 100+ psychological, educational, and human development theories 
+            Comprehensive collection of psychological, educational, and human development theories 
             for mental health awareness, VOYCE workshops, and educational programs.
           </p>
           <div className="flex justify-center mt-8">

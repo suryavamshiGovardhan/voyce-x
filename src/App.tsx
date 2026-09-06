@@ -17,6 +17,8 @@ import Index from "./pages/Index";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import NotFound from "./pages/NotFound";
+const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage"));
+const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
 
 // Lazy load non-critical pages
 const VoycePage = lazy(() => import("./pages/VoycePage"));
@@ -122,6 +124,12 @@ const App = () => (
                   <Route path="/" element={<Index />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/signup" element={<SignUpPage />} />
+                  <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                  <Route path="/reset-password" element={<ResetPasswordPage />} />
+                  <Route path="/terms" element={<TermsOfUsePage />} />
+                  <Route path="/guides" element={<ResourcesPage />} />
+                  
+
                   
                   {/* Lazy-loaded routes */}
                   <Route path="/voyce" element={<VoycePage />} />

@@ -17,6 +17,8 @@ import Index from "./pages/Index";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import NotFound from "./pages/NotFound";
+const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage"));
+const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
 
 // Lazy load non-critical pages
 const VoycePage = lazy(() => import("./pages/VoycePage"));

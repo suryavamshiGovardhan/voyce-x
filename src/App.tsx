@@ -124,6 +124,12 @@ const App = () => (
                   <Route path="/" element={<Index />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/signup" element={<SignUpPage />} />
+                  <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                  <Route path="/reset-password" element={<ResetPasswordPage />} />
+                  <Route path="/terms" element={<TermsOfUsePage />} />
+                  <Route path="/guides" element={<ResourcesPage />} />
+                  
+
                   
                   {/* Lazy-loaded routes */}
                   <Route path="/voyce" element={<VoycePage />} />

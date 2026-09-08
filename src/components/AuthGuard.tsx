@@ -47,37 +47,28 @@ export function AuthGuard({
 
   if (requireAuth && !user) {
     return (
-      <Dialog open={showAuthModal} onOpenChange={setShowAuthModal}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <LogIn className="h-5 w-5 text-primary" />
-              Login Required
-            </DialogTitle>
-            <DialogDescription>
-              You need to be logged in to access this page. 
-              Please log in to continue your journey with VOYCE.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex gap-3 mt-4">
-            <Button 
-              onClick={handleLoginRedirect}
-              className="flex-1"
-            >
-              Go to Login
+      <div className="flex min-h-[70vh] items-center justify-center px-6 py-20">
+        <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8 text-center">
+          <LogIn className="mx-auto h-6 w-6 text-primary" aria-hidden="true" />
+          <h1 className="mt-4 font-display text-2xl font-normal tracking-tight text-foreground">
+            Sign in to continue
+          </h1>
+          <p className="mt-3 text-sm text-muted-foreground">
+            This page is private to your account. Sign in and you'll come straight back here.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Button onClick={handleLoginRedirect} className="flex-1">
+              Go to sign in
             </Button>
-            <Button 
-              onClick={handleGoBack}
-              variant="outline"
-              className="flex-1"
-            >
-              Go Back
+            <Button onClick={handleGoBack} variant="outline" className="flex-1">
+              Go back
             </Button>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      </div>
     );
   }
+
 
   return <>{children}</>;
 }

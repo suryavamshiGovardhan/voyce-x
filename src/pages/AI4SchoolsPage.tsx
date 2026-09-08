@@ -34,7 +34,7 @@ function GradientHeadline({ children }: { children: React.ReactNode }) {
 
 const whyCards = [
   { icon: Brain, t: "AI Literacy", d: "Every student fluent in how AI thinks, learns, and decides." },
-  { icon: Rocket, t: "Future Jobs", d: "85% of 2030 jobs don't exist yet. We prepare students for them." },
+  { icon: Rocket, t: "Future Jobs", d: "Many of the roles today's students will hold are still being invented. We prepare them to build, not just use." },
   { icon: Cpu, t: "Industry Revolution", d: "From classrooms to factories — AI is rewriting every industry." },
   { icon: Lightbulb, t: "Entrepreneurship", d: "Turning ideas into products with AI as a co-founder." },
   { icon: Atom, t: "Future Skills", d: "Critical thinking, creativity, prompt fluency, ethical reasoning." },
@@ -113,13 +113,6 @@ const journey = [
   "Certification", "Continuous Support",
 ];
 
-const testimonials = [
-  { who: "Principal, Delhi", role: "Principal", q: "Our students went from passive learners to product builders in one semester. The energy on campus changed." },
-  { who: "Ms. Kavya", role: "Computer Teacher", q: "I finally feel confident teaching AI. The teacher training is genuinely the best I've attended." },
-  { who: "Rajesh, Parent", role: "Parent", q: "My daughter built a chatbot that helps her grandmother. I cried watching her demo." },
-  { who: "Arjun, Class 9", role: "Student", q: "I always thought AI was scary. Now I'm building it. I want to start a company before college." },
-  { who: "CSR Lead, Bengaluru", role: "CSR Partner", q: "The most measurable, joyful CSR program we've funded. Real labs, real outcomes, real kids." },
-];
 
 const faqs = [
   ["Which grades is AI4SCHOOLS for?", "Grades 3 through 12, with age-appropriate tracks at every stage."],
@@ -149,10 +142,6 @@ const faqs = [
   ["Can we white-label this for our school?", "Yes — co-branding is included; full white-label is available for chains."],
 ];
 
-const downloads = [
-  "Brochure", "Curriculum", "Sample Timetable", "Teacher Handbook",
-  "Bootcamp Guide", "Student Workbook", "Posters", "Certificates",
-];
 
 export default function AI4SchoolsPage() {
   const [query, setQuery] = useState("");
@@ -216,24 +205,28 @@ export default function AI4SchoolsPage() {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Button size="lg" className="rounded-full px-6">
-              Book Demo <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="lg" className="rounded-full px-6" asChild>
+              <a href="#ai4schools-contact">
+                Book a demo <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-6">
-              <Download className="mr-2 h-4 w-4" /> Download Brochure
+            <Button size="lg" variant="outline" className="rounded-full px-6" asChild>
+              <a href="mailto:voycexx@gmail.com?subject=AI4SCHOOLS%20programme%20details">
+                <Mail className="mr-2 h-4 w-4" /> Request programme details
+              </a>
             </Button>
-            <Button size="lg" variant="ghost" className="rounded-full px-6">
-              Become a Partner School
+            <Button size="lg" variant="ghost" className="rounded-full px-6" asChild>
+              <a href="#ai4schools-contact">Become a partner school</a>
             </Button>
           </div>
 
           {/* counters */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[
-              ["50+", "Partner schools"],
-              ["12,000+", "Students trained"],
-              ["800+", "Teachers certified"],
-              ["1,400+", "Student projects"],
+              ["3–12", "Grades covered"],
+              ["5 days", "Flagship bootcamp"],
+              ["Included", "Teacher training"],
+              ["NEP 2020", "Outcomes mapped"],
             ].map(([n, l]) => (
               <div key={l} className={`${glassCard} p-5`}>
                 <div className="font-display text-3xl md:text-4xl font-semibold">{n}</div>
@@ -513,22 +506,18 @@ export default function AI4SchoolsPage() {
         </div>
       </section>
 
-      {/* ── Testimonials ─────────────────────────────────────────── */}
+      {/* ── Voices ─────────────────────────────────────────── */}
       <section className="container mx-auto max-w-6xl px-6 py-24">
         <SectionLabel>Voices</SectionLabel>
-        <GradientHeadline>What schools say.</GradientHeadline>
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {testimonials.map((t) => (
-            <div key={t.who} className={`${glassCard} p-6`}>
-              <div className="flex gap-0.5 text-amber-500">
-                {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-foreground/90">"{t.q}"</p>
-              <div className="mt-5 text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">{t.who}</span> · {t.role}
-              </div>
-            </div>
-          ))}
+        <GradientHeadline>No school stories yet.</GradientHeadline>
+        <div className={`${glassCard} mt-8 p-8 max-w-2xl`}>
+          <p className="text-muted-foreground leading-relaxed">
+            AI4SCHOOLS is new. We would rather show you nothing than show you quotes we invented.
+            When our first partner schools finish a cohort and agree to be named, their words will appear here.
+          </p>
+          <Button className="mt-6 rounded-full" asChild>
+            <a href="#ai4schools-contact">Talk to us about a pilot</a>
+          </Button>
         </div>
       </section>
 
@@ -550,24 +539,20 @@ export default function AI4SchoolsPage() {
         </Accordion>
       </section>
 
-      {/* ── Download Center ─────────────────────────────────────────── */}
+      {/* ── Materials ─────────────────────────────────────────── */}
       <section className="container mx-auto max-w-6xl px-6 py-24">
-        <SectionLabel>Download center</SectionLabel>
-        <GradientHeadline>Everything in one place.</GradientHeadline>
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {downloads.map((d) => (
-            <button
-              key={d}
-              className={`${glassCard} p-5 text-left flex items-center justify-between group`}
-              onClick={() => alert(`${d} — coming soon`)}
-            >
-              <div>
-                <div className="font-medium">{d}</div>
-                <div className="text-xs text-muted-foreground mt-1">PDF · 1-pager</div>
-              </div>
-              <Download className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-            </button>
-          ))}
+        <SectionLabel>Programme materials</SectionLabel>
+        <GradientHeadline>Ask and we'll send them.</GradientHeadline>
+        <div className={`${glassCard} mt-8 p-8 max-w-2xl`}>
+          <p className="text-muted-foreground leading-relaxed">
+            The brochure, curriculum map, sample timetable, teacher handbook and bootcamp guide are prepared per
+            school, so we share them on request rather than as generic downloads.
+          </p>
+          <Button className="mt-6 rounded-full gap-2" asChild>
+            <a href="mailto:voycexx@gmail.com?subject=AI4SCHOOLS%20materials%20request">
+              <Mail className="h-4 w-4" /> Request the materials
+            </a>
+          </Button>
         </div>
       </section>
 
@@ -583,13 +568,13 @@ export default function AI4SchoolsPage() {
                 Tell us about your school. We'll respond within 48 hours with a tailored plan.
               </p>
               <div className="mt-8 space-y-3 text-sm">
-                <a className="flex items-center gap-3 hover:text-foreground/80" href="tel:+910000000000">
-                  <Phone className="h-4 w-4" /> +91 00000 00000
+                <a className="flex items-center gap-3 hover:text-foreground/80" href="tel:+919010481175">
+                  <Phone className="h-4 w-4" /> +91 90104 81175
                 </a>
-                <a className="flex items-center gap-3 hover:text-foreground/80" href="mailto:hello@ai4schools.in">
-                  <Mail className="h-4 w-4" /> hello@ai4schools.in
+                <a className="flex items-center gap-3 hover:text-foreground/80" href="mailto:voycexx@gmail.com">
+                  <Mail className="h-4 w-4" /> voycexx@gmail.com
                 </a>
-                <a className="flex items-center gap-3 hover:text-foreground/80" href="https://wa.me/910000000000" target="_blank" rel="noreferrer">
+                <a className="flex items-center gap-3 hover:text-foreground/80" href="https://wa.me/919010481175" target="_blank" rel="noreferrer">
                   <MessageCircle className="h-4 w-4" /> WhatsApp us
                 </a>
                 <div className="flex items-center gap-3 text-muted-foreground">

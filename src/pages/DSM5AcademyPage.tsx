@@ -474,19 +474,22 @@ const DSM5AcademyPage = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-primary">Voice-X DSM-5 Academy</h1>
-                <p className="text-sm text-muted-foreground">Professional Mental Health Training Platform</p>
+                <p className="text-sm text-muted-foreground">Self-paced study material · not a clinical qualification</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-lg">
                 <Star className="w-4 h-4 text-yellow-500" />
-                <span className="text-sm font-medium">Progress: {Math.round((userProgress.completedModules / userProgress.totalModules) * 100)}%</span>
+                <span className="text-sm font-medium">{academyFacts.totalModules} modules · free</span>
               </div>
-              <Button variant="outline" size="sm">
-                <Users className="w-4 h-4 mr-2" />
-                Profile
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/profile">
+                  <Users className="w-4 h-4 mr-2" />
+                  Profile
+                </Link>
               </Button>
             </div>
+
           </div>
         </div>
       </header>

@@ -557,7 +557,7 @@ export default function AI4SchoolsPage() {
       </section>
 
       {/* ── Contact ─────────────────────────────────────────── */}
-      <section className="container mx-auto max-w-6xl px-6 py-24">
+      <section id="ai4schools-contact" className="container mx-auto max-w-6xl px-6 py-24">
         <div className={`${glassCard} p-8 md:p-12 relative overflow-hidden`}>
           <div className="absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-[radial-gradient(closest-side,hsl(220_100%_65%/0.2),transparent)]" />
           <div className="grid lg:grid-cols-2 gap-10">

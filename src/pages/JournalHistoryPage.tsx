@@ -29,7 +29,13 @@ export default function JournalHistoryPage() {
   const [selectedEntry, setSelectedEntry] = useState<JournalEntry | null>(null);
 
   useEffect(() => {
+    if (!user) {
+      setLoading(false);
+      setEntries([]);
+      return;
+    }
     fetchEntries();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const fetchEntries = async () => {
@@ -81,7 +87,7 @@ export default function JournalHistoryPage() {
     }
   };
 
-  if (loading) {
+  if (user && loading) {
     return <LoadingFallback message="Loading your journal..." />;
   }
 

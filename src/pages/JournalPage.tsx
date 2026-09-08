@@ -60,8 +60,9 @@ export default function JournalPage() {
   };
 
   return (
-    <AuthGuard>
+    <>
       <SiteHeader />
+      <AuthGuard>
       <SEOHead
         title="My Private Journal - VOYCE"
         description="Your safe, private space for self-reflection and journaling"
@@ -144,7 +145,8 @@ export default function JournalPage() {
           </div>
         </div>
       </div>
+      </AuthGuard>
       <SiteFooter />
-    </AuthGuard>
+    </>
   );
 }

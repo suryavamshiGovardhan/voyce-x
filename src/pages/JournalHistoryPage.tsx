@@ -94,8 +94,9 @@ export default function JournalHistoryPage() {
   }
 
   return (
-    <AuthGuard>
+    <>
       <SiteHeader />
+      <AuthGuard>
       <SEOHead
         title="Journal History - VOYCE"
         description="View your past journal entries"
@@ -195,7 +196,8 @@ export default function JournalHistoryPage() {
           </div>
         </DialogContent>
       </Dialog>
+      </AuthGuard>
       <SiteFooter />
-    </AuthGuard>
+    </>
   );
 }

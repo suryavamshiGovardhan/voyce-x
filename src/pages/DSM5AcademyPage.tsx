@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -29,13 +30,9 @@ const DSM5AcademyPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
 
-  const userProgress = {
+  const academyFacts = {
     totalModules: 26,
-    completedModules: 8,
-    totalAssessments: 45,
-    completedAssessments: 12,
-    researchPapers: 50,
-    studyHours: 24
+    levels: 6,
   };
 
   const trainingLevels = [
@@ -459,10 +456,10 @@ const DSM5AcademyPage = () => {
   ];
 
   const quickStats = [
-    { label: "Total Modules", value: userProgress.totalModules, icon: BookOpen },
-    { label: "Assessment Tools", value: `${userProgress.totalAssessments}+`, icon: FileText }, 
-    { label: "Research Papers", value: `${userProgress.researchPapers}+`, icon: Library },
-    { label: "Study Hours", value: userProgress.studyHours, icon: Clock }
+    { label: "Study modules", value: academyFacts.totalModules, icon: BookOpen },
+    { label: "Levels", value: academyFacts.levels, icon: Library },
+    { label: "Reference", value: "DSM-5-TR", icon: FileText },
+    { label: "Pace", value: "Your own", icon: Clock },
   ];
 
   return (
@@ -477,19 +474,22 @@ const DSM5AcademyPage = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-primary">Voice-X DSM-5 Academy</h1>
-                <p className="text-sm text-muted-foreground">Professional Mental Health Training Platform</p>
+                <p className="text-sm text-muted-foreground">Self-paced study material · not a clinical qualification</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-lg">
                 <Star className="w-4 h-4 text-yellow-500" />
-                <span className="text-sm font-medium">Progress: {Math.round((userProgress.completedModules / userProgress.totalModules) * 100)}%</span>
+                <span className="text-sm font-medium">{academyFacts.totalModules} modules · free</span>
               </div>
-              <Button variant="outline" size="sm">
-                <Users className="w-4 h-4 mr-2" />
-                Profile
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/profile">
+                  <Users className="w-4 h-4 mr-2" />
+                  Profile
+                </Link>
               </Button>
             </div>
+
           </div>
         </div>
       </header>
@@ -502,35 +502,34 @@ const DSM5AcademyPage = () => {
               <div>
                 <h2 className="text-3xl font-bold mb-4">Welcome to DSM-5 Academy</h2>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Master mental health diagnosis with comprehensive training modules, interactive assessments, and evidence-based clinical tools. Access all levels and learn at your own pace.
+                  A free, self-paced study companion for reading the DSM-5-TR: how the manual is organised, how
+                  criteria are written, and how clinicians are trained to think. It is study material, not a
+                  qualification, and nothing here diagnoses anyone.
                 </p>
-                <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-6 mb-6">
-                  <div className="w-full bg-white rounded-full h-3 mb-2">
-                    <div 
-                      className="bg-gradient-to-r from-primary to-secondary h-3 rounded-full transition-all duration-500"
-                      style={{ width: `${(userProgress.completedModules / userProgress.totalModules) * 100}%` }}
-                    ></div>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Overall Progress</span>
-                    <span className="font-medium">{userProgress.completedModules}/{userProgress.totalModules} modules</span>
-                  </div>
+                <div className="rounded-xl border border-border bg-muted/40 p-5 mb-6 text-sm text-muted-foreground">
+                  Progress is not tracked here — open any module in any order and come back whenever you like.
                 </div>
-                <Button size="lg" className="mr-4">
-                  <Play className="w-4 h-4 mr-2" />
-                  Continue Learning
+                <Button size="lg" className="mr-4" asChild>
+                  <Link to="/dsm5-academy/module/1.1">
+                    <Play className="w-4 h-4 mr-2" />
+                    Start with module 1.1
+                  </Link>
                 </Button>
-                <Button variant="outline" size="lg">
-                  <FileText className="w-4 h-4 mr-2" />
-                  View Resources
+                <Button variant="outline" size="lg" asChild>
+                  <a href="#academy-resources">
+                    <FileText className="w-4 h-4 mr-2" />
+                    View resources
+                  </a>
                 </Button>
               </div>
               <div className="relative">
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center">
-                  <div className="text-center">
-                    <Play className="w-16 h-16 text-primary mx-auto mb-4" />
-                    <p className="text-sm text-muted-foreground">Introduction Video Placeholder</p>
-                  </div>
+                <div className="rounded-xl border border-border bg-card p-8">
+                  <h3 className="font-display text-xl mb-3">How to use the academy</h3>
+                  <ol className="space-y-2 text-sm text-muted-foreground list-decimal pl-5">
+                    <li>Start at Level 1 to learn how the manual is structured.</li>
+                    <li>Read a module, then look up the same section in the DSM-5 guide.</li>
+                    <li>Use the resource list below to find the source literature yourself.</li>
+                  </ol>
                 </div>
               </div>
             </div>
@@ -666,9 +665,13 @@ const DSM5AcademyPage = () => {
           </div>
         </section>
 
-        {/* PDF Resource Library */}
-        <section>
-          <h2 className="text-3xl font-bold mb-8">Resource Library</h2>
+        {/* Resource reading list */}
+        <section id="academy-resources">
+          <h2 className="text-3xl font-bold mb-3">Resource reading list</h2>
+          <p className="text-muted-foreground mb-8 max-w-2xl">
+            These are the topics worth reading next. We don't host copyrighted DSM material, so look them up
+            through your library, university access or the APA.
+          </p>
           <Tabs defaultValue="research" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="research">Research Papers</TabsTrigger>
@@ -691,11 +694,9 @@ const DSM5AcademyPage = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <h4 className="font-medium mb-2">{paper}</h4>
-                          <Badge variant="secondary" className="text-xs">PDF</Badge>
+                          <Badge variant="secondary" className="text-xs">Reading topic</Badge>
                         </div>
-                        <Button variant="ghost" size="sm">
-                          <FileText className="w-4 h-4" />
-                        </Button>
+                        <FileText className="w-4 h-4 text-muted-foreground shrink-0" aria-hidden="true" />
                       </div>
                     </CardContent>
                   </Card>
@@ -716,11 +717,9 @@ const DSM5AcademyPage = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <h4 className="font-medium mb-2">{tool}</h4>
-                          <Badge variant="secondary" className="text-xs">PDF</Badge>
+                          <Badge variant="secondary" className="text-xs">Reading topic</Badge>
                         </div>
-                        <Button variant="ghost" size="sm">
-                          <FileText className="w-4 h-4" />
-                        </Button>
+                        <FileText className="w-4 h-4 text-muted-foreground shrink-0" aria-hidden="true" />
                       </div>
                     </CardContent>
                   </Card>
@@ -741,11 +740,9 @@ const DSM5AcademyPage = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <h4 className="font-medium mb-2">{material}</h4>
-                          <Badge variant="secondary" className="text-xs">PDF</Badge>
+                          <Badge variant="secondary" className="text-xs">Reading topic</Badge>
                         </div>
-                        <Button variant="ghost" size="sm">
-                          <FileText className="w-4 h-4" />
-                        </Button>
+                        <FileText className="w-4 h-4 text-muted-foreground shrink-0" aria-hidden="true" />
                       </div>
                     </CardContent>
                   </Card>

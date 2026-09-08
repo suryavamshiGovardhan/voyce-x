@@ -247,7 +247,7 @@ export default function LibraryPreview() {
                       }}
                       aria-label={`Read full article: ${content.title}`}
                     >
-                      Read Full Article  
+                      Read Full Article
                     </Button>
                   </div>
                 </div>

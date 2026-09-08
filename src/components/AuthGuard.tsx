@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { LoadingFallback } from './LoadingFallback';
@@ -20,14 +20,7 @@ export function AuthGuard({
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [showAuthModal, setShowAuthModal] = useState(false);
 
-  useEffect(() => {
-    if (!loading && requireAuth && !user) {
-      // Show modal instead of immediate redirect
-      setShowAuthModal(true);
-    }
-  }, [user, loading, requireAuth]);
 
   const handleLoginRedirect = () => {
     navigate(redirectTo, { 
@@ -37,7 +30,6 @@ export function AuthGuard({
   };
 
   const handleGoBack = () => {
-    setShowAuthModal(false);
     navigate(-1);
   };
 

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { sanitizeDbError } from '@/lib/errorHandler';
 import { AuthGuard } from '@/components/AuthGuard';
+import SiteHeader from '@/components/site/SiteHeader';
+import SiteFooter from '@/components/site/SiteFooter';
 import { SEOHead } from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -59,6 +61,7 @@ export default function JournalPage() {
 
   return (
     <AuthGuard>
+      <SiteHeader />
       <SEOHead
         title="My Private Journal - VOYCE"
         description="Your safe, private space for self-reflection and journaling"
@@ -141,6 +144,7 @@ export default function JournalPage() {
           </div>
         </div>
       </div>
+      <SiteFooter />
     </AuthGuard>
   );
 }

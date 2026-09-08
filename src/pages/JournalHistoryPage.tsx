@@ -3,6 +3,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { AuthGuard } from '@/components/AuthGuard';
+import SiteHeader from '@/components/site/SiteHeader';
+import SiteFooter from '@/components/site/SiteFooter';
 import { SEOHead } from '@/components/SEOHead';
 import { LoadingFallback } from '@/components/LoadingFallback';
 import { Button } from '@/components/ui/button';
@@ -93,6 +95,7 @@ export default function JournalHistoryPage() {
 
   return (
     <AuthGuard>
+      <SiteHeader />
       <SEOHead
         title="Journal History - VOYCE"
         description="View your past journal entries"
@@ -192,6 +195,7 @@ export default function JournalHistoryPage() {
           </div>
         </DialogContent>
       </Dialog>
+      <SiteFooter />
     </AuthGuard>
   );
 }

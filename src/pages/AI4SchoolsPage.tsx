@@ -586,27 +586,41 @@ export default function AI4SchoolsPage() {
               className="space-y-3"
               onSubmit={(e) => {
                 e.preventDefault();
-                alert("Thank you — we'll be in touch within 48 hours.");
+                const form = e.currentTarget;
+                const data = new FormData(form);
+                const body = [
+                  `School: ${data.get("school")}`,
+                  `Name: ${data.get("name")}`,
+                  `Email: ${data.get("email")}`,
+                  `City: ${data.get("city")}`,
+                  "",
+                  `${data.get("message") || ""}`,
+                ].join("\n");
+                window.location.href = `mailto:voycexx@gmail.com?subject=${encodeURIComponent(
+                  "AI4SCHOOLS enquiry"
+                )}&body=${encodeURIComponent(body)}`;
               }}
             >
-              <Input required placeholder="School name" />
-              <Input required placeholder="Your name" />
-              <Input required type="email" placeholder="Email" />
-              <Input placeholder="City" />
+              <Input required name="school" placeholder="School name" />
+              <Input required name="name" placeholder="Your name" />
+              <Input required type="email" name="email" placeholder="Email" />
+              <Input name="city" placeholder="City" />
               <textarea
+                name="message"
                 placeholder="Tell us about your school (grades, size, goals)…"
                 rows={4}
                 className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               />
               <div className="flex flex-wrap gap-3 pt-2">
                 <Button type="submit" className="rounded-full px-6">
-                  Schedule Demo <ArrowRight className="ml-1 h-4 w-4" />
+                  Send enquiry <ArrowRight className="ml-1 h-4 w-4" />
                 </Button>
-                <Button type="button" variant="outline" className="rounded-full px-6">
-                  Become Partner School
+                <Button type="button" variant="outline" className="rounded-full px-6" asChild>
+                  <a href="/contact">Other ways to reach us</a>
                 </Button>
               </div>
             </form>
+
           </div>
         </div>
       </section>

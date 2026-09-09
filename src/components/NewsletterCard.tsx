@@ -58,7 +58,12 @@ export default function NewsletterCard({ newsletter, onLike }: NewsletterCardPro
           <span>{isLiked ? newsletter.likes + 1 : newsletter.likes}</span>
         </Button>
         <Button asChild variant="outline" size="sm">
-          <a href={newsletter.url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={newsletter.url}
+            {...(newsletter.url.startsWith("http")
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+          >
             Read <ExternalLink className="ml-1 h-4 w-4" />
           </a>
         </Button>

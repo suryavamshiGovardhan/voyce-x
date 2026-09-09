@@ -1,7 +1,7 @@
 export const dsm5Translations = {
   en: {
     academy: {
-      title: "Voice-X DSM-5 Academy",
+      title: "VOYCE DSM-5 Academy",
       subtitle: "Professional Mental Health Training Platform",
       welcome: "Welcome to DSM-5 Academy",
       welcomeDesc: "Master mental health diagnosis with comprehensive training modules, interactive assessments, and evidence-based clinical tools. Access all levels and learn at your own pace.",
@@ -66,7 +66,7 @@ export const dsm5Translations = {
   },
   es: {
     academy: {
-      title: "Academia DSM-5 Voice-X",
+      title: "Academia DSM-5 VOYCE",
       subtitle: "Plataforma Profesional de Entrenamiento en Salud Mental",
       welcome: "Bienvenido a la Academia DSM-5",
       welcomeDesc: "Domina el diagnóstico de salud mental con módulos de entrenamiento comprehensivos, evaluaciones interactivas y herramientas clínicas basadas en evidencia. Accede a todos los niveles y aprende a tu propio ritmo.",
@@ -131,7 +131,7 @@ export const dsm5Translations = {
   },
   fr: {
     academy: {
-      title: "Académie DSM-5 Voice-X",
+      title: "Académie DSM-5 VOYCE",
       subtitle: "Plateforme Professionnelle de Formation en Santé Mentale",
       welcome: "Bienvenue à l'Académie DSM-5",
       welcomeDesc: "Maîtrisez le diagnostic de santé mentale avec des modules de formation complets, des évaluations interactives et des outils cliniques basés sur des preuves. Accédez à tous les niveaux et apprenez à votre rythme.",
@@ -196,7 +196,7 @@ export const dsm5Translations = {
   },
   de: {
     academy: {
-      title: "Voice-X DSM-5 Akademie",
+      title: "VOYCE DSM-5 Akademie",
       subtitle: "Professionelle Plattform für Psychische Gesundheitsschulung",
       welcome: "Willkommen in der DSM-5 Akademie",
       welcomeDesc: "Meistern Sie die Diagnose psychischer Gesundheit mit umfassenden Trainingsmodulen, interaktiven Bewertungen und evidenzbasierten klinischen Tools. Zugang zu allen Ebenen und lernen Sie in Ihrem eigenen Tempo.",
@@ -261,7 +261,7 @@ export const dsm5Translations = {
   },
   it: {
     academy: {
-      title: "Accademia DSM-5 Voice-X",
+      title: "Accademia DSM-5 VOYCE",
       subtitle: "Piattaforma Professionale di Formazione sulla Salute Mentale",
       welcome: "Benvenuto all'Accademia DSM-5",
       welcomeDesc: "Padroneggia la diagnosi della salute mentale con moduli di formazione completi, valutazioni interattive e strumenti clinici basati sull'evidenza. Accedi a tutti i livelli e impara al tuo ritmo.",
@@ -326,7 +326,7 @@ export const dsm5Translations = {
   },
   pt: {
     academy: {
-      title: "Academia DSM-5 Voice-X",
+      title: "Academia DSM-5 VOYCE",
       subtitle: "Plataforma Profissional de Treinamento em Saúde Mental",
       welcome: "Bem-vindo à Academia DSM-5",
       welcomeDesc: "Domine o diagnóstico de saúde mental com módulos de treinamento abrangentes, avaliações interativas e ferramentas clínicas baseadas em evidências. Acesse todos os níveis e aprenda no seu próprio ritmo.",
@@ -391,7 +391,7 @@ export const dsm5Translations = {
   },
   ru: {
     academy: {
-      title: "Академия DSM-5 Voice-X",
+      title: "Академия DSM-5 VOYCE",
       subtitle: "Профессиональная платформа обучения психическому здоровью",
       welcome: "Добро пожаловать в Академию DSM-5",
       welcomeDesc: "Освойте диагностику психического здоровья с комплексными учебными модулями, интерактивными оценками и клиническими инструментами, основанными на доказательствах. Получите доступ ко всем уровням и изучайте в своем темпе.",
@@ -456,7 +456,7 @@ export const dsm5Translations = {
   },
   ja: {
     academy: {
-      title: "Voice-X DSM-5アカデミー",
+      title: "VOYCE DSM-5アカデミー",
       subtitle: "メンタルヘルス専門教育プラットフォーム",
       welcome: "DSM-5アカデミーへようこそ",
       welcomeDesc: "包括的なトレーニングモジュール、インタラクティブな評価、エビデンスベースの臨床ツールでメンタルヘルス診断をマスターしましょう。すべてのレベルにアクセスし、自分のペースで学習してください。",
@@ -521,7 +521,7 @@ export const dsm5Translations = {
   },
   ko: {
     academy: {
-      title: "Voice-X DSM-5 아카데미",
+      title: "VOYCE DSM-5 아카데미",
       subtitle: "정신건강 전문 교육 플랫폼",
       welcome: "DSM-5 아카데미에 오신 것을 환영합니다",
       welcomeDesc: "포괄적인 교육 모듈, 대화형 평가 및 증거 기반 임상 도구로 정신건강 진단을 마스터하세요. 모든 레벨에 액세스하고 자신만의 속도로 학습하세요.",
@@ -586,7 +586,7 @@ export const dsm5Translations = {
   },
   zh: {
     academy: {
-      title: "Voice-X DSM-5学院",
+      title: "VOYCE DSM-5学院",
       subtitle: "心理健康专业培训平台",
       welcome: "欢迎来到DSM-5学院",
       welcomeDesc: "通过综合培训模块、互动评估和循证临床工具掌握心理健康诊断。访问所有级别并按自己的节奏学习。",
@@ -651,7 +651,7 @@ export const dsm5Translations = {
   },
   ar: {
     academy: {
-      title: "أكاديمية Voice-X DSM-5",
+      title: "أكاديمية VOYCE DSM-5",
       subtitle: "منصة التدريب المهني للصحة النفسية",
       welcome: "مرحباً بك في أكاديمية DSM-5",
       welcomeDesc: "أتقن تشخيص الصحة النفسية من خلال وحدات تدريبية شاملة وتقييمات تفاعلية وأدوات سريرية قائمة على الأدلة. الوصول إلى جميع المستويات والتعلم بوتيرتك الخاصة.",
@@ -716,7 +716,7 @@ export const dsm5Translations = {
   },
   hi: {
     academy: {
-      title: "Voice-X DSM-5 अकादमी",
+      title: "VOYCE DSM-5 अकादमी",
       subtitle: "मानसिक स्वास्थ्य व्यावसायिक प्रशिक्षण प्लेटफॉर्म",
       welcome: "DSM-5 अकादमी में आपका स्वागत है",
       welcomeDesc: "व्यापक प्रशिक्षण मॉड्यूल, इंटरैक्टिव मूल्यांकन और साक्ष्य-आधारित नैदानिक उपकरणों के साथ मानसिक स्वास्थ्य निदान में महारत हासिल करें। सभी स्तरों तक पहुंच प्राप्त करें और अपनी गति से सीखें।",
@@ -781,7 +781,7 @@ export const dsm5Translations = {
   },
   te: {
     academy: {
-      title: "Voice-X DSM-5 అకాడమీ",
+      title: "VOYCE DSM-5 అకాడమీ",
       subtitle: "మానసిక ఆరోగ్య వృత్తిపరమైన శిక్షణ వేదిక",
       welcome: "DSM-5 అకాడమీకి స్వాగతం",
       welcomeDesc: "వ్యాపకమైన శిక్షణ మాడ్యూల్స్, ఇంటరాక్టివ్ అంచనాలు మరియు సాక్ష్య-ఆధారిత క్లినికల్ సాధనాలతో మానసిక ఆరోగ్య నిర్ధారణలో నైపుణ్యం సంపాదించండి. అన్ని స్థాయిలను యాక్సెస్ చేసి మీ స్వంత వేగంతో నేర్చుకోండి।",
@@ -846,7 +846,7 @@ export const dsm5Translations = {
   },
   ta: {
     academy: {
-      title: "Voice-X DSM-5 அகாடமி",
+      title: "VOYCE DSM-5 அகாடமி",
       subtitle: "மன ஆரோக்கிய தொழில்முறை பயிற்சி தளம்",
       welcome: "DSM-5 அகாடமிக்கு வரவேற்கிறோம்",
       welcomeDesc: "விரிவான பயிற்சி தொகுதிகள், ஊடாடும் மதிப்பீடுகள் மற்றும் சான்று அடிப்படையிலான மருத்துவ கருவிகளுடன் மன ஆரோக்கிய நோயறிதலில் தேர்ச்சி பெறுங்கள். அனைத்து நிலைகளையும் அணுகி உங்கள் சொந்த வேகத்தில் கற்றுக்கொள்ளுங்கள்.",
@@ -911,7 +911,7 @@ export const dsm5Translations = {
   },
   mr: {
     academy: {
-      title: "Voice-X DSM-5 अकादमी",
+      title: "VOYCE DSM-5 अकादमी",
       subtitle: "मानसिक आरोग्य व्यावसायिक प्रशिक्षण प्लॅटफॉর्म",
       welcome: "DSM-5 अकादमीमध्ये आपले स्वागत आहे",
       welcomeDesc: "सर्वसमावेशक प्रशिक्षण मॉड्यूल्स, परस्परसंवादी मूल्यांकन आणि पुरावा-आधारित क्लिनिकल साधनांसह मानसिक आरोग्य निदानात प्रभुत्व मिळवा. सर्व पातळ्यांमध्ये प्रवेश करा आणि आपल्या गतीने शिका.",

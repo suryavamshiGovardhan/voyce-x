@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -144,40 +145,36 @@ export default function StoryPage() {
               <p className="blog-text text-lg mb-4">
                 If you've ever felt like this, you're not alone. VOYCE is a space to share, reflect, and heal.
               </p>
-              <Button className="gap-2">
-                <BookOpen className="w-4 h-4" />
-                Explore More Stories
+              <Button asChild className="gap-2">
+                <Link to="/stories">
+                  <BookOpen className="w-4 h-4" />
+                  Explore more stories
+                </Link>
               </Button>
             </div>
           </Card>
 
           {/* Related Stories Section */}
           <Card className="blog-content gentle-shadow rounded-2xl p-8">
-            <h3 className="blog-subheading text-2xl mb-6 text-center">Related Stories</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="text-center p-4 border border-blog-border rounded-xl hover:shadow-md transition-shadow">
-                <div className="w-full h-32 bg-gradient-to-br from-accent/20 to-primary/10 rounded-lg mb-4 flex items-center justify-center">
-                  <BookOpen className="w-8 h-8 text-muted-foreground" />
-                </div>
-                <h4 className="font-semibold mb-2">Finding Light in Darkness</h4>
-                <p className="text-sm text-muted-foreground">Coming Soon</p>
-              </div>
-              
-              <div className="text-center p-4 border border-blog-border rounded-xl hover:shadow-md transition-shadow">
-                <div className="w-full h-32 bg-gradient-to-br from-secondary/20 to-accent/10 rounded-lg mb-4 flex items-center justify-center">
-                  <BookOpen className="w-8 h-8 text-muted-foreground" />
-                </div>
-                <h4 className="font-semibold mb-2">The Journey Within</h4>
-                <p className="text-sm text-muted-foreground">Coming Soon</p>
-              </div>
-              
-              <div className="text-center p-4 border border-blog-border rounded-xl hover:shadow-md transition-shadow md:col-span-2 lg:col-span-1">
-                <div className="w-full h-32 bg-gradient-to-br from-primary/20 to-secondary/10 rounded-lg mb-4 flex items-center justify-center">
-                  <BookOpen className="w-8 h-8 text-muted-foreground" />
-                </div>
-                <h4 className="font-semibold mb-2">Healing Through Words</h4>
-                <p className="text-sm text-muted-foreground">Coming Soon</p>
-              </div>
+            <h3 className="blog-subheading text-2xl mb-6 text-center">Keep reading</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { to: "/article/overthinking-at-night", title: "Why your mind gets loud at night", note: "Essay" },
+                { to: "/article/cannot-say-no", title: "When you cannot say no", note: "Essay" },
+                { to: "/series", title: "The Unheard Mind", note: "Eight-part series" },
+              ].map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="block text-center p-4 border border-blog-border rounded-xl hover:shadow-md transition-shadow"
+                >
+                  <div className="w-full h-32 bg-gradient-to-br from-accent/20 to-primary/10 rounded-lg mb-4 flex items-center justify-center">
+                    <BookOpen className="w-8 h-8 text-muted-foreground" aria-hidden="true" />
+                  </div>
+                  <h4 className="font-semibold mb-2">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">{item.note}</p>
+                </Link>
+              ))}
             </div>
           </Card>
         </div>

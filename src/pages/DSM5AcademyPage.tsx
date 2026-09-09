@@ -473,7 +473,7 @@ const DSM5AcademyPage = () => {
                 <GraduationCap className="w-6 h-6 text-foreground" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-primary">Voice-X DSM-5 Academy</h1>
+                <h1 className="text-2xl font-bold text-primary">VOYCE DSM-5 Academy</h1>
                 <p className="text-sm text-muted-foreground">Self-paced study material · not a clinical qualification</p>
               </div>
             </div>

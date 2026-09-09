@@ -26,15 +26,6 @@ const musicTracks: MusicTrack[] = [
     timeOfDay: "evening"
   },
   {
-    title: "Art of Life",
-    artist: "X Japan",
-    url: "https://open.spotify.com/embed/track/1234567890abcdef",
-    spotifyId: "1234567890abcdef",
-    type: "emotional",
-    mood: "dark",
-    timeOfDay: "night"
-  },
-  {
     title: "Tibetan Healing Chants",
     artist: "Monks of Tibet",
     url: "https://open.spotify.com/embed/track/7ouMYWpwJ8MyGY1FALA9oN",

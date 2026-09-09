@@ -54,11 +54,11 @@ export function ThinkingLoader({
         
         {/* Message */}
         <div className="space-y-2">
-          <p className="text-xl font-semibold text-white animate-pulse">
+          <p className="text-xl font-semibold text-foreground animate-pulse">
             {message}
           </p>
-          <p className="text-sm text-green-300/80">
-            Processing your request...
+          <p className="text-sm text-muted-foreground">
+            One moment.
           </p>
         </div>
       </div>

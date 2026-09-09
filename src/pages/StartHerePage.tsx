@@ -146,15 +146,10 @@ function StartHerePage() {
               Are you a school or educator?
             </p>
             <Button asChild variant="outline">
-              <a 
-                href="https://sites.google.com/view/4igroups/ai4schools" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
+              <Link to="/ai4schools" className="flex items-center gap-2">
                 Learn about AI4Schools
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+              </Link>
             </Button>
           </section>
         </main>

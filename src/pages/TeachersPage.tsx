@@ -65,7 +65,7 @@ export default function TeachersPage() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <BrowserFrame label="voyce-x.lovable.app/teacher">
+            <BrowserFrame label="voyce-x.lovable.app/teachers">
               <SchoolDashboardScreen />
             </BrowserFrame>
           </Reveal>

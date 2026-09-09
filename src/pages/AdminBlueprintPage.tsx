@@ -45,7 +45,7 @@ export default function AdminBlueprintPage() {
       body: { action: "send_passkey" },
     });
     if (error) toast.error("Could not send passkey");
-    else toast.success("Passkey emailed to 4igroupss@gmail.com");
+    else toast.success("Passkey sent to the registered admin inbox");
   }
 
   function share() {

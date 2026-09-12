@@ -1,5 +1,5 @@
 # robots.txt for VOYCE Mental Health Platform
-# https://voyce.lovable.app
+# https://voyce-x.lovable.app
 # Last updated: 2025-12-05
 
 # Allow all crawlers
@@ -55,7 +55,7 @@ Disallow: /supabase/
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://voyce.lovable.app/sitemap.xml
+Sitemap: https://voyce-x.lovable.app/sitemap.xml
 
 # Additional directives for specific bots
 User-agent: Googlebot

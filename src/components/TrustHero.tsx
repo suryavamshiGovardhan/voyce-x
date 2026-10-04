@@ -25,22 +25,19 @@ function TrustHero() {
         aria-hidden="true"
       />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {PARTICLES.map((p, i) => (
-          <span
-            key={i}
-            className="voyce-particle"
-            style={{
-              top: p.top,
-              left: p.left,
-              width: p.size,
-              height: p.size,
-              animationDelay: p.delay,
-            }}
-          />
-        ))}
-      </div>
+      {/* Sonar dot field — ambient pings, tap to send one */}
+      <SonarGrid
+        className="absolute inset-0"
+        color="rgba(110, 231, 183, 0.9)"
+        spacing={30}
+        baseOpacity={0.16}
+        pingEvery={3.2}
+        speed={220}
+        ringWidth={110}
+        amplitude={1.8}
+        interactive
+        aria-hidden="true"
+      />
 
       {/* Subtle grain texture */}
       <div

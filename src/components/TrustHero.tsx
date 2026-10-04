@@ -5,18 +5,8 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { SonarGrid } from '@/components/ui/sonar-grid';
 import { ArrowRight, BookOpen, Sparkles } from 'lucide-react';
-
-const PARTICLES = [
-  { top: '12%', left: '8%', size: 6, delay: '0s' },
-  { top: '22%', left: '82%', size: 4, delay: '1.4s' },
-  { top: '38%', left: '18%', size: 5, delay: '2.8s' },
-  { top: '55%', left: '72%', size: 7, delay: '0.7s' },
-  { top: '68%', left: '28%', size: 4, delay: '3.6s' },
-  { top: '78%', left: '62%', size: 6, delay: '2.1s' },
-  { top: '30%', left: '50%', size: 3, delay: '4.2s' },
-  { top: '85%', left: '88%', size: 5, delay: '1.9s' },
-];
 
 function TrustHero() {
   return (
@@ -35,22 +25,19 @@ function TrustHero() {
         aria-hidden="true"
       />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0" aria-hidden="true">
-        {PARTICLES.map((p, i) => (
-          <span
-            key={i}
-            className="voyce-particle"
-            style={{
-              top: p.top,
-              left: p.left,
-              width: p.size,
-              height: p.size,
-              animationDelay: p.delay,
-            }}
-          />
-        ))}
-      </div>
+      {/* Sonar dot field — ambient pings, tap to send one */}
+      <SonarGrid
+        className="absolute inset-0"
+        color="rgba(110, 231, 183, 0.9)"
+        spacing={30}
+        baseOpacity={0.16}
+        pingEvery={3.2}
+        speed={220}
+        ringWidth={110}
+        amplitude={1.8}
+        interactive
+        aria-hidden="true"
+      />
 
       {/* Subtle grain texture */}
       <div

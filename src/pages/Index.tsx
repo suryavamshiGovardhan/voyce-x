@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import PageShell from "@/components/site/PageShell";
+import { SonarGrid } from "@/components/ui/sonar-grid";
 import { Button } from "@/components/ui/button";
 import { Section, Eyebrow, StatementHeading, Lede, Reveal, StepRail, QuietCard } from "@/components/site/primitives";
 import {
@@ -87,6 +88,17 @@ export default function Index() {
             backgroundImage:
               "radial-gradient(60% 50% at 15% 0%, hsl(var(--primary)/0.10) 0%, transparent 70%), radial-gradient(50% 40% at 90% 10%, hsl(var(--accent)/0.10) 0%, transparent 70%)",
           }}
+        />
+        <SonarGrid
+          className="absolute inset-0"
+          spacing={30}
+          baseOpacity={0.18}
+          pingEvery={3.4}
+          speed={220}
+          ringWidth={110}
+          amplitude={1.8}
+          interactive
+          aria-hidden="true"
         />
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>

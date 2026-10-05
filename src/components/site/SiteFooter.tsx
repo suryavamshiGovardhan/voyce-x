@@ -138,6 +138,18 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-14 border-t border-border pt-8">
+          <nav aria-label="Begin again" className="mb-8">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-muted-foreground">Begin again</p>
+            <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+              {BEGIN_AGAIN.map((item) => (
+                <li key={item.to}>
+                  <Link to={item.to} className="text-sm text-foreground/80 transition-colors hover:text-primary">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <p className="text-sm leading-relaxed text-muted-foreground">
             VOYCE is a reflective, educational wellbeing space. It does not provide therapy, diagnosis, or emergency
             support. If you or someone else is in immediate danger, contact local emergency services or a crisis

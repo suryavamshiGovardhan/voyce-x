@@ -6,6 +6,10 @@ import ShareStoryButton from "@/components/ShareStoryButton";
 import TraumaContent from "@/components/content/TraumaContent";
 import { CherryBlossomAccent, PagodaAccent } from "@/components/CulturalPatterns";
 import { SEOHead } from "@/components/SEOHead";
+import ReadingProgress from "@/components/engagement/ReadingProgress";
+import ReflectPause from "@/components/engagement/ReflectPause";
+import BreathWidget from "@/components/engagement/BreathWidget";
+import ContinueJourney from "@/components/engagement/ContinueJourney";
 
 export default function TraumaPage() {
   return (
@@ -41,6 +45,20 @@ export default function TraumaPage() {
 
           <div className="bg-card rounded-2xl p-8 border border-eastasia-cherry/20 shadow-2xl">
             <TraumaContent />
+          </div>
+
+          <div className="mx-auto max-w-3xl">
+            <ReflectPause prompt="Take a breath. Healing is not a race — what felt true for you here?" />
+            <div className="mb-12">
+              <BreathWidget />
+            </div>
+            <ContinueJourney
+              links={[
+                { to: "/aces", label: "ACEs impact", hint: "Understanding where some wounds begin." },
+                { to: "/tools", label: "Immersion tools", hint: "Gentle practices for hard days." },
+                { to: "/stories", label: "Stories", hint: "You are not the only one walking this." },
+              ]}
+            />
           </div>
 
           <ShareStoryButton />

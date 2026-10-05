@@ -5,6 +5,10 @@ import EnhancedMusicPlayer from "@/components/music/EnhancedMusicPlayer";
 import ComprehensiveContent from "@/components/ComprehensiveContent";
 import ShareStoryButton from "@/components/ShareStoryButton";
 import ACESContent from "@/components/content/ACESContent";
+import ReadingProgress from "@/components/engagement/ReadingProgress";
+import ReflectPause from "@/components/engagement/ReflectPause";
+import BreathWidget from "@/components/engagement/BreathWidget";
+import ContinueJourney from "@/components/engagement/ContinueJourney";
 
 const acesResources = [
   {
@@ -48,6 +52,7 @@ export default function ACESPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <ReadingProgress />
       <EnhancedMusicPlayer />
       
       <div className="container mx-auto px-4 py-12">
@@ -71,6 +76,20 @@ export default function ACESPage() {
           statistics={acesStatistics}
           keyFacts={acesKeyFacts}
         />
+
+        <div className="mx-auto max-w-3xl">
+          <ReflectPause prompt="Take a breath. This is heavy ground — how are you feeling right now?" />
+          <div className="mb-12">
+            <BreathWidget />
+          </div>
+          <ContinueJourney
+            links={[
+              { to: "/trauma", label: "Trauma recovery", hint: "From understanding to healing, gently." },
+              { to: "/stress", label: "Stress management", hint: "Calm the body's alarm system." },
+              { to: "/series", label: "The Unheard Mind", hint: "Stories that make the science human." },
+            ]}
+          />
+        </div>
 
         <ShareStoryButton />
       </div>

@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SafeHTML } from '@/components/text/SafeMarkdown';
 import { SEOHead } from '@/components/SEOHead';
+import ReadingProgress from '@/components/engagement/ReadingProgress';
+import ReflectPause from '@/components/engagement/ReflectPause';
+import ContinueJourney from '@/components/engagement/ContinueJourney';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -48,6 +51,7 @@ export default function BlogPostPage() {
       )}
       <div className="min-h-screen bg-background">
       <Navbar />
+      <ReadingProgress />
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <Button variant="ghost" asChild className="mb-6">
@@ -115,6 +119,15 @@ export default function BlogPostPage() {
                   <p className="text-muted-foreground italic">No content available.</p>
                 )}
               </div>
+
+              <ReflectPause />
+              <ContinueJourney
+                links={[
+                  { to: '/blog', label: 'More from the blog', hint: 'Other essays and reflections.' },
+                  { to: '/series', label: 'The Unheard Mind', hint: 'Eight stories, told slowly.' },
+                  { to: '/tools', label: 'Immersion tools', hint: 'Turn reading into practice.' },
+                ]}
+              />
             </article>
           ) : null}
         </div>

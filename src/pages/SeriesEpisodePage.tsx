@@ -3,6 +3,9 @@ import { episodes, getEpisode } from "@/data/unheardMindEpisodes";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
+import ReadingProgress from "@/components/engagement/ReadingProgress";
+import ReflectPause from "@/components/engagement/ReflectPause";
+import ContinueJourney from "@/components/engagement/ContinueJourney";
 
 // Lightweight markdown: **bold** and *italic*
 function renderInline(text: string) {
@@ -52,6 +55,7 @@ export default function SeriesEpisodePage() {
         canonicalUrl={`https://voyce-x.lovable.app/series/${ep.id}`}
       />
       <Navbar />
+      <ReadingProgress />
 
       <article className="max-w-2xl mx-auto px-6 py-20">
         {/* Header */}
@@ -134,6 +138,19 @@ export default function SeriesEpisodePage() {
         <div className="mt-12 rounded-xl border border-[#2dd4bf]/20 bg-gradient-to-br from-[#1a1a2e] to-[#13131f] p-8 text-center font-serif italic text-xl text-[#2dd4bf] leading-relaxed">
           ✦ {ep.takeaway} ✦
         </div>
+
+        <ReflectPause dark prompt="Take a breath. Which part of this story could have been yours?" />
+
+        <ContinueJourney
+          dark
+          links={[
+            next
+              ? { to: `/series/${next.id}`, label: `${next.number}: ${next.title}`, hint: "The next story in The Unheard Mind." }
+              : { to: "/series", label: "All episodes", hint: "Return to the beginning of the series." },
+            { to: "/tools", label: "Immersion tools", hint: "Practices to sit with what this stirred." },
+            { to: "/journal", label: "Your journal", hint: "Write a few private lines while it's still warm." },
+          ]}
+        />
 
         {/* Nav */}
         <div className="mt-12 pt-10 border-t border-border flex justify-between gap-4 text-sm font-mono">

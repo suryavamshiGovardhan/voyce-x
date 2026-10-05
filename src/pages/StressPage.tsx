@@ -5,6 +5,9 @@ import ShareStoryButton from "@/components/ShareStoryButton";
 import StressContent from "@/components/content/StressContent";
 import { ModuleTracker } from "@/components/engagement/ModuleTracker";
 import { SEOHead } from "@/components/SEOHead";
+import ReadingProgress from "@/components/engagement/ReadingProgress";
+import ReflectPause from "@/components/engagement/ReflectPause";
+import ContinueJourney from "@/components/engagement/ContinueJourney";
 
 export default function StressPage() {
   return (
@@ -34,6 +37,17 @@ export default function StressPage() {
             <ModuleTracker 
               moduleId="understanding-stress"
               moduleTitle="Understanding Stress"
+            />
+          </div>
+
+          <div className="mx-auto max-w-3xl">
+            <ReflectPause prompt="Take a breath. Which one small tool here could you try today?" />
+            <ContinueJourney
+              links={[
+                { to: "/tools", label: "Immersion tools", hint: "Put what you read into practice." },
+                { to: "/brain", label: "Brain & neuroscience", hint: "Why stress feels the way it does." },
+                { to: "/series", label: "The Unheard Mind", hint: "Stories behind the science." },
+              ]}
             />
           </div>
 

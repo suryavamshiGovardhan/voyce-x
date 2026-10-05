@@ -6,6 +6,9 @@ import ShareStoryButton from "@/components/ShareStoryButton";
 import ADHDContent from "@/components/content/ADHDContent";
 import { MandalaPattern, LotusAccent } from "@/components/CulturalPatterns";
 import { SEOHead } from "@/components/SEOHead";
+import ReadingProgress from "@/components/engagement/ReadingProgress";
+import ReflectPause from "@/components/engagement/ReflectPause";
+import ContinueJourney from "@/components/engagement/ContinueJourney";
 
 export default function ADHDPage() {
   return (
@@ -39,6 +42,17 @@ export default function ADHDPage() {
 
           <div className="bg-card rounded-2xl p-8 border border-border shadow-2xl">
             <ADHDContent />
+          </div>
+
+          <div className="mx-auto max-w-3xl">
+            <ReflectPause prompt="Take a breath. What is one strength your mind already has?" />
+            <ContinueJourney
+              links={[
+                { to: "/brain", label: "Brain & neuroscience", hint: "The wiring behind the wander." },
+                { to: "/tools", label: "Immersion tools", hint: "Focus practices that meet you where you are." },
+                { to: "/path", label: "VOYCE Path", hint: "A gentle 21-day rhythm to try." },
+              ]}
+            />
           </div>
 
           <ShareStoryButton />

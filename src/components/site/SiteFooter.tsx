@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail } from "lucide-react";
+import SonarGrid from "@/components/ui/sonar-grid";
+
+const BEGIN_AGAIN: { label: string; to: string }[] = [
+  { label: "Start here", to: "/start-here" },
+  { label: "The 21-day protocol", to: "/path" },
+  { label: "Stories", to: "/stories" },
+  { label: "Sixty seconds of stillness", to: "/tools" },
+];
 
 const COLUMNS: { title: string; links: { label: string; to: string; external?: boolean }[] }[] = [
   {
@@ -69,8 +77,18 @@ const COLUMNS: { title: string; links: { label: string; to: string; external?: b
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-surface">
-      <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
+    <footer className="relative border-t border-border bg-surface">
+      <SonarGrid
+        aria-hidden="true"
+        interactive={false}
+        baseOpacity={0.1}
+        pingEvery={7}
+        speed={180}
+        amplitude={1.4}
+        maxRings={2}
+        className="pointer-events-none absolute inset-0"
+      />
+      <div className="relative mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_3fr]">
           <div>
             <Link to="/" className="font-display text-xl tracking-tight">
@@ -120,6 +138,18 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-14 border-t border-border pt-8">
+          <nav aria-label="Begin again" className="mb-8">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-muted-foreground">Begin again</p>
+            <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+              {BEGIN_AGAIN.map((item) => (
+                <li key={item.to}>
+                  <Link to={item.to} className="text-sm text-foreground/80 transition-colors hover:text-primary">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <p className="text-sm leading-relaxed text-muted-foreground">
             VOYCE is a reflective, educational wellbeing space. It does not provide therapy, diagnosis, or emergency
             support. If you or someone else is in immediate danger, contact local emergency services or a crisis

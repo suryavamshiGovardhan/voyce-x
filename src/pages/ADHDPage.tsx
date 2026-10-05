@@ -44,6 +44,17 @@ export default function ADHDPage() {
             <ADHDContent />
           </div>
 
+          <div className="mx-auto max-w-3xl">
+            <ReflectPause prompt="Take a breath. What is one strength your mind already has?" />
+            <ContinueJourney
+              links={[
+                { to: "/brain", label: "Brain & neuroscience", hint: "The wiring behind the wander." },
+                { to: "/tools", label: "Immersion tools", hint: "Focus practices that meet you where you are." },
+                { to: "/path", label: "VOYCE Path", hint: "A gentle 21-day rhythm to try." },
+              ]}
+            />
+          </div>
+
           <ShareStoryButton />
         </div>
 

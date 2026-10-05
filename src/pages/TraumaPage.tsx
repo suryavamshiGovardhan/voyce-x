@@ -47,6 +47,20 @@ export default function TraumaPage() {
             <TraumaContent />
           </div>
 
+          <div className="mx-auto max-w-3xl">
+            <ReflectPause prompt="Take a breath. Healing is not a race — what felt true for you here?" />
+            <div className="mb-12">
+              <BreathWidget />
+            </div>
+            <ContinueJourney
+              links={[
+                { to: "/aces", label: "ACEs impact", hint: "Understanding where some wounds begin." },
+                { to: "/tools", label: "Immersion tools", hint: "Gentle practices for hard days." },
+                { to: "/stories", label: "Stories", hint: "You are not the only one walking this." },
+              ]}
+            />
+          </div>
+
           <ShareStoryButton />
         </div>
 

@@ -40,6 +40,17 @@ export default function StressPage() {
             />
           </div>
 
+          <div className="mx-auto max-w-3xl">
+            <ReflectPause prompt="Take a breath. Which one small tool here could you try today?" />
+            <ContinueJourney
+              links={[
+                { to: "/tools", label: "Immersion tools", hint: "Put what you read into practice." },
+                { to: "/brain", label: "Brain & neuroscience", hint: "Why stress feels the way it does." },
+                { to: "/series", label: "The Unheard Mind", hint: "Stories behind the science." },
+              ]}
+            />
+          </div>
+
           <ShareStoryButton />
         </div>
 

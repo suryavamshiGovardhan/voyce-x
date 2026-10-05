@@ -6,6 +6,10 @@ import ShareStoryButton from "@/components/ShareStoryButton";
 import TraumaContent from "@/components/content/TraumaContent";
 import { CherryBlossomAccent, PagodaAccent } from "@/components/CulturalPatterns";
 import { SEOHead } from "@/components/SEOHead";
+import ReadingProgress from "@/components/engagement/ReadingProgress";
+import ReflectPause from "@/components/engagement/ReflectPause";
+import BreathWidget from "@/components/engagement/BreathWidget";
+import ContinueJourney from "@/components/engagement/ContinueJourney";
 
 export default function TraumaPage() {
   return (

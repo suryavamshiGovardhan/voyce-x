@@ -6,6 +6,9 @@ import ShareStoryButton from "@/components/ShareStoryButton";
 import ADHDContent from "@/components/content/ADHDContent";
 import { MandalaPattern, LotusAccent } from "@/components/CulturalPatterns";
 import { SEOHead } from "@/components/SEOHead";
+import ReadingProgress from "@/components/engagement/ReadingProgress";
+import ReflectPause from "@/components/engagement/ReflectPause";
+import ContinueJourney from "@/components/engagement/ContinueJourney";
 
 export default function ADHDPage() {
   return (

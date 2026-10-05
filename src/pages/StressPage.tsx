@@ -5,6 +5,9 @@ import ShareStoryButton from "@/components/ShareStoryButton";
 import StressContent from "@/components/content/StressContent";
 import { ModuleTracker } from "@/components/engagement/ModuleTracker";
 import { SEOHead } from "@/components/SEOHead";
+import ReadingProgress from "@/components/engagement/ReadingProgress";
+import ReflectPause from "@/components/engagement/ReflectPause";
+import ContinueJourney from "@/components/engagement/ContinueJourney";
 
 export default function StressPage() {
   return (

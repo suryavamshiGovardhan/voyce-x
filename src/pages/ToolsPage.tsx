@@ -9,6 +9,7 @@ import JapaneseIcon from "@/components/JapaneseIcon";
 import { hapticFeedback } from "@/utils/hapticFeedback";
 import { useEffect, useRef } from "react";
 import { SEOHead } from "@/components/SEOHead";
+import BreathWidget from "@/components/engagement/BreathWidget";
 
 export default function ToolsPage() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -68,6 +69,10 @@ export default function ToolsPage() {
             
             <div className="card-3d">
               <ImmersionTools />
+            </div>
+
+            <div className="mx-auto mt-16 max-w-2xl">
+              <BreathWidget />
             </div>
           </div>
         </section>

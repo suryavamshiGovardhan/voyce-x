@@ -41,6 +41,18 @@ const PRIMARY: { label: string; to?: string; items?: NavItem[]; wide?: boolean }
     ],
   },
   {
+    label: "CAM",
+    items: [
+      { label: "All articles", to: "/cam", description: "Career Advisory Movement" },
+      { label: "The Talk", to: "/cam?category=The%20Talk", description: "The exposure gap" },
+      { label: "Atlas", to: "/cam?category=Atlas", description: "Real, named work" },
+      { label: "Play", to: "/cam?category=Play", description: "Guess the job" },
+      { label: "Six lenses", to: "/cam?category=Six%20lenses", description: "Tests for choosing" },
+      { label: "30 days", to: "/cam?category=30%20days", description: "Thirty days of looking" },
+      { label: "About", to: "/cam/articles/about-cam", description: "Who is behind CAM" },
+    ],
+  },
+  {
     label: "Resources",
     wide: true,
     items: [

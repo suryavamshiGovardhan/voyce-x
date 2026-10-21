@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import SEOHead from "@/components/SEOHead";
+import { SEOHead } from "@/components/SEOHead";
 import { cam } from "@/data/cam";
 import "./cam.css";
 
@@ -11,7 +11,7 @@ interface Props { title: string; description: string; canonical: string; childre
 export default function CamShell({ title, description, canonical, children }: Props) {
   return (
     <>
-      <SEOHead title={title} description={description} canonical={canonical} />
+      <SEOHead title={title} description={description} canonicalUrl={`https://voyce-x.lovable.app${canonical}`} />
       <SiteHeader />
       <main id="main-content" className="cam min-h-screen">
         <div className="border-b" style={{ borderColor: "var(--cam-line)" }}>

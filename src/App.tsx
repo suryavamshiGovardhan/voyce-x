@@ -3,7 +3,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+const CamHubPage = lazy(() => import("./pages/cam/CamHubPage"));
+const CamArticlePage = lazy(() => import("./pages/cam/CamArticlePage"));
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { AuthProvider } from "@/hooks/useAuth";
 import { GlobalErrorHandler } from "@/components/GlobalErrorHandler";
@@ -209,6 +211,15 @@ const App = () => (
                   <Route path="/faq" element={<FaqPage />} />
                   <Route path="/partners" element={<PartnersPage />} />
                   <Route path="/resources" element={<ResourcesPage />} />
+                  <Route path="/cam" element={<CamHubPage />} />
+                  <Route path="/cam/articles/:slug" element={<CamArticlePage />} />
+                  <Route path="/cam/talk" element={<Navigate replace to="/cam/articles/the-question-you-were-asked-at-ten" />} />
+                  <Route path="/cam/careers" element={<Navigate replace to="/cam?category=Atlas" />} />
+                  <Route path="/cam/atlas" element={<Navigate replace to="/cam?category=Atlas" />} />
+                  <Route path="/cam/play" element={<Navigate replace to="/cam/articles/guess-the-job" />} />
+                  <Route path="/cam/fit" element={<Navigate replace to="/cam/articles/six-lenses-for-choosing" />} />
+                  <Route path="/cam/challenge" element={<Navigate replace to="/cam/articles/thirty-days-of-looking-part-1" />} />
+                  <Route path="/cam/about" element={<Navigate replace to="/cam/articles/about-cam" />} />
 
                   {/* Legal pages */}
                   <Route path="/privacy" element={<PrivacyPolicyPage />} />

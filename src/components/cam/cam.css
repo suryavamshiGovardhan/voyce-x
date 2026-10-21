@@ -44,3 +44,30 @@
 .cam-prose th, .cam-prose td { border-bottom: 1px solid var(--cam-line); padding: 8px 10px; text-align: left; vertical-align: top; }
 .cam-prose th { color: var(--cam-kraft); font-weight: 500; }
 .cam-prose code { font-family: "IBM Plex Mono", monospace; font-size: .9em; background: var(--cam-surface); padding: 1px 6px; border-radius: 6px; }
+
+/* ——— interactive affordances ——— */
+.cam-lift { transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease, color 150ms; }
+.cam-lift:hover { transform: translateY(-3px) rotate(var(--cam-rot, 0deg)); }
+.cam-tile { background: var(--cam-surface); border-radius: 16px; box-shadow: var(--cam-shadow-border); transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease; }
+.cam-tile:hover { transform: translateY(-4px) rotate(var(--cam-rot, 0deg)); box-shadow: 0 0 0 1px #c4a06a88, 0 18px 34px -20px #000; }
+.cam-stone { position: relative; background: var(--cam-surface); border-radius: 16px; box-shadow: var(--cam-shadow-border); transition: transform 220ms, box-shadow 220ms; }
+.cam-stone:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px #c4a06a88; }
+.cam-stone::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 1px 0 #f0e4c81f; pointer-events: none; }
+.cam-option { border-radius: 12px; padding: 12px 14px; text-align: left; background: var(--cam-surface); box-shadow: var(--cam-shadow-border); color: var(--cam-fg); transition: transform 160ms, box-shadow 160ms, background 160ms, color 160ms; }
+.cam-option:hover:not([data-state]) { box-shadow: 0 0 0 1px #c4a06a99; transform: translateY(-2px); }
+.cam-option[data-state="right"] { background: var(--cam-paper); color: var(--cam-ink); }
+.cam-option[data-state="wrong"] { opacity: .45; text-decoration: line-through; }
+.cam-option[data-state="picked"] { box-shadow: 0 0 0 1px var(--cam-kraft); }
+.cam-window { background: var(--cam-ink); box-shadow: inset 0 0 0 1px #f0e4c826; border-radius: 3px; aspect-ratio: 1; }
+.cam-slide-in { animation: cam-fade-up 480ms cubic-bezier(.2,.8,.2,1) both; }
+@keyframes cam-fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes cam-pulse-ring { 0% { transform: scale(.9); opacity: .5; } 70% { transform: scale(1.6); opacity: 0; } 100% { opacity: 0; } }
+.cam-ring { position: relative; }
+.cam-ring::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 0 0 2px var(--cam-kraft); opacity: 0; }
+.cam-ring:hover::after { animation: cam-pulse-ring 900ms ease-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .cam-lift, .cam-tile, .cam-stone, .cam-option { transition: none; }
+  .cam-lift:hover, .cam-tile:hover, .cam-stone:hover, .cam-option:hover { transform: none; }
+  .cam-slide-in { animation: none; }
+  .cam-ring:hover::after { animation: none; }
+}

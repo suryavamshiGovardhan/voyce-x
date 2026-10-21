@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
-import SEOHead from "@/components/SEOHead";
+import { SEOHead } from "@/components/SEOHead";
 import { cam } from "@/data/cam";
 import "./cam.css";
 

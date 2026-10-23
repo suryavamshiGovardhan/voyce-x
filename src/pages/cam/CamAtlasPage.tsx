@@ -4,7 +4,7 @@ import { Search, X } from "lucide-react";
 import CamShell from "@/components/cam/CamShell";
 import { cam } from "@/data/cam";
 
-const atlas = cam.source.atlasIndex as Record<string, string[]>;
+const atlas = cam.source.atlasIndex as unknown as Record<string, string[]>;
 const industries = Object.keys(atlas);
 const allJobs = industries.flatMap((ind) => atlas[ind].map((job) => ({ ind, job })));
 

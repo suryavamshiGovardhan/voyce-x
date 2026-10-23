@@ -64,8 +64,8 @@ export default function CamArticlePage() {
         <div className="cam-prose mt-12">
           {(() => {
             const parts = article.body.split(/\n(?=## )/);
-            const visuals = article.inlineVisuals ?? [];
-            const slots = new Map<number, typeof visuals>();
+            const visuals: { id: string; kind: string; alt: string }[] = [...(article.inlineVisuals ?? [])];
+            const slots = new Map<number, { id: string; kind: string; alt: string }[]>();
             visuals.forEach((v, k) => {
               const at = Math.min(parts.length - 1, Math.max(1, Math.round(((k + 1) * (parts.length - 1)) / (visuals.length + 1))));
               slots.set(at, [...(slots.get(at) ?? []), v]);

@@ -386,7 +386,7 @@ export default function CamVisual({ visual }: { visual: Visual }) {
       case "three-cards":
         return <ReasonCards />;
       case "chain":
-        return <StepPath steps={cam.source.talkScenes.find((s) => s.id === "chain")?.items ?? []} />;
+        return <StepPath steps={(cam.source.talkScenes.find((s) => s.id === "chain")?.items ?? []) as unknown as { title: string; body?: string }[]} />;
       case "clue-card":
         return <ClueTeaser />;
       case "tour-strip":

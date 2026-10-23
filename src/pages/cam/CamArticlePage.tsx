@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import CamShell, { CamCover } from "@/components/cam/CamShell";
 import ReadingProgress from "@/components/engagement/ReadingProgress";
+import CamVisual from "@/components/cam/CamVisual";
 import { cam } from "@/data/cam";
 
 const articles = [...cam.articles].sort((a, b) => a.order - b.order);
@@ -15,6 +16,13 @@ function textOf(node: ReactNode): string {
     .join("");
 }
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+const mdComponents = {
+  h2: ({ children }: { children?: ReactNode }) => <h2 id={slugify(textOf(children))}>{children}</h2>,
+  h3: ({ children }: { children?: ReactNode }) => <h3 id={slugify(textOf(children))}>{children}</h3>,
+  a: ({ href = "", children }: { href?: string; children?: ReactNode }) =>
+    href.startsWith("/") ? <Link to={href}>{children}</Link> : <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>,
+};
 
 export default function CamArticlePage() {
   const { slug } = useParams();
@@ -54,17 +62,21 @@ export default function CamArticlePage() {
         </figure>
 
         <div className="cam-prose mt-12">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              h2: ({ children }) => <h2 id={slugify(textOf(children))}>{children}</h2>,
-              h3: ({ children }) => <h3 id={slugify(textOf(children))}>{children}</h3>,
-              a: ({ href = "", children }) =>
-                href.startsWith("/") ? <Link to={href}>{children}</Link> : <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>,
-            }}
-          >
-            {article.body}
-          </ReactMarkdown>
+          {(() => {
+            const parts = article.body.split(/\n(?=## )/);
+            const visuals: { id: string; kind: string; alt: string }[] = [...(article.inlineVisuals ?? [])];
+            const slots = new Map<number, { id: string; kind: string; alt: string }[]>();
+            visuals.forEach((v, k) => {
+              const at = Math.min(parts.length - 1, Math.max(1, Math.round(((k + 1) * (parts.length - 1)) / (visuals.length + 1))));
+              slots.set(at, [...(slots.get(at) ?? []), v]);
+            });
+            return parts.map((part, i) => (
+              <div key={i}>
+                <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>{part}</ReactMarkdown>
+                {(slots.get(i) ?? []).map((v) => <CamVisual key={v.id} visual={v} />)}
+              </div>
+            ));
+          })()}
         </div>
       </article>
 

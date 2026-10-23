@@ -6,6 +6,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 const CamHubPage = lazy(() => import("./pages/cam/CamHubPage"));
 const CamArticlePage = lazy(() => import("./pages/cam/CamArticlePage"));
+const CamTalkPage = lazy(() => import("./pages/cam/CamTalkPage"));
+const CamAtlasPage = lazy(() => import("./pages/cam/CamAtlasPage"));
+const CamPlayPage = lazy(() => import("./pages/cam/CamPlayPage"));
+const CamFitPage = lazy(() => import("./pages/cam/CamFitPage"));
+const CamChallengePage = lazy(() => import("./pages/cam/CamChallengePage"));
+const CamAboutPage = lazy(() => import("./pages/cam/CamAboutPage"));
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { AuthProvider } from "@/hooks/useAuth";
 import { GlobalErrorHandler } from "@/components/GlobalErrorHandler";
@@ -213,13 +219,13 @@ const App = () => (
                   <Route path="/resources" element={<ResourcesPage />} />
                   <Route path="/cam" element={<CamHubPage />} />
                   <Route path="/cam/articles/:slug" element={<CamArticlePage />} />
-                  <Route path="/cam/talk" element={<Navigate replace to="/cam/articles/the-question-you-were-asked-at-ten" />} />
-                  <Route path="/cam/careers" element={<Navigate replace to="/cam?category=Atlas" />} />
-                  <Route path="/cam/atlas" element={<Navigate replace to="/cam?category=Atlas" />} />
-                  <Route path="/cam/play" element={<Navigate replace to="/cam/articles/guess-the-job" />} />
-                  <Route path="/cam/fit" element={<Navigate replace to="/cam/articles/six-lenses-for-choosing" />} />
-                  <Route path="/cam/challenge" element={<Navigate replace to="/cam/articles/thirty-days-of-looking-part-1" />} />
-                  <Route path="/cam/about" element={<Navigate replace to="/cam/articles/about-cam" />} />
+                  <Route path="/cam/talk" element={<CamTalkPage />} />
+                  <Route path="/cam/careers" element={<CamAtlasPage />} />
+                  <Route path="/cam/atlas" element={<CamAtlasPage />} />
+                  <Route path="/cam/play" element={<CamPlayPage />} />
+                  <Route path="/cam/fit" element={<CamFitPage />} />
+                  <Route path="/cam/challenge" element={<CamChallengePage />} />
+                  <Route path="/cam/about" element={<CamAboutPage />} />
 
                   {/* Legal pages */}
                   <Route path="/privacy" element={<PrivacyPolicyPage />} />
